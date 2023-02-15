@@ -27,26 +27,26 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Github
+      en      : &EN       GitHub
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
       en-AU   : *EN
-      zh-Hans : &ZH_HANS  Github
+      zh-Hans : &ZH_HANS  GitHub
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  Github
+      zh-Hant : &ZH_HANT  GitHub
       zh-TW   : *ZH_HANT
       zh-HK   : *ZH_HANT
-      ko      : &KO       Github
+      ko      : &KO       GitHub
       ko-KR   : *KO
-      fr      : &FR       Github
+      fr      : &FR       GitHub
       fr-BE   : *FR
       fr-CA   : *FR
       fr-CH   : *FR
       fr-FR   : *FR
       fr-LU   : *FR
-      tr      : &TR       Github
+      tr      : &TR       GitHub
       # @end locale config
     url: https://github.com/YCYTHU
