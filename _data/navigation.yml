@@ -27,29 +27,29 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Molecule-Visualizer
+      en      : &EN       MolViewer
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
       en-AU   : *EN
-      zh-Hans : &ZH_HANS  Molecule-Visualizer
+      zh-Hans : &ZH_HANS  MolViewer
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  Molecule-Visualizer
+      zh-Hant : &ZH_HANT  MolViewer
       zh-TW   : *ZH_HANT
       zh-HK   : *ZH_HANT
-      ko      : &KO       Molecule-Visualizer
+      ko      : &KO       MolViewer
       ko-KR   : *KO
-      fr      : &FR       Molecule-Visualizer
+      fr      : &FR       MolViewer
       fr-BE   : *FR
       fr-CA   : *FR
       fr-CH   : *FR
       fr-FR   : *FR
       fr-LU   : *FR
-      tr      : &TR       Molecule-Visualizer
+      tr      : &TR       MolViewer
       # @end locale config
-    url: /Molecule-Visualizer
+    url: /MolViewer
 
   - titles:
       # @start locale config
