@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [TeXt Theme](https://github.com/kitian616/jekyll-TeXt-theme)
 
 [![license](https://img.shields.io/github/license/kitian616/jekyll-TeXt-theme.svg)](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE)
@@ -87,3 +88,6 @@ TeXt use [Tomorrow](https://github.com/chriskempson/tomorrow-theme) as the highl
 ## License
 
 TeXt Theme is [MIT licensed](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE).
+=======
+# YCYTHU.github.io
+>>>>>>> 3d93e7aa1dbc483b7bf8fde5ef42437897626591
