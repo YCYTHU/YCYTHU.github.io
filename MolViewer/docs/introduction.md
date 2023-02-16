@@ -18,4 +18,4 @@ MolViewer is a tool to visualize molecule and related files in MATLAB.
 
 ## Functions
 
-### display_molecule()
+### showmol()
