@@ -14,8 +14,6 @@ article_header:
     src: /assets/images/cover4.jpg
 ---
 
-
-Molecule Viewer (MolViewer) is a molecular visualization tool.
+Molecule Viewer (MolViewer) is an uncompleted molecular visualization tool.
 
 <!--more-->
-
