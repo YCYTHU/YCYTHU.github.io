@@ -7,7 +7,7 @@ header:
   theme: dark
 article_header:
   actions:
-  - text: Learn more
+  - text: Learn more >
     type: error
     url: /MolViewer/docs/introduction
   type: overlay

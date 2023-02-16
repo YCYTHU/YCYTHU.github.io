@@ -5,7 +5,7 @@ permalink: /MolViewer/docs/introduction
 aside:
   toc: true
 sidebar:
-  nav: layouts
+  nav: Molviewer
 ---
 
 Molecule Viewer (MolViewer) is an uncompleted molecular visualization tool.

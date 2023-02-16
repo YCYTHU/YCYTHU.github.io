@@ -76,3 +76,13 @@ header:
       tr      : &TR       GitHub
       # @end locale config
     url: https://github.com/YCYTHU
+
+MolViewer:
+  - title:      MolViewer
+    children:
+      - title:  Introduction
+        url:    /MolViewer/docs/introduction
+  - title:      Functions
+    children:
+      - title:  show_molecule
+        url:    /MolViewer/docs/introduction
