@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Molecule Viewer
-cover: /MolViewer/assets/images/MolViewer-cover.jpg
 mode: immersive
 header:
   theme: dark
