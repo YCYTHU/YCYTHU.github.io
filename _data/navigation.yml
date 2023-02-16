@@ -83,8 +83,8 @@ MolViewer:
       - title:  Introduction
         url:    /MolViewer/docs/introduction
       - title:  Github
-        url:    https://github.com/YCYTHU/Molecule-Visualizer
+        url:    https://github.com/YCYTHU/MolViewer
   - title:      Functions
     children:
-      - title:  show_molecule
+      - title:  showmol
         url:    /MolViewer/docs/introduction
