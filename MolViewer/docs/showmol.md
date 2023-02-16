@@ -48,8 +48,10 @@ coordinates=[0         , 0         , 0         ;...
              0.62957749,-0.62957749,-0.62957749];
 showmol(atoms,coordinates);
 ```
-
-change style to 'space-filling' to display space filling model of methane.
+<div>
+<img src="/MolViewer/assets/images/methane.jpg" width="200">
+</div>
+change style to 'space filling' to display space filling model of methane.
 ```
 showmol(atoms,coordinates,'space filling');
 ```
