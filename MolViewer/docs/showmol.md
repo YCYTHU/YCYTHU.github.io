@@ -49,9 +49,13 @@ coordinates=[0         , 0         , 0         ;...
 showmol(atoms,coordinates);
 ```
 <div>
-<img src="/MolViewer/assets/images/methane.jpg" width="200">
+<img src="/MolViewer/assets/images/methane.jpg" width="300">
 </div>
+
 change style to 'space filling' to display space filling model of methane.
 ```
 showmol(atoms,coordinates,'space filling');
 ```
+<div>
+<img src="/MolViewer/assets/images/methane-space-filling.jpg" width="300">
+</div>
