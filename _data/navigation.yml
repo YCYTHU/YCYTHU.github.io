@@ -82,8 +82,8 @@ MolViewer:
     children:
       - title:  Introduction
         url:    /MolViewer/docs/introduction
-      - title:  Github
-        url:    https://github.com/YCYTHU/MolViewer
+      - title:  Gallery
+        url:    /MolViewer/docs/gallery
   - title:      Functions
     children:
       - title:  showmol
