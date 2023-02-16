@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Showmol
+title: showmol
 permalink: /MolViewer/docs/showmol
 sidebar:
   nav: MolViewer
@@ -41,10 +41,15 @@ showmol(ax,...)
 show methane molecule by atoms and coordinates
 ```
 atoms=[6,1,1,1,1];
-coordinates=[0,0,0;...
-    0.62957749,0.62957749,0.62957749;...
-    -0.62957749,-0.62957749,0.62957749;...
-    -0.62957749,0.62957749,-0.62957749;...
-    0.62957749,-0.62957749,-0.62957749];
+coordinates=[0         , 0         , 0         ;...
+             0.62957749, 0.62957749, 0.62957749;...
+            -0.62957749,-0.62957749, 0.62957749;...
+            -0.62957749, 0.62957749,-0.62957749;...
+             0.62957749,-0.62957749,-0.62957749];
 showmol(atoms,coordinates);
+```
+
+change style to 'space-filling' to display space filling model of methane.
+```
+showmol(atoms,coordinates,'space filling');
 ```
