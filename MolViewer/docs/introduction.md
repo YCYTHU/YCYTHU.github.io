@@ -1,6 +1,6 @@
 ---
 layout: article
-title: introduction
+title: MolViewer
 permalink: /MolViewer/docs/introduction
 aside:
   toc: true
