@@ -24,7 +24,7 @@ xyz2stl(xyzPath,style,option1,option2,...,optionN)
 
 `xyz2stl(xyzPath)` converts .xyz file whose file path is `xyzPath` to .stl file in current folder.
 
-`xyz2stl(xyzPath,style,option1,option2,...,optionN)` uses specified style and options to convert files. These parameters' effects are the same as those in [showmol()](/MolViewer/docs/showmol).
+`xyz2stl(xyzPath,style,option1,option2,...,optionN)` uses specified style and options to convert files. These parameters' effects are the same as those in [showmol()](/showmol).
 
 ## Examples
 
