@@ -6,7 +6,7 @@ sidebar:
   nav: MolViewer
 ---
 
-Molecule Viewer (MolViewer) is a ***currently uncompleted*** molecular visualization tool.
+Molecule Viewer (MolViewer) is a **currently uncompleted** molecular visualization tool.
 
 <!--more-->
 
