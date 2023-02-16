@@ -78,7 +78,7 @@ header:
     url: https://github.com/YCYTHU
 
 MolViewer:
-  - title:      MolViewer
+  - title:      Overview
     children:
       - title:  Introduction
         url:    /MolViewer/docs/introduction
