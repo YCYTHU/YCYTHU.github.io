@@ -17,7 +17,7 @@ showmol(atoms,corrdinates)
 
 showmol(...,style)  
   
-showmol(...,style,option)
+showmol(...,style,option1,option2,...,optionN)
   
 showmol(ax,...)  
   
@@ -30,7 +30,7 @@ showmol(ax,...)
   
 `showmol(...,style)` uses style defined by `style` to display molecule. `style` should be one of 'ball & stick'(default), 'space filling' and 'tube'.  
 
-`showmol(...,style,option)` uses style defined by `style` and options defined by `option` to display molecule. `option` can be chosen from 'normal'(default), 'noh'(do not show hydrogen) and 'labels'(show atoms' labels). If you do not want to specify `style`, you can use `showmol(...,'',option)`.  
+`showmol(...,style,option1,option2,...,optionN)` uses style defined by `style` and options defined by `option1,option2,...,optionN` to display molecule. `option` can be chosen from 'normal'(default), 'noh'(do not show hydrogen) and 'labels'(show atoms' labels). If you do not want to specify `style`, you can use `showmol(...,'',option)`.  
 
 `showmol(ax,...)` shows molecule in `ax`.
 

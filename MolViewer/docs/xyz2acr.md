@@ -18,7 +18,7 @@ convert .xyz file to atoms array (N-by-1) and coordinates matrix (N-by-3).
 
 ## Description
 
-[atoms,coordinates]=xyz2acr(path) use file path of .xyz file as input and output atoms array (N-by-1) and coordinates matrix (N-by-3).
+`[atoms,coordinates]=xyz2acr(path)` use file path of .xyz file as input and output atoms array (N-by-1) and coordinates matrix (N-by-3).
 
 ## Examples
 
