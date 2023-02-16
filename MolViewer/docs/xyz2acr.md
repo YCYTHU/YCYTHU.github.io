@@ -1,7 +1,7 @@
 ---
 layout: article
 title: xyz2acr
-permalink: /MolViewer/docs/showmol
+permalink: /MolViewer/docs/xyz2acr
 sidebar:
   nav: MolViewer
 ---
