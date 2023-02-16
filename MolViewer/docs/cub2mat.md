@@ -30,7 +30,7 @@ convert [movalue.cub](/MolViewer/assets/movalue.cub) to matrices and show it.
 ```
 [xGrid,yGrid,zGrid,data,atoms,coordinates]=cub2mat('movalue.cub');
 
-isovalue=0.13;
+isovalue=0.07;
 
 hold on
 
