@@ -1,5 +1,5 @@
 ---
-title: Molecular Visualization tool: MolViewer
+title: Molecular Visualization tool - MolViewer
 tags: MolViewer
 ---
 
