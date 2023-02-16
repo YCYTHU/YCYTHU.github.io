@@ -12,6 +12,7 @@ show molecule
 
 ## Syntax
 
+```
 showmol(atoms,corrdinates)  
 
 showmol(...,style)  
@@ -21,6 +22,7 @@ showmol(...,style,option)
 showmol(ax,...)  
   
 [axout,atoms_patch,bonds_patch]=showmol(...)
+```
 
 ## Description
 
@@ -35,3 +37,14 @@ showmol(ax,...)
 `[axout,atoms_patch,bonds_patch]=showmol(...)` returns `axout` which molecule are displayed in and two patch structs which contain faces and vertices of atoms' and bonds' surface.  
 
 ## Examples
+
+show methane molecule by atoms and coordinates
+```
+atoms=[6,1,1,1,1];
+coordinates=[0,0,0;...
+    0.62957749,0.62957749,0.62957749;...
+    -0.62957749,-0.62957749,0.62957749;...
+    -0.62957749,0.62957749,-0.62957749;...
+    0.62957749,-0.62957749,-0.62957749];
+showmol(atoms,coordinates);
+```
