@@ -13,7 +13,7 @@ show molecule
 ## Syntax
 
 ```
-showmol(atoms,corrdinates)  
+showmol(atoms,coordinates)  
 
 showmol(...,style)  
   
@@ -26,7 +26,7 @@ showmol(ax,...)
 
 ## Description
 
-`showmol(atoms,corrdinates)` uses array `atoms` (N-by-1) and matrix `coordinates` (N-by-3) to display molecule.  
+`showmol(atoms,coordinates)` uses array `atoms` (N-by-1) and matrix `coordinates` (N-by-3) to display molecule.  
   
 `showmol(...,style)` uses style defined by `style` to display molecule. `style` should be one of 'ball & stick'(default), 'space filling' and 'tube'.  
 
