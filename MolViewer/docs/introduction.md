@@ -12,7 +12,7 @@ Molecule Viewer (MolViewer) is a **currently uncompleted** molecular visualizati
 
 ## What is it
 
-MolViewer is a tool which combine molecular visualization and the advantages of MATLAB processing matrices.
+MolViewer is a tool which combines molecular visualization and the advantages of MATLAB processing matrices.
 
 ## What does it do
 
