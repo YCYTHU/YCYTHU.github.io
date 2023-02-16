@@ -1,6 +1,6 @@
 ---
-title: Introduction
-permalink: /docs/introduction
+title: introduction
+permalink: /MolViewer/docs/introduction
 ---
 
 Molecule Viewer (MolViewer) is an uncompleted molecular visualization tool.
