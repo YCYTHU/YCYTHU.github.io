@@ -6,6 +6,10 @@ mode: immersive
 header:
   theme: dark
 article_header:
+  actions:
+  - text: Getting Started
+    type: error
+    url: /MolViewer/docs/introduction
   type: overlay
   theme: dark
   background_color: "#367a9a"
@@ -13,9 +17,3 @@ article_header:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
     src: /assets/images/cover4.jpg
 ---
-Molecule Viewer (MolViewer) is an uncompleted molecular visualization tool.
-<!--more-->
-
-## Introduction
-
-MolViewer is a tool to visualize molecule and related files in MATLAB.
