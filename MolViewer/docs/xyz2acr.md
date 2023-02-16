@@ -24,6 +24,9 @@ convert .xyz file to atoms array (N-by-1) and coordinates matrix (N-by-3).
 
 convert [benzene.xyz](/MolViewer/assets/benzene.xyz) to atoms (12-by-1) and coordinates (12-by-3) and then display it.  
 ```
-[atoms,coordinates]=xyz2acr(benzene.xyz);
+[atoms,coordinates]=xyz2acr('benzene.xyz');
 showmol(atoms,coordinates);
 ```
+<div>
+<img src="/MolViewer/assets/images/benzene.jpg" width="300">
+</div>
