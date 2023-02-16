@@ -13,7 +13,5 @@ article_header:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
     src: /assets/images/cover4.jpg
 ---
-
 Molecule Viewer (MolViewer) is an uncompleted molecular visualization tool.
-
 <!--more-->
