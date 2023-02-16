@@ -34,7 +34,10 @@ showmol(ax,...)
 
 `showmol(ax,...)` shows molecule in `ax`.
 
-`[axout,atoms_patch,bonds_patch]=showmol(...)` returns `axout` which molecule are displayed in and two patch structs which contain faces and vertices of atoms' and bonds' surface.  
+`[axout,atoms_patch,bonds_patch]=showmol(...)` returns `axout` which molecule are displayed in and two cell which contain faces and vertices of atoms' and bonds' surface.  
+
+Warning: if `style` is specified as 'space filling', showmol() will nor create bonds thus `bonds_patch` will be 1-by-0 cell.
+{:.warning}
 
 ## Examples
 
