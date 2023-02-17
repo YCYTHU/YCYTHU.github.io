@@ -17,3 +17,7 @@ MolViewer is a tool which combines molecular visualization and the advantages of
 ## What does it do
 
 MolViewer can display molecule, visulaize chemistry-related files and convert files between common file types.
+
+## GitHub page
+
+Click [here](https://github.com/YCYTHU/MolViewer) to view MolViewer in GitHub. 
