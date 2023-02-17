@@ -46,7 +46,9 @@ sidebar:
       text-align: center;
       text-decoration: none;
       display: inline-block;
+      font-family: Arial, sans-serif;
       font-size: 16px;
+      font-weight: bold;
       margin: 4px 2px;
       cursor: pointer;
       border-radius: 10px;
