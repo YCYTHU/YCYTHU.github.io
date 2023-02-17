@@ -11,7 +11,7 @@ article_header:
     url: /MolViewer/docs/introduction
   type: overlay
   theme: dark
-  background_color: "#367a9a"
+  background_color: "#a7a7a7"
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
     src: /assets/images/cover2.jpg
