@@ -82,7 +82,7 @@ sidebar:
 <body>
   <div class="container">
     <div class="photo-container">
-      <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="600">
+      <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="540">
       <p id="description" class="description">Methane</p>
       <div class="buttons-container">
         <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">PREVIOUS</button>
