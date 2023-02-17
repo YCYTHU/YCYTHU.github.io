@@ -51,7 +51,7 @@ sidebar:
     var currentPhoto = 1;
     var numPhotos = 2;
     var descriptions = [
-      "Gallery 1 description",
+      "Methane",
       "Gallery 2 description"
     ];
     function nextPhoto() {
@@ -76,7 +76,7 @@ sidebar:
   <div class="container">
     <div class="photo-container">
       <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="600">
-      <p id="description">Gallery 1 description</p>
+      <p id="description">Methane</p>
       <div class="buttons-container">
         <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">PREVIOUS</button>
         <button style="background-color: #4CAF50; color: #ffffff" onclick="nextPhoto()">NEXT</button>
