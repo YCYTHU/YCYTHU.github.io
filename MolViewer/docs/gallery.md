@@ -44,6 +44,7 @@ sidebar:
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
+      border-radius: 10px;
     }
   </style>
   <script>
