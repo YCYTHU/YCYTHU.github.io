@@ -16,7 +16,7 @@ sidebar:
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 80vh;
+      height: 100vh;
     }
     .photo-container {
       display: flex;
@@ -50,12 +50,17 @@ sidebar:
   <script>
     var currentPhoto = 1;
     var numPhotos = 2;
+    var descriptions = [
+      "Gallery 1 description",
+      "Gallery 2 description"
+    ];
     function nextPhoto() {
       currentPhoto++;
       if (currentPhoto > numPhotos) {
         currentPhoto = 1;
       }
       document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
+      document.getElementById("description").textContent = descriptions[currentPhoto - 1];
     }
     function prevPhoto() {
       currentPhoto--;
@@ -63,14 +68,15 @@ sidebar:
         currentPhoto = numPhotos;
       }
       document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
+      document.getElementById("description").textContent = descriptions[currentPhoto - 1];
     }
   </script>
 </head>
 <body>
   <div class="container">
     <div class="photo-container">
-      <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1">
-      <p>Gallery 1 description</p>
+      <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="800">
+      <p id="description">Gallery 1 description</p>
       <div class="buttons-container">
         <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">Previous Photo</button>
         <button style="background-color: #4CAF50; color: #ffffff" onclick="nextPhoto()">Next Photo</button>
