@@ -50,8 +50,8 @@ sidebar:
       <p>Gallery 1 description</p>
     </div>
     <div>
-      <button onclick="prevPhoto()">Previous Photo</button>
-      <button onclick="nextPhoto()">Next Photo</button>
+      <button onclick="prevPhoto()">Previous Photo{:warning}</button>
+      <button onclick="nextPhoto()">Next Photo{:warning}</button>
     </div>
   </div>
 </body>
