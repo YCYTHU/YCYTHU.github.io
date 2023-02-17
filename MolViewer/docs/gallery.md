@@ -1,6 +1,6 @@
 ---
 layout: article
-title: MolViewer
+title: Gallery
 permalink: /MolViewer/docs/gallery
 sidebar:
   nav: MolViewer
