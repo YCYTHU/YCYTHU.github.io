@@ -20,14 +20,14 @@ sidebar:
       if (currentPhoto > numPhotos) {
         currentPhoto = 1;
       }
-      document.getElementById("photo").src = "/MolViewer/assets/gallery" + currentPhoto + ".jpg";
+      document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
     }
   </script>
 </head>
 <body>
   <h1>My Photo Gallery</h1>
   <div>
-    <img id="photo" src="/MolViewer/assets/gallery1.jpg" alt="Gallery 1">
+    <img id="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1">
     <p>Gallery 1 description</p>
   </div>
   <button onclick="nextPhoto()">Next Photo</button>
