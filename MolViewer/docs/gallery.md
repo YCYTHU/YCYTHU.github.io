@@ -33,6 +33,11 @@ sidebar:
       justify-content: space-between;
       width: 80%;
     }
+    .description {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+    }
     button {
       background-color: #4CAF50;
       color: #ffffff;
@@ -76,7 +81,7 @@ sidebar:
   <div class="container">
     <div class="photo-container">
       <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="600">
-      <p id="description">Methane</p>
+      <p id="description" class="description">Methane</p>
       <div class="buttons-container">
         <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">PREVIOUS</button>
         <button style="background-color: #4CAF50; color: #ffffff" onclick="nextPhoto()">NEXT</button>
