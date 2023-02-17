@@ -18,10 +18,20 @@ sidebar:
       justify-content: center;
       height: 100vh;
     }
-    img {
+    .photo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .photo {
       max-width: 80%;
       height: auto;
-      margin-bottom: 20px;
+    }
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
     }
   </style>
   <script>
@@ -32,28 +42,27 @@ sidebar:
       if (currentPhoto > numPhotos) {
         currentPhoto = 1;
       }
-      document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
+      document.getElementById("photo").src = "/MolViewer/assets/gallery" + currentPhoto + ".jpg";
     }
     function prevPhoto() {
       currentPhoto--;
       if (currentPhoto < 1) {
         currentPhoto = numPhotos;
       }
-      document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
+      document.getElementById("photo").src = "/MolViewer/assets/gallery" + currentPhoto + ".jpg";
     }
   </script>
 </head>
 <body>
   <div class="container">
-    <div>
-      <img id="photo" src="/MolViewer/assets/gallery1.jpg" alt="Gallery 1">
+    <div class="photo-container">
+      <img id="photo" class="photo" src="/MolViewer/assets/gallery1.jpg" alt="Gallery 1">
       <p>Gallery 1 description</p>
-    </div>
-    <div>
-      <button onclick="prevPhoto()">Previous Photo{:warning}</button>
-      <button onclick="nextPhoto()">Next Photo{:warning}</button>
+      <div class="buttons-container">
+        <button onclick="prevPhoto()">Previous Photo</button>
+        <button onclick="nextPhoto()">Next Photo</button>
+      </div>
     </div>
   </div>
 </body>
 </html>
-
