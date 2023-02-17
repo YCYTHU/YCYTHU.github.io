@@ -16,7 +16,7 @@ sidebar:
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 80vh;
     }
     .photo-container {
       display: flex;
@@ -48,7 +48,7 @@ sidebar:
   </style>
   <script>
     var currentPhoto = 1;
-    var numPhotos = 3;
+    var numPhotos = 2;
     function nextPhoto() {
       currentPhoto++;
       if (currentPhoto > numPhotos) {
