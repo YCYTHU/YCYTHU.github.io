@@ -14,5 +14,5 @@ article_header:
   background_color: "#367a9a"
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
-    src: /assets/images/cover4.jpg
+    src: /assets/images/red-panda.jpg
 ---
