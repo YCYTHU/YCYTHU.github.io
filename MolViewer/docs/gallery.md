@@ -45,9 +45,8 @@ sidebar:
 </head>
 <body>
   <div class="container">
-    <h1>My Photo Gallery</h1>
     <div>
-      <img id="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1">
+      <img id="photo" src="/MolViewer/assets/gallery1.jpg" alt="Gallery 1">
       <p>Gallery 1 description</p>
     </div>
     <div>
