@@ -32,14 +32,14 @@ sidebar:
       if (currentPhoto > numPhotos) {
         currentPhoto = 1;
       }
-      document.getElementById("photo").src = "/MolViewer/assets/gallery" + currentPhoto + ".jpg";
+      document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
     }
     function prevPhoto() {
       currentPhoto--;
       if (currentPhoto < 1) {
         currentPhoto = numPhotos;
       }
-      document.getElementById("photo").src = "/MolViewer/assets/gallery" + currentPhoto + ".jpg";
+      document.getElementById("photo").src = "/MolViewer/assets/images/gallery" + currentPhoto + ".jpg";
     }
   </script>
 </head>
@@ -47,7 +47,7 @@ sidebar:
   <div class="container">
     <h1>My Photo Gallery</h1>
     <div>
-      <img id="photo" src="/MolViewer/assets/gallery1.jpg" alt="Gallery 1">
+      <img id="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1">
       <p>Gallery 1 description</p>
     </div>
     <div>
