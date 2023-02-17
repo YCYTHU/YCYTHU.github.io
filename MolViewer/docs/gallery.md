@@ -78,8 +78,8 @@ sidebar:
       <img id="photo" class="photo" src="/MolViewer/assets/images/gallery1.jpg" alt="Gallery 1" width="800">
       <p id="description">Gallery 1 description</p>
       <div class="buttons-container">
-        <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">Previous Photo</button>
-        <button style="background-color: #4CAF50; color: #ffffff" onclick="nextPhoto()">Next Photo</button>
+        <button style="background-color: #4CAF50; color: #ffffff" onclick="prevPhoto()">PREVIOUS</button>
+        <button style="background-color: #4CAF50; color: #ffffff" onclick="nextPhoto()">NEXT</button>
       </div>
     </div>
   </div>
