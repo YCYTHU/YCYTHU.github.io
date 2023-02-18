@@ -59,8 +59,8 @@ sidebar:
     var numPhotos = 4;
     var descriptions = [
       "Methane",
-      "Ethylamine & Methanol"
-      "Fullerene"
+      "Ethylamine & Methanol"，
+      "Fullerene"，
       "Fullerene (tube)"
     ];
     function nextPhoto() {
