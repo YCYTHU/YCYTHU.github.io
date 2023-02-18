@@ -56,10 +56,12 @@ sidebar:
   </style>
   <script>
     var currentPhoto = 1;
-    var numPhotos = 2;
+    var numPhotos = 4;
     var descriptions = [
       "Methane",
-      "Gallery 2 description"
+      "Ethylamine & Methanol"
+      "Fullerene"
+      "Fullerene (tube)"
     ];
     function nextPhoto() {
       currentPhoto++;
