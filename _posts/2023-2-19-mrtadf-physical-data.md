@@ -118,7 +118,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0028" class="bibLink tab-link" id="adfm201908677-bib-0028_R_d1111247e994" data-tab="pane-pcw-references" aria-label="Reference 28 - Angew. Chem., Int. Ed.">28</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -141,7 +141,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0028" class="bibLink tab-link" id="adfm201908677-bib-0028_R_d1111247e1040" data-tab="pane-pcw-references" aria-label="Reference 28 - Angew. Chem., Int. Ed.">28</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -164,7 +164,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0028" class="bibLink tab-link" id="adfm201908677-bib-0028_R_d1111247e1086" data-tab="pane-pcw-references" aria-label="Reference 28 - Angew. Chem., Int. Ed.">28</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -187,7 +187,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0028" class="bibLink tab-link" id="adfm201908677-bib-0028_R_d1111247e1132" data-tab="pane-pcw-references" aria-label="Reference 28 - Angew. Chem., Int. Ed.">28</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -210,7 +210,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0028" class="bibLink tab-link" id="adfm201908677-bib-0028_R_d1111247e1175" data-tab="pane-pcw-references" aria-label="Reference 28 - Angew. Chem., Int. Ed.">28</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -233,7 +233,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">9.9 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'l')" onmouseout="hideTextBoard()">l)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0027" class="bibLink tab-link" id="adfm201908677-bib-0027_R_d1111247e1232" data-tab="pane-pcw-references" aria-label="Reference 27 - Adv. Mater. J. Chem. Phys.">27</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -256,7 +256,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">14.8 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'l')" onmouseout="hideTextBoard()">l)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0027" class="bibLink tab-link" id="adfm201908677-bib-0027_R_d1111247e1283" data-tab="pane-pcw-references" aria-label="Reference 27 - Adv. Mater. J. Chem. Phys.">27</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -279,7 +279,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0033" class="bibLink tab-link" id="adfm201908677-bib-0033_R_d1111247e1329" data-tab="pane-pcw-references" aria-label="Reference 33 - Angew. Chem., Int. Ed.">33</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -302,7 +302,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0035" class="bibLink tab-link" id="adfm201908677-bib-0035_R_d1111247e1366" data-tab="pane-pcw-references" aria-label="Reference 35 - Chem. Commun.">35</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -325,7 +325,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1412" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -348,7 +348,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1458" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -371,7 +371,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1505" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -394,7 +394,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1548" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -417,7 +417,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0036" class="bibLink tab-link" id="adfm201908677-bib-0036_R_d1111247e1598" data-tab="pane-pcw-references" aria-label="Reference 36 - Angew. Chem., Int. Ed.">36</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -440,7 +440,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">2.44 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'n')" onmouseout="hideTextBoard()">n)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0038" class="bibLink tab-link" id="adfm201908677-bib-0038_R_d1111247e1650" data-tab="pane-pcw-references" aria-label="Reference 38 - J. Mater. Chem. C">38</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -463,7 +463,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">2.0 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'p')" onmouseout="hideTextBoard()">p)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1704" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -486,7 +486,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0029" class="bibLink tab-link" id="adfm201908677-bib-0029_R_d1111247e1750" data-tab="pane-pcw-references" aria-label="Reference 29 - J. Am. Chem. Soc. Nat. Photonics">29</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -509,7 +509,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0048" class="bibLink tab-link" id="adfm201908677-bib-0048_R_d1111247e1796" data-tab="pane-pcw-references" aria-label="Reference 48 - Angew. Chem., Int. Ed.">48</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -532,7 +532,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">2.4 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'q')" onmouseout="hideTextBoard()">q)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0048" class="bibLink tab-link" id="adfm201908677-bib-0048_R_d1111247e1852" data-tab="pane-pcw-references" aria-label="Reference 48 - Angew. Chem., Int. Ed.">48</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -555,7 +555,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">3.9 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'q')" onmouseout="hideTextBoard()">q)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0048" class="bibLink tab-link" id="adfm201908677-bib-0048_R_d1111247e1908" data-tab="pane-pcw-references" aria-label="Reference 48 - Angew. Chem., Int. Ed.">48</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -578,7 +578,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">4.4 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'q')" onmouseout="hideTextBoard()">q)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0048" class="bibLink tab-link" id="adfm201908677-bib-0048_R_d1111247e1964" data-tab="pane-pcw-references" aria-label="Reference 48 - Angew. Chem., Int. Ed.">48</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -601,7 +601,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0050" class="bibLink tab-link" id="adfm201908677-bib-0050_R_d1111247e2012" data-tab="pane-pcw-references" aria-label="Reference 50 - J. Am. Chem. Soc.">50</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -624,7 +624,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">7.6 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'p')" onmouseout="hideTextBoard()">p)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0054" class="bibLink tab-link" id="adfm201908677-bib-0054_R_d1111247e2062" data-tab="pane-pcw-references" aria-label="Reference 54 - Org. Lett.">54</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -647,7 +647,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">9.0 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'p')" onmouseout="hideTextBoard()">p)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0054" class="bibLink tab-link" id="adfm201908677-bib-0054_R_d1111247e2113" data-tab="pane-pcw-references" aria-label="Reference 54 - Org. Lett.">54</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -670,7 +670,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2159" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -693,7 +693,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2205" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -716,7 +716,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2251" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -739,7 +739,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2297" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -762,7 +762,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2343" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -785,7 +785,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2390" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -808,7 +808,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned"></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0055" class="bibLink tab-link" id="adfm201908677-bib-0055_R_d1111247e2436" data-tab="pane-pcw-references" aria-label="Reference 55 - Angew. Chem., Int. Ed.">55</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -831,7 +831,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">2.6 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 's')" onmouseout="hideTextBoard()">s)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0056" class="bibLink tab-link" id="adfm201908677-bib-0056_R_d1111247e2485" data-tab="pane-pcw-references" aria-label="Reference 56 - Adv. Opt. Mater.">56</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -854,7 +854,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">1.2 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 's')" onmouseout="hideTextBoard()">s)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0056" class="bibLink tab-link" id="adfm201908677-bib-0056_R_d1111247e2534" data-tab="pane-pcw-references" aria-label="Reference 56 - Adv. Opt. Mater.">56</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -877,7 +877,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">8.4 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 's')" onmouseout="hideTextBoard()">s)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0056" class="bibLink tab-link" id="adfm201908677-bib-0056_R_d1111247e2583" data-tab="pane-pcw-references" aria-label="Reference 56 - Adv. Opt. Mater.">56</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -900,7 +900,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">9.9 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'v')" onmouseout="hideTextBoard()">v)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0057" class="bibLink tab-link" id="adfm201908677-bib-0057_R_d1111247e2634" data-tab="pane-pcw-references" aria-label="Reference 57 - Nat. Photonics">57</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -923,7 +923,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">10.8 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'v')" onmouseout="hideTextBoard()">v)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0057" class="bibLink tab-link" id="adfm201908677-bib-0057_R_d1111247e2686" data-tab="pane-pcw-references" aria-label="Reference 57 - Nat. Photonics">57</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -946,7 +946,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">4.3 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'w')" onmouseout="hideTextBoard()">w)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0058" class="bibLink tab-link" id="adfm201908677-bib-0058_R_d1111247e2735" data-tab="pane-pcw-references" aria-label="Reference 58 - J. Mater. Chem. C">58</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -969,7 +969,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">2.8 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'w')" onmouseout="hideTextBoard()">w)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0058" class="bibLink tab-link" id="adfm201908677-bib-0058_R_d1111247e2784" data-tab="pane-pcw-references" aria-label="Reference 58 - J. Mater. Chem. C">58</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -992,7 +992,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">9.0 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'w')" onmouseout="hideTextBoard()">w)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0058" class="bibLink tab-link" id="adfm201908677-bib-0058_R_d1111247e2833" data-tab="pane-pcw-references" aria-label="Reference 58 - J. Mater. Chem. C">58</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1015,7 +1015,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">8.4 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'w')" onmouseout="hideTextBoard()">w)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0058" class="bibLink tab-link" id="adfm201908677-bib-0058_R_d1111247e2882" data-tab="pane-pcw-references" aria-label="Reference 58 - J. Mater. Chem. C">58</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1038,7 +1038,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">1.0 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'v')" onmouseout="hideTextBoard()">v)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0059" class="bibLink tab-link" id="adfm201908677-bib-0059_R_d1111247e2933" data-tab="pane-pcw-references" aria-label="Reference 59 - J. Mater. Chem. C">59</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1061,7 +1061,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">1.4 × 10<sup>5</sup><sup><span onmouseover="showTextBoard(this, 'v')" onmouseout="hideTextBoard()">v)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0059" class="bibLink tab-link" id="adfm201908677-bib-0059_R_d1111247e2985" data-tab="pane-pcw-references" aria-label="Reference 59 - J. Mater. Chem. C">59</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1084,7 +1084,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0060" class="bibLink tab-link" id="adfm201908677-bib-0060_R_d1111247e3031" data-tab="pane-pcw-references" aria-label="Reference 60 - Adv. Opt. Mater.">60</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1107,7 +1107,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">–</td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0060" class="bibLink tab-link" id="adfm201908677-bib-0060_R_d1111247e3077" data-tab="pane-pcw-references" aria-label="Reference 60 - Adv. Opt. Mater.">60</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1130,7 +1130,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">1.2 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'z')" onmouseout="hideTextBoard()">z)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0062" class="bibLink tab-link" id="adfm201908677-bib-0062_R_d1111247e3130" data-tab="pane-pcw-references" aria-label="Reference 62 - ACS Appl. Mater. Interfaces">62</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1153,7 +1153,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">6.4 × 10<sup>3</sup><sup><span onmouseover="showTextBoard(this, 'z')" onmouseout="hideTextBoard()">z)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0062" class="bibLink tab-link" id="adfm201908677-bib-0062_R_d1111247e3183" data-tab="pane-pcw-references" aria-label="Reference 62 - ACS Appl. Mater. Interfaces">62</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1176,7 +1176,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">4.6 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'u')" onmouseout="hideTextBoard()">u)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0063" class="bibLink tab-link" id="adfm201908677-bib-0063_R_d1111247e3234" data-tab="pane-pcw-references" aria-label="Reference 63 - Adv. Opt. Mater.">63</a></sup></span><sup>]</sup></td>
+         
       </tr>
       
       <tr>
@@ -1199,7 +1199,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <td class="center-aligned">3.1 × 10<sup>4</sup><sup><span onmouseover="showTextBoard(this, 'u')" onmouseout="hideTextBoard()">u)</span></sup></td>
          
-         <td class="center-aligned"><sup>[</sup><span><sup><a href="#adfm201908677-bib-0063" class="bibLink tab-link" id="adfm201908677-bib-0063_R_d1111247e3289" data-tab="pane-pcw-references" aria-label="Reference 63 - Adv. Opt. Mater.">63</a></sup></span><sup>]</sup></td>
+         
       </tr>
    </tbody>
 </table>
