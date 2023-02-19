@@ -260,7 +260,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2a</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201701246"><b>2a</b><a></td>
          
          <td class="center-aligned">403<sup><span onmouseover="showTextBoard(this, 'j')" onmouseout="hideTextBoard()">j)</span></sup></td>
          
@@ -283,7 +283,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>1</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1039/C6CC02440H"><b>1</b></a></td>
          
          <td class="center-aligned">386/–</td>
          
@@ -306,7 +306,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>B2</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1021/jacs.7b10578"><b>B2</b></a></td>
          
          <td class="center-aligned">461<sup><span onmouseover="showTextBoard(this, 'j')" onmouseout="hideTextBoard()">j)</span></sup></td>
          
@@ -329,7 +329,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>B3</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1021/jacs.7b10578"><b>B3</b></a></td>
          
          <td class="center-aligned">442<sup><span onmouseover="showTextBoard(this, 'j')" onmouseout="hideTextBoard()">j)</span></sup></td>
          
@@ -352,7 +352,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>B4</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1021/jacs.7b10578"><b>B4</b></a></td>
          
          <td class="center-aligned">449<sup><span onmouseover="showTextBoard(this, 'j')" onmouseout="hideTextBoard()">j)</span></sup></td>
          
@@ -375,7 +375,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>B2-F</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1021/jacs.7b10578"><b>B2-F</b></a></td>
          
          <td class="center-aligned">–/467<sup><span onmouseover="showTextBoard(this, 'j')" onmouseout="hideTextBoard()">j)</span></sup></td>
          
@@ -398,7 +398,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>TBN-TPA</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201806323"><b>TBN-TPA</b></a></td>
          
          <td class="center-aligned">470<sup><span onmouseover="showTextBoard(this, 'm')" onmouseout="hideTextBoard()">m)</span></sup>/–</td>
          
@@ -421,7 +421,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b><i>t</i>-DABNA</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1039/C8TC06575F"><b><i>t</i>-DABNA</b></a></td>
          
          <td class="center-aligned">/445<sup><span onmouseover="showTextBoard(this, 'n')" onmouseout="hideTextBoard()">n)</span></sup></td>
          
@@ -444,7 +444,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>ν-DABNA</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1038/s41566-019-0476-5"><b>ν-DABNA</b></a></td>
          
          <td class="center-aligned">468<sup><span onmouseover="showTextBoard(this, 'p')" onmouseout="hideTextBoard()">p)</span></sup></td>
          
