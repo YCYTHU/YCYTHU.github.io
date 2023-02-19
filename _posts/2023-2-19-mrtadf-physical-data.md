@@ -123,7 +123,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2b</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201506335"><b>2b</b></a></td>
          
          <td class="center-aligned">410<sup><span onmouseover="showTextBoard(this, 'i')" onmouseout="hideTextBoard()">i)</span></sup>/N/A</td>
          
@@ -146,7 +146,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2c</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201506335"><b>2c</b></a></td>
          
          <td class="center-aligned">410<sup><span onmouseover="showTextBoard(this, 'i')" onmouseout="hideTextBoard()">i)</span></sup>/N/A</td>
          
@@ -169,7 +169,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2d</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201506335"><b>2d</b></a></td>
          
          <td class="center-aligned">436<sup><span onmouseover="showTextBoard(this, 'i')" onmouseout="hideTextBoard()">i)</span></sup>/N/A</td>
          
@@ -192,7 +192,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2e</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201506335"><b>2e</b></a></td>
          
          <td class="center-aligned">–/492</td>
          
@@ -215,7 +215,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>DABNA-1</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/adma.201505491"><b>DABNA-1</b></a></td>
          
          <td class="center-aligned">462<sup><span onmouseover="showTextBoard(this, 'l')" onmouseout="hideTextBoard()">l)</span></sup></td>
          
@@ -238,7 +238,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
       
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>DABNA-2</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/adma.201505491"><b>DABNA-2</b></a></td>
          
          <td class="center-aligned">470<sup><span onmouseover="showTextBoard(this, 'l')" onmouseout="hideTextBoard()">l)</span></sup></td>
          
