@@ -51,32 +51,6 @@ header:
       # @end locale config
     url: /MolViewer
 
-  - titles:
-      # @start locale config
-      en      : &EN       GitHub
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  GitHub
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  GitHub
-      zh-TW   : *ZH_HANT
-      zh-HK   : *ZH_HANT
-      ko      : &KO       GitHub
-      ko-KR   : *KO
-      fr      : &FR       GitHub
-      fr-BE   : *FR
-      fr-CA   : *FR
-      fr-CH   : *FR
-      fr-FR   : *FR
-      fr-LU   : *FR
-      tr      : &TR       GitHub
-      # @end locale config
-    url: https://github.com/YCYTHU
-
 MolViewer:
   - title:      Overview
     children:
