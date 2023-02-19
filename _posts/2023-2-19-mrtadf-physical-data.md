@@ -1,4 +1,5 @@
 ---
+layout: article
 title: Physical properties of reported MR-TADF
 tags: OLED
 aside:
