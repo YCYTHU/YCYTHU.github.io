@@ -3,6 +3,7 @@ layout: article
 title: Physical properties of reported MR-TADF
 tags: OLED
 cover: /assets/images/20230219.jpg
+full_width: true
 ---
 
 Physical properties of previously reported MR-TADF and those with an MR-TADF acceptor compounds
