@@ -71,7 +71,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
     textBoard.style.display = 'none';
  }
 </script>
-<table style="table-layout: fixed; width: 100%;" border="3">
+<table style="table-layout: fixed; width: 100%;">
    <thead> 
       <tr>
 
