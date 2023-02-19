@@ -2,8 +2,6 @@
 layout: article
 title: Physical properties of reported MR-TADF
 tags: OLED
-aside:
-  toc: false
 cover: /assets/images/20230219.jpg
 ---
 
