@@ -93,7 +93,6 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <th class="bottom-bordered-cell center-aligned"><i>k</i><sub>RISC</sub><sup><span onmouseover="showTextBoard(this, 'h')" onmouseout="hideTextBoard()">h)</span></sup> [s<sup>−1</sup>]</th>
          
-         <th class="bottom-bordered-cell center-aligned">Ref.</th>
       </tr>
    </thead>
    
