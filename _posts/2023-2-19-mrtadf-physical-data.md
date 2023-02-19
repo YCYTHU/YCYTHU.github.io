@@ -77,9 +77,9 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
 
          <th class="bottom-bordered-cell right-bordered-cell left-aligned">Compound</th>
          
-         <th class="bottom-bordered-cell center-aligned">λ<sub>PL</sub>sol/film [nm]<sup><span onmouseover="showTextBoard(this, 'a')" onmouseout="hideTextBoard()">a)</span></sup></th>
+         <th class="bottom-bordered-cell center-aligned">λ<sub>PL</sub><br>sol/film [nm]<sup><span onmouseover="showTextBoard(this, 'a')" onmouseout="hideTextBoard()">a)</span></sup></th>
          
-         <th class="bottom-bordered-cell center-aligned">FWHMsol/film [nm]<sup><span onmouseover="showTextBoard(this, 'b')" onmouseout="hideTextBoard()">b)</span></sup></th>
+         <th class="bottom-bordered-cell center-aligned">FWHM<br>sol/film [nm]<sup><span onmouseover="showTextBoard(this, 'b')" onmouseout="hideTextBoard()">b)</span></sup></th>
          
          <th class="bottom-bordered-cell center-aligned"><i>Φ</i><sub>PL</sub> sol/film [%]<sup><span onmouseover="showTextBoard(this, 'c')" onmouseout="hideTextBoard()">c)</span></sup></th>
          
