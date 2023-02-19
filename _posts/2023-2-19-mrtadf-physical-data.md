@@ -1,9 +1,9 @@
 ---
-title: Physical properties of previously reported MR-TADF
+title: Physical properties of reported MR-TADF
 tags: OLED
 aside:
   toc: false
-cover: /assets/images/20230217.jpg
+cover: /assets/images/20230219.jpg
 ---
 
 Physical properties of previously reported MR-TADF and those with an MR-TADF acceptor compounds
