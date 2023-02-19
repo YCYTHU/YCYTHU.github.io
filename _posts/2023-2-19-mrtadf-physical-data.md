@@ -100,7 +100,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
 
       <tr>
 
-         <td class="right-bordered-cell left-aligned"><b>2a</b></td>
+         <td class="right-bordered-cell left-aligned"><a href="https://doi.org/10.1002/anie.201506335"><b>2a</b></a></td>
          
          <td class="center-aligned">398<sup><span onmouseover="showTextBoard(this, 'i')" onmouseout="hideTextBoard()">i)</span></sup>/N/A</td>
          
