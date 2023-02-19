@@ -81,7 +81,7 @@ Physical properties of previously reported MR-TADF and those with an MR-TADF acc
          
          <th class="bottom-bordered-cell center-aligned">FWHM<br>sol/film [nm]<sup><span onmouseover="showTextBoard(this, 'b')" onmouseout="hideTextBoard()">b)</span></sup></th>
          
-         <th class="bottom-bordered-cell center-aligned"><i>Φ</i><sub>PL</sub> sol/film [%]<sup><span onmouseover="showTextBoard(this, 'c')" onmouseout="hideTextBoard()">c)</span></sup></th>
+         <th class="bottom-bordered-cell center-aligned"><i>Φ</i><sub>PL</sub> <br>sol/film [%]<sup><span onmouseover="showTextBoard(this, 'c')" onmouseout="hideTextBoard()">c)</span></sup></th>
          
          <th class="bottom-bordered-cell center-aligned">S1 [eV]<sup><span onmouseover="showTextBoard(this, 'd')" onmouseout="hideTextBoard()">d)</span></sup></th>
          
