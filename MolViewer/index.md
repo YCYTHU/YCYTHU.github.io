@@ -13,14 +13,9 @@ article_header:
     src: /assets/images/cover2.jpg
 ---
 
+# MolViewer
 
 MolViewer is a tool to visualize molecule and operate related files in MATLAB. It combines molecular visualization and the advantages of MATLAB processing matrices.
 
-header:
-  theme: dark
-article_header:
-  type: cover
-  image:
-    src: /assets/images/cover2.jpg
-
-<a class="button button--primary button--pill" href="/MolViewer/docs/introduction">Learn more <i class="fas fa-angles-right"></i></a><a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer <i class="fas fa-download"></i></a>
+<a class="button button--primary button--pill" href="/MolViewer/docs/introduction">Learn more</i></a>
+<a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer <i class="fas fa-download"></i></a>
