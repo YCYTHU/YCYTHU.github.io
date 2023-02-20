@@ -9,6 +9,9 @@ article_header:
   - text: Learn more »
     type: error
     url: /MolViewer/docs/introduction
+  - text: Download
+    type: success
+    url: /MolViewer/assets/MolViewer.zip 
   type: overlay
   theme: dark
   background_color: "#a7a7a7"

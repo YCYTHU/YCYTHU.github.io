@@ -9,3 +9,5 @@ MolViewer is a tool to visualize molecule and operate related files in MATLAB.
 <!--more-->
 
 For more information, please view [detail pages](https://ycythu.github.io/MolViewer/docs/introduction)
+
+<a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer</a>
