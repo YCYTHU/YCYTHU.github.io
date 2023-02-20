@@ -21,4 +21,4 @@ article_header:
   image:
     src: /assets/images/cover2.jpg
 
-<a class="button button--primary button--pill" href="/MolViewer/docs/introduction">Learn more <i class="fas fa-solid fa-angles-right"></i></a><a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer <i class="fas fa-download"></i></a>
+<a class="button button--primary button--pill" href="/MolViewer/docs/introduction">Learn more <i class="fas fa-angles-right"></i></a><a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer <i class="fas fa-download"></i></a>
