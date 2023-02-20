@@ -2,8 +2,10 @@
 layout: article
 title: Molecule Viewer
 mode: immersive
+header:
+  theme: dark
 article_header:
-  height: 100vh
+  type: overlay
   theme: dark
   background_color: "#515151"
   background_image:
