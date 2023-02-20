@@ -10,7 +10,7 @@ article_header:
     type: error
     url: /MolViewer/docs/introduction
   - text: Download
-    type: success
+    type: outline-theme-dark
     url: /MolViewer/assets/MolViewer.zip 
   type: overlay
   theme: dark
