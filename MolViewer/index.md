@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: landing
 title: Molecule Viewer
 mode: immersive
 header:
