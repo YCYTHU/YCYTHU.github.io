@@ -5,9 +5,8 @@ mode: immersive
 header:
   theme: dark
 article_header:
-  background_color: "#a7a7a7"
-  background_image:
-    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
+  type: cover
+  image:
     src: /assets/images/cover2.jpg
 ---
 
