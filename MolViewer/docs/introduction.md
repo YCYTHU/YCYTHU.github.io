@@ -20,4 +20,4 @@ MolViewer can display molecule, visulaize chemistry-related files and convert fi
 
 ## Download
 
-<a class="button button--success button--pill button--xl" href="/MolViewer/assets/MolViewer.zip">Download</a>
+<a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip">Download MolViewer</a>
