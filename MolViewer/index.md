@@ -11,7 +11,7 @@ article_header:
     url: /MolViewer/docs/introduction
   - text: Download
     type: outline-theme-dark
-    url: /MolViewer/assets/MolViewer.zip 
+    url: /MolViewer/assets/MolViewer.zip
   type: overlay
   theme: dark
   background_color: "#a7a7a7"
