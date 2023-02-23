@@ -10,7 +10,7 @@ Molecule Viewer (MolViewer) is a **currently uncompleted** molecular visualizati
 
 <!--more-->
 
-<a class="button button--success button--pill" href="/MolViewer/assets/MolViewer.zip"><i class="fas fa-download"></i> Download MolViewer</a>
+<a class="button button--success button--pill" href="/MolViewer/assets/MolViewer_v1.0.1.230223.zip"><i class="fas fa-download"></i> Download MolViewer</a>
 
 ## What is it
 
