@@ -68,6 +68,8 @@ MolViewer:
         url:    /MolViewer/docs/xyz2acr
       - title:  xyz2stl
         url:    /MolViewer/docs/xyz2stl
+      - title:  xyz2obj
+        url:    /MolViewer/docs/xyz2obj
       - title:  cub2mat
         url:    /MolViewer/docs/cub2mat
       - title:  showcub
