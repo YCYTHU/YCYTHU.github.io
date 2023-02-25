@@ -56,7 +56,7 @@ sidebar:
   </style>
   <script>
     var currentPhoto = 1;
-    var numPhotos = 3;
+    var numPhotos = 5;
     var descriptions = [
       "Methane",
       "Ethylamine & Methanol",
