@@ -12,15 +12,15 @@ Molecule Viewer (MolViewer) is a **currently uncompleted** molecular visualizati
 
 <a class="button button--success button--pill" href="/MolViewer/assets/MolViewer_v1.0.1.230223.zip"><i class="fas fa-download"></i> Download MolViewer</a>
 
-## What is it
+## What is it and What does it do
 
-MolViewer is a tool which combines molecular visualization and the advantages of MATLAB processing matrices.
+MolViewer is a tool which combines molecular visualization and the advantages of MATLAB processing matrices. It can
 
-## What does it do
+- Display molecule and export 3D model in .obj and .stl format
+- Visualize chemistry-related files
+- Convert files between common file types.
 
-MolViewer can display molecule, visualize chemistry-related files and convert files between common file types.
-
-## Files list
+## File list
 
 - cub2mat.p
 - gradcub.p
