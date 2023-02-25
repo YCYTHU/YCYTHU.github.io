@@ -19,3 +19,19 @@ MolViewer is a tool which combines molecular visualization and the advantages of
 ## What does it do
 
 MolViewer can display molecule, visualize chemistry-related files and convert files between common file types.
+
+## Files list
+
+- cub2mat.p
+- gradcub.p
+- mtlwrite.p
+- objwrite.p
+- showcub.p
+- showmol.p
+- stlwrite.p
+- xyz2acr.p
+- xyz2obj.p
+- xyz2stl.p
+- atomic_number.mat
+- showmol.mat
+- atoms_materials.mtl
