@@ -62,6 +62,8 @@ MolViewer:
         url:    /MolViewer/docs/changelog
   - title:      Functions
     children:
+      - title:  acr2obj
+        url:    /MolViewer/docs/acr2obj
       - title:  showmol
         url:    /MolViewer/docs/showmol
       - title:  xyz2acr
@@ -72,6 +74,8 @@ MolViewer:
         url:    /MolViewer/docs/xyz2obj
       - title:  cub2mat
         url:    /MolViewer/docs/cub2mat
+      - title:  cub2obj
+        url:    /MolViewer/docs/cub2obj
       - title:  showcub
         url:    /MolViewer/docs/showcub
       - title:  gradcub
