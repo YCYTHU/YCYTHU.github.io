@@ -22,7 +22,9 @@ MolViewer is a tool which combines molecular visualization and the advantages of
 
 ## File list
 
+- acr2obj.p
 - cub2mat.p
+- cub2obj.p
 - gradcub.p
 - mtlwrite.p
 - objwrite.p
@@ -34,4 +36,4 @@ MolViewer is a tool which combines molecular visualization and the advantages of
 - xyz2stl.p
 - atomic_number.mat
 - showmol.mat
-- atoms_materials.mtl
+- MolViewer.mtl

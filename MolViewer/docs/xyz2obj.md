@@ -10,7 +10,7 @@ convert .xyz file to .obj file use specified style and options.
 
 <!--more-->
 
-Material templates are defined in atoms_materials.mtl.
+Material templates are defined in MolViewer.mtl.
 {:.info}
 
 ## Syntax
