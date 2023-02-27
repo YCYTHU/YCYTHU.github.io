@@ -118,41 +118,6 @@ nav li {
   transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
   opacity: 0;
 }
-nav a {
-  display: block;
-  font-size: 1.75em;
-  font-weight: bold;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.24s ease-in-out;
-}
-nav a:hover {
-  text-decoration: none;
-  color: var(--white);
-}
-nav[data-state=open] {
-  transform: translateX(0%);
-}
-nav[data-state=open] ul li:nth-child(1) {
-  transition-delay: 0.16s;
-  transform: translateX(0px);
-  opacity: 1;
-}
-nav[data-state=open] ul li:nth-child(2) {
-  transition-delay: 0.32s;
-  transform: translateX(0px);
-  opacity: 1;
-}
-nav[data-state=open] ul li:nth-child(3) {
-  transition-delay: 0.48s;
-  transform: translateX(0px);
-  opacity: 1;
-}
-nav[data-state=open] ul li:nth-child(4) {
-  transition-delay: 0.64s;
-  transform: translateX(0px);
-  opacity: 1;
-}
 
 .btn {
   z-index: 1;
