@@ -5,39 +5,44 @@ show_title: false
 ---
 
 <head>
-    <style>
-	.container{
-    -webkit-box-reflect: below 1px linear-gradient(transparent,rgba(0,0,0,0.2));
-	}
-	h2{
-    color: #fff;
-    font-size: 96px;
-    letter-spacing: 15px;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 76px;
-    outline: none;
-    --c:lightseagreen;
-    text-shadow: 0 0 10px var(--c),
-    0 0 20px var(--c),
-    0 0 40px var(--c),
-    0 0 80px var(--c),
-    0 0 160px var(--c);
-    animation: animate 3s linear infinite;
-}
+	<style>
+		body{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.container{
+			-webkit-box-reflect: below 1px linear-gradient(transparent,rgba(0,0,0,0.2));
+		}
+		h2{
+			color: #fff;
+			font-size: 96px;
+			letter-spacing: 15px;
+			text-transform: uppercase;
+			text-align: center;
+			line-height: 76px;
+			outline: none;
+			--c:lightseagreen;
+			text-shadow: 0 0 10px var(--c),
+			0 0 20px var(--c),
+			0 0 40px var(--c),
+			0 0 80px var(--c),
+			0 0 160px var(--c);
+			animation: animate 3s linear infinite;
+		}
 
 /* 定义动画 */
-	@keyframes animate {
-    to{
-        filter: hue-rotate(360deg);
-    }
+@keyframes animate {
+	to{
+		filter: hue-rotate(360deg);
+	}
 }
-    </style>
+</style>
 </head>
 <body>
-    <div class="container">
-        <h2 contenteditable="true">404</h2>
-    </div>
+	<div class="container">
+		<h2>404</h2>
+	</div>
 </body>
 
 {{ content }}
