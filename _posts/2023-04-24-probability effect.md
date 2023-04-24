@@ -38,11 +38,11 @@ The mathematical expectation of $s$ is a function of $n$, denoted $E(s\vert n)=f
 
 Each case is counted twice and then divided by all $i-1$ cases. So:
 
-$$f(n)=\frac{2}{n-1}\Sigma_{i=1}^{n-2}f(i)$$
+$$f(n)=\frac{2}{n-1}\sum_{i=1}^{n-2}f(i)$$
 
 Therefore:
 
-$$(n-1)f(n)=2\Sigma_{i=1}^{n-2}f(i)\\nf(n+1)=2\Sigma_{i=1}^{n-2}f(i)+2f(n-1)$$
+$$(n-1)f(n)=2\sum_{i=1}^{n-2}f(i)\\nf(n+1)=2\sum_{i=1}^{n-2}f(i)+2f(n-1)$$
 
 Through the formula above, we can get recurrence relation:
 
