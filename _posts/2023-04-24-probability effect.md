@@ -44,4 +44,6 @@ Therefore:
 
 $$(n-1)f(n)=2\Sigma_{i=1}^{n-2}f(i)\\nf(n+1)=2\Sigma_{i=1}^{n-2}f(i)+2f(n-1)$$
 
-We
+Through the formula above, we can get recurrence relation:
+
+$$nf(n+1)-(n-1)f(n)-2f(n-1)=0$$
