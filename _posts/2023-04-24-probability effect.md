@@ -30,11 +30,11 @@ Continue this process until no balls remain or can be picked. The number of rema
 
 The mathematical expectation of $s$ is a function of $n$, denoted $E(s|n)=f(n)$. Suppose there are $i$ balls in the array, if we take
 
-- the $1^{st}$ and $2^{nd}$ balls away, The problem is transformed to $0+i-2$ balls cases;
-- the $2^{nd}$ and $3^{rd}$ balls away, The problem is transformed to $1+i-1$ balls cases;
-- the $3^{rd}$ and $4^{th}$ balls away, The problem is transformed to $2+i-0$ balls cases;
+- the $1^{st}$ and $2^{nd}$ balls away, The problem is transformed to $0\&i-2$ balls cases;
+- the $2^{nd}$ and $3^{rd}$ balls away, The problem is transformed to $1\&i-3$ balls cases;
+- the $3^{rd}$ and $4^{th}$ balls away, The problem is transformed to $2\&i-4$ balls cases;
 - ...
-- the $(i-1)^{th}$ and $i^{th}$ balls away, The problem is transformed to $i-2+0$ balls cases;
+- the $(i-1)^{th}$ and $i^{th}$ balls away, The problem is transformed to $i-2\&0$ balls cases;
 
 Each case is counted twice and then divided by all $i-1$ cases. So:
 
