@@ -47,3 +47,23 @@ $$(n-1)f(n)=2\Sigma_{i=1}^{n-2}f(i)\\nf(n+1)=2\Sigma_{i=1}^{n-2}f(i)+2f(n-1)$$
 Through the formula above, we can get recurrence relation:
 
 $$nf(n+1)-(n-1)f(n)-2f(n-1)=0$$
+
+Z-transform converts it to:
+
+$$\left[zF'(z)-F(z)\right]-z[zF'(z)-F(z)\right]-2z^2F(z)=0$$
+
+Therefore:
+
+$$\frac{F(z)}{F'(z)}=-\frac{z^2-z}{2z^2-z+1}$$
+
+Solve the differential equation above:
+
+$$F(z)=C\cdot\frac{ze^{-2z}}{(z-1)^2}$$
+
+Given $f(1)=1$ and $f(2)=0$, inverse Z-transform gives:
+
+$$f(n)=\frac{(-2)^{n+1}}{\Gamma(n+2)}+\frac{\Gamma(n+3,-2)}{e^2\Gamma(n+2)}$$
+
+Therefore:
+
+$$\lim_{n\to\infty}\frac{f(n)}{n}=\frac{1}{e^2}$$
