@@ -50,7 +50,7 @@ $$nf(n+1)-(n-1)f(n)-2f(n-1)=0$$
 
 Z-transform converts it to:
 
-$$\left[zF'(z)-F(z)\right]-z[zF'(z)-F(z)\right]-2z^2F(z)=0$$
+$$\left[zF'(z)-F(z)\right]-z\left[zF'(z)-F(z)\right]-2z^2F(z)=0$$
 
 Therefore:
 
