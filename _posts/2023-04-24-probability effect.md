@@ -28,7 +28,7 @@ Continue this process until no balls remain or can be picked. The number of rema
 
 ---
 
-The mathematical expectation of $s$ is a function of $n$, denoted $E(s|n)=f(n)$. Suppose there are $i$ balls in the array, if we take
+The mathematical expectation of $s$ is a function of $n$, denoted $E(s\vert n)=f(n)$. Suppose there are $i$ balls in the array, if we take
 
 - the $1^{st}$ and $2^{nd}$ balls away, The problem is simplified to $0$ and $i-2$ balls cases;
 - the $2^{nd}$ and $3^{rd}$ balls away, The problem is simplified to $1$ and $i-3$ balls cases;
