@@ -6,6 +6,8 @@ cover:
 
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
 
+<!--more-->
+
 <div align=center>
 <img src="\assets\images\20230424-figure1.png" width="600">
 </div>
