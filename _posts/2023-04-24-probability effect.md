@@ -30,11 +30,11 @@ Continue this process until no balls remain or can be picked. The number of rema
 
 The mathematical expectation of $s$ is a function of $n$, denoted $E(s\vert n)=f(n)$. Suppose there are $i$ balls in the array, if we take
 
-- the $1^{st}$ and $2^{nd}$ balls away, The problem is simplified to $0$ and $i-2$ balls cases;
-- the $2^{nd}$ and $3^{rd}$ balls away, The problem is simplified to $1$ and $i-3$ balls cases;
-- the $3^{rd}$ and $4^{th}$ balls away, The problem is simplified to $2$ and $i-4$ balls cases;
+- the $1^{st}$ and $2^{nd}$ balls away, the problem is simplified to $0$ and $i-2$ balls cases;
+- the $2^{nd}$ and $3^{rd}$ balls away, the problem is simplified to $1$ and $i-3$ balls cases;
+- the $3^{rd}$ and $4^{th}$ balls away, the problem is simplified to $2$ and $i-4$ balls cases;
 - ...
-- the $(i-1)^{th}$ and $i^{th}$ balls away, The problem is simplified to $i-2$ and $0$ balls cases;
+- the $(i-1)^{th}$ and $i^{th}$ balls away, the problem is simplified to $i-2$ and $0$ balls cases;
 
 Each case is counted twice and then divided by all $i-1$ cases. So:
 
@@ -67,3 +67,12 @@ $$f(n)=\frac{(-2)^{n+1}}{\Gamma(n+2)}+\frac{\Gamma(n+3,-2)}{e^2\Gamma(n+2)}$$
 Therefore:
 
 $$\lim_{n\to\infty}\frac{f(n)}{n}=\frac{1}{e^2}$$
+
+---
+
+The following is an instance of aforementioned model. Suppose there is an infinitely long polyvinyl alcohol chain, and then acetalize this chain. Because the acetalization process always occurs on adjacent hydroxyl groups and the positions of acetalization are randomly, there may be some hydroxyl groups cannot be acetalization (Figure 4).
+
+<div align=center>
+<img src="\assets\images\20230424-figure4.png" width="300">
+</div>
+
