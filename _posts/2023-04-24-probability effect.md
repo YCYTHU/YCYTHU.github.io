@@ -76,4 +76,4 @@ The following is an instance of aforementioned model. Suppose there is an infini
 <img src="\assets\images\20230424-figure4.png" width="300">
 </div>
 
-Because the degree of polymerization of polyvinyl alcohol is very large, thus the conversion rate of hydroxyl groups is approximately $1-1\frac{e^2}$.
+Because the degree of polymerization of polyvinyl alcohol is very large, thus the conversion rate of hydroxyl groups is approximately $1-1\frac{1}{e^2}$.
