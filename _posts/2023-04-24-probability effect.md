@@ -44,7 +44,7 @@ Therefore:
 
 $$(n-1)f(n)=2\sum_{i=1}^{n-2}f(i)\\nf(n+1)=2\sum_{i=1}^{n-2}f(i)+2f(n-1)$$
 
-Through the formula above, we can get recurrence relation:
+Through the equation above, we can get recurrence relation:
 
 $$nf(n+1)-(n-1)f(n)-2f(n-1)=0$$
 
@@ -76,4 +76,4 @@ The following is an instance of aforementioned model. Suppose there is an infini
 <img src="\assets\images\20230424-figure4.png" width="300">
 </div>
 
-Because of the large degree of polymerization of polyvinyl alcohol, the conversion rate of hydroxyl groups is approximately $1-\frac{1}{e^2}$.
+Because of the large degree of polymerization of polyvinyl alcohol, the conversion rate of hydroxyl groups is approximately $1-\frac{1}{e^2}$ in accordance with equation 8.
