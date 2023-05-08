@@ -80,3 +80,5 @@ MolViewer:
         url:    /MolViewer/docs/showcub
       - title:  gradcub
         url:    /MolViewer/docs/gradcub
+      - title:  lrms
+        url:    /MolViewer/docs/lrms
