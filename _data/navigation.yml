@@ -72,16 +72,10 @@ MolViewer:
         url:    /MolViewer/docs/gradcub
       - title:  lrms
         url:    /MolViewer/docs/lrms
-      - title:  mtlwrie
-        url:    /MolViewer/docs/mtlwrite
-      - title:  objwrie
-        url:    /MolViewer/docs/objwrite
       - title:  showcub
         url:    /MolViewer/docs/showcub
       - title:  showmol
         url:    /MolViewer/docs/showmol
-      - title:  stlwrie
-        url:    /MolViewer/docs/stlwrite
       - title:  xyz2acr
         url:    /MolViewer/docs/xyz2acr
       - title:  xyz2obj

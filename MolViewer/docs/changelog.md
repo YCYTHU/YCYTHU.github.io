@@ -12,7 +12,7 @@ modify_date: 2023-05-08
 ## v1.0.3
 
 - 2023-05-08   
-Add lrms.p
+Add [lrms.p](/MolViewer/docs/lrms)
 - 2023-02-26   
 Add [cub2obj.p](/MolViewer/docs/xyz2obj) and [acr2obj.p](/MolViewer/docs/acr2obj)
 - 2023-02-25   
