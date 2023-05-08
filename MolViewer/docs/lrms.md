@@ -22,7 +22,7 @@ Calculate root-mean-square deviation (RMSD) of two molecules using Kabsch algori
 
 ## Examples
 
-Calculate RMSD of two molecules with coordinates provided by .xyz file.
+Calculate RMSD of two molecules with coordinates provided by .xyz files.
 ```
 [~,cr1]=xyz2acr(Mol1.xyz);
 [~,cr2]=xyz2acr(Mol2.xyz);
