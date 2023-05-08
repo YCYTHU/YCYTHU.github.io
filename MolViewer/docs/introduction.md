@@ -26,6 +26,7 @@ MolViewer is a tool which combines molecular visualization and the advantages of
 - cub2mat.p
 - cub2obj.p
 - gradcub.p
+- lrms.p
 - mtlwrite.p
 - objwrite.p
 - showcub.p
