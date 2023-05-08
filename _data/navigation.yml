@@ -56,8 +56,6 @@ MolViewer:
     children:
       - title:  Introduction
         url:    /MolViewer/docs/introduction
-      - title:  Gallery
-        url:    /MolViewer/docs/gallery
       - title:  Change log
         url:    /MolViewer/docs/changelog
   - title:      Functions
