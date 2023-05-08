@@ -64,21 +64,27 @@ MolViewer:
     children:
       - title:  acr2obj
         url:    /MolViewer/docs/acr2obj
-      - title:  showmol
-        url:    /MolViewer/docs/showmol
-      - title:  xyz2acr
-        url:    /MolViewer/docs/xyz2acr
-      - title:  xyz2stl
-        url:    /MolViewer/docs/xyz2stl
-      - title:  xyz2obj
-        url:    /MolViewer/docs/xyz2obj
       - title:  cub2mat
         url:    /MolViewer/docs/cub2mat
       - title:  cub2obj
         url:    /MolViewer/docs/cub2obj
-      - title:  showcub
-        url:    /MolViewer/docs/showcub
       - title:  gradcub
         url:    /MolViewer/docs/gradcub
       - title:  lrms
         url:    /MolViewer/docs/lrms
+      - title:  mtlwrie
+        url:    /MolViewer/docs/mtlwrite
+      - title:  objwrie
+        url:    /MolViewer/docs/objwrite
+      - title:  showcub
+        url:    /MolViewer/docs/showcub
+      - title:  showmol
+        url:    /MolViewer/docs/showmol
+      - title:  stlwrie
+        url:    /MolViewer/docs/stlwrite
+      - title:  xyz2acr
+        url:    /MolViewer/docs/xyz2acr
+      - title:  xyz2obj
+        url:    /MolViewer/docs/xyz2obj
+      - title:  xyz2stl
+        url:    /MolViewer/docs/xyz2stl
