@@ -3,10 +3,9 @@ title: Probability Effect in Acetalization of Polyvinyl alcohol
 tags: Chemistry
 cover: 
 ---
+<!--more-->
 
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
-
-<!--more-->
 
 <div align=center>
 <img src="\assets\images\20230424-figure1.png" width="300">
