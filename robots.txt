@@ -3,5 +3,5 @@ Disallow: /opera.html$
 Allow: /
 
 User-agent: *
-Allow: /Molviewer
+Allow: /MolViewer
 Disallow: /
