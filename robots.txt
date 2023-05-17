@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow: /opera.html$
+Allow: /
+
+User-agent: *
+Allow: /Molviewer
+Disallow: /
