@@ -2,6 +2,12 @@ User-agent: Googlebot
 Disallow: /opera.html$
 Allow: /
 
+User-agent: Bingbot
+Disallow: /opera.html$
+Allow: /
+
 User-agent: *
 Allow: /MolViewer
 Disallow: /
+
+Sitemap: https://ycythu.github.io/sitemap.xml
