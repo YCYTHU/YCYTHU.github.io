@@ -1,5 +1,5 @@
 ---
-title: Probability Effect in Acetalization of Polyvinyl alcohol
+title: Probability Effect in Polymers
 tags: Chemistry
 cover: 
 ---
