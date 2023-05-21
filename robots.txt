@@ -1,9 +1,9 @@
 User-agent: Googlebot
-Disallow: /opera.html$
+Disallow: /*/opera.html$
 Allow: /
 
 User-agent: Bingbot
-Disallow: /opera.html$
+Disallow: /*/opera.html$
 Allow: /
 
 User-agent: *
