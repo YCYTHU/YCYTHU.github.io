@@ -2,6 +2,7 @@
 title: Probability Effect in Polymers
 tags: Chemistry
 cover: 
+mathjax_autoNumber: true
 ---
 <!--more-->
 
@@ -41,7 +42,7 @@ $$f(n)=\frac{2}{n-1}\sum_{i=1}^{n-2}f(i)$$
 
 Therefore:
 
-$$(n-1)f(n)=2\sum_{i=1}^{n-2}f(i)\\nf(n+1)=2\sum_{i=1}^{n-2}f(i)+2f(n-1)$$
+$$\begin{array}{c}(n-1)f(n)=2\sum_{i=1}^{n-2}f(i)\\nf(n+1)=2\sum_{i=1}^{n-2}f(i)+2f(n-1)\end{array}\\$$
 
 Through the equation above, we can get recurrence relation:
 
