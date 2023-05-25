@@ -1,7 +1,7 @@
 ---
 title: Probability Effect in Polymers
 tags: Chemistry
-cover: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/N-randompage.svg/200px-N-randompage.svg.png
+cover: 
 mathjax_autoNumber: true
 ---
 <!--more-->
