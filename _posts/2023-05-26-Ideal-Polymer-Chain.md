@@ -3,8 +3,10 @@ title: 理想聚合物链端到端距离的分布
 tags: Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ideal_chain_random_walk.svg/480px-Ideal_chain_random_walk.svg.png
 mathjax_autoNumber: true
+aside:
+  toc: true
 ---
-
+Distribution of End-to-End Distance of Ideal Polymer Chains 
 <!--more-->
 
 # Freely Jointed Chain (Gaussian) model
@@ -21,10 +23,58 @@ $$G(\{\vec{r}_i\})=\prod_{i=1}^N\zeta(\vec{r}_i)$$
 
 $$\vec{R}=\sum_{i=1}^N\vec{r}_i$$
 
-$\vec{R}$ 的概率分布符合随机游走模型：
+由于聚合物中 $N$ 很大，$\vec{R}$ 的概率分布符合随机游走模型[^RW]：
 
-$$G(\vec{R})=\left(\frac{3}{2\pi N\ell^2}\right)^\frac32e^{-\frac{3|\vec{R}|^2}{2N\ell^2}}$$
+[^RW]:[Random walk](https://en.wikipedia.org/wiki/Random_walk)
 
-$|\vec{R}|$ 的期望：
+$$G(\vec{R})=\left(\frac{3}{2\pi N\ell^2}\right)^\frac32e^{-\frac{3\vert\vec{R}\vert^2}{2N\ell^2}}$$
+
+$\vert\vec{R}\vert$ 的期望：
 
 $$\langle\vec{R}^2\rangle^{\frac12}=N^{\frac12}\ell$$
+
+##  Entropic elasticity
+
+玻尔兹曼公式：
+
+$$S=k_B\ln\Omega$$
+
+由于：
+
+$$G(\vec{R})=\frac{\Omega(\vec{R})}{\int\Omega(\vec{R}){\rm d}\vec{R}}$$
+
+因此得到：
+
+$$S(\vec{R})=k_B\ln G(\vec{R})+k_B\ln\int\Omega(\vec{R}){\rm d}\vec{R}=-\frac{3k_B\vert\vec{R}\vert^2}{2N\ell^2}+S_0$$
+
+其中 $S_0$ 是一个与 $\vec{R}$ 无关的常数。
+
+Helmholtz自由能：
+
+$$A(\vec{R})=U(\vec{R})-TS(\vec{R})=\frac{3k_BT\vert\vec{R}\vert^2}{2N\ell^2}+A_0$$
+
+其中 $A_0$ 是与 $\vec{R}$ 无关的常数。因此：
+
+$$\vec{F}=\frac{\partial A(\vec{R})}{\partial\vec{R}}=\frac{3k_BT}{N\ell^2}\vec{R}$$
+
+# Freely Rotating Chain
+
+由于键向量之间存在固定的夹角 $\theta$，键向量之间不独立：
+
+$$\langle\vec{r}_i,\vec{r}_j\rangle=\ell^2(-\cos\theta)^{\vert j-i \vert}$$
+
+$\vec{R}^2$ 的期望：
+
+$$\langle\vec{R},\vec{R}\rangle=\begin{bmatrix}1&-\cos\theta&(-\cos\theta)^2&\cdots&(-\cos\theta)^{N-1}\\-\cos\theta&1&-\cos\theta&\cdots&(-\cos\theta)^{N-2}\\(-\cos\theta)^2&-\cos\theta&1&\cdots&(-\cos\theta)^{N-3}\\\vdots&\vdots&\vdots&\ddots&\vdots\\(-\cos\theta)^{N-1}&(-\cos\theta)^{N-2}&(-\cos\theta)^{N-3}&\cdots&1\end{bmatrix}$$
+
+化简，得到距离的期望：
+
+$$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\right)^{\frac12}N^{\frac12}\ell$$
+
+# Hindered Rotation model
+
+除了键角以外，如果还考虑到二面角 $\phi$ 并不是均匀分布的，则应用类似的方法得到距离的期望：
+
+$$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\right)^{\frac12}\left(\frac{1+\langle\cos\phi\rangle}{1-\langle\cos\phi\rangle}\right)^{\frac12}N^{\frac12}\ell$$
+
+其中 $\langle\cos\phi\rangle$ 是二面角余弦值的期望。
