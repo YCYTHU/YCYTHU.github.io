@@ -51,7 +51,7 @@ $$S(\vec{R})=k_B\ln G(\vec{R})+k_B\ln\int\Omega(\vec{R}){\rm d}\vec{R}=-\frac{3k
 
 Helmholtz自由能：
 
-$$A(\vec{R})=U(\vec{R})-TS(\vec{R})=\frac{3k_BT\vert\vec{R}\vert^2}{2N\ell^2}+A_0$$
+$$A(\vec{R})=U_0-TS(\vec{R})=\frac{3k_BT\vert\vec{R}\vert^2}{2N\ell^2}+A_0$$
 
 其中 $A_0$ 是与 $\vec{R}$ 无关的常数。因此：
 
