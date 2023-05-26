@@ -79,4 +79,4 @@ $$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\righ
 
 其中 $\langle\cos\phi\rangle$ 依Boltzmann分布由势能 $U(\phi)$ 定义（$\phi$ 之间是不相关的）：
 
-$$\langle\cos\phi\rangle=\frac{\int_o^{2\pi}\cos\phi e^{-\frac{U(\phi)}{kT}}{\rm d}\phi}{\int_o^{2\pi}\exp(-U(\phi)/kT{\rm d}\phi}$$
+$$\langle\cos\phi\rangle=\frac{\int_o^{2\pi}\cos\phi\cdot e^{-\frac{U(\phi)}{kT}}{\rm d}\phi}{\int_o^{2\pi}e^{-\frac{U(\phi)}{kT}}{\rm d}\phi}$$
