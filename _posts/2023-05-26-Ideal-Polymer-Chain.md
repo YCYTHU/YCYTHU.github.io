@@ -7,9 +7,11 @@ mathjax_autoNumber: true
 
 <!--more-->
 
-假定键长固定为 $l$, 键可以绕一端的原子自由旋转，则每个键向量 $\vec{r}$ 的概率分布:
+# Freely Jointed Chain (Gaussian) model
 
-$$\zeta(\vec{r})=\frac{1}{4\pi l^2}\cdot\delta(|\vec{r}|-l)$$
+假定键长固定为 $\ell$, 键可以绕一端的原子自由旋转，则每个键向量 $\vec{r}$ 的概率分布:
+
+$$\zeta(\vec{r})=\frac{1}{4\pi l^2}\cdot\delta(|\vec{r}|-\ell)$$
 
 假定键之间没有相互作用，分布独立，则 $N$ 个键向量的概率分布为单独概率分布的乘积：
 
@@ -19,14 +21,10 @@ $$G(\{\vec{r}_i\})=\prod_{i=1}^N\zeta(\vec{r}_i)$$
 
 $$\vec{R}=\sum_{i=1}^N\vec{r}_i$$
 
-因此 $\vec{R}$ 的概率分布：
+$\vec{R}$ 的概率分布符合随机游走模型：
 
-$$G(\vec{R})=\int\delta\left(\vec{R}-\sum_{i=1}^N\vec{r}_i\right)G(\{\vec{r}_i\}){\rm d}\{\vec{r}_i\}$$
+$$G(\vec{R})=\left(\frac{3}{2\pi N\ell^2}\right)^\frac32e^{-\frac{3|\vec{R}|^2}{2N\ell^2}}$$
 
-Dirac $\delta$ 函数：
+$|\vec{R}|$ 的期望：
 
-$$\delta(r)=\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty}e^{ikr}{\rm d}k$$
-
-因此将 $G(\vec{R})$ 改写为：
-
-$$G(\vec{R})=\frac{1}{(2\pi)^3}\int e^{ik|\vec{R}|}\left(\int e^{ikr}\zeta(\vec{r}){\rm d}\vec{r}\right)^N{\rm d}k=\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty}ke^{ik|\vec{R}|}\left(\frac{\sin(kl)}{kl}\right)^N{\rm d}k$$
+$$\langle\vec{R}^2\rangle^{\frac12}=N^{\frac12}\ell$$
