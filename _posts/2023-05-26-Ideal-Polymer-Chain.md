@@ -13,7 +13,7 @@ Distribution of End-to-End Distance of Ideal Polymer Chains
 
 假定键长固定为 $\ell$, 键可以绕一端的原子自由旋转，则每个键向量 $\vec{r}$ 的概率分布:
 
-$$\zeta(\vec{r})=\frac{1}{4\pi l^2}\cdot\delta(|\vec{r}|-\ell)$$
+$$\zeta(\vec{r})=\frac{1}{4\pi \ell^2}\cdot\delta(|\vec{r}|-\ell)$$
 
 假定键之间没有相互作用，分布独立，则 $N$ 个键向量的概率分布为单独概率分布的乘积：
 
@@ -55,11 +55,11 @@ $$A(\vec{R})=U_0-TS(\vec{R})=\frac{3k_BT\vert\vec{R}\vert^2}{2N\ell^2}+A_0$$
 
 其中 $A_0$ 是与 $\vec{R}$ 无关的常数。因此：
 
-$$\vec{F}=\frac{\partial A(\vec{R})}{\partial\vec{R}}=\frac{3k_BT}{N\ell^2}\vec{R}$$
+$$\vec{F}=-\frac{\partial A(\vec{R})}{\partial\vec{R}}=-\frac{3k_BT}{N\ell^2}\vec{R}$$
 
 # Freely Rotating Chain
 
-由于键向量之间存在固定的夹角 $\theta$，键向量之间不独立：
+在前文模型的基础上，考虑到键向量之间存在固定的夹角 $\theta$，故键向量之间不独立：
 
 $$\langle\vec{r}_i,\vec{r}_j\rangle=\ell^2(-\cos\theta)^{\vert j-i \vert}$$
 
@@ -73,7 +73,7 @@ $$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\righ
 
 # Hindered Rotation model
 
-除了键角以外，如果还考虑到二面角 $\phi$ 并不是均匀分布的，则应用类似的方法得到距离的期望：
+在前文的基础上，除了键角以外，如果还考虑到二面角 $\phi$ 并不是均匀分布的，则应用类似的方法得到距离的期望：
 
 $$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\right)^{\frac12}\left(\frac{1+\langle\cos\phi\rangle}{1-\langle\cos\phi\rangle}\right)^{\frac12}N^{\frac12}\ell$$
 
