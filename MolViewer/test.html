@@ -98,7 +98,7 @@
 
   function loadModel() {
     var loader = new THREE.OBJLoader();
-    loader.load( 'Benzene.obj', function ( object ) {
+    loader.load( '/assets/Benzene.obj', function ( object ) {
       object.rotation.z = Math.PI;
       scene.add( object );
       document.querySelector('h1').style.display = 'none';
