@@ -9,19 +9,19 @@ mathjax_autoNumber: true
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
 
 <div align=center>
-<img src="\assets\images\20230424-figure1.png" width="300">
+<img src="\assets\images\polymer probability\figure1.png" width="300">
 </div>
 
 Now randomly pick two adjacent balls and take them away (Figure 2), the removed ball leaves an empty spot in the array. Repeat this process continuously. 
 
 <div align=center>
-<img src="\assets\images\20230424-figure2.png" width="300">
+<img src="\assets\images\polymer probability\figure2.png" width="300">
 </div>
 
 Since the positions of the balls to be taken are random, there may be balls that do not have adjacent balls on both sides (Figure 3), such balls will not be picked.
 
 <div align=center>
-<img src="\assets\images\20230424-figure3.png" width="300">
+<img src="\assets\images\polymer probability\figure3.png" width="300">
 </div>
 
 Continue this process until no balls remain or can be picked. The number of remaining balls in the array is recorded as $s$. Find the mathematical expectation of $s$.
@@ -73,7 +73,7 @@ $$\lim_{n\to\infty}\frac{f(n)}{n}=\frac{1}{e^2}$$
 The following is an instance of aforementioned model. Suppose there is an infinitely long polyvinyl alcohol chain, and then acetalize this chain. Because the acetalization process always occurs on adjacent hydroxyl groups and the positions of acetalization are randomly, there may be some hydroxyl groups cannot be acetalization (Figure 4).
 
 <div align=center>
-<img src="\assets\images\20230424-figure4.png" width="300">
+<img src="\assets\images\polymer probability\figure4.png" width="300">
 </div>
 
 Because of the large degree of polymerization of polyvinyl alcohol, the conversion rate of hydroxyl groups is approximately $1-\frac{1}{e^2}$ in accordance with equation 8.
