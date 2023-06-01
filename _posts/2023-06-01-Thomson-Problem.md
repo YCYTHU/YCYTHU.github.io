@@ -3,7 +3,7 @@ title: Thomson问题
 tags: 
 - Physics
 - Chemistry
-cover: 
+cover: https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Icosahedron.jpg/497px-Icosahedron.jpg
 ---
 
 Thomson问题的目标是确定 $N$ 个被约束在单位球表面的电子（点电荷）的最低静电能构型（基于库仑定律）。该问题在化学中的一个应用为[VSEPR理论](https://en.wikipedia.org/wiki/VSEPR_theory)中几何构型的确定。
@@ -21,7 +21,7 @@ $$U_{ij}=\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 
 $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 
-下表中示出了不同 $N$ 情况下的解以及体系的对称性，$\vert\sum\vec{r}_i\vert$ 给出了电子位置的向量和，在大部分情况下为 $0$。表格的5~14列包括：
+当 $N$ 分别为 $2,3,4,5,6,12$ 时，立体构型分别为对映点、赤道正三角形、正四面体、三角双锥、正八面体与正二十面体。对于其他的 $N$，下表示出了数值解以及体系的对称性，$\vert\sum\vec{r}_i\vert$ 给出了电子位置的向量和，在大部分情况下为 $0$。表格的5~14列包括：
 
 - $v_i$ 是给定边数相交的顶点数
 - $e$ 是总边数
