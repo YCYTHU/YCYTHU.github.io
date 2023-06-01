@@ -272,8 +272,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 	</semantics>
 </math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7f84b9443d095623e02fd287cd095123d70b0278" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.145ex; height:2.509ex;" alt="\theta _{1}"></span>
 </th>
-<th>Equivalent polyhedron
-</th></tr>
+</tr>
 <tr>
 	<td align="right">2
 	</td>
@@ -318,7 +317,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">180.000°
 </td>
-<td>digon</td></tr>
+</tr>
 <tr>
 	<td align="right">3
 	</td>
@@ -363,7 +362,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">120.000°
 </td>
-<td>triangle</td></tr>
+</tr>
 <tr>
 	<td align="right">4
 	</td>
@@ -407,7 +406,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">109.471°
 </td>
-<td>tetrahedron</td></tr>
+</tr>
 <tr>
 	<td align="right">5
 	</td>
@@ -452,7 +451,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">90.000°
 </td>
-<td>triangular dipyramid</td></tr>
+</tr>
 <tr>
 	<td align="right">6
 	</td>
@@ -496,7 +495,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">90.000°
 </td>
-<td>octahedron</td></tr>
+</tr>
 <tr>
 	<td align="right">7
 	</td>
@@ -541,7 +540,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">72.000°
 </td>
-<td>pentagonal dipyramid</td></tr>
+</tr>
 <tr>
 	<td align="right">8
 	</td>
@@ -586,7 +585,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">71.694°
 </td>
-<td>square antiprism</td></tr>
+</tr>
 <tr>
 	<td align="right">9
 	</td>
@@ -631,7 +630,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">69.190°
 </td>
-<td>triaugmented triangular prism</td></tr>
+</tr>
 <tr>
 	<td align="right">10
 	</td>
@@ -676,7 +675,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">64.996°
 </td>
-<td>gyroelongated square dipyramid</td></tr>
+</tr>
 <tr>
 	<td align="right">11
 	</td>
@@ -721,7 +720,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">58.540°
 </td>
-<td>edge-contracted icosahedron</td></tr>
+</tr>
 <tr>
 	<td align="right">12
 	</td>
@@ -765,7 +764,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">63.435°
 </td>
-<td>icosahedron</td></tr>
+</tr>
 <tr>
 	<td align="right">13
 	</td>
@@ -854,8 +853,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">52.866°
 </td>
-<td>gyroelongated hexagonal dipyramid
-</td></tr>
+</tr>
 <tr>
 	<td align="right">15
 	</td>
@@ -981,8 +979,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">50.108°
 </td>
-<td>double-gyroelongated pentagonal dipyramid
-</td></tr>
+</tr>
 <tr>
 	<td align="right">18
 	</td>
@@ -1283,7 +1280,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">42.065°
 </td>
-<td>snub cube</td></tr>
+</tr>
 <tr>
 	<td align="right">25
 	</td>
@@ -1625,7 +1622,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">37.377°
 </td>
-<td>pentakis dodecahedron</td></tr>
+</tr>
 <tr>
 	<td align="right">33
 	</td>
@@ -3340,7 +3337,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">24.492°
 </td>
-<td>geodesic sphere {3,5+}<sub>2,1</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">73
 	</td>
@@ -5487,7 +5484,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">18.612°
 </td>
-<td>geodesic sphere {3,5+}<sub>2,2</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">123
 	</td>
@@ -5914,7 +5911,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">17.958°
 </td>
-<td>geodesic sphere {3,5+}<sub>3,1</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">133
 	</td>
@@ -8479,7 +8476,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">14.819°
 </td>
-<td>geodesic sphere {3,5+}<sub>3,2</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">193
 	</td>
@@ -9034,7 +9031,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">14.118°
 </td>
-<td>geodesic sphere {3,5+}<sub>4,1</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">214
 	</td>
@@ -9364,7 +9361,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">12.335°
 </td>
-<td>geodesic sphere {3,5+}<sub>3,3</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">282
 	</td>
@@ -9403,7 +9400,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">12.166°
 </td>
-<td>geodesic sphere {3,5+}<sub>4,2</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">292
 	</td>
@@ -9862,7 +9859,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 </td>
 <td align="right">10.531°
 </td>
-<td>geodesic sphere {3,5+}<sub>4,3</sub></td></tr>
+</tr>
 <tr>
 	<td align="right">382
 	</td>
