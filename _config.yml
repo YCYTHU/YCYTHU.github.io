@@ -212,12 +212,6 @@ defaults:
       type: posts
     values:
       layout: article
-      sharing: true
-      license: false
-      aside:
-        toc: false
-      show_edit_on_github: false
-      show_subscribe: false
       cover: /assets/images/default.jpg
   ## jottings
   - scope:
@@ -225,12 +219,6 @@ defaults:
       type: jottings
     values:
       layout: article
-      sharing: true
-      license: false
-      aside:
-        toc: false
-      show_edit_on_github: false
-      show_subscribe: false
 
 
 ## => Plugins
