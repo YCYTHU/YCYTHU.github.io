@@ -49,7 +49,7 @@ header:
       fr-LU   : *FR
       tr      : &TR       
       # @end locale config
-    url: /Jottings
+    url: /jottings
 
   - titles:
       # @start locale config

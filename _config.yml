@@ -204,9 +204,9 @@ exclude:
 collections:
   jottings:
     output: true
-    permalink: /:collection/:name
 
 defaults:
+  ## posts
   - scope:
       path: ""
       type: posts
@@ -218,8 +218,19 @@ defaults:
         toc: false
       show_edit_on_github: false
       show_subscribe: false
-      pageview: true
       cover: /assets/images/default.jpg
+  ## jottings
+  - scope:
+      path: ""
+      type: jottings
+    values:
+      layout: article
+      sharing: true
+      license: false
+      aside:
+        toc: false
+      show_edit_on_github: false
+      show_subscribe: false
 
 
 ## => Plugins
