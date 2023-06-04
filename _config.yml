@@ -201,6 +201,11 @@ exclude:
   - /test
   - /vendor
 
+collections:
+  jottings:
+    output: true
+    permalink: /:collection/:name
+
 defaults:
   - scope:
       path: ""
