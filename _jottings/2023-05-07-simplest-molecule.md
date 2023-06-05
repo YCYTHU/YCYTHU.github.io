@@ -4,4 +4,4 @@ permalink: /jottings/simplest-molecule.html
 ---
 <!--more-->
 
-<div align=center><img src="/assets/simplest-molecule.png" width="800"></div>  
+<div align=center><img src="/assets/images/simplest-molecule.png" width="800"></div>  
