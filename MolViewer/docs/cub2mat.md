@@ -26,7 +26,7 @@ convert grid data in a gaussian type cube file (.cub) to four 3d matrices.
 
 ## Examples
 
-convert [movalue.cub](/MolViewer/assets/movalue.cub) to matrices and show it.
+convert [movalue.cub](/MolViewer/assets/movalue.cub) to matrices and show its isosurface.
 
 ```matlab
 [xGrid,yGrid,zGrid,data,atoms,coordinates]=cub2mat('movalue.cub');
