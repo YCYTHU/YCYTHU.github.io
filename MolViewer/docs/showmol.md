@@ -43,7 +43,7 @@ Warning: if `style` is specified as 'space filling', showmol() will not create b
 
 show methane molecule by atoms and coordinates
 
-```Matlab
+```matlab
 atoms=[6;1;1;1;1];
 coordinates=[0         , 0         , 0         ;...
              0.62957749, 0.62957749, 0.62957749;...
@@ -58,7 +58,7 @@ showmol(atoms,coordinates);
 
 change style to 'space filling' to display space filling model of methane.
 
-```Matlab
+```matlab
 showmol(atoms,coordinates,'space filling');
 ```
 <div>

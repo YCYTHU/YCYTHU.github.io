@@ -33,7 +33,7 @@ acr2obj(objPath,atoms,coordinates,style,option1,option2,...,optionN)
 
 convert Methane molecule to Methane.obj.
 
-```Matlab
+```matlab
 atoms=[6;1;1;1;1];
 coordinates=[0         , 0         , 0         ;...
              0.62957749, 0.62957749, 0.62957749;...

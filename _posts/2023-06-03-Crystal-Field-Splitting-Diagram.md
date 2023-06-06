@@ -1,11 +1,11 @@
 ---
-title: 利用matlab计算晶体场d轨道分裂能
+title: 利用Matlab计算晶体场d轨道分裂能
 tags: 
 - Chemistry
-- matlab
+- Matlab
 cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 ---
-在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于matlab，可以容易的计算常见与不常见对称性的晶体场的分裂能。
+在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于Matlab，可以容易的计算常见与不常见对称性的晶体场的分裂能。
 <!--more-->
 
 ```matlab

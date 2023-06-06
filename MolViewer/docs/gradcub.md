@@ -31,7 +31,7 @@ return gradient of data in gaussian type cube file (.cub).
 
 show gradient arrow of [totesp.cub](/MolViewer/assets/totesp.cub).
 
-```Matlab
+```matlab
 [xGrid,yGrid,zGrid,data,atoms,coordinates]=cub2mat('totesp.cub');
 [xGradient,yGradient,zGradient]=gradcub(data,'normalize');
 

@@ -31,7 +31,7 @@ cub2obj(cubPath,isovalue,'nomolecule')
 
 export 3D model of isosurfaces of molecular orbital in [movalue.cub](/MolViewer/assets/movalue.cub).
 
-```Matlab
+```matlab
 cub2obj('movalue.cub',[0.07;-0.07]);
 ```
 

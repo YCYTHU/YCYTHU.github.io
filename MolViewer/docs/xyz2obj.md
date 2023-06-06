@@ -33,6 +33,6 @@ xyz2obj(xyzPath,style,option1,option2,...,optionN)
 
 convert [benzene.xyz](/MolViewer/assets/benzene.xyz) to benzene.obj.
 
-```Matlab
+```matlab
 xyz2obj('benzene.xyz');
 ```
