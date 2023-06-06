@@ -23,14 +23,16 @@ Calculate root-mean-square deviation (RMSD) of two molecules using Kabsch algori
 ## Examples
 
 Calculate RMSD of two molecules with coordinates provided by .xyz files.
-```
-[~,cr1]=xyz2acr(Mol1.xyz);
-[~,cr2]=xyz2acr(Mol2.xyz);
+
+```Matlab
+[~,cr1]=xyz2acr('Mol1.xyz');
+[~,cr2]=xyz2acr('Mol2.xyz');
 [lrms,~,~]=lrms(cr1,cr2);
 ```
 
 Find the rotation matrix and translation vector that align two molecules. Then calculate new dipole moment after rotation and translation.
-```
+
+```Matlab
 [~,R,T]=lrms(cr1,cr2);
 new_DP=DP*R+T;
 ```

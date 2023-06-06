@@ -33,7 +33,7 @@ $$\mathbf R=\mathbf V \begin{pmatrix}1&0&0\\0&1&0\\0&0&d\end{pmatrix}\mathbf U^T
 
 Python实现：
 
-```
+```Python
 import numpy as np
 
 def lrms(P, Q):
@@ -64,7 +64,7 @@ def lrms(P, Q):
 
 Matlab实现：
 
-```
+```Matlab
 function [lrms, R, T] = LRMS(P, Q)
 
 	N = size(P,1);

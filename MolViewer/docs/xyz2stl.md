@@ -29,6 +29,7 @@ xyz2stl(xyzPath,style,option1,option2,...,optionN)
 ## Examples
 
 convert [benzene.xyz](/MolViewer/assets/benzene.xyz) to benzene.stl.
-```
+
+```Matlab
 xyz2stl('benzene.xyz');
 ```

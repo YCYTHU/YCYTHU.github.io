@@ -23,7 +23,8 @@ convert .xyz file to atoms array (N-by-1) and coordinates matrix (N-by-3).
 ## Examples
 
 convert [benzene.xyz](/MolViewer/assets/benzene.xyz) to atoms (12-by-1) and coordinates (12-by-3) and then display it.  
-```
+
+```Matlab
 [atoms,coordinates]=xyz2acr('benzene.xyz');
 showmol(atoms,coordinates);
 ```

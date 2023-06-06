@@ -27,7 +27,8 @@ cub_patch = showcub(path,isovalue,'nomolecule',options)
 ## Examples
 
 show isosurfaces of molecular orbital in [movalue.cub](/MolViewer/assets/movalue.cub).
-```
+
+```Matlab
 showcub('movalue.cub',[0.07;-0.07]);
 ```
 <div>
