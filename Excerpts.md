@@ -5,11 +5,9 @@ permalink: /excerpts.html
 ---
 <!--more-->
 
-<a id="BackToTop" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:10px;"><i class="fas fa-angle-double-up"></i>Back to Top</a>
+<a id="BackToTop" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:10px;"><i class="fas fa-angle-double-up"></i> Back to Top</a>
 
-<!--<a style="position:fixed;right:10px;bottom:30px"><input id="TargetId" type="number" size="8" maxlength="3"></a>-->
-
-<a id="BackTo" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:30px;"><i class="fas fa-arrow-up-to-line"></i>&#10514; Back to<input id="TargetId" type="number" size="8" maxlength="3"></a>
+<a class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:60px;">Go to <input id="TargetId" type="number" placeholder="No." style="width:75px"> <i id="Goto" class="fas fa-angle-double-right"></i></a>
 
 <script>
 var timer  = null;
@@ -28,21 +26,12 @@ BackToTop.onclick = function(){
         }
     });
 }
-BackTo.onclick = function(){
+Goto.onclick = function(){
 	TargetId = document.getElementById('TargetId').value;
-    cancelAnimationFrame(timer);
-    var startTime = +new Date();     
-    var b = document.TargetId.scrollTop;
-    var d = 500;
-    var c = b;
-    timer = requestAnimationFrame(function func(){
-        var t = d - Math.max(0,startTime - (+new Date()) + d);
-        document.TargetId.scrollTop = t * (-c) / d + b;
-        timer = requestAnimationFrame(func);
-        if(t == d){
-          cancelAnimationFrame(timer);
-        }
-    });
+	TargetId = TargetId.padStart(3,'0');
+	console.log(TargetId);
+	Target = document.getElementById(TargetId.toString());
+	Target.scrollIntoView();
 }
 </script>
 
