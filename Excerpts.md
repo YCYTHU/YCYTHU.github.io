@@ -5,12 +5,15 @@ permalink: /excerpts.html
 ---
 <!--more-->
 
-<!--<button id="ButtonTop" style="position:fixed;right:10px;bottom:10px;background:rgba(255, 255, 255, 0.25);"><i class="fas fa-arrow-up-to-line"></i>Back to Top</button>-->
-<a id="ButtonTop" class="button button-secondary button--rounded" style="position:fixed;right:10px;bottom:10px;"><i class="fas fa-arrow-up-to-line"></i>Back to Top</a>
+<a id="BackToTop" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:10px;"><i class="fas fa-angle-double-up"></i>Back to Top</a>
+
+<!--<a style="position:fixed;right:10px;bottom:30px"><input id="TargetId" type="number" size="8" maxlength="3"></a>-->
+
+<a id="BackTo" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:30px;"><i class="fas fa-arrow-up-to-line"></i>&#10514; Back to<input id="TargetId" type="number" size="8" maxlength="3"></a>
 
 <script>
 var timer  = null;
-ButtonTop.onclick = function(){
+BackToTop.onclick = function(){
     cancelAnimationFrame(timer);
     var startTime = +new Date();     
     var b = document.body.scrollTop || document.documentElement.scrollTop;
@@ -19,6 +22,22 @@ ButtonTop.onclick = function(){
     timer = requestAnimationFrame(function func(){
         var t = d - Math.max(0,startTime - (+new Date()) + d);
         document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b;
+        timer = requestAnimationFrame(func);
+        if(t == d){
+          cancelAnimationFrame(timer);
+        }
+    });
+}
+BackTo.onclick = function(){
+	TargetId = document.getElementById('TargetId').value;
+    cancelAnimationFrame(timer);
+    var startTime = +new Date();     
+    var b = document.TargetId.scrollTop;
+    var d = 500;
+    var c = b;
+    timer = requestAnimationFrame(function func(){
+        var t = d - Math.max(0,startTime - (+new Date()) + d);
+        document.TargetId.scrollTop = t * (-c) / d + b;
         timer = requestAnimationFrame(func);
         if(t == d){
           cancelAnimationFrame(timer);
