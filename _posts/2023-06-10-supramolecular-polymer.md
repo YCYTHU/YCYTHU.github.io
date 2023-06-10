@@ -25,8 +25,16 @@ $$\alpha_i=(c_0K)^{i-1}{\alpha_1}^i$$
 
 故聚合度为 $i$ 的单体的摩尔分数 $x_i$：
 
-$$x_i=\frac{\alpha_i}{\sum_{k=1}\alpha_k}$$
+$$x_i=\frac{\alpha_i}{\sum_{k=1}\alpha_k}=(1-c_0K\alpha_1)(c_0K\alpha_1)^{i-1}$$
 
-假设单体相对分子之质量为 $M$，由此可以得到数均分子量与重均分子量：
+式(5)要求 $c_0K\alpha_1<1$，后文会证明这一条件始终成立。假设单体相对分子之质量为 $M$，由此可以得到数均分子量与重均分子量[^sum]：
 
-$$\begin{align}\bar{M_n}=\frac{\sum_{i=1}\left(i\cdot\frac{\alpha_i}{\sum\alpha}\right)}{\sum}M\\\end{align}$$
+$$\begin{align}&\bar{M_n}=\frac{\sum_{i=1}i\cdot x_i}{\sum_{i=1}x_i}\cdot M=(1-c_0K\alpha_1)M\sum_{i=1}i(c_0K\alpha_1)^{i-1}=\frac{M}{1-c_0K\alpha_1}\\\nonumber\\&\bar{M_w}=\frac{\sum_{i=1}i^2\cdot x_i}{\sum_{i=1}i\cdot x_i}\cdot M=\frac{\sum_{i=1}i^2\cdot(c_0K\alpha_1)^i}{\sum_{i=1}i\cdot(c_0K\alpha_1)^i}\cdot M=\frac{M(1+c_0K\alpha_1)}{1-c_0K\alpha_1}\end{align}$$
+
+[^sum]:所需的两个数列求和公式$\sum_{n=1}^\infty n\alpha^n=\frac{\alpha}{(1-\alpha)^2}$,$\sum_{n=1}^\infty n^2\alpha^n=\frac{\alpha^2+\alpha}{(1-\alpha)^3$
+
+因此多分散性系数 $d=\frac{\bar{M_w}}{\bar{M_n}}=1+c_oK\alpha_1$
+
+---
+
+至此，聚合度相关参数已被表示为关于 $c_0,K,\alpha_1$ 的函数。其中 $c_0,K$ 均为已知参数，下文求解 $\alpha_1$ 的表达式。
