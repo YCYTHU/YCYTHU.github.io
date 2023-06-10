@@ -53,7 +53,7 @@ Goto.onclick = function(){
 
 ---
 
-<div id="003" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft.png);'>
+<div id="003" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft1.png);'>
 	<div class="hero__content">
 		<p align="center" style="font-weight:bold;"><font face="Courier New" color="#000000">“He wondered what the man's name was and where he came from; and if he was really evil of heart, or what lies or threats had led him on the long march from his home; and if he would rather have stayed there in peace.”</font></p>
 		<p align="right" style="font-weight:bold;"><font face="Courier New" color="#000000">― J.R.R. Tolkien, The Lord of the Rings: The two towers</font></p>
@@ -80,7 +80,7 @@ Goto.onclick = function(){
 
 ---
 
-<div id="006" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft.png);'>
+<div id="006" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft2.jpg);'>
 	<div class="hero__content">
 		<p align="center" style="font-weight:bold;"><font face="SimSun" color="#000000">“这一张文凭，仿佛有亚当、夏娃下身那片树叶的功用，可以遮羞包丑；小小一方纸能把一个人的空疏、寡陋、愚笨都掩盖起来。自己没有文凭，好像精神上赤条条的，没有包裹。”</font></p>
 		<p align="right" style="font-weight:bold;"><font face="SimSun" color="#000000">― 钱钟书，《围城》</font></p>
@@ -89,7 +89,7 @@ Goto.onclick = function(){
 
 ---
 
-<div id="007" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft.png);'>
+<div id="007" class="hero hero--dark" style='background-image: url(/assets/images/excerpts/kraft1.png);'>
 	<div class="hero__content">
 		<p align="center" style="font-weight:bold;"><font face="SimSun" color="#000000">“事实上，一个人的缺点正像猴子的尾巴，猴子蹲在地面的时候，尾巴是看不见的，直到他向树上爬，就把后部供大众瞻仰，可是这红臀长尾巴本来就有，并非地位爬高了的新标识。”</font></p>
 		<p align="right" style="font-weight:bold;"><font face="SimSun" color="#000000">― 钱钟书，《围城》</font></p>
