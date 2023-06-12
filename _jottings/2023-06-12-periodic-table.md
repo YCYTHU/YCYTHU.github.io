@@ -480,7 +480,7 @@ permalink: /jottings/periodic-table.html
 				<div class="index">118</div>
 			</td>
 		</tr>
-		<tr style="height:24px";>
+		<tr style="height:24px;">
 			<td></td>
 		</tr>
 		<tr>
