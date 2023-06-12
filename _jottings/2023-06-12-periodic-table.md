@@ -34,7 +34,7 @@ permalink: /jottings/periodic-table.html
 	}
 </style>
 
-<table id="elements">
+<table id="elements" frame=void rules=none>
 	<tbody>
 		<tr>
 			<td>
