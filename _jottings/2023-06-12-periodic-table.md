@@ -6,7 +6,7 @@ permalink: /jottings/periodic-table.html
 <style>
 	@font-face {
 		font-family: Alchemy;
-		src: url("AuldmagickBold-ojeo.ttf")
+		src: url("/fonts/auldmagick-font/AuldmagickBold-ojeo.ttf")
 	}
 	.table-container {
 		overflow-x: scroll;
