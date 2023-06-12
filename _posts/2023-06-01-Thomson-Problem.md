@@ -48,25 +48,6 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 	tbody tr td {
 		text-align: center;
 	}
-	#text-board {
-		display: none;
-		font-family: Times New Roman, serif;
-		font-size: 12px;
-		position: absolute;
-		background-color: rgba(63, 63, 63, 0.8);
-		border: none;
-		padding: 10px;
-		z-index: 1;
-	}
-	#svg-board {
-		display: none;
-		position: absolute;
-		background-color: rgba(63, 63, 63, 0.8);
-		border: 1px solid black;
-		padding: 10px;
-		z-index: 1;
-	}
-	tr:hover {background-color: #EEEEEE;}
 </style>
 
 <table>
