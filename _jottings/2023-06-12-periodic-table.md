@@ -33,8 +33,8 @@ permalink: /jottings/periodic-table.html
 		font-size: 24px;
 	}
 </style>
-
-<table id="elements" frame=void rules=none>
+<div style="display:block;margin:0 auto;width:100%;">
+<table id="elements" style="border:none;">
 	<tbody>
 		<tr>
 			<td>
@@ -480,9 +480,7 @@ permalink: /jottings/periodic-table.html
 				<div class="index">118</div>
 			</td>
 		</tr>
-		<tr style="height:24px;">
-			<td></td>
-		</tr>
+		<tr style="height:24px;"></tr>
 		<tr>
 			<td></td><td></td><td></td>
 			<td>
@@ -603,3 +601,4 @@ permalink: /jottings/periodic-table.html
 		</tr>
 	</tbody>
 </table>
+</div>
