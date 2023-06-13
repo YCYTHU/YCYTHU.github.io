@@ -13,11 +13,12 @@ permalink: /jottings/periodic-table.html
 		width: 100%;
 		table-layout: fixed;
 	}
-	table {
+	#elements {
 		font-family: Alchemy,Courier New;
 		font-size: 36px;
 		width: 100%;
 		border: none;
+		padding: 0;
 	}
 	#elements td.group {
 		text-align: center;
