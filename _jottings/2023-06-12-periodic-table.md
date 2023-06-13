@@ -25,14 +25,14 @@ permalink: /jottings/periodic-table.html
 		border: none;
 		white-space: nowrap;
 		font-size: 24px;
-		padding: 0;
+		padding: 0 0.1em;
 	}
 	#elements td.element {
 		text-align: center;
 		position:relative;
 		border: none;
 		white-space: nowrap;
-		padding: 0;
+		padding: 0 0.1em;
 	}
 	#elements td.element div.index {
 		font-size: 20px;
@@ -42,7 +42,7 @@ permalink: /jottings/periodic-table.html
 	}
 	#elements td.blank {
 		border: none;
-		padding: 0;
+		padding: 0 0.1em;
 	}
 </style>
 
