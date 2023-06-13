@@ -17,11 +17,13 @@ permalink: /jottings/periodic-table.html
 		font-family: Alchemy,Courier New;
 		font-size: 36px;
 		width: 100%;
+		border: none;
 	}
 	thead tr th,
 	tbody tr td {
 		text-align: center;
 		position:relative;
+		border: none;
 	}
 	td div.index {
 		font-size: 20px;
@@ -34,7 +36,7 @@ permalink: /jottings/periodic-table.html
 	}
 </style>
 <div style="display:block;margin:0 auto;width:100%;">
-<table id="elements" style="border:none;">
+<table id="elements">
 	<tbody>
 		<tr>
 			<td>
