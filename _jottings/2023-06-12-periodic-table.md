@@ -18,7 +18,6 @@ permalink: /jottings/periodic-table.html
 		font-size: 36px;
 		width: 100%;
 		border: none;
-		padding: 0;
 	}
 	#elements td.group {
 		text-align: center;
@@ -26,12 +25,14 @@ permalink: /jottings/periodic-table.html
 		border: none;
 		white-space: nowrap;
 		font-size: 24px;
+		padding: 0;
 	}
 	#elements td.element {
 		text-align: center;
 		position:relative;
 		border: none;
 		white-space: nowrap;
+		padding: 0;
 	}
 	#elements td.element div.index {
 		font-size: 20px;
@@ -41,6 +42,7 @@ permalink: /jottings/periodic-table.html
 	}
 	#elements td.blank {
 		border: none;
+		padding: 0;
 	}
 </style>
 
