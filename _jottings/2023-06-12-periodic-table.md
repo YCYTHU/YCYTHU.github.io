@@ -19,20 +19,20 @@ permalink: /jottings/periodic-table.html
 		width: 100%;
 		border: none;
 	}
-	td.group {
+	#elements td.group {
 		text-align: center;
 		position:relative;
 		border: none;
 		white-space: nowrap;
 		font-size: 24px;
 	}
-	td.element {
+	#elements td.element {
 		text-align: center;
 		position:relative;
 		border: none;
 		white-space: nowrap;
 	}
-	td.element div.index {
+	#elements td.element div.index {
 		font-size: 20px;
 		position: absolute;
 		left: 0;
