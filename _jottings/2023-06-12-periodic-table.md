@@ -38,6 +38,9 @@ permalink: /jottings/periodic-table.html
 		left: 0;
 		top: 0;
 	}
+	#elements td.blank {
+		border: none;
+	}
 </style>
 
 <div style="display:block;margin:0 auto;width:100%;">
@@ -47,7 +50,7 @@ permalink: /jottings/periodic-table.html
 			<td class="group">
 				<div >i</div>
 			</td>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td>
 			<td class="group">
 				<div>xviii</div>
 			</td>
@@ -60,7 +63,7 @@ permalink: /jottings/periodic-table.html
 			<td class="group">
 				<div>ii</div>
 			</td>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td>
 			<td class="group">
 				<div>xiii</div>
 			</td>
@@ -90,7 +93,7 @@ permalink: /jottings/periodic-table.html
 				<div>Be</div>
 				<div class="index">4</div>
 			</td>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td>
 			<td class="element">
 				<div>B</div>
 				<div class="index">5</div>
@@ -125,7 +128,7 @@ permalink: /jottings/periodic-table.html
 				<div>Mg</div>
 				<div class="index">12</div>
 			</td>
-			<td></td>
+			<td class="blank"></td>
 			<td class="group">
 				<div>iii</div>
 			</td>
@@ -489,7 +492,7 @@ permalink: /jottings/periodic-table.html
 		</tr>
 		<tr style="height:24px;"></tr>
 		<tr>
-			<td class="element"></td><td></td><td></td>
+			<td class="element"></td><td class="blank"></td><td class="blank"></td>
 			<td class="element">
 				<div>La</div>
 				<div class="index">57</div>
@@ -548,7 +551,7 @@ permalink: /jottings/periodic-table.html
 			</td>
 		</tr>
 		<tr>
-			<td class="element"></td><td></td><td></td>
+			<td class="element"></td><td class="blank"></td><td class="blank"></td>
 			<td class="element">
 				<div>Ac</div>
 				<div class="index">89</div>
