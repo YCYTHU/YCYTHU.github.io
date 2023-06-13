@@ -19,11 +19,11 @@ permalink: /jottings/periodic-table.html
 		width: 100%;
 		border: none;
 	}
-	thead tr th,
-	tbody tr td {
+	td {
 		text-align: center;
 		position:relative;
 		border: none;
+		white-space: nowrap;
 	}
 	td div.index {
 		font-size: 20px;
