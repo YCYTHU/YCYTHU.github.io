@@ -5,7 +5,7 @@ permalink: /excerpts.html
 ---
 <!--more-->
 
-<a id="BackToTop" class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:10px;opacity:0.75;line-height:150%;text-align:center;"><i class="fas fa-angle-double-up"></i><font face="Times New Roman"> Back to Top<br>Go to </font><input id="TargetId" type="number" placeholder="No." style="width:75px"> <i id="Goto" class="fas fa-angle-double-right"></i></a>
+<a class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:10px;opacity:0.75;line-height:150%;text-align:center;"><i id="BackToTop" class="fas fa-angle-double-up"></i><i id="BackToTop" class="fas fa-up-to-line"></i><font face="Times New Roman"> Back to Top<br>Go to </font><input id="TargetId" type="number" placeholder="No." style="width:75px;height:25px;"> <i id="Goto" class="fas fa-angle-double-right"></i></a>
 
 <!--<a class="button button--secondary button--rounded" style="position:fixed;right:10px;bottom:60px;opacity:0.75;">Go to <input id="TargetId" type="number" placeholder="No." style="width:75px"> <i id="Goto" class="fas fa-angle-double-right"></i></a>-->
 
