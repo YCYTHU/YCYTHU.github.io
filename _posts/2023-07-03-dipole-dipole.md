@@ -4,18 +4,18 @@ tags: Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png/640px-Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png
 mathjax_autoNumber: true
 ---
-考虑两个具有永久偶极矩 $\mathbf{\mu_1},\mathbf{\mu_2}$ 的极性分子，两个偶极子将发生静电相互作用，这一的相互作用可以利用矢量形式写为：
+考虑两个具有永久偶极矩 $\boldsymbol{\mu}_1,\boldsymbol{\mu}_2$ 的极性分子，两个偶极子将发生静电相互作用，这一相互作用可以利用矢量形式写为：
 <!--more-->
 
 $$U_{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\boldsymbol{\mu}_1\boldsymbol{r})(\boldsymbol{\mu}_2\boldsymbol{r})}{r^5}$$
 
-设 $\theta_1,\theta_2$ 分别是两个偶极矩 $\boldsymbol{\mu}_1,\boldsymbol{\mu}_2$ 与连接两偶极的向量 $\mathbf{r}$ 的夹角, $\phi$ 是 $\boldsymbol{\mu}_1,\mathbf{r}$ 确定的的平面与 $\boldsymbol{\mu}_2,\mathbf{r}$ 确定的平面的二面角。则 $U_{dd}$ 可以写为 $(\theta_1,\theta_2,\phi)$ 的函数：
+设 $\theta_1,\theta_2$ 分别是两个偶极矩与连接两偶极的向量之间的夹角, $\phi$ 是两个偶极矩分别与连接两偶极的向量确定的两个平面之间的二面角。则 $U_{dd}$ 可以写为 $(\theta_1,\theta_2,\phi)$ 的函数：
 
 $$U_{dd}=\frac{\mu_1\mu_2}{r^3}(\sin\theta_1\sin\theta_2\cos\phi-2\cos\theta_1\cos\theta_2)$$
 
 如果两个偶极的取向并不固定，而是依照Boltzmann分布，则对所有的角度进行加权平均可得净的相互作用能，为偶极之间距离 $r$ 的函数。
 
-$$\langle U(r)\rangle=\langle U(r,\Theta_1,\Theta_2,\phi)e^{-\frac{U(r,\Theta_1,\Theta_2,\phi)}{kT}}\rangle$$
+$$\langle U(r)\rangle\equiv\langle U(r,\Theta_1,\Theta_2,\phi)e^{-\frac{U(r,\Theta_1,\Theta_2,\phi)}{kT}}\rangle$$
 
 其中
 
