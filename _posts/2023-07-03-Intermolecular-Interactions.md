@@ -22,7 +22,7 @@ $$E_{int}=E_{elstat}+E_{ind}+E_{disp}+E_{exrep}+E_{mix}$$
 
 一个电荷为 $Ze$ 的离子与偶极矩为 $\mu$ 的偶极之间的的相互作用可以写为：
 
-$$\color{red}{U_{id}=\frac{Z\boldsymbol{\mu r}}{r^3}=\frac{Z\mu\cos\theta}{r^2}}$$
+$$\color{NavyBlue}{U_{id}=\frac{Z\boldsymbol{\mu r}}{r^3}=\frac{Z\mu\cos\theta}{r^2}}$$
 
 其中 $\theta$ 为偶极矩与连接离子偶极的向量之间的夹角。若偶极的取向依Boltzmann分布，则相互作用能的热力学平均为：
 
@@ -30,7 +30,7 @@ $$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT
 
 其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式(3)得到：
 
-$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\theta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\end{align}$$
+$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\end{align}$$
 
 将 $\beta f(\theta)$ 展开为泰勒级数，当 $\beta f(\theta)\ll1$ 时：
 
@@ -38,17 +38,17 @@ $$\begin{align}\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta&\simeq\l
 
 因此
 
-$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\theta}\ln\left(2+\frac{\beta^2}{3}+\cdots\right)\\&=\frac{U_0(r)}{2+\frac{\beta^2}{3}+\cdots}\left(\frac{2\beta}{3}+\cdots\right)\\&=\frac{\beta}{3}U_0(r)+\cdots\end{align}$$
+$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(2+\frac{\beta^2}{3}+\cdots\right)\\&=\frac{U_0(r)}{2+\frac{\beta^2}{3}+\cdots}\left(\frac{2\beta}{3}+\cdots\right)\\&=\frac{\beta}{3}U_0(r)+\cdots\end{align}$$
 
 因此离子-偶极相互作用的热力学平均为：
 
-$$\langle U(r)\rangle=-\frac{Z^2\mu^2}{3kTr^4}$$
+$$\color{RedOrange}{\langle U(r)\rangle=-\frac{Z^2\mu^2}{3kTr^4}}$$
 
 ### 离子-诱导偶极相互作用
 
 由于诱导偶极的方向总与连接偶极到离子的向量方向相反，因此离子与诱导偶极的相互作用能为：
 
-$$U_{iid}=-\frac{Z\mu_{ind}}{r^2}$$
+$$\color{NavyBlue}{U_{iid}=-\frac{Z\mu_{ind}}{r^2}}$$
 
 诱导偶极的大小取决于极化率 $\alpha$ 与电场强度 $\vert\mathbf{E}\vert$：
 
@@ -56,15 +56,15 @@ $$\mu_{ind}=\alpha\vert\mathbf{E}\vert$$
 
 因此：
 
-$$U_{iid}=-\frac{Z^2\alpha}{r^4}$$
+$$\color{RedOrange}{U_{iid}=-\frac{Z^2\alpha}{r^4}}$$
 
-从式(7)与式(10)发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
+从式(9)与式(12)发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
 
 ### 偶极-偶极相互作用
 
 考虑两个具有永久偶极矩 $\boldsymbol{\mu}_1,\boldsymbol{\mu}_2$ 的极性分子，两个偶极子将发生静电相互作用，这一相互作用可以利用矢量形式写为：
 
-$$\color{red}{U_{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\boldsymbol{\mu}_1\boldsymbol{r})(\boldsymbol{\mu}_2\boldsymbol{r})}{r^5}}$$
+$$\color{NavyBlue}{U_{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\boldsymbol{\mu}_1\boldsymbol{r})(\boldsymbol{\mu}_2\boldsymbol{r})}{r^5}}$$
 
 设 $\theta_1,\theta_2$ 分别是两个偶极矩与连接两偶极的向量之间的夹角, $\phi$ 是两个偶极矩分别与连接两偶极的向量确定的两个平面之间的二面角。则 $U_{dd}$ 可以写为 $(\theta_1,\theta_2,\phi)$ 的函数：
 
@@ -100,7 +100,7 @@ $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln(
 
 由于相同的构型被考虑两次，因此将式(10)乘以 $\frac12$ 得到：
 
-$$\langle U(r)\rangle=-\frac{1}{3kT}\frac{\mu_1^2\mu_2^2}{r^6}$$
+$$\color{RedOrange}{\langle U(r)\rangle=-\frac{1}{3kT}\frac{\mu_1^2\mu_2^2}{r^6}}$$
 
 ### 偶极-诱导偶极相互作用
 
@@ -122,10 +122,11 @@ $$\mu_{ind}=\frac{\alpha\mu}{r^3}(3\cos^2\theta+1)^\frac12$$
 
 相互作用能 $U_{did}=\mu_{ind}\vert\mathbf{E}\vert$，因此偶极与诱导偶极之间的相互作用能可写作：
 
-$$\color{red}{U_{did}=-\frac{\mu^2\alpha}{r^6}(3\cos^2\theta+1)}$$
+$$\color{NavyBlue}{U_{did}=-\frac{\mu^2\alpha}{r^6}(3\cos^2\theta+1)}$$
 
 与前文的离子-诱导偶极相互作用相类似，诱导偶极的方向总与场强的方向平行，因此无需依Boltzmann分布进行热力学平均，只需对角度 $\theta$ 进行平均。由于 $\langle\cos^2\theta\rangle=\frac13$，因此：
 
-$$\langle U(r)\rangle=-\frac{2\mu^2\alpha}{r^6}$$
+$$\color{RedOrange}{\langle U(r)\rangle=-\frac{2\mu^2\alpha}{r^6}}$$
 
 ### 诱导偶极-诱导偶极相互作用
+
