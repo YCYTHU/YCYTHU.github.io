@@ -94,11 +94,11 @@ $$\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^{2\pi}\mathrm{d}\phi\int_0^\
 
 $$\begin{align}I&=\int_0^{2\pi}\mathrm{d}\phi\int_0^\pi\int_0^\pi e^{\beta f(\Omega)}\sin\Theta_1\sin\Theta_2\mathrm{d}\Theta_1\mathrm{d}\Theta_2\nonumber\\&\simeq\int_0^{2\pi}\mathrm{d}\phi\int_0^\pi\int_0^\pi\left[1+\beta f(\Omega)+\frac{\beta^2f^2(\Omega)}{2}+\cdots\right]\sin\Theta_1\sin\Theta_2\mathrm{d}\Theta_1\mathrm{d}\Theta_2\nonumber\\&=8\pi\left(1+\frac{\beta^2}{3}+\cdots\right)\end{align}$$
 
-将式(8)(9)带入到式(7)，得到：
+将式(20)(21)带入到式(19)，得到：
 
 $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln(I)\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\left[\ln(8\pi)+\ln\left(1+\frac{\beta^2}{3}+\cdots\right)\right]\nonumber\\&\simeq U_0(r)\times\frac{2\beta}{3}\times\left(1-\frac{\beta^2}{3}+\cdots\right)\nonumber\\&\approx\frac{2\beta}{3}U_0(r)\end{align}$$
 
-由于相同的构型被考虑两次，因此将式(10)乘以 $\frac12$ 得到：
+由于相同的构型被考虑两次，因此将式(22)乘以 $\frac12$ 得到：
 
 $$\color{red}{\langle U(r)\rangle=-\frac{1}{3kT}\frac{\mu_1^2\mu_2^2}{r^6}}$$
 
@@ -172,14 +172,72 @@ $$\vert q\vert E=m\omega_0^2r_2$$
 
 $$\mu_{ind}=\vert q\vert r_2=\alpha E$$
 
-联立式()()，得到：
+联立式(41)(42)，得到：
 
 $$\frac{q^2}{m\omega_0^2}=\alpha$$
 
-使用电离能 $I$ 替代 $\hbar\omega_0$，并把式()代入式()，得：
+使用电离能 $I$ 替代 $\hbar\omega_0$，并把式(43)代入式(40)，得：
 
 $$\Delta U(r)=-\frac{\alpha^2I}{32\pi^2\varepsilon_0^2r^6}$$
 
 前文的讨论基于一维量子谐振子，而实际上分子处于三维空间。而且若两个分子具有不同的极化率 $\alpha_1,\alpha_2$ 和电离能 $I_1,I_2$，则相互作用能（原子单位制）：
 
 $$\color{red}{U_{idid}(r)=-\frac{3\alpha_1\alpha_2}{2r^6}\left(\frac{I_1I_2}{I_1+I_2}\right)}$$
+
+### 范德华相互作用
+
+前文中的偶极-偶极相互作用（Keesom）、偶极-诱导偶极相互作用（Debye）与诱导偶极-诱导偶极相互作用（London）项具有相同的 $r^{-6}$ 距离依赖性，统称为范德华相互作用。
+
+$$\begin{align}U_{vdW}(r)&=U_{Keesom}(r)+U_{Debye}(r)+U_{London}(r)\nonumber\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\end{align}$$
+
+### 交换排斥
+
+## 第二维利系数
+
+目前我们分析了两个分子之间的净相互作用，更进一步地，我们可以为这种相互作用提供一种量度。对压强 $p$ 进行virial展开：
+
+$$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots$$
+
+其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(47)变为理想气体（例子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
+
+$$B_2(T)=-\frac{1}{2V}\int_Ve^{-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1}\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2$$
+
+对于球形粒子组成的各向同性系统，式(48)可以简化为：
+
+$$B_2(T)=-2\pi\int_0^\infty e^{-\frac{u(r)}{kT}-1}r^2\mathrm{d}r$$
+
+其中 $r=\vert\mathrm{r}_1-\mathrm{r}_2\vert$。第三维利系数与第四维利系数也与第二维利系数相关：
+
+$$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{2240\pi}+\frac{4131}{2240\pi}\arccos\frac{1}{\sqrt3}\right)B_2^3\end{align}$$
+
+维利方程也可以应用于溶质之间的相互作用，并且可以定义有效第二维利系数。例如，稀蛋白质溶液的有效第二维利系数可以根据光散射数据进行计算。
+
+## 电介质与介电屏蔽
+
+溶液中的静电效应可以从Debye–Hückel理论来理解。在介电常数为 $\varepsilon_r$ 的电介质中，应用Poisson方程将电势 $\phi$ 与电荷密度 $\rho$ 关联起来：
+
+$$\varepsilon_r\varepsilon_0\nabla^2\phi(x,y,z)=-\rho(x,y,z)$$
+
+如果假设体系是球对称的，那么在球坐标系下，式(52)改写为：
+
+$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho$$
+
+假定体系中离子依Boltzmann分布，那么电荷密度 $\rho$：
+
+$$\rho(r)=Zec_0\exp\left[-\frac{Ze\phi(r)}{kT}\right]$$
+
+将式(54)带入到式(53)中，得到Poisson-Boltzmann方程：
+
+$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\sum_iZ_iec_{i0}\exp\left[-\frac{Z_ie\phi(r)}{kT}\right]$$
+
+这样的偏微分方程很难求解，不过如果对指数进行级数展开，可以得到相对容易的版本：
+
+$$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\varepsilon_r\varepsilon_0kT}$$
+
+注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为德拜半径或德拜休克尔屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(56)解出 $\phi(r)$ 的表达式：
+
+$$\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}$$
+
+其中 $R$ 为离子半径。式(57)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减。从Debye–Hückel理论还可以获得活度系数的方程：
+
+$$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}$$
