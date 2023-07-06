@@ -70,6 +70,12 @@ $$\color{blue}{U_{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\
 
 $$U_{dd}=\frac{\mu_1\mu_2}{r^3}(\sin\theta_1\sin\theta_2\cos\phi-2\cos\theta_1\cos\theta_2)$$
 
+相互作用能 $U_{dd}$ 对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
+
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\dipole-dipole-orientation.png" width="600">
+</div>
+
 如果两个偶极的取向并不固定，而是依照Boltzmann分布，则对所有的角度进行加权平均可得净的相互作用能，为偶极之间距离 $r$ 的函数。
 
 $$\langle U(r)\rangle\equiv\langle U(r,\Theta_1,\Theta_2,\phi)e^{-\frac{U(r,\Theta_1,\Theta_2,\phi)}{kT}}\rangle$$
@@ -110,7 +116,7 @@ $$\mathbf{E}=\frac{3(\boldsymbol{\mu}\cdot\hat{\mathbf{r}})\hat{\mathbf{r}}-\bol
 
 在极坐标 $(r,\theta)$ 下 $\mathbf{E}$ 可表示为：
 
-$$\mathbf{E}(\mathbf{r},\theta)=\frac{\mu}{r^3}\left(2\cos\theta\hat{\mathbf{r}}+\sin\theta\hat{\theta}\right)$$
+$$\mathbf{E}(\mathbf{r},\theta)=\frac{\mu}{r^3}\left(2\cos\theta\hat{\mathbf{r}}+\sin\theta\hat{\boldsymbol{\theta}}\right)$$
 
 场强的大小：
 
@@ -198,15 +204,15 @@ $$\begin{align}U_{vdW}(r)&=U_{Keesom}(r)+U_{Debye}(r)+U_{London}(r)\nonumber\\&=
 
 $$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots$$
 
-其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(47)变为理想气体（例子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
+其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(47)变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
 
-$$B_2(T)=-\frac{1}{2V}\int_Ve^{-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1}\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2$$
+$$B_2(T)=-\frac{1}{2V}\int_V\exp\left[-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1\right]\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2$$
 
 对于球形粒子组成的各向同性系统，式(48)可以简化为：
 
-$$B_2(T)=-2\pi\int_0^\infty e^{-\frac{u(r)}{kT}-1}r^2\mathrm{d}r$$
+$$B_2(T)=-2\pi\int_0^\infty\exp\left[-\frac{u(r)}{kT}-1\right]r^2\mathrm{d}r$$
 
-其中 $r=\vert\mathrm{r}_1-\mathrm{r}_2\vert$。第三维利系数与第四维利系数也与第二维利系数相关：
+其中 $r=\vert\mathbf{r}_1-\mathbf{r}_2\vert$。第三维利系数与第四维利系数也与第二维利系数相关：
 
 $$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{2240\pi}+\frac{4131}{2240\pi}\arccos\frac{1}{\sqrt3}\right)B_2^3\end{align}$$
 
@@ -230,14 +236,24 @@ $$\rho(r)=Zec_0\exp\left[-\frac{Ze\phi(r)}{kT}\right]$$
 
 $$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\sum_iZ_iec_{i0}\exp\left[-\frac{Z_ie\phi(r)}{kT}\right]$$
 
-这样的偏微分方程很难求解，不过如果对指数进行级数展开，可以得到相对容易的版本：
+这样的偏微分方程很难求解，不过如果对指数进行级数展开，可以得到相对容易的近似版本：
 
 $$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\varepsilon_r\varepsilon_0kT}$$
 
-注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为德拜半径或德拜休克尔屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(56)解出 $\phi(r)$ 的表达式：
+注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为Debye半径或Debye–Hückel屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(56)解出 $\phi(r)$ 的表达式：
 
 $$\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}$$
 
-其中 $R$ 为离子半径。式(57)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减。从Debye–Hückel理论还可以获得活度系数的方程：
+其中 $R$ 为离子半径。式(57)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
+
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="600">
+</div>
+
+从Debye–Hückel理论还可以获得关于超额化学势（或活度系数 $\gamma$ ）的方程：
 
 $$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}$$
+
+## Potential of mean force
+
+# 宏观物体的相互作用
