@@ -10,12 +10,6 @@ mathjax_autoNumber: true
 
 # 分子间相互作用
 
-将分子间相互作用分为静电、诱导、色散、交换排斥以及混合项：
-
-$$E_{int}=E_{elstat}+E_{ind}+E_{disp}+E_{exrep}+E_{mix}$$
-
-下文将分别进行讨论。
-
 ## 角度相关的相互作用
 
 ### 离子-偶极相互作用
@@ -70,7 +64,7 @@ $$\color{blue}{U_{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\
 
 $$U_{dd}=\frac{\mu_1\mu_2}{r^3}(\sin\theta_1\sin\theta_2\cos\phi-2\cos\theta_1\cos\theta_2)$$
 
-相互作用能 $U_{dd}$ 对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
+相互作用能 $U_{dd}$ 的角度部分对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\dipole-dipole-orientation.png" width="600">
@@ -198,6 +192,8 @@ $$\begin{align}U_{vdW}(r)&=U_{Keesom}(r)+U_{Debye}(r)+U_{London}(r)\nonumber\\&=
 
 ### 交换排斥
 
+Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此靠近时轨道发生重叠，即电子在某种程度上处于同一轨道上。 这迫使轨道发生变化并导致原子之间的排斥。
+
 ## 第二维利系数
 
 目前我们分析了两个分子之间的净相互作用，更进一步地，我们可以为这种相互作用提供一种量度。对压强 $p$ 进行virial展开：
@@ -247,13 +243,55 @@ $$\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R
 其中 $R$ 为离子半径。式(57)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
 
 <div align=center>
-<img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="600">
+<img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="400">
 </div>
 
 从Debye–Hückel理论还可以获得关于超额化学势（或活度系数 $\gamma$ ）的方程：
 
 $$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}$$
 
-## Potential of mean force
+## 平均力势（PMF）
+
+平均力势描述了体系的自由能如何随分子间或分子内坐标而变化，即沿所选坐标的自由能面。对于具有 $N$ 个粒子的系统，作用于粒子 $i$ 的平均力指固定粒子 $1,\dots,n$ 的构型时粒子 $n+1,\dots,N$ 对粒子 $i$ 的力的加权平均。
+
+$$-\nabla_i\omega^{(n)}=\frac{\int e^{-\frac{V}{kT}}(-\nabla_iV)\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}}{\int e^{-\frac{V}{kT}}\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}},\ i=1,2,\dots,n$$
+
+式(59)中 $-\nabla_i\omega^{(n)}$ 是粒子 $i$ 上的平均力，$\omega^{(n)}$ 即为平均力势。对于 $n=2$ 的情形，$\omega^{(2)}(r)$ 表示将两个粒子从无限远拉到相距 $r$ 时的平均功，可从径向分布函数 $g(r)$ 得到：
+
+$$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]$$
 
 # 宏观物体的相互作用
+
+## 分子与无限大平面的相互作用
+
+将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。将分子与相距为 $r$ 的无限大平面的相互作用视作分子与一系列半径为 $z$ 的圆环的相互作用的和：
+
+$$W_{pw}(r)=-C\rho\int_r^\infty\mathrm{d}t\int_0^\infty\frac{2\pi z\mathrm{d}z}{(t^2+z^2)^\frac n2}$$
+
+其中 $\rho$ 为粒子数密度。$W_{pw}(r)$ 具有初等形式的解：
+
+$$W_{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}$$
+
+从式(62)发现，$W_{pw}(r)$ 正比于距离 $r$ 的 $(3-n)$ 次幂，说明分子与无限大平面的相互作用相较于分子间相互作用表现出更“长程”的特征。对于 $n=6$ 的情况，$W_{pw}(r)=-\frac{\pi C\rho}{6r^3}$ 表现出距离的立方反比特征。
+
+## 球体与无限大平面的相互作用
+
+在几何点与无限大平面相互作用的基础上，我们可以进一步考察半径为 $R$ 的球体与相距 $r$ 的无限大平面的相互作用。将球体与无限大平面的相互作用视作一系列平行于平面（距离为 $z$）的圆片与无限大平面的相互作用之和：
+
+$$W_{sw}(r)=-\frac{2\pi^2C\rho^2}{(n-2)(n-3)}\int_0^{2R}\frac{(2R-z)z\mathrm{d}z}{(r+z)^{n-3}}$$
+
+当 $r\ll R$ 时，式(63)化简为：
+
+$$W_{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}$$
+
+## 球体间的相互作用
+
+两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部分子的积分，略去过程，得到势能的形式为：
+
+$$W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]$$
+
+## 无限大平面间的相互作用
+
+使用类似的方法可以以面密度的形式给出无限大平面间的相互作用，以避免发散的结果。
+
+$$1$$
