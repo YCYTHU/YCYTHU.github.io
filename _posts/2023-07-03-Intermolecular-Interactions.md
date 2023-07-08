@@ -24,11 +24,11 @@ $$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT
 
 其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式(2)得到：
 
-$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\end{align}$$
+$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\tag{3a}\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\tag{3b}\end{align}$$
 
 将 $\beta f(\theta)$ 展开为泰勒级数，当 $\beta f(\theta)\ll1$ 时：
 
-$$\begin{align}\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta&\simeq\left[1+\beta f(\theta)+\frac{\beta^2f^2(\theta)}{2}+\cdots\right]\sin\theta\mathrm{d}\theta\nonumber\\&=2+0+\frac{\beta^2}{3}+\cdots\end{align}$$
+$$\begin{align}\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta&\simeq\int_0^\pi\left[1+\beta f(\theta)+\frac{\beta^2f^2(\theta)}{2}+\cdots\right]\sin\theta\mathrm{d}\theta\nonumber\\&=2+0+\frac{\beta^2}{3}+\cdots\end{align}$$
 
 因此
 
@@ -188,7 +188,7 @@ $$\color{red}{U_{idid}(r)=-\frac{3\alpha_1\alpha_2}{2r^6}\left(\frac{I_1I_2}{I_1
 
 前文中的偶极-偶极相互作用（Keesom）、偶极-诱导偶极相互作用（Debye）与诱导偶极-诱导偶极相互作用（London）项具有相同的 $r^{-6}$ 距离依赖性，统称为范德华相互作用。
 
-$$\begin{align}U_{vdW}(r)&=U_{Keesom}(r)+U_{Debye}(r)+U_{London}(r)\nonumber\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\end{align}$$
+$$\begin{align}U_{\mathrm{vdW}}(r)&=U_{\mathrm{Keesom}}(r)+U_{\mathrm{Debye}}(r)+U_{\mathrm{London}}(r)\nonumber\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\end{align}$$
 
 ### 交换排斥
 
@@ -238,7 +238,7 @@ $$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\vare
 
 注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为Debye半径或Debye–Hückel屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(55)解出 $\phi(r)$ 的表达式：
 
-$$\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}$$
+$$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}}$$
 
 其中 $R$ 为离子半径。式(56)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
 
@@ -270,7 +270,7 @@ $$W_{pw}(r)=-C\rho\int_r^\infty\mathrm{d}t\int_0^\infty\frac{2\pi z\mathrm{d}z}{
 
 其中 $\rho$ 为粒子数密度。$W_{pw}(r)$ 具有初等形式的解：
 
-$$W_{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}$$
+$$\color{red}{W_{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}}$$
 
 从式(61)发现，$W_{pw}(r)$ 正比于距离 $r$ 的 $(3-n)$ 次幂，说明分子与无限大平面的相互作用相较于分子间相互作用表现出更“长程”的特征。对于 $n=6$ 的情况，$W_{pw}(r)=-\frac{\pi C\rho}{6r^3}$ 表现出距离的立方反比特征。
 
@@ -282,17 +282,17 @@ $$W_{sw}(r)=-\frac{2\pi^2C\rho^2}{(n-2)(n-3)}\int_0^{2R}\frac{(2R-z)z\mathrm{d}z
 
 当 $r\ll R$ 时，式(62)化简为：
 
-$$W_{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}$$
+$$\color{red}{W_{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}}$$
 
 ## 球体间的相互作用
 
 对球体间相互作用的描述在胶体理论中发挥着重要作用。两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
 
-$$W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]$$
+$$\color{red}{W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]}$$
 
 对式(64)进行展开可以得到：
 
-$$\begin{align}&W(r)\sim-\frac{AR}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\nonumber\\&W(r)\sim-\frac{16AR^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow\infty\end{align}$$
+$$\begin{align}&W(r)\sim-\frac{16AR^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow+\infty\nonumber\\&W(r)\sim-\frac{AR}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\end{align}$$
 
 从式(65)可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图3所示）。
 
@@ -308,7 +308,7 @@ $$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)}\int_r^\infty\frac{\mathrm{d}z}{z^{n
 
 解得：
 
-$$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{n-4}}$$
+$$\color{red}{W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{n-4}}}$$
 
 对于 $n=6$ 的情形，式(67)化简为 $W_{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
 
