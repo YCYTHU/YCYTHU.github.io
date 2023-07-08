@@ -286,11 +286,19 @@ $$W_{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}$$
 
 ## 球体间的相互作用
 
-两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
+对球体间相互作用的描述在胶体理论中发挥着重要作用。两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
 
 $$W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]$$
 
-式(64)在胶体理论中发挥着重要作用。
+对式(64)进行展开可以得到：
+
+$$\begin{align}&W(r)\sim-\frac{AR}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\nonumber\\&W(r)\sim-\frac{16AR^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow\infty\end{align}$$
+
+从式(65)可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图3所示）。
+
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\sphere-sphere.png" width="400">
+</div>
 
 ## 无限大平面间的相互作用
 
@@ -302,13 +310,11 @@ $$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)}\int_r^\infty\frac{\mathrm{d}z}{z^{n
 
 $$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{n-4}}$$
 
-对于 $n=6$ 的情形，式(66)化简为 $W_{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
+对于 $n=6$ 的情形，式(67)化简为 $W_{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
 
 $$F=-A\cdot\frac{\mathrm{d}W_{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}$$
 
-粗略估计 $\frac{\pi C\rho^2}{6}\approx4\times10^{-20}\ \mathrm{J}$，则相互作用力与铅块表面距离（SI）的关系为：
-
-$$F=\frac{4\times10^{-24}}{r^3}$$
+粗略估计 $\frac{\pi C\rho^2}{6}\approx4\times10^{-20}\ \mathrm{J}$，则相互作用力与铅块表面距离（SI）的关系为 $F=\frac{4\times10^{-24}}{r^3}$
 
 $$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}$$
 
