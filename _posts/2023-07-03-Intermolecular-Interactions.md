@@ -20,11 +20,11 @@ $$\color{blue}{U_{\mathrm{id}}=\frac{Z\boldsymbol{\mu r}}{r^3}=\frac{Z\mu\cos\th
 
 其中 $\theta$ 为偶极矩与连接离子偶极的向量之间的夹角。若偶极的取向依Boltzmann分布，则相互作用能的热力学平均为：
 
-$$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}\tag{2}$$
+$$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}\tag{2}\label{mid}$$
 
-其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式(2)得到：
+其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式 $\eqref{mid}$ 得到：
 
-$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\tag{3a}\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\tag{3b}\end{align}$$
+$$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\end{align}\tag{3}$$
 
 将 $\beta f(\theta)$ 展开为泰勒级数，当 $\beta f(\theta)\ll1$ 时：
 
@@ -36,23 +36,23 @@ $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\
 
 因此离子-偶极相互作用的热力学平均为：
 
-$$\color{red}{\langle U(r)\rangle=-\frac{Z^2\mu^2}{3kTr^4}}\tag{6}\label{ii}$$
+$$\color{red}{\langle U(r)\rangle=-\frac{Z^2\mu^2}{3kTr^4}}\tag{6}\label{id}$$
 
 ### 离子-诱导偶极相互作用
 
 由于诱导偶极总与连接偶极到离子的向量平行，因此离子与诱导偶极的相互作用能为：
 
-$$\color{blue}{U_\mathrm{iid}=-\frac{Z\mu_{ind}}{r^2}}\tag{7}$$
+$$\color{blue}{U_\mathrm{iid}=-\frac{Z\mu_\mathrm{ind}}{r^2}}\tag{7}$$
 
 诱导偶极的大小取决于极化率 $\alpha$ 与电场强度 $\vert\mathbf{E}\vert$：
 
-$$\mu_{ind}=\alpha\vert\mathbf{E}\vert\tag{8}$$
+$$\mu_\mathrm{ind}=\alpha\vert\mathbf{E}\vert\tag{8}$$
 
 因此：
 
-$$\color{red}{U_\mathrm{iid}=-\frac{Z^2\alpha}{r^4}}\tag{9}\label{id}$$
+$$\color{red}{U_\mathrm{iid}=-\frac{Z^2\alpha}{r^4}}\tag{9}\label{iid}$$
 
-从式 $\eqref{ii}$ 与式 $\eqref{id}$ 发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
+从式 $\eqref{id}$ 与式 $\eqref{iid}$ 发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
 
 ### 偶极-偶极相互作用
 
@@ -134,61 +134,61 @@ $$\color{red}{\langle U(r)\rangle=-\frac{2\mu^2\alpha}{r^6}}\tag{25}$$
 
 考虑两个相距 $r$  的一维谐振子，势能 $V(r)=\frac12m\omega_0^2r_i^2$，可以写出两个谐振子的定态薛定谔方程：
 
-$$\begin{align}&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_1^2}\right)\Psi_1+\frac12m\omega_0r_1^2\Psi_1=E_1\Psi_1\\&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_2^2}\right)\Psi_2+\frac12m\omega_0r_2^2\Psi_2=E_2\Psi_2\end{align}$$
+$$\begin{align}&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_1^2}\right)\Psi_1+\frac12m\omega_0r_1^2\Psi_1=E_1\Psi_1\tag{26a}\\&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_2^2}\right)\Psi_2+\frac12m\omega_0r_2^2\Psi_2=E_2\Psi_2\tag{26b}\end{align}$$
 
 从式(29)(30)解得能量：
 
-$$\begin{align}&E_1=\left(n_1+\frac12\right)\hbar\omega_0\quad n_1=0,1,2,\dots\\&E_2=\left(n_2+\frac12\right)\hbar\omega_0\quad n_2=0,1,2,\dots\end{align}$$
+$$\begin{align}&E_1=\left(n_1+\frac12\right)\hbar\omega_0\quad n_1=0,1,2,\dots\tag{27a}\\&E_2=\left(n_2+\frac12\right)\hbar\omega_0\quad n_2=0,1,2,\dots\tag{27b}\end{align}$$
 
 如果每个谐振子还带有电荷，则它们之间的静电能：
 
-$$U_\mathrm{elstat}=\frac{1}{4\pi\varepsilon_0}\left(\frac{q^2}{r}-\frac{q^2}{r+r_2}-\frac{q^2}{r-r_1}+\frac{q^2}{r-r_1+r_2}\right)$$
+$$U_\mathrm{elstat}=\frac{1}{4\pi\varepsilon_0}\left(\frac{q^2}{r}-\frac{q^2}{r+r_2}-\frac{q^2}{r-r_1}+\frac{q^2}{r-r_1+r_2}\right)\tag{28}$$
 
 当 $r\gg r_1,r\gg r_2$ 时：
 
-$$U_\mathrm{elstat}\simeq-\frac{q^2r_1r_2}{2\pi\varepsilon_0r^3}$$
+$$U_\mathrm{elstat}\simeq-\frac{q^2r_1r_2}{2\pi\varepsilon_0r^3}\tag{29}$$
 
 系统总势能：
 
-$$U_\mathrm{tot}=\frac12m\omega_0^2r_1^2+\frac12m\omega_0^2r_2^2-\frac{q^2r_1r_2}{2\pi\varepsilon_0r^3}$$
+$$U_\mathrm{tot}=\frac12m\omega_0^2r_1^2+\frac12m\omega_0^2r_2^2-\frac{q^2r_1r_2}{2\pi\varepsilon_0r^3}\tag{30}$$
 
 为将总势能配方，令：
 
-$$\begin{align}&\omega_s=\sqrt{\frac{m\omega_0^2-\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}\\&\omega_a=\sqrt{\frac{m\omega_0^2+\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}\end{align}$$
+$$\begin{align}&\omega_s=\sqrt{\frac{m\omega_0^2-\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}\tag{31a}\\&\omega_a=\sqrt{\frac{m\omega_0^2+\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}\tag{31b}\end{align}$$
 
 则总能量可改写为：
 
-$$U_\mathrm{tot}=\frac12m\omega_s^2\frac{(r_1+r_2)^2}{2}+\frac12m\omega_a^2\frac{(r_1-r_2)^2}{2}$$
+$$U_\mathrm{tot}=\frac12m\omega_s^2\frac{(r_1+r_2)^2}{2}+\frac12m\omega_a^2\frac{(r_1-r_2)^2}{2}\tag{32}$$
 
 因此考虑静电式势能后的基态能量为 $\frac12(\hbar\omega_s+\hbar\omega_a)$，与不考虑静电势能时的基态能量之差：
 
-$$\begin{align}\Delta U(r)&=\frac12(\hbar\omega_s+\hbar\omega_a)-2\times\frac12\hbar\omega_0\nonumber\\&=\frac12\hbar\left(\sqrt{\frac{m\omega_0^2-\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}+\sqrt{\frac{m\omega_0^2+\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}-2\omega_0\right)\nonumber\\&\simeq-\frac{\hbar q^4}{32\pi^2\varepsilon_0^2m^2\omega_0^3r^6}\quad\left(\frac{q^2}{4\pi\varepsilon_0r^2}\ll\frac12m\omega_0r\right)\end{align}$$
+$$\begin{align}\Delta U(r)&=\frac12(\hbar\omega_s+\hbar\omega_a)-2\times\frac12\hbar\omega_0\tag{33a}\\&=\frac12\hbar\left(\sqrt{\frac{m\omega_0^2-\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}+\sqrt{\frac{m\omega_0^2+\frac{q^2}{2\pi\varepsilon_0r^3}}{m}}-2\omega_0\right)\tag{33b}\\&\simeq-\frac{\hbar q^4}{32\pi^2\varepsilon_0^2m^2\omega_0^3r^6}\quad\left(\frac{q^2}{4\pi\varepsilon_0r^2}\ll\frac12m\omega_0r\right)\tag{33c}\end{align}$$
 
 接下来将参数 $q,m\omega_0^2,\hbar\omega_0$ 替换为可测量。平衡状态下，振子2受到的电场力与内部“拉力”相等：
 
-$$\vert q\vert E=m\omega_0^2r_2$$
+$$\vert q\vert E=m\omega_0^2r_2\tag{34}\label{34}$$
 
 诱导偶极：
 
-$$\mu_\mathrm{ind}=\vert q\vert r_2=\alpha E$$
+$$\mu_\mathrm{ind}=\vert q\vert r_2=\alpha E\tag{35}\label{35}$$
 
-联立式(40)(41)，得到：
+联立式 $\eqref{34}\eqref{35}$，得到：
 
-$$\frac{q^2}{m\omega_0^2}=\alpha$$
+$$\frac{q^2}{m\omega_0^2}=\alpha\tag{36}$$
 
 使用电离能 $I$ 替代 $\hbar\omega_0$，并把式(42)代入式(39)，得：
 
-$$\Delta U(r)=-\frac{\alpha^2I}{32\pi^2\varepsilon_0^2r^6}$$
+$$\Delta U(r)=-\frac{\alpha^2I}{32\pi^2\varepsilon_0^2r^6}\tag{37}$$
 
 前文的讨论基于一维量子谐振子，而实际上分子处于三维空间。而且若两个分子具有不同的极化率 $\alpha_1,\alpha_2$ 和电离能 $I_1,I_2$，则相互作用能（原子单位制）：
 
-$$\color{red}{U_\mathrm{idid}(r)=-\frac{3\alpha_1\alpha_2}{2r^6}\left(\frac{I_1I_2}{I_1+I_2}\right)}$$
+$$\color{red}{U_\mathrm{idid}(r)=-\frac{3\alpha_1\alpha_2}{2r^6}\left(\frac{I_1I_2}{I_1+I_2}\right)}\tag{38}$$
 
 ### 范德华相互作用
 
 前文中的偶极-偶极相互作用（Keesom）、偶极-诱导偶极相互作用（Debye）与诱导偶极-诱导偶极相互作用（London）项具有相同的 $r^{-6}$ 距离依赖性，统称为范德华相互作用。
 
-$$\begin{align}U_{\mathrm{vdW}}(r)&=U_{\mathrm{Keesom}}(r)+U_{\mathrm{Debye}}(r)+U_{\mathrm{London}}(r)\nonumber\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\end{align}$$
+$$\begin{align}U_{\mathrm{vdW}}(r)&=U_{\mathrm{Keesom}}(r)+U_{\mathrm{Debye}}(r)+U_{\mathrm{London}}(r)\tag{39a}\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\tag{39b}\end{align}$$
 
 ### 交换排斥
 
@@ -198,19 +198,19 @@ Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此
 
 目前我们分析了两个分子之间的净相互作用，更进一步地，我们可以为这种相互作用提供一种量度。对压强 $p$ 进行virial展开：
 
-$$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots$$
+$$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots\tag{40}$$
 
 其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(46)变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
 
-$$B_2(T)=-\frac{1}{2V}\int_V\exp\left[-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1\right]\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2$$
+$$B_2(T)=-\frac{1}{2V}\int_V\exp\left[-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1\right]\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2\tag{41}$$
 
 对于球形粒子组成的各向同性系统，式(47)可以简化为：
 
-$$B_2(T)=-2\pi\int_0^\infty\exp\left[-\frac{u(r)}{kT}-1\right]r^2\mathrm{d}r$$
+$$B_2(T)=-2\pi\int_0^\infty\exp\left[-\frac{u(r)}{kT}-1\right]r^2\mathrm{d}r\tag{42}$$
 
 其中 $r=\vert\mathbf{r}_1-\mathbf{r}_2\vert$。第三维利系数与第四维利系数也与第二维利系数相关：
 
-$$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{2240\pi}+\frac{4131}{2240\pi}\arccos\frac{1}{\sqrt3}\right)B_2^3\end{align}$$
+$$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{2240\pi}+\frac{4131}{2240\pi}\arccos\frac{1}{\sqrt3}\right)B_2^3\end{align}\tag{43}$$
 
 维利方程也可以应用于溶质之间的相互作用，并且可以定义有效第二维利系数。例如，稀蛋白质溶液的有效第二维利系数可以根据光散射数据进行计算。
 
@@ -218,27 +218,27 @@ $$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{22
 
 溶液中的静电效应可以从Debye–Hückel理论来理解。在介电常数为 $\varepsilon_r$ 的电介质中，应用Poisson方程将电势 $\phi$ 与电荷密度 $\rho$ 关联起来：
 
-$$\varepsilon_r\varepsilon_0\nabla^2\phi(x,y,z)=-\rho(x,y,z)$$
+$$\varepsilon_r\varepsilon_0\nabla^2\phi(x,y,z)=-\rho(x,y,z)\tag{44}$$
 
 如果假设体系是球对称的，那么在球坐标系下，式(51)改写为：
 
-$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho$$
+$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho\tag{45}$$
 
 假定体系中离子依Boltzmann分布，那么电荷密度 $\rho$：
 
-$$\rho(r)=Zec_0\exp\left[-\frac{Ze\phi(r)}{kT}\right]$$
+$$\rho(r)=Zec_0\exp\left[-\frac{Ze\phi(r)}{kT}\right]\tag{46}$$
 
 将式(53)带入到式(52)中，得到Poisson-Boltzmann方程：
 
-$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\sum_iZ_iec_{i0}\exp\left[-\frac{Z_ie\phi(r)}{kT}\right]$$
+$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\sum_iZ_iec_{i0}\exp\left[-\frac{Z_ie\phi(r)}{kT}\right]\tag{47}$$
 
 这样的偏微分方程很难求解，不过如果对指数进行级数展开，可以得到相对容易的近似版本：
 
-$$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\varepsilon_r\varepsilon_0kT}$$
+$$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\varepsilon_r\varepsilon_0kT}\tag{48}$$
 
 注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为Debye半径或Debye–Hückel屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(55)解出 $\phi(r)$ 的表达式：
 
-$$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}}$$
+$$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}}\tag{49}$$
 
 其中 $R$ 为离子半径。式(56)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
 
@@ -248,7 +248,7 @@ $$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac
 
 从Debye–Hückel理论还可以获得关于超额化学势（或活度系数 $\gamma$ ）的方程：
 
-$$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}$$
+$$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}\tag{50}$$
 
 ## 平均力势（PMF）
 
