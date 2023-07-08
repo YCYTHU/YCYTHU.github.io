@@ -22,7 +22,7 @@ $$\color{blue}{U_{id}=\frac{Z\boldsymbol{\mu r}}{r^3}=\frac{Z\mu\cos\theta}{r^2}
 
 $$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}$$
 
-其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式(3)得到：
+其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式(2)得到：
 
 $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\end{align}$$
 
@@ -52,7 +52,7 @@ $$\mu_{ind}=\alpha\vert\mathbf{E}\vert$$
 
 $$\color{red}{U_{iid}=-\frac{Z^2\alpha}{r^4}}$$
 
-从式(9)与式(12)发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
+从式(8)与式(11)发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
 
 ### 偶极-偶极相互作用
 
@@ -94,11 +94,11 @@ $$\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^{2\pi}\mathrm{d}\phi\int_0^\
 
 $$\begin{align}I&=\int_0^{2\pi}\mathrm{d}\phi\int_0^\pi\int_0^\pi e^{\beta f(\Omega)}\sin\Theta_1\sin\Theta_2\mathrm{d}\Theta_1\mathrm{d}\Theta_2\nonumber\\&\simeq\int_0^{2\pi}\mathrm{d}\phi\int_0^\pi\int_0^\pi\left[1+\beta f(\Omega)+\frac{\beta^2f^2(\Omega)}{2}+\cdots\right]\sin\Theta_1\sin\Theta_2\mathrm{d}\Theta_1\mathrm{d}\Theta_2\nonumber\\&=8\pi\left(1+\frac{\beta^2}{3}+\cdots\right)\end{align}$$
 
-将式(20)(21)带入到式(19)，得到：
+将式(19)(20)带入到式(18)，得到：
 
 $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln(I)\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\left[\ln(8\pi)+\ln\left(1+\frac{\beta^2}{3}+\cdots\right)\right]\nonumber\\&\simeq U_0(r)\times\frac{2\beta}{3}\times\left(1-\frac{\beta^2}{3}+\cdots\right)\nonumber\\&\approx\frac{2\beta}{3}U_0(r)\end{align}$$
 
-由于相同的构型被考虑两次，因此将式(22)乘以 $\frac12$ 得到：
+由于相同的构型被考虑两次，因此将式(21)乘以 $\frac12$ 得到：
 
 $$\color{red}{\langle U(r)\rangle=-\frac{1}{3kT}\frac{\mu_1^2\mu_2^2}{r^6}}$$
 
@@ -136,7 +136,7 @@ $$\color{red}{\langle U(r)\rangle=-\frac{2\mu^2\alpha}{r^6}}$$
 
 $$\begin{align}&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_1^2}\right)\Psi_1+\frac12m\omega_0r_1^2\Psi_1=E_1\Psi_1\\&\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial r_2^2}\right)\Psi_2+\frac12m\omega_0r_2^2\Psi_2=E_2\Psi_2\end{align}$$
 
-从式(30)(31)解得能量：
+从式(29)(30)解得能量：
 
 $$\begin{align}&E_1=\left(n_1+\frac12\right)\hbar\omega_0\quad n_1=0,1,2,\dots\\&E_2=\left(n_2+\frac12\right)\hbar\omega_0\quad n_2=0,1,2,\dots\end{align}$$
 
@@ -172,11 +172,11 @@ $$\vert q\vert E=m\omega_0^2r_2$$
 
 $$\mu_{ind}=\vert q\vert r_2=\alpha E$$
 
-联立式(41)(42)，得到：
+联立式(40)(41)，得到：
 
 $$\frac{q^2}{m\omega_0^2}=\alpha$$
 
-使用电离能 $I$ 替代 $\hbar\omega_0$，并把式(43)代入式(40)，得：
+使用电离能 $I$ 替代 $\hbar\omega_0$，并把式(42)代入式(39)，得：
 
 $$\Delta U(r)=-\frac{\alpha^2I}{32\pi^2\varepsilon_0^2r^6}$$
 
@@ -200,11 +200,11 @@ Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此
 
 $$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots$$
 
-其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(47)变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
+其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式(46)变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
 
 $$B_2(T)=-\frac{1}{2V}\int_V\exp\left[-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1\right]\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2$$
 
-对于球形粒子组成的各向同性系统，式(48)可以简化为：
+对于球形粒子组成的各向同性系统，式(47)可以简化为：
 
 $$B_2(T)=-2\pi\int_0^\infty\exp\left[-\frac{u(r)}{kT}-1\right]r^2\mathrm{d}r$$
 
@@ -220,7 +220,7 @@ $$\begin{align}&B_3=\frac58B_2^2\\&B_4=\left(-\frac{89}{280}+\frac{219\sqrt2}{22
 
 $$\varepsilon_r\varepsilon_0\nabla^2\phi(x,y,z)=-\rho(x,y,z)$$
 
-如果假设体系是球对称的，那么在球坐标系下，式(52)改写为：
+如果假设体系是球对称的，那么在球坐标系下，式(51)改写为：
 
 $$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho$$
 
@@ -228,7 +228,7 @@ $$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\fra
 
 $$\rho(r)=Zec_0\exp\left[-\frac{Ze\phi(r)}{kT}\right]$$
 
-将式(54)带入到式(53)中，得到Poisson-Boltzmann方程：
+将式(53)带入到式(52)中，得到Poisson-Boltzmann方程：
 
 $$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\sum_iZ_iec_{i0}\exp\left[-\frac{Z_ie\phi(r)}{kT}\right]$$
 
@@ -236,11 +236,11 @@ $$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\fra
 
 $$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\varepsilon_r\varepsilon_0kT}$$
 
-注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为Debye半径或Debye–Hückel屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(56)解出 $\phi(r)$ 的表达式：
+注意到 $\kappa^{-1}$ 具有长度量纲，将 $\lambda_\mathrm{D}=\kappa^{-1}$ 称为Debye半径或Debye–Hückel屏蔽长度，是溶液中电荷的净静电效应及其能持续多远的一种度量。从式(55)解出 $\phi(r)$ 的表达式：
 
 $$\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}$$
 
-其中 $R$ 为离子半径。式(57)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
+其中 $R$ 为离子半径。式(56)说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="400">
@@ -256,7 +256,7 @@ $$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}
 
 $$-\nabla_i\omega^{(n)}=\frac{\int e^{-\frac{V}{kT}}(-\nabla_iV)\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}}{\int e^{-\frac{V}{kT}}\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}},\ i=1,2,\dots,n$$
 
-式(59)中 $-\nabla_i\omega^{(n)}$ 是粒子 $i$ 上的平均力，$\omega^{(n)}$ 即为平均力势。对于 $n=2$ 的情形，$\omega^{(2)}(r)$ 表示将两个粒子从无限远拉到相距 $r$ 时的平均功，可从径向分布函数 $g(r)$ 得到：
+式(58)中 $-\nabla_i\omega^{(n)}$ 是粒子 $i$ 上的平均力，$\omega^{(n)}$ 即为平均力势。对于 $n=2$ 的情形，$\omega^{(2)}(r)$ 表示将两个粒子从无限远拉到相距 $r$ 时的平均功，可从径向分布函数 $g(r)$ 得到：
 
 $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]$$
 
@@ -272,7 +272,7 @@ $$W_{pw}(r)=-C\rho\int_r^\infty\mathrm{d}t\int_0^\infty\frac{2\pi z\mathrm{d}z}{
 
 $$W_{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}$$
 
-从式(62)发现，$W_{pw}(r)$ 正比于距离 $r$ 的 $(3-n)$ 次幂，说明分子与无限大平面的相互作用相较于分子间相互作用表现出更“长程”的特征。对于 $n=6$ 的情况，$W_{pw}(r)=-\frac{\pi C\rho}{6r^3}$ 表现出距离的立方反比特征。
+从式(61)发现，$W_{pw}(r)$ 正比于距离 $r$ 的 $(3-n)$ 次幂，说明分子与无限大平面的相互作用相较于分子间相互作用表现出更“长程”的特征。对于 $n=6$ 的情况，$W_{pw}(r)=-\frac{\pi C\rho}{6r^3}$ 表现出距离的立方反比特征。
 
 ## 球体与无限大平面的相互作用
 
@@ -280,18 +280,35 @@ $$W_{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}$$
 
 $$W_{sw}(r)=-\frac{2\pi^2C\rho^2}{(n-2)(n-3)}\int_0^{2R}\frac{(2R-z)z\mathrm{d}z}{(r+z)^{n-3}}$$
 
-当 $r\ll R$ 时，式(63)化简为：
+当 $r\ll R$ 时，式(62)化简为：
 
 $$W_{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}$$
 
 ## 球体间的相互作用
 
-两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部分子的积分，略去过程，得到势能的形式为：
+两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
 
 $$W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]$$
+
+式(64)在胶体理论中发挥着重要作用。
 
 ## 无限大平面间的相互作用
 
 使用类似的方法可以以面密度的形式给出无限大平面间的相互作用，以避免发散的结果。
 
-$$1$$
+$$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)}\int_r^\infty\frac{\mathrm{d}z}{z^{n-3}}$$
+
+解得：
+
+$$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{n-4}}$$
+
+对于 $n=6$ 的情形，式(66)化简为 $W_{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
+
+$$F=-A\cdot\frac{\mathrm{d}W_{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}$$
+
+粗略估计 $\frac{\pi C\rho^2}{6}\approx4\times10^{-20}\ \mathrm{J}$，则相互作用力与铅块表面距离（SI）的关系为：
+
+$$F=\frac{4\times10^{-24}}{r^3}$$
+
+$$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}$$
+
