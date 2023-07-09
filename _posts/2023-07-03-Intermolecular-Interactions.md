@@ -3,6 +3,9 @@ title: 分子间相互作用
 tags: Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png/640px-Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png
 mathjax_autoNumber: true
+aside:
+  toc: true
+modify_date: 2023-07-09
 ---
 
 本文从经典的角度考察分子之间的相互作用。 在必要时使用量子力学理解分子间相互作用。
@@ -318,3 +321,34 @@ $$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6
 
 $$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}\tag{62}$$
 
+# 带电介观物体
+
+## 均匀带电的无限大平面
+
+考察两个相互平行的、相距为 $2h$ 的无限大的均匀带电平面。体系的Poisson-Boltzmann方程：
+
+$$\varepsilon_r\varepsilon_0\nabla^2\phi(\mathbf{r})=-\sum_iZ_iec_i\exp\left[-\frac{Z_ie\phi(\mathbf{r})}{kT}\right]\tag{63}\label{pbe2}$$
+
+将式 $\eqref{pbe2}$ 在柱坐标（选平面法向 $\hat{x}$ 为高度方向）下表示：
+
+$$\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=-\frac{Zec}{\varepsilon_r\varepsilon_0}\exp\left[-\frac{Ze\phi(\mathbf{r})}{kT}\right]\tag{64}$$
+
+解得：
+
+$$\phi(x)=-\frac{2kT}{Ze}\ln\left[\cos\left(\frac{sx}{h}\right)\right]\tag{65}\label{pbphi}$$
+
+其中 $s$ 是式 $\eqref{tres}$ 的解：
+
+$$s\tan s=\frac{\vert\sigma\vert Zeh}{2kT\varepsilon_r\varepsilon_0}\tag{66}\label{tres}$$
+
+将 $\phi(x)$ 的解析式 $\eqref{pbphi}$ 代入Poisson方程，得到垂直平面方向的电荷密度：
+
+$$\rho(x)=-\varepsilon_r\varepsilon_0\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\frac{1}{\cos^2(sx/h)}\tag{67}\label{pbrho}$$
+
+由式 $\eqref{pbrho}$ 得到在平面上和两平面连线中点上的电荷密度：
+
+$$\begin{align}&\rho(0)=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\tag{68a}\\&\rho(h)=\frac{\sigma^2Ze}{2kT\varepsilon_r\varepsilon_0\sin^2(s)}\tag{68b}\end{align}$$
+
+当 $h\rightarrow+\infty$ 时，平面上和两平面连线中点上的电荷密度：
+
+$$\begin{align}&\rho(0)=\frac{kT\pi^2\varepsilon_r\varepsilon_0}{2Zeh^2}&h\rightarrow+\infty\tag{69a}\\&\rho(h)=\frac{\sigma^2Ze}{2kT\varepsilon_r\varepsilon_0}&h\rightarrow+\infty\tag{69b}\end{align}$$
