@@ -267,9 +267,9 @@ $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]\tag{52}$$
 
 ## 分子与无限大平面的相互作用
 
-将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。将分子与相距为 $r$ 的无限大平面的相互作用视作分子与一系列半径为 $z$ 的圆环的相互作用的和：
+将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。将分子与相距为 $r$ 的无限大平面的相互作用视作分子与一系列半径为 $x$ 的圆环的相互作用的和：
 
-$$W_\mathrm{pw}(r)=-C\rho\int_r^\infty\mathrm{d}t\int_0^\infty\frac{2\pi z\mathrm{d}z}{(t^2+z^2)^\frac n2}\tag{53}$$
+$$W_\mathrm{pw}(r)=-C\rho\int_r^\infty\mathrm{d}z\int_0^\infty\frac{2\pi x\mathrm{d}x}{(z^2+x^2)^\frac n2}\tag{53}$$
 
 其中 $\rho$ 为粒子数密度。$W_{pw}(r)$ 具有初等形式的解：
 
@@ -315,7 +315,7 @@ $$\color{red}{W_\mathrm{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{
 
 对于 $n=6$ 的情形，式 $\eqref{www}$ 化简为 $W_\mathrm{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
 
-$$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}\tag{61}$$
+$$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}\tag{61}\label{wwp}$$
 
 粗略估计 $\frac{\pi C\rho^2}{6}\approx4\times10^{-20}\ \mathrm{J}$，则相互作用力与铅块表面距离（SI）的关系为 $F=\frac{4\times10^{-24}}{r^3}$
 
@@ -323,13 +323,13 @@ $$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10
 
 # 带电介观物体
 
-## 均匀带电的无限大平面
+## 两个均匀带电的无限大平面
 
-考察两个相互平行的、相距为 $2h$ 的无限大的均匀带电平面。体系的Poisson-Boltzmann方程：
+考察两个相互平行的、相距为 $2h$ 的无限大的均匀带电平面，电荷面密度为 $\sigma$，平面之间填充单一抗衡离子。体系的Poisson-Boltzmann方程：
 
 $$\varepsilon_r\varepsilon_0\nabla^2\phi(\mathbf{r})=-\sum_iZ_iec_i\exp\left[-\frac{Z_ie\phi(\mathbf{r})}{kT}\right]\tag{63}\label{pbe2}$$
 
-将式 $\eqref{pbe2}$ 在柱坐标（选平面法向 $\hat{x}$ 为高度方向）下表示：
+由于体系具有柱对称性，将式 $\eqref{pbe2}$ 在柱坐标（选平面法向 $\hat{x}$ 为高度方向）下表示：
 
 $$\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=-\frac{Zec}{\varepsilon_r\varepsilon_0}\exp\left[-\frac{Ze\phi(\mathbf{r})}{kT}\right]\tag{64}$$
 
@@ -341,14 +341,44 @@ $$\phi(x)=-\frac{2kT}{Ze}\ln\left[\cos\left(\frac{sx}{h}\right)\right]\tag{65}\l
 
 $$s\tan s=\frac{\vert\sigma\vert Zeh}{2kT\varepsilon_r\varepsilon_0}\tag{66}\label{tres}$$
 
-将 $\phi(x)$ 的解析式 $\eqref{pbphi}$ 代入Poisson方程，得到垂直平面方向的电荷密度：
+将 $\phi(x)$ 的解析式 $\eqref{pbphi}$ 代入Poisson方程，得到垂直平面方向的电荷密度。如图4所示。
 
 $$\rho(x)=-\varepsilon_r\varepsilon_0\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\frac{1}{\cos^2(sx/h)}\tag{67}\label{pbrho}$$
 
-由式 $\eqref{pbrho}$ 得到在平面上和两平面连线中点上的电荷密度：
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\charged-layer.png" width="400">
+</div>
+
+由式 $\eqref{pbrho}$ 得到两平面连线中点上和在平面上的电荷密度：
 
 $$\begin{align}&\rho(0)=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\tag{68a}\\&\rho(h)=\frac{\sigma^2Ze}{2kT\varepsilon_r\varepsilon_0\sin^2(s)}\tag{68b}\end{align}$$
 
-当 $h\rightarrow+\infty$ 时，平面上和两平面连线中点上的电荷密度：
+当 $h\rightarrow+\infty$ 时，两平面连线中点上和在平面上的电荷密度：
 
 $$\begin{align}&\rho(0)=\frac{kT\pi^2\varepsilon_r\varepsilon_0}{2Zeh^2}&h\rightarrow+\infty\tag{69a}\\&\rho(h)=\frac{\sigma^2Ze}{2kT\varepsilon_r\varepsilon_0}&h\rightarrow+\infty\tag{69b}\end{align}$$
+
+平面之间的抗衡离子对平面存在渗透压，通过平均场近似得到：
+
+$$p=\frac{2(kTs)^2\varepsilon_r\varepsilon_0}{Z^2e^2h^2}\tag{70}$$
+
+## Gouy-Chapman 理论
+
+如果前文的两个平面处于电解质溶液中，则结果将会变得十分复杂。不妨先考虑处于无限大的水溶液中的一个带电平面，溶液中的电解质为1:1型。则式 $\eqref{pbe2}$ 要改写为：
+
+$$\varepsilon_r\varepsilon_0\nabla^2\phi(\mathbf{r})=en_0\left[\exp\left(-\frac{e\phi}{kT}\right)-\exp\left(\frac{e\phi}{kT}\right)\right]\tag{71}\label{pbe3}$$
+
+其中 $n_0$ 为电解质浓度。式 $\eqref{pbe3}$ 的解为：
+
+$$\phi(x)=\frac{2kT}{e}\ln\frac{1+\gamma\exp(-\kappa x)}{1-\gamma\exp(-\kappa x)}\quad\gamma=\frac{\exp\left(\frac{e\phi_0}{2kT}\right)-1}{\exp\left(\frac{e\phi_0}{2kT}\right)+1}$$
+
+其中 $\phi_0$ 表示平面上的电势，$\kappa^{-1}$ 是Debye–Hückel屏蔽长度（见式 $\eqref{pbe}$）。当 $\phi_0$ 很小时：
+
+$$\phi(x)\simeq\phi_0\exp(-\kappa x)\approx\frac{\sigma}{\varepsilon_r\varepsilon_0\kappa}\exp(-\kappa x)$$
+
+进一步的，考虑两个带电平面的情况，假设这两个平面相距足够远（弱重叠近似），则两平面间的离子的压强：
+
+$$p=64kTn_0\gamma^2\exp(-2\kappa h)$$
+
+## DLVO理论
+
+对于，从式 $\eqref{wwp}$ 知，
