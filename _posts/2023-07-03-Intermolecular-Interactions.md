@@ -5,10 +5,10 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Schematic_of_th
 mathjax_autoNumber: true
 aside:
   toc: true
-modify_date: 2023-07-09
+modify_date: 2023-07-10
 ---
 
-本文从经典的角度考察分子之间的相互作用。 在必要时使用量子力学理解分子间相互作用。
+为什么范德华作用随距离 $r^{-6}$ 衰减，为什么压紧的铅块会粘在一起，胶体为什么能够稳定存在？本文从经典的角度讨论分子之间的相互作用。
 <!--more-->
 
 # 分子间相互作用
@@ -225,7 +225,7 @@ $$\varepsilon_r\varepsilon_0\nabla^2\phi(x,y,z)=-\rho(x,y,z)\tag{44}\label{pos}$
 
 如果假设体系是球对称的，那么在球坐标系下，式 $\eqref{pos}$ 改写为：
 
-$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho\tag{45}\label{rpos}$$
+$$\frac{\varepsilon_r\varepsilon_0}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial\phi}{\partial r}\right)=-\rho(r)\tag{45}\label{rpos}$$
 
 假定体系中离子依Boltzmann分布，那么电荷密度 $\rho$：
 
@@ -263,11 +263,13 @@ $$-\nabla_i\omega^{(n)}=\frac{\int e^{-\frac{V}{kT}}(-\nabla_iV)\mathrm{d}q_{n+1
 
 $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]\tag{52}$$
 
-# 宏观物体的相互作用
+# 宏观体的相互作用
+
+第一部分讨论了两个小分子之间的相互作用，对于蛋白质，固体表面这类可视作由许多小分子组成的宏观体，它们之间的相互作用可从势能的加和性出发进行讨论。
 
 ## 分子与无限大平面的相互作用
 
-将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。将分子与相距为 $r$ 的无限大平面的相互作用视作分子与一系列半径为 $x$ 的圆环的相互作用的和：
+将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。考虑一个由许多分子构成的无限大平面和距离平面 $r$ 的一个分子。将它们之间的相互作用视作分子与一系列半径为 $x$ 的圆环的相互作用的和：
 
 $$W_\mathrm{pw}(r)=-C\rho\int_r^\infty\mathrm{d}z\int_0^\infty\frac{2\pi x\mathrm{d}x}{(z^2+x^2)^\frac n2}\tag{53}$$
 
@@ -291,11 +293,11 @@ $$\color{red}{W_\mathrm{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac
 
 对球体间相互作用的描述在胶体理论中发挥着重要作用。两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
 
-$$\color{red}{W(r)=-\frac A6\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]}\tag{57}\label{wss}$$
+$$\color{red}{W(r)=-\frac{\pi^2C\rho^2}{6}\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2}{r^2}+\ln\left(\frac{r^2-4R^2}{r^2}\right)\right]}\tag{57}\label{wss}$$
 
 对式 $\eqref{wss}$ 进行展开可以得到：
 
-$$\begin{align}&W(r)\sim-\frac{16AR^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow+\infty\nonumber\tag{58a}\label{wssinf}\\&W(r)\sim-\frac{AR}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\tag{58b}\label{wss2r}\end{align}$$
+$$\begin{align}&W(r)\sim-\frac{16\pi^2C\rho^2R^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow+\infty\nonumber\tag{58a}\label{wssinf}\\&W(r)\sim-\frac{\pi^2C\rho^2R}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\tag{58b}\label{wss2r}\end{align}$$
 
 从式 $\eqref{wssinf}\eqref{wss2r}$ 可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图3所示）。
 
@@ -322,6 +324,8 @@ $$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6
 $$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}\tag{62}$$
 
 # 带电介观物体
+
+第二部分讨论了中性宏观体间的范德华作用形式，对于带电荷的微粒（如胶体粒子），还要额外考虑溶液中的静电作用。有了第二部分的基础，我们从溶液中的两个平面开始。
 
 ## 两个均匀带电的无限大平面
 
@@ -375,10 +379,20 @@ $$\phi(x)=\frac{2kT}{e}\ln\frac{1+\gamma\exp(-\kappa x)}{1-\gamma\exp(-\kappa x)
 
 $$\phi(x)\simeq\phi_0\exp(-\kappa x)\approx\frac{\sigma}{\varepsilon_r\varepsilon_0\kappa}\exp(-\kappa x)$$
 
-进一步的，考虑两个带电平面的情况，假设这两个平面相距足够远（弱重叠近似），则两平面间的离子的压强：
+进一步的，考虑两个带电平面的情况，如果假设这两个平面的间距 $2h$ 充分大（弱重叠近似），则两平面间单位面积的排斥能：
+
+$$W_\mathrm{ww}(2h)=\frac{64kTn_0\gamma^2}{\kappa}\exp(-2\kappa h)\label{www2}$$
+
+平面间离子产生的压强：
 
 $$p=64kTn_0\gamma^2\exp(-2\kappa h)$$
 
+使用类似的方法，可以得到两个半径为 $R$ 的球体之间的静电势：
+
+$$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{}\label{wss2}$$
+
 ## DLVO理论
 
-对于，从式 $\eqref{wwp}$ 知，
+本文的第二部分讨论了宏观物体间的范德华作用，对于溶液中的带电粒子，还要结合本部分内容再额外考虑静电作用。结合式 $\eqref{www2}\eqref{wss2}$ 描述的静电作用与式 $\eqref{wss2r}\eqref{wwp}$ 的范德华作用，在溶液中带电球体或平面之间的相互作用可以写为两部分的加和。
+
+$$W(r)=W_\mathrm{vdW}(r)+W_\mathrm{elstat}(r)$$
