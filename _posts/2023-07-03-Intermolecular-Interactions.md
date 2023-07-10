@@ -199,7 +199,7 @@ Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此
 
 - 硬球模型
 
-$$u(r)=\left\{\begin{align}&\infty&r<\sigma\\&0&r\geq\sigma\end{align}\right.\nonumber$$
+$$u(r)=\left\{\begin{matrix}&\infty&r<\sigma\nonumber\\&0&r\geq\sigma\nonumber\end{matrix}\right.$$
 
 - 幂级数
 
@@ -209,12 +209,10 @@ $$u(r)\propto r^{-n}\quad n>0\nonumber$$
 
 $$u(r)\propto \exp\left(-\frac{r}{\sigma}\right)\quad \sigma>0\nonumber$$
 
-将交换排斥与范德华作用结合，Lennard-Jones势由于其在数学上非常简单而被广泛研究（图2）。
-
-$$V_\mathrm{LJ}(r)=4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]$$
+将交换排斥与范德华作用结合，Lennard-Jones势 $V_\mathrm{LJ}(r)=4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]$ 由于其在数学上非常简单而被广泛研究（图2）。
 
 <div align=center>
-<img src="\assets\images\Intermolecular Interactions\LJ-potential.png" width="400">
+<img src="\assets\images\Intermolecular Interactions\LJ-potential.png" width="600">
 </div>
 
 ## 第二维利系数
@@ -223,7 +221,7 @@ $$V_\mathrm{LJ}(r)=4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac
 
 $$\frac{p}{kT}=\rho+B_2(T)\rho^2+B_3(T)\rho^3+\cdots\tag{40}\label{virial}$$
 
-其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式 $\eqref{virial$ 变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
+其中 $\rho$ 是粒子的数密度。如果所有的 $B_i=0$，那么式 $\eqref{virial}$ 变为理想气体（粒子间无相互作用）状态方程，因此系数 $B_i$ 包含了有关分子间相互作用的信息。第二维利系数的定义是：
 
 $$B_2(T)=-\frac{1}{2V}\int_V\exp\left[-\frac{u(\mathbf{r}_1,\mathbf{r}_2,\boldsymbol{\Omega}_1,\boldsymbol{\Omega}_2)}{kT}-1\right]\mathrm{d}\mathbf{r}_1\mathrm{d}\mathbf{r}_2\mathrm{d}\boldsymbol{\Omega}_1\mathrm{d}\boldsymbol{\Omega}_2\tag{41}\label{secvir}$$
 
