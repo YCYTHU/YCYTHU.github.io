@@ -8,7 +8,7 @@ aside:
 modify_date: 2023-07-10
 ---
 
-为什么范德华作用随距离 $r^{-6}$ 衰减，为什么压紧的铅块会粘在一起，胶体为什么能够稳定存在？本文从经典的角度讨论分子之间的相互作用。
+为什么范德华作用随距离 $r^{-6}$ 衰减，为什么压紧的铅块会粘在一起，胶体为什么能够稳定存在？本文对分子之间的相互作用进行简要介绍。
 <!--more-->
 
 # 分子间相互作用
@@ -195,7 +195,27 @@ $$\begin{align}U_{\mathrm{vdW}}(r)&=U_{\mathrm{Keesom}}(r)+U_{\mathrm{Debye}}(r)
 
 ### 交换排斥
 
-Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此靠近时轨道发生重叠，即电子在某种程度上处于同一轨道上。 这迫使轨道发生变化并导致原子之间的排斥。
+Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此靠近时轨道发生重叠，即电子在某种程度上处于同一轨道上。 这迫使轨道发生变化并导致原子之间的排斥。我们不知道交换排斥力的确切数学形式，一般有如下几种模型：
+
+- 硬球模型
+
+$$u(r)=\left\{\begin{align}&\infty&r<\sigma\\&0&r\geq\sigma\end{align}\right.\nonumber$$
+
+- 幂级数
+
+$$u(r)\propto r^{-n}\quad n>0\nonumber$$
+
+- 指数模型
+
+$$u(r)\propto \exp\left(-\frac{r}{\sigma}\right)\quad \sigma>0\nonumber$$
+
+将交换排斥与范德华作用结合，Lennard-Jones势由于其在数学上非常简单而被广泛研究（图2）。
+
+$$V_\mathrm{LJ}(r)=4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]$$
+
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\LJ-potential.png" width="400">
+</div>
 
 ## 第二维利系数
 
@@ -243,7 +263,7 @@ $$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\vare
 
 $$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}}\tag{49}\label{dhphi}$$
 
-其中 $R$ 为离子半径。式 $\eqref{dhphi}$ 说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图2所示。
+其中 $R$ 为离子半径。式 $\eqref{dhphi}$ 说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图3所示。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="400">
@@ -299,7 +319,7 @@ $$\color{red}{W(r)=-\frac{\pi^2C\rho^2}{6}\left[\frac{2R^2}{r^2-4R^2}+\frac{2R^2
 
 $$\begin{align}&W(r)\sim-\frac{16\pi^2C\rho^2R^6}{9}\frac{1}{r^6}+\omicron\left(\frac{1}{r^8}\right)&r\rightarrow+\infty\nonumber\tag{58a}\label{wssinf}\\&W(r)\sim-\frac{\pi^2C\rho^2R}{12(r-2R)}+\omicron\bigg[\ln(r-2R)\bigg]&r\rightarrow2R\tag{58b}\label{wss2r}\end{align}$$
 
-从式 $\eqref{wssinf}\eqref{wss2r}$ 可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图3所示）。
+从式 $\eqref{wssinf}\eqref{wss2r}$ 可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图4所示）。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\sphere-sphere.png" width="400">
@@ -315,13 +335,17 @@ $$W_{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)}\int_r^\infty\frac{\mathrm{d}z}{z^{n
 
 $$\color{red}{W_\mathrm{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{n-4}}}\tag{60}\label{www}$$
 
-对于 $n=6$ 的情形，式 $\eqref{www}$ 化简为 $W_\mathrm{ww}(r)=-\frac{\pi C\rho^2}{12r^2}$。该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
+对于 $n=6$ 的情形，式 $\eqref{www}$ 化简为：
 
-$$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}\tag{61}\label{wwp}$$
+$$W_\mathrm{ww}(r)=-\frac{\pi C\rho^2}{12r^2}\tag{61}\label{wwwn6}$$
+
+该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
+
+$$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}\tag{62}$$
 
 粗略估计 $\frac{\pi C\rho^2}{6}\approx4\times10^{-20}\ \mathrm{J}$，则相互作用力与铅块表面距离（SI）的关系为 $F=\frac{4\times10^{-24}}{r^3}$
 
-$$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}\tag{62}$$
+$$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}\nonumber$$
 
 # 带电介观物体
 
@@ -345,7 +369,7 @@ $$\phi(x)=-\frac{2kT}{Ze}\ln\left[\cos\left(\frac{sx}{h}\right)\right]\tag{65}\l
 
 $$s\tan s=\frac{\vert\sigma\vert Zeh}{2kT\varepsilon_r\varepsilon_0}\tag{66}\label{tres}$$
 
-将 $\phi(x)$ 的解析式 $\eqref{pbphi}$ 代入Poisson方程，得到垂直平面方向的电荷密度。如图4所示。
+将 $\phi(x)$ 的解析式 $\eqref{pbphi}$ 代入Poisson方程，得到垂直平面方向的电荷密度。如图5所示。
 
 $$\rho(x)=-\varepsilon_r\varepsilon_0\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\frac{1}{\cos^2(sx/h)}\tag{67}\label{pbrho}$$
 
@@ -373,26 +397,30 @@ $$\varepsilon_r\varepsilon_0\nabla^2\phi(\mathbf{r})=en_0\left[\exp\left(-\frac{
 
 其中 $n_0$ 为电解质浓度。式 $\eqref{pbe3}$ 的解为：
 
-$$\phi(x)=\frac{2kT}{e}\ln\frac{1+\gamma\exp(-\kappa x)}{1-\gamma\exp(-\kappa x)}\quad\gamma=\frac{\exp\left(\frac{e\phi_0}{2kT}\right)-1}{\exp\left(\frac{e\phi_0}{2kT}\right)+1}$$
+$$\phi(x)=\frac{2kT}{e}\ln\frac{1+\gamma\exp(-\kappa x)}{1-\gamma\exp(-\kappa x)}\quad\gamma=\frac{\exp\left(\frac{e\phi_0}{2kT}\right)-1}{\exp\left(\frac{e\phi_0}{2kT}\right)+1}\tag{72}$$
 
 其中 $\phi_0$ 表示平面上的电势，$\kappa^{-1}$ 是Debye–Hückel屏蔽长度（见式 $\eqref{pbe}$）。当 $\phi_0$ 很小时：
 
-$$\phi(x)\simeq\phi_0\exp(-\kappa x)\approx\frac{\sigma}{\varepsilon_r\varepsilon_0\kappa}\exp(-\kappa x)$$
+$$\phi(x)\simeq\phi_0\exp(-\kappa x)\approx\frac{\sigma}{\varepsilon_r\varepsilon_0\kappa}\exp(-\kappa x)\tag{73}$$
 
 进一步的，考虑两个带电平面的情况，如果假设这两个平面的间距 $2h$ 充分大（弱重叠近似），则两平面间单位面积的排斥能：
 
-$$W_\mathrm{ww}(2h)=\frac{64kTn_0\gamma^2}{\kappa}\exp(-2\kappa h)\label{www2}$$
+$$W_\mathrm{ww}(2h)=\frac{64kTn_0\gamma^2}{\kappa}\exp(-2\kappa h)\tag{74}\label{www2}$$
 
 平面间离子产生的压强：
 
-$$p=64kTn_0\gamma^2\exp(-2\kappa h)$$
+$$p=64kTn_0\gamma^2\exp(-2\kappa h)\tag{75}$$
 
 使用类似的方法，可以得到两个半径为 $R$ 的球体之间的静电势：
 
-$$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{}\label{wss2}$$
+$$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{76}\label{wss2}$$
 
 ## DLVO理论
 
-本文的第二部分讨论了宏观物体间的范德华作用，对于溶液中的带电粒子，还要结合本部分内容再额外考虑静电作用。结合式 $\eqref{www2}\eqref{wss2}$ 描述的静电作用与式 $\eqref{wss2r}\eqref{wwp}$ 的范德华作用，在溶液中带电球体或平面之间的相互作用可以写为两部分的加和。
+本文的第二部分讨论了宏观物体间的范德华作用，对于溶液中的带电粒子，还要结合本部分内容再额外考虑静电作用。结合式 $\eqref{www2}\eqref{wss2}$ 描述的静电作用与式 $\eqref{wss2r}\eqref{wwwn6}$ 的范德华作用，在溶液中带电球体或平面之间的相互作用可以写为两部分的加和（图6）。
 
-$$W(r)=W_\mathrm{vdW}(r)+W_\mathrm{elstat}(r)$$
+$$W(r)=W_\mathrm{vdW}(r)+W_\mathrm{elstat}(r)\tag{77}$$
+
+<div align=center>
+<img src="\assets\images\Intermolecular Interactions\DLVO.png" width="400">
+</div>
