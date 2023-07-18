@@ -13,7 +13,7 @@ modify_date: 2023-07-10
 
 # 分子间相互作用
 
-## 角度相关的相互作用
+## 静电相互作用
 
 ### 离子-偶极相互作用
 
@@ -25,11 +25,11 @@ $$\color{blue}{U_{\mathrm{id}}=\frac{Z\boldsymbol{\mu r}}{r^3}=\frac{Z\mu\cos\th
 
 $$\langle U(r)\rangle\equiv\frac{\int_0^\pi U(r,\theta)e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{-\frac{U(r,\theta)}{kT}}\sin\theta\mathrm{d}\theta}\tag{2}\label{mid}$$
 
-其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式 $\eqref{mid}$ 得到：
+符号 $\langle\ \rangle$ 代表热力学平均。其中 $U(r,\theta)=\frac{Z\mu\cos\theta}{r^2}$，将其分为距离部分 $U_0(r)=\frac{Z\mu}{r^2}$ 与角度部分 $f(\theta)=\cos\theta$。令 $\beta=-\frac{U_0(r)}{kT}$，代入式 $\eqref{mid}$ 得到：
 
 $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\int_0^\pi f(\theta)e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}{\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta}\nonumber\\&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\left(\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta\right)\nonumber\end{align}\tag{3}$$
 
-将 $\beta f(\theta)$ 展开为泰勒级数，当 $\beta f(\theta)\ll1$ 时：
+将 $e^{\beta f(\theta)}$ 展开为泰勒级数，当 $\beta f(\theta)\ll1$ 时：
 
 $$\begin{align}\int_0^\pi e^{\beta f(\theta)}\sin\theta\mathrm{d}\theta&\simeq\int_0^\pi\left[1+\beta f(\theta)+\frac{\beta^2f^2(\theta)}{2}+\cdots\right]\sin\theta\mathrm{d}\theta\nonumber\\&=2+0+\frac{\beta^2}{3}+\cdots\nonumber\end{align}\tag{4}$$
 
@@ -63,11 +63,11 @@ $$\color{red}{U_\mathrm{iid}=-\frac{Z^2\alpha}{r^4}}\tag{9}\label{iid}$$
 
 $$\color{blue}{U_\mathrm{dd}=\frac{\boldsymbol{\mu}_1\boldsymbol{\mu}_2}{r^3}-3\frac{(\boldsymbol{\mu}_1\boldsymbol{r})(\boldsymbol{\mu}_2\boldsymbol{r})}{r^5}}\tag{10}$$
 
-设 $\theta_1,\theta_2$ 分别是两个偶极矩与连接两偶极的向量之间的夹角, $\phi$ 是两个偶极矩分别与连接两偶极的向量确定的两个平面之间的二面角。则 $U_{dd}$ 可以写为 $(\theta_1,\theta_2,\phi)$ 的函数：
+设 $\theta_1,\theta_2$ 分别是两个偶极矩与连接两偶极的向量之间的夹角, $\phi$ 是两个偶极矩分别与连接两偶极的向量确定的两个平面之间的二面角。则 $U_\mathrm{dd}$ 可以写为 $(\theta_1,\theta_2,\phi)$ 的函数：
 
 $$U_\mathrm{dd}=\frac{\mu_1\mu_2}{r^3}(\sin\theta_1\sin\theta_2\cos\phi-2\cos\theta_1\cos\theta_2)\tag{11}$$
 
-相互作用能 $U_{dd}$ 的角度部分对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
+相互作用能 $U_\mathrm{dd}$ 的角度部分对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\dipole-dipole-orientation.png" width="600">
@@ -81,7 +81,7 @@ $$\langle U(r)\rangle\equiv\langle U(r,\Theta_1,\Theta_2,\phi)e^{-\frac{U(r,\The
 
 $$U(r,\Theta_1,\Theta_2,\phi)=\frac{\mu_1\mu_2}{r^3}(\sin\Theta_1\sin\Theta_2\cos\phi-2\cos\Theta_1\cos\Theta_2)\tag{13}$$
 
-符号 $\langle\ \rangle$ 代表热力学平均。将 $U(r,\Theta_1,\Theta_2,\phi)$ 分为距离部分 $U_0(r)$ 与角度部分 $f(\Omega)$：
+将 $U(r,\Theta_1,\Theta_2,\phi)$ 分为距离部分 $U_0(r)$ 与角度部分 $f(\Omega)$：
 
 $$\begin{align}&U_0(r)=\frac{\mu_1\mu_2}{r^3}\tag{14a}\\&f(\Omega)=\sin\Theta_1\sin\Theta_2\cos\phi-2\cos\Theta_1\cos\Theta_2\tag{14b}\end{align}$$
 
@@ -261,7 +261,7 @@ $$\nabla^2\phi(r)=\kappa^2\phi(r)\quad\kappa^2=\frac{\sum_ic_{i0}Z_i^2e^2}{\vare
 
 $$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac{e^{\kappa(R-r)}}{r}}\tag{49}\label{dhphi}$$
 
-其中 $R$ 为离子半径。式 $\eqref{dhphi}$ 说明在溶液中静电效应并非以 $r^{-1}$ 衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图3所示。
+其中 $R$ 为离子半径。式 $\eqref{dhphi}$ 说明在溶液中静电效应并非以 $r^{-1}$ 的速度衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图3所示。
 
 <div align=center>
 <img src="\assets\images\Intermolecular Interactions\DH-theory.png" width="400">
@@ -277,7 +277,7 @@ $$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}
 
 $$-\nabla_i\omega^{(n)}=\frac{\int e^{-\frac{V}{kT}}(-\nabla_iV)\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}}{\int e^{-\frac{V}{kT}}\mathrm{d}q_{n+1}\dots\mathrm{d}q_{N}},\ i=1,2,\dots,n\tag{51}\label{pmf}$$
 
-式 $\eqref{pmf}$ 中 $-\nabla_i\omega^{(n)}$ 是粒子 $i$ 上的平均力，$\omega^{(n)}$ 即为平均力势。对于 $n=2$ 的情形，$\omega^{(2)}(r)$ 表示将两个粒子从无限远拉到相距 $r$ 时的平均功，可从径向分布函数 $g(r)$ 得到：
+式 $\eqref{pmf}$ 中 $-\nabla_i\omega^{(n)}$ 是粒子 $i$ 上的平均力，$\omega^{(n)}$ 即为平均力势。对于 $n=2$ 的情形，$\omega^{(2)}(r)$ 表示将两个粒子从无限远拉到相距 $r$ 时的平均功，这与径向分布函数 $g(r)$ 相关联：
 
 $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]\tag{52}$$
 
@@ -291,7 +291,7 @@ $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]\tag{52}$$
 
 $$W_\mathrm{pw}(r)=-C\rho\int_r^\infty\mathrm{d}z\int_0^\infty\frac{2\pi x\mathrm{d}x}{(z^2+x^2)^\frac n2}\tag{53}$$
 
-其中 $\rho$ 为粒子数密度。$W_{pw}(r)$ 具有初等形式的解：
+其中 $\rho$ 为粒子数密度。$W_\mathrm{pw}(r)$ 具有初等形式的解：
 
 $$\color{red}{W_\mathrm{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}}\tag{54}\label{wpw}$$
 
@@ -337,7 +337,7 @@ $$\color{red}{W_\mathrm{ww}(r)=-\frac{2\pi C\rho^2}{(n-2)(n-3)(n-4)}\frac{1}{r^{
 
 $$W_\mathrm{ww}(r)=-\frac{\pi C\rho^2}{12r^2}\tag{61}\label{wwwn6}$$
 
-该式的应用之一便是估算两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
+该式可以用于粗略估计两个抛光金属表面之间的相互作用强度。假设两个接触面积为 $A=10^{-4}\ \mathrm{m^2}$ 的铅块，它们之间的作用力为：
 
 $$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6r^3}\tag{62}$$
 
@@ -413,7 +413,7 @@ $$p=64kTn_0\gamma^2\exp(-2\kappa h)\tag{75}$$
 
 $$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{76}\label{wss2}$$
 
-## DLVO理论
+## DLVO 理论
 
 本文的第二部分讨论了宏观物体间的范德华作用，对于溶液中的带电粒子，还要结合本部分内容再额外考虑静电作用。结合式 $\eqref{www2}\eqref{wss2}$ 描述的静电作用与式 $\eqref{wss2r}\eqref{wwwn6}$ 的范德华作用，在溶液中带电球体或平面之间的相互作用可以写为两部分的加和（图6）。
 
