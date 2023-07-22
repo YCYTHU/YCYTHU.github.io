@@ -1,5 +1,5 @@
 ---
-title: 分布系数计算器
+title: 基于PyScript的在线分布系数曲线计算器
 tags: Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---

@@ -5,55 +5,70 @@ tags:
 - Matlab
 cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 ---
-在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于Matlab，可以容易的计算常见与不常见对称性的晶体场的分裂能。
+笔者在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于Matlab，笔者开发了一款简易Matlab App，实现常见与不常见对称性的晶体场的分裂能的计算。[源代码及依赖文件在此处下载。](/assets/CFSD.zip)
 <!--more-->
 
+程序运行后的界面如图1所示。左上角的微调器可以选择配体的数量（不小于1），中间的两列表格显示配体在球坐标系下的方位角。通过编辑表格中的数值可以改变配体的位置，同时可在程序最右侧的3D查看器中查看当前的构型。
+
+<div align=center>
+<img src="\assets\images\CFSD\Figure1.png" width="600">
+</div>
+
+通过左侧中间的下拉菜单可以选择预设好的配位形式（图2），包括平面正三角、正四面体、正八面体等。
+
+<div align=center>
+<img src="\assets\images\CFSD\Figure2.png" width="600">
+</div>
+
+当构型设置完成后，点击菜单右侧"Calculate!"按钮进行分裂能的计算，随后界面左下角的四列表格显示的是能量信息，第一列是以Dq为单位的能量近似值，第二到第四列是能量的解析解的系数（图3）。
+
+表格右侧的绘图区会显示当前构型的分裂能级图（相同的能量只绘制一条线），MATLAB命令行中会打印构型信息[1]与能量信息。
+
+<div align=center>
+<img src="\assets\images\CFSD\Figure3.png" width="600">
+</div>
+
+在3D查看器的左侧有5个选项，勾选后会显示轨道等值面（图4），轨道序号与左下角表格顺序相对应。
+
+<div align=center>
+<img src="\assets\images\CFSD\Figure4.png" width="600">
+</div>
+
+---
+
+App中关键函数的源代码及解析如下
+
 ```matlab
-function Energy_rats=crystal_field_splitting_diagram(theta,phi)
+function Calc(~,~)
+
+    CN_Data=Rot_CN(CN_Data);
+    Phi=transpose(CN_Data(:,1));
+    Theta=transpose(CN_Data(:,2));
+
+    b=[12;1];
+    c=[6;1];
 ```
 
-函数`crystal_field_splitting_diagram`接受两个 $1\times N$ 向量，分别表示每个配体在球坐标系中的方位角与仰角（弧度制）；返回一个 $5\times1$ 向量，表示每个 $d$ 轨道能量与平均值的差（以 $\mathrm{Dq}$ 为单位）。
-
-```matlab
-syms alpha0 alpha2 alpha4;
-b=[12;1];
-c=[6;1];
-```
-
-首先定义的三个变量`alpha0 alpha2 alpha4`用于函数末尾的输出部分，不参与计算过程。每条 $d$ 的能量可以表示为
-
-$$E=c_0*\alpha_0+c_2*\alpha_2+c_4*\alpha_4$$
-
-其中 $\alpha_4=6\mathrm{Dq},\alpha_2\approx12\mathrm{Dq}$。向量`b`和`c`的第一个值代表了将 $\alpha_2,\alpha_4$ 转换为 $\mathrm{Dq}$ 的系数；第二个值为任取的值，用于确定 $c_2$ 和 $c_4$ 的值（$c_0$ 的值等于配体的个数）。
-
-```matlab
-if(size(theta,2)==size(phi,2))
-    num=size(theta,2);
-else
-    error('Wrong size');
-end
-```
-
-首先判断接受的向量是否合法，方位角与仰角的大小应当相同。配体的个数`num`定义为输入向量第二个维度的大小。
+函数`Calc`首先将坐标轴与配合物的惯性主轴对齐，随后获取配体位置（过程省略）。`Phi`与`Theta`分别表示每个配体在球坐标系中的方位角与仰角（弧度制）。向量`b`和`c`的第一个值代表了将 $\alpha_2,\alpha_4$ 转换为 $\mathrm{Dq}$ 的系数；第二个值为任取的值，用于确定 $\alpha_2,\alpha_4$ 前的系数（$\alpha_0$ 前的系数等于配体的个数）。
 
 随后定义配体位置函数与哈密顿矩阵，其含义见[往期介绍](/2022/02/12/zhihu.html)。
 
 ```matlab
-D_00_m=zeros(2,num);
-D_20_m=b*(3*cos(theta).^2-1);
-D_40_m=c*((35*cos(theta).^4)/3-10*cos(theta).^2+1);
-D_21_m=b*sin(theta).*cos(theta).*cos(phi);
-D_22_m=b*sin(theta).*cos(2*phi);
-D_41_m=c*sin(theta).*cos(theta).*((7*cos(theta).^2)/3-1).*cos(phi);
-D_42_m=c*sin(theta).^2.*(7*cos(theta).^2-1).*cos(2*phi);
-D_43_m=c*sin(theta).^3.*cos(theta).*cos(3*phi);
-D_44_m=c*sin(theta).^4.*cos(4*phi);
-G_21_m=b*sin(theta).*cos(theta).*sin(2*phi);
-G_22_m=b*sin(theta).^2.*sin(2*phi);
-G_41_m=c*sin(theta).*cos(theta).*((7*cos(theta).^2)/3-1).*sin(phi);
-G_42_m=c*sin(theta).^2.*(7*cos(theta).^2-1).*sin(2*phi);
-G_43_m=c*sin(theta).^3.*cos(theta).*sin(3*phi);
-G_44_m=c*sin(theta).^4.*sin(4*phi);
+D_00_m=zeros(2,size(CN_Data,1));
+D_20_m=b*(3*cos(Theta).^2-1);
+D_40_m=c*((35*cos(Theta).^4)/3-10*cos(Theta).^2+1);
+D_21_m=b*sin(Theta).*cos(Theta).*cos(Phi);
+D_22_m=b*sin(Theta).*cos(2*Phi);
+D_41_m=c*sin(Theta).*cos(Theta).*((7*cos(Theta).^2)/3-1).*cos(Phi);
+D_42_m=c*sin(Theta).^2.*(7*cos(Theta).^2-1).*cos(2*Phi);
+D_43_m=c*sin(Theta).^3.*cos(Theta).*cos(3*Phi);
+D_44_m=c*sin(Theta).^4.*cos(4*Phi);
+G_21_m=b*sin(Theta).*cos(Theta).*sin(2*Phi);
+G_22_m=b*sin(Theta).^2.*sin(2*Phi);
+G_41_m=c*sin(Theta).*cos(Theta).*((7*cos(Theta).^2)/3-1).*sin(Phi);
+G_42_m=c*sin(Theta).^2.*(7*cos(Theta).^2-1).*sin(2*Phi);
+G_43_m=c*sin(Theta).^3.*cos(Theta).*sin(3*Phi);
+G_44_m=c*sin(Theta).^4.*sin(4*Phi);
 
 D_00=sum(D_00_m,2);
 D_20=sum(D_20_m,2);
@@ -87,8 +102,7 @@ H_44=D_00+D_20/14-D_40/14-3*D_22/14-5*D_42/42;
 H_45=3*D_21/7-5*D_41/28-5*D_43/12;
 H_55=D_00-D_20/7+D_40/56-5*D_44/24;
 
-Hamilton=cat(3, ...
-            [H_11(1) H_12(1) H_13(1) H_14(1) H_15(1);
+Hamilton=cat(3,[H_11(1) H_12(1) H_13(1) H_14(1) H_15(1);
             H_12(1) H_22(1) H_23(1) H_24(1) H_25(1);
             H_13(1) H_23(1) H_33(1) H_34(1) H_35(1);
             H_14(1) H_24(1) H_34(1) H_44(1) H_45(1);
@@ -100,37 +114,36 @@ Hamilton=cat(3, ...
             H_15(2) H_25(2) H_35(2) H_45(2) H_55(2)]);
 ```
 
-与之前的介绍不同的是，为了得到 $c_2$ 和 $c_4$ 的值，配体位置函数均定义为向量，哈密顿矩阵新增一个维度，为 $5\times5\times2$ 的矩阵。随后将哈密顿矩阵进行对角化，得到能量：
+与之前的介绍不同的是，为了确定 $\alpha_2,\alpha_4$ 前的系数，配体位置函数均定义为向量，哈密顿矩阵新增一个维度，为 $5\times5\times2$ 的矩阵。
+
+随后将哈密顿矩阵进行对角化，得到能量与轨道贡献。利用向量`b`和`c`组成的矩阵的逆计算`Coefficient`，为 $5\times2$ 矩阵，表示每个能量的 $\alpha_2,\alpha_4$ 前的系数。
 
 ```matlab
-Energy_redun=[eig(Hamilton(:,:,1)) eig(Hamilton(:,:,2))];
+[Orbital,Energy_redun1]=eig(double(Hamilton(:,:,1)));
+Orbital=Orbital./sqrt(sum(Orbital.^2));
+Energy_redun1=diag(Energy_redun1);
+[~,Energy_redun2]=eig(double(Hamilton(:,:,2)));
+Energy_redun2=diag(Energy_redun2);
+Energy_redun=double([Energy_redun1,Energy_redun2]);
+Coefficient=real(Energy_redun)*[1/6 -1/6;-1 2];
+Coefficient(abs(Coefficient)<1e-15)=0;
+Energy=strtrim(rats(real(Energy_redun(:,1))));
 ```
-
-`Energy_redun`的第一列为以 $\mathrm{Dq}$ 为单位的分裂能，第二列的数值用于确定 $c_2$ 和 $c_4$ 的值：
-
-```matlab
-Coefficient=str2num(rats(Energy_redun*[1/6 -1/6;-1 2]));
-Coefficient=[num*ones(5,1),Coefficient];
-```
-
-得到的`Coefficient`为 $5\times3$ 矩阵，表示每条 $d$ 轨道能量的 $c_0,c_2$ 和 $c_4$。计算`Coefficient`所使用的矩阵是向量`b`和`c`组成的矩阵的逆。
 
 $$\begin{bmatrix}\frac16&-\frac16\\-1&2\end{bmatrix}=\begin{bmatrix}12&1\\6&1\end{bmatrix}^{-1}$$
 
-```matlab
-Energy_rats=rats(Energy_redun(:,1));
-```
-
-随后可选地将分裂能进行有理化，得到 $5\times1$ 向量`Energy_rats`。最后输出相关结果，结束函数。
+最后将结果传递给其他函数，打印结果并结束。
 
 ```matlab
-disp(['Splitting Energy=',rats(max(double(Energy_redun(:,1)))-min(double(Energy_redun(:,1)))),'Dq']);
-disp(Energy_rats);
-disp(' ');
-disp('Symbolic Energy=');
-disp({'α0','α2','α4'});
-disp(Coefficient);
-disp(latex(Coefficient*[alpha0;alpha2;alpha4]));
+alpha0=num2str(size(CN_Data,1)*ones(5,1));
+alpha2=strtrim(rats(Coefficient(:,1)));
+alpha4=strtrim(rats(Coefficient(:,2)));
+Results=table(Energy,alpha0,alpha2,alpha4);
+set(Result_table,'Data',Results);
 
-end
+yline(Result_Axes,real(Energy_redun(:,1)),LineWidth=2,Color='r');
+ylim(Result_Axes,[1.2*min(real(Energy_redun(:,1))),1.2*max(real(Energy_redun(:,1)))]);
+
+disp(CN_Table);
+disp(Results);
 ```
