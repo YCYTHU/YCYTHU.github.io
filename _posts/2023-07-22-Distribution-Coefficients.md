@@ -9,14 +9,25 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 
 <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+<style>
+  table {
+    width: 200px;
+    border: 1px solid black;
+    border-spacing: 0;
+    text-align:center;
+  }
+  table tbody tr:nth-child(odd){
+    background-color: #f0f0f0
+  }
+</style>
 
-Number of dissociable protons:<input id="n_protic" type="number" min="1" value="2" oninput="set_n_protic()">
+Number of dissociable protons:  <input id="n_protic" type="number" min="1" value="2" oninput="set_n_protic()">
 {:.info}
 
-Acid dissociation constant:
+Acid dissociation constant table:
 {:.warning}
 
-<table id="pKa_table">
+<table id="pKa_table" align="center">
   <tbody>
     <tr>
       <td>pK<sub>a<sub>1</sub></sub></td>
@@ -29,9 +40,9 @@ Acid dissociation constant:
   </tbody>
 </table>
 
-<a class="button button--success button--pill" id="Calc" onclick="Calc()">Click to calculate:</a>
+<a class="button button--success button--pill" id="Calc" onclick="Calc()">Calculate</a>
 
-<div id="graph_area"></div>
+<div id="graph_area" align="center"></div>
 
 <py-config>
   packages = ["numpy", "matplotlib"]
