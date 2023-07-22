@@ -78,7 +78,6 @@ Acid dissociation constant:
       return ffig
 
   fig=ABDC("n_protic")
-
 </py-script>
 
 <script>
