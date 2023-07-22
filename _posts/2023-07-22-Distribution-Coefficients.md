@@ -21,7 +21,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
   }
 </style>
 
-Number of dissociable protons:  <input id="n_protic" type="number" min="1" value="2" oninput="set_n_protic()">
+Number of dissociable protons:  <input id="n_protic" type="number" min="1" value="2" width="50px" oninput="set_n_protic()">
 {:.info}
 
 Acid dissociation constant table:
@@ -31,10 +31,10 @@ Acid dissociation constant table:
   <tbody>
     <tr>
       <td>pK<sub>a<sub>1</sub></sub></td>
-      <td contentEditable="true">6.37</td>
+      <td>pK<sub>a<sub>2</sub></sub></td>
     </tr>
     <tr>
-      <td>pK<sub>a<sub>2</sub></sub></td>
+      <td contentEditable="true">6.37</td>
       <td contentEditable="true">10.32</td>
     </tr>
   </tbody>
@@ -94,21 +94,24 @@ Acid dissociation constant table:
 <script>
   pKa=document.getElementById('pKa_table');
   var pKa_data=[]
-  for(var i=0;i<pKa.rows.length;i++){
-      pKa_data[i]=pKa.rows[i].cells[1].innerHTML
+  for(var i=0;i<pKa.rows[0].cells.length;i++){
+      pKa_data[i]=pKa.rows[1].cells[i].innerHTML
     }
 
   function set_n_protic(){
     var n_protic=document.getElementById('n_protic').value;
-    var rowLength=pKa.rows.length;
-    if (rowLength<n_protic){
-      var NewRow=pKa.insertRow(rowLength);
-      NewRow.innerHTML=("<tr><td>pK<sub>a<sub>"+n_protic.toString()+"</sub></sub></td><td contentEditable=\"true\">14</td></tr>");
+    var columnLength=pKa.rows[0].cells.length;
+    if (columnLength<n_protic){
+      var FirstNewCell=pKa.rows[0].insertCell(columnLength);
+      var SecondNewCell=pKa.rows[1].insertCell(columnLength);
+      FirstNewCell.innerHTML=("pK<sub>a<sub>"+n_protic.toString()+"</sub></sub>");
+      SecondNewCell.innerHTML=("14");
+      SecondNewCell.contentEditable="true";
     }
     else{
-      pKa.deleteRow(rowLength-1);
+      pKa.rows[0].deleteCell(columnLength-1);
+      pKa.rows[1].deleteCell(columnLength-1);
     }
-    
   }
 
   function Calc(){
@@ -116,10 +119,11 @@ Acid dissociation constant table:
     prev_img.remove();
     js_ABDC=pyscript.interpreter.globals.get('ABDC')
     var data=[];
-    for(var i=0;i<pKa.rows.length;i++){
-      data[i]=pKa.rows[i].cells[1].innerHTML
+    for(var i=0;i<pKa.rows[0].cells.length;i++){
+      data[i]=pKa.rows[1].cells[i].innerHTML
     }
     pKa_data=data;
+    console.log(data);
     js_ABDC("n_protic");
   }
 </script>
