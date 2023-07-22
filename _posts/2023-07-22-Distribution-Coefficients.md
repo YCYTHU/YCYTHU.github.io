@@ -5,35 +5,35 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---
 <!--more-->
 
----
-
 <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 <style>
-  table {
-    width: 200px;
+  #pKa_table {
     border: 1px solid black;
     border-spacing: 0;
     text-align:center;
+    display: inline;
   }
-  table tbody tr:nth-child(odd){
+  #pKa_table tbody tr:nth-child(odd){
     background-color: #f0f0f0
   }
 </style>
 
-Number of dissociable protons:  <input id="n_protic" type="number" min="1" value="2" width="50px" oninput="set_n_protic()">
+Number of dissociable protons:
 {:.info}
+
+<input id="n_protic" type="number" min="1" value="2" text-align="center" oninput="set_n_protic()">
 
 Acid dissociation constant table:
 {:.warning}
 
-<table id="pKa_table" align="center">
+<table id="pKa_table">
   <tbody>
-    <tr>
+    <tr align="center">
       <td>pK<sub>a<sub>1</sub></sub></td>
       <td>pK<sub>a<sub>2</sub></sub></td>
     </tr>
-    <tr>
+    <tr align="center">
       <td contentEditable="true">6.37</td>
       <td contentEditable="true">10.32</td>
     </tr>
@@ -90,6 +90,13 @@ Acid dissociation constant table:
 
   fig=ABDC("n_protic")
 </py-script>
+
+---
+
+源代码及解析
+```html
+12
+```
 
 <script>
   pKa=document.getElementById('pKa_table');
