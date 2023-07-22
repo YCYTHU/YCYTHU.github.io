@@ -153,15 +153,19 @@ function set_n_protic(){
   var n_protic=document.getElementById('n_protic').value;
   var columnLength=pKa.rows[0].cells.length;
   if (columnLength<n_protic){
-    var FirstNewCell=pKa.rows[0].insertCell(columnLength);
-    var SecondNewCell=pKa.rows[1].insertCell(columnLength);
-    FirstNewCell.innerHTML=("pK<sub>a<sub>"+n_protic.toString()+"</sub></sub>");
-    SecondNewCell.innerHTML=("14");
-    SecondNewCell.contentEditable="true";
+    for (var i=columnLength;i<n_protic;i++){
+      var FirstNewCell=pKa.rows[0].insertCell(i);
+      var SecondNewCell=pKa.rows[1].insertCell(i);
+      FirstNewCell.innerHTML=("pK<sub>a<sub>"+(i+1)+"</sub></sub>");
+      SecondNewCell.innerHTML=("14");
+      SecondNewCell.contentEditable="true";
+    }
   }
   else{
-    pKa.rows[0].deleteCell(columnLength-1);
-    pKa.rows[1].deleteCell(columnLength-1);
+    for (var i=columnLength;i>n_protic;i--){
+      pKa.rows[0].deleteCell(i-1);
+      pKa.rows[1].deleteCell(i-1);
+    }
   }
 }
 function Calc(){
@@ -189,15 +193,19 @@ function Calc(){
     var n_protic=document.getElementById('n_protic').value;
     var columnLength=pKa.rows[0].cells.length;
     if (columnLength<n_protic){
-      var FirstNewCell=pKa.rows[0].insertCell(columnLength);
-      var SecondNewCell=pKa.rows[1].insertCell(columnLength);
-      FirstNewCell.innerHTML=("pK<sub>a<sub>"+n_protic.toString()+"</sub></sub>");
-      SecondNewCell.innerHTML=("14");
-      SecondNewCell.contentEditable="true";
+      for (var i=columnLength;i<n_protic;i++){
+        var FirstNewCell=pKa.rows[0].insertCell(i);
+        var SecondNewCell=pKa.rows[1].insertCell(i);
+        FirstNewCell.innerHTML=("pK<sub>a<sub>"+(i+1)+"</sub></sub>");
+        SecondNewCell.innerHTML=("14");
+        SecondNewCell.contentEditable="true";
+      }
     }
     else{
-      pKa.rows[0].deleteCell(columnLength-1);
-      pKa.rows[1].deleteCell(columnLength-1);
+      for (var i=columnLength;i>n_protic;i--){
+        pKa.rows[0].deleteCell(i-1);
+        pKa.rows[1].deleteCell(i-1);
+      }
     }
   }
 
