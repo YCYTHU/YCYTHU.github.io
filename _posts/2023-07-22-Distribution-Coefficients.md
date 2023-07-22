@@ -7,10 +7,10 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 
 ---
 
-<head>
+ <!--<head>
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-</head>
+</head>-->
 
 Number of dissociable protons:
 
