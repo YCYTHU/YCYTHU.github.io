@@ -10,11 +10,11 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
-Number of dissociable protons:
-
-<input id="n_protic" type="number" min="1" value="2" oninput="set_n_protic()">
+Number of dissociable protons:<input id="n_protic" type="number" min="1" value="2" oninput="set_n_protic()">
+{:.info}
 
 Acid dissociation constant:
+{:.warning}
 
 <table id="pKa_table">
   <tbody>
@@ -29,9 +29,7 @@ Acid dissociation constant:
   </tbody>
 </table>
 
-Click button to calculate:
-
-<button id="Calc" onclick="Calc()">Calculate!</button>
+<a class="button button--success button--pill" id="Calc" onclick="Calc()">Click to calculate:</a>
 
 <div id="graph_area"></div>
 
@@ -77,7 +75,7 @@ Click button to calculate:
       display(fig,target="graph_area")
     else:
       display(ffig,target="graph_area")
-    return ffig
+      return ffig
 
   fig=ABDC("n_protic")
 
@@ -112,7 +110,6 @@ Click button to calculate:
       data[i]=pKa.rows[i].cells[1].innerHTML
     }
     pKa_data=data;
-    console.log(data);
     js_ABDC("n_protic");
   }
 </script>
