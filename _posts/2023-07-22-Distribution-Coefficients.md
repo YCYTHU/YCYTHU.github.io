@@ -7,10 +7,8 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 
 ---
 
- <!--<head>
-  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-</head>-->
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
 Number of dissociable protons:
 
@@ -48,38 +46,38 @@ Click button to calculate:
 
   def ABDC(id_n_protic):
 
-  if ('fig' in globals()):
-    plt.clf()
-  else:
-    ffig,ax=plt.subplots()
-
-  n_protic=Element(id_n_protic)
-  pKa=[]
-
-  n=int(n_protic.value)
-
-  from js import pKa_data
-  for i in range(n):
-    pKa.append(float(pKa_data[i]))
+    if ('fig' in globals()):
+      plt.clf()
+    else:
+      ffig,ax=plt.subplots()
   
-  pKa=np.array(pKa,dtype=np.float32)
+    n_protic=Element(id_n_protic)
+    pKa=[]
   
-  res=100
-  pH=np.linspace(0,14,res)
-  delta=np.zeros([n+1,res])
-  all_form=np.zeros([1,res])
+    n=int(n_protic.value)
   
-  for i in range(n+1):
-    delta[i,:]=10**(-sum(pKa[0:i]))*10**(-(n-i)*pH)
-    all_form=all_form+delta[i,:]
-  
-  delta=delta/np.matlib.repmat(all_form,n+1,1)
-  plt.plot(pH,np.transpose(delta))
-  if ('fig' in globals()):
-    display(fig,target="graph_area")
-  else:
-    display(ffig,target="graph_area")
-  return ffig
+    from js import pKa_data
+    for i in range(n):
+      pKa.append(float(pKa_data[i]))
+    
+    pKa=np.array(pKa,dtype=np.float32)
+    
+    res=100
+    pH=np.linspace(0,14,res)
+    delta=np.zeros([n+1,res])
+    all_form=np.zeros([1,res])
+    
+    for i in range(n+1):
+      delta[i,:]=10**(-sum(pKa[0:i]))*10**(-(n-i)*pH)
+      all_form=all_form+delta[i,:]
+    
+    delta=delta/np.matlib.repmat(all_form,n+1,1)
+    plt.plot(pH,np.transpose(delta))
+    if ('fig' in globals()):
+      display(fig,target="graph_area")
+    else:
+      display(ffig,target="graph_area")
+    return ffig
 
   fig=ABDC("n_protic")
 
