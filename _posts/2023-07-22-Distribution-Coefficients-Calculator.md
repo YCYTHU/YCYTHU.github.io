@@ -26,7 +26,7 @@ Number of dissociable protons:
 
 <input id="n_protic" type="number" min="1" value="2" text-align="center" oninput="set_n_protic()">
 
-Acid dissociation constant table:
+Acid dissociation constant table (DO NOT PRESS ENTER):
 {:.warning}
 
 <table id="pKa_table">

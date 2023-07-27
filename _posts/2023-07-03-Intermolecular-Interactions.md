@@ -1,6 +1,8 @@
 ---
 title: 分子间相互作用
-tags: Chemistry
+tags: 
+- Chemistry
+- Physics
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png/640px-Schematic_of_the_electrostatic_interaction_between_two_dipolar_molecules.png
 mathjax_autoNumber: true
 aside:

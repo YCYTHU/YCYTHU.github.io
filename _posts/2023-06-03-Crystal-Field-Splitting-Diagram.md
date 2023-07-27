@@ -1,11 +1,11 @@
 ---
-title: 利用Matlab计算晶体场d轨道分裂能
+title: 利用MATLAB计算晶体场d轨道分裂能
 tags: 
 - Chemistry
-- Matlab
+- MATLAB
 cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 ---
-笔者在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于Matlab，笔者开发了一款简易Matlab App，实现常见与不常见对称性的晶体场的分裂能的计算。[源代码及依赖文件在此处下载。](/assets/CFSD.zip)
+笔者在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于MATLAB，笔者开发了一款简易的MATLAB App，实现常见与不常见对称性的晶体场的分裂能的计算。[源代码及依赖文件在此处下载。](/assets/CFSD.zip)
 <!--more-->
 
 程序运行后的界面如图1所示。左上角的微调器可以选择配体的数量（不小于1），中间的两列表格显示配体在球坐标系下的方位角。通过编辑表格中的数值可以改变配体的位置，同时可在程序最右侧的3D查看器中查看当前的构型。
@@ -22,7 +22,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 
 当构型设置完成后，点击菜单右侧"Calculate!"按钮进行分裂能的计算，随后界面左下角的四列表格显示的是能量信息，第一列是以Dq为单位的能量近似值，第二到第四列是能量的解析解的系数（图3）。
 
-表格右侧的绘图区会显示当前构型的分裂能级图（相同的能量只绘制一条线），MATLAB命令行中会打印构型信息[1]与能量信息。
+表格右侧的绘图区会显示当前构型的分裂能级图（相同的能量只绘制一条线），MATLAB命令行中会打印构型信息与能量信息。
 
 <div align=center>
 <img src="\assets\images\CFSD\Figure3.png" width="600">
@@ -118,6 +118,8 @@ Hamilton=cat(3,[H_11(1) H_12(1) H_13(1) H_14(1) H_15(1);
 
 随后将哈密顿矩阵进行对角化，得到能量与轨道贡献。利用向量`b`和`c`组成的矩阵的逆计算`Coefficient`，为 $5\times2$ 矩阵，表示每个能量的 $\alpha_2,\alpha_4$ 前的系数。
 
+$$\begin{bmatrix}\frac16&-\frac16\\-1&2\end{bmatrix}=\begin{bmatrix}12&1\\6&1\end{bmatrix}^{-1}$$
+
 ```matlab
 [Orbital,Energy_redun1]=eig(double(Hamilton(:,:,1)));
 Orbital=Orbital./sqrt(sum(Orbital.^2));
@@ -129,8 +131,6 @@ Coefficient=real(Energy_redun)*[1/6 -1/6;-1 2];
 Coefficient(abs(Coefficient)<1e-15)=0;
 Energy=strtrim(rats(real(Energy_redun(:,1))));
 ```
-
-$$\begin{bmatrix}\frac16&-\frac16\\-1&2\end{bmatrix}=\begin{bmatrix}12&1\\6&1\end{bmatrix}^{-1}$$
 
 最后将结果传递给其他函数，打印结果并结束。
 
