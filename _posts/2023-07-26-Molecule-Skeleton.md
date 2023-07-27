@@ -1,5 +1,5 @@
 ---
-title: 使用Python绘制分子着色图展示物理量的原子贡献
+title: 使用Python绘制着色分子骨架展示原子属性
 tags: 
 - Chemistry
 - Python
@@ -96,7 +96,7 @@ def drawmol2D(mol_path,colormap,array,scale):
     plt.ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
 ```
 
-一个示例如下
+下面的示例使用该程序依据Hirshfeld电荷绘制GC碱基对的着色分子骨架。
 
 ```python
 def main():
@@ -107,8 +107,14 @@ def main():
     chg_file.close()
     chg=[float(x) for x in chg]
     chg=np.array(chg)
-    drawmol2D(mol_path,"coolwarm",chg,30000)
+    drawmol2D(mol_path,"coolwarm",chg,20000)
 
 if __name__=='__main__':
     main()
 ```
+
+效果如下所示。可以明显观察到两个羰基氧和杂环的氮原子带有相当多的负电荷，而橙色的氢原子带有明显的正电荷，与杂原子形成氢键。
+
+<div align=center>
+<object data="/assets/images/molecule skeleton/Guanine-Cytosine.svg" type="image/svg+xml"></object>
+</div>
