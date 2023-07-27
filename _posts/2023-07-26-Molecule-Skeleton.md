@@ -10,7 +10,9 @@ cover:
 
 虽然使用VMD观看.pqr文件可以满足此着色要求，但是VMD的自由度较低，不仅着色方案**十分有限**，而且不易以**矢量格式**保存二维的分子骨架示意图。使用Python处理.mol文件并依据原子属性进行着色可以很好地弥补这一缺陷，效果如下图所示。下面对程序的实现进行介绍。
 
+<div align=center>
 <object data="/assets/images/molecule skeleton/Caffeine.svg" type="image/svg+xml"></object>
+</div>
 
 程序需要numpy和matplotlib用于计算与绘图：
 
@@ -19,7 +21,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-将分子的骨架视作图，于是可以利用原子坐标与键连关系（邻接矩阵）来描述。在常用的分子格式中，.mol文件在保存原子坐标的同时还保存了成键信息，适合用于绘制分子骨架。程序首先读取.mol文件并将其转化为节点坐标与邻接矩阵。
+将分子的骨架视作图，于是可以利用原子坐标与键连关系（邻接矩阵）来描述。在常用的分子格式中，.mol文件在保存原子坐标的同时还保存了成键信息，适合用于绘制分子骨架。程序包括两个子函数`mol2graph()`和`graph2coords()`。第一个函数接受.mol文件路径作为参数，随后依次读取坐标信息和键连信息并分别返回存储这些信息的矩阵`coordinates`和`bond_matrix`。
 
 ```python
 def mol2graph(mol_path):
@@ -45,10 +47,10 @@ def mol2graph(mol_path):
     return coordinates,bond_matrix
 ```
 
-随后依据邻接矩阵在坐标矩阵（N×2）中插入NaN，方便直接使用plt.plot()直接绘图。
+函数`graph2coords()`依据邻接矩阵在坐标中插入`numpy.nan`，方便直接使用plt.plot()绘图。
 
 ```python
-def graph2coords(A,XYCoords):
+def graph2coords(XYCoords,A):
     [i,j]=np.nonzero(A)
     p=np.argsort(np.maximum(i,j))
     i=i[p]
@@ -62,4 +64,51 @@ def graph2coords(A,XYCoords):
     Y=Y.T.flatten()
     
     return X,Y
+```
+
+程序定义的绘图函数接受4个参数：
+
+- `mol_path`：包含分子结构信息的.mol文件的路径
+- `colormap`：着色使用的colormap
+- `array`：着色的依据，比如原子电荷
+- `scale`：当设置为0时，绘图时使用统一的原子半径；当设置为非0值时依据`array`的值对原子半径进行放缩，半径等于`abs(scale*array)`
+
+函数中首先调用前文的两个子函数得到用于绘图的两个向量`x,y`，随后利用plt.plot()函数绘制化学键。各原子则使用`plt.scatter()`函数依据`array`参数的值绘制为填充圆形，着色方案使用`colormap`参数。
+
+```python
+def drawmol2D(mol_path,colormap,array,scale):
+    coordinates,bond_matrix=mol2graph(mol_path)
+    x,y=graph2coords(coordinates,bond_matrix)
+    plt.plot(x,y,color='k',linestyle='-',linewidth=8.0,zorder=1)
+    ax=plt.gca()
+    ax.set_aspect(1)
+    
+    if scale:
+        size=abs(scale*array)
+    else:
+        size=1000
+
+    plt.scatter(coordinates[:,0],coordinates[:,1],s=size,c=array,marker='o',cmap=colormap,linewidths=5.0,edgecolors='k',zorder=2)     
+    
+    plt.axis('off')
+    plt.colorbar()
+    plt.xlim((1.2*min(coordinates[:,0]),1.2*max(coordinates[:,0])))
+    plt.ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
+```
+
+一个示例如下
+
+```python
+def main():
+    mol_path="GC.mol"
+    chg_path="GC.txt"
+    chg_file=open(chg_path)
+    chg=chg_file.readlines()
+    chg_file.close()
+    chg=[float(x) for x in chg]
+    chg=np.array(chg)
+    drawmol2D(mol_path,"coolwarm",chg,30000)
+
+if __name__=='__main__':
+    main()
 ```
