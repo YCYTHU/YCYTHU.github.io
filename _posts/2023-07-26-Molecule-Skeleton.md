@@ -8,7 +8,7 @@ cover:
 在图像中展现原子电荷分布或原子对某物理量的贡献时如果直接将数值标在原子上面，不仅不直观而且还难以辨认。一种解决办法是通过原子的颜色来表现这些属性的正负和大小。
 <!--more-->
 
-虽然使用VMD观看.pqr文件可以满足此着色要求，但是VMD的自由度较低，不仅着色方案**十分有限**，而且不易以**矢量格式**保存二维的分子骨架示意图。使用Python处理.mol文件并依据原子属性进行着色可以很好地弥补这一缺陷，效果如下图所示。下面对程序的实现进行介绍。
+虽然使用VMD观看.pqr文件可以满足此着色要求，但是VMD的自由度较低，不仅**着色方案十分有限**，而且**不易以矢量格式保存**二维的分子骨架示意图。使用Python处理.mol文件并依据原子属性进行着色可以很好地弥补这一缺陷，效果如下图所示。下面对程序的实现进行介绍。
 
 <div align=center>
 <object data="/assets/images/molecule skeleton/Caffeine.svg" type="image/svg+xml"></object>
@@ -66,7 +66,7 @@ def graph2coords(XYCoords,A):
     return X,Y
 ```
 
-程序定义的绘图函数接受4个参数：
+程序定义的绘图函数`drawmol2D()`接受4个参数：
 
 - `mol_path`：包含分子结构信息的.mol文件的路径
 - `colormap`：着色使用的colormap
@@ -96,6 +96,8 @@ def drawmol2D(mol_path,colormap,array,scale):
     plt.ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
 ```
 
+---
+
 下面的示例使用该程序依据Hirshfeld电荷绘制GC碱基对的着色分子骨架。
 
 ```python
@@ -105,8 +107,7 @@ def main():
     chg_file=open(chg_path)
     chg=chg_file.readlines()
     chg_file.close()
-    chg=[float(x) for x in chg]
-    chg=np.array(chg)
+    chg=np.array([float(x) for x in chg])
     drawmol2D(mol_path,"coolwarm",chg,20000)
 
 if __name__=='__main__':
@@ -117,4 +118,24 @@ if __name__=='__main__':
 
 <div align=center>
 <object data="/assets/images/molecule skeleton/Guanine-Cytosine.svg" type="image/svg+xml"></object>
+</div>
+
+除原子电荷外，原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。此外，苯环上羰基邻、对位的碳原子也有一定的贡献。
+
+```python
+def main():
+    mol_path="BP.mol"
+    chg_path="BP.txt"
+    chg_file=open(chg_path)
+    chg=chg_file.readlines()
+    chg_file.close()
+    chg=np.array([float(x) for x in chg])
+    drawmol2D(mol_path,"viridis",chg,20000)
+
+if __name__=='__main__':
+    main()
+```
+
+<div align=center>
+<object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml"></object>
 </div>
