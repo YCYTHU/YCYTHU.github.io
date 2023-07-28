@@ -11,19 +11,19 @@ mathjax_autoNumber: true
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
 
 <div align=center>
-<img src="\assets\images\polymer probability\figure1.png" width="300">
+<img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/>
 </div>
 
 Now randomly pick two adjacent balls and take them away (Figure 2), the removed ball leaves an empty spot in the array. Repeat this process continuously. 
 
 <div align=center>
-<img src="\assets\images\polymer probability\figure2.png" width="300">
+<img class="image image--lg" src="\assets\images\polymer probability\figure2.png">
 </div>
 
 Since the positions of the balls to be taken are random, there may be balls that do not have adjacent balls on both sides (Figure 3), such balls will not be picked.
 
 <div align=center>
-<img src="\assets\images\polymer probability\figure3.png" width="300">
+<img class="image image--lg" src="\assets\images\polymer probability\figure3.png">
 </div>
 
 Continue this process until no balls remain or can be picked. The number of remaining balls in the array is recorded as $s$. Find the mathematical expectation of $s$.
