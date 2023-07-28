@@ -122,7 +122,7 @@ if __name__=='__main__':
 
 这两个分子之间的相互作用可以通过IGMH方法来展示，通过将delta-g划分为原子的贡献[^dg]并依此着色可以直观地表现出不同原子对相互作用贡献的大小，如下图所示。观察发现形成氢键的原子对分子间相互作用的贡献最大。
 
-[dg]:[使用Multiwfn做IGMH分析非常清晰直观地展现化学体系中的相互作用](http://sobereva.com/621)
+[^dg]:[使用Multiwfn做IGMH分析非常清晰直观地展现化学体系中的相互作用](http://sobereva.com/621)
 
 <div align=center>
 <object data="/assets/images/molecule skeleton/Guanine-Cytosine-dg.svg" type="image/svg+xml"></object>
@@ -148,16 +148,19 @@ if __name__=='__main__':
 <object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml"></object>
 </div>
 
-分子激发态的电子特征可以通过考察空穴-电子分布来分析，下图示出了PXZ-TRZ分子的单重态中每个原子对空穴-电子的贡献。可以发现左侧PXZ基团对空穴贡献最大，而右侧TRZ基团对电子的贡献最大。
+分子激发态的电子特征可以通过考察空穴-电子分布[^HE]来分析，下图示出了PXZ-TRZ分子[^PT]的单重态中每个原子对空穴-电子的贡献。可以发现左侧PXZ基团对空穴贡献最大，而右侧TRZ基团对电子的贡献最大。
+
+[^HE]:[使用Multiwfn做空穴-电子分析全面考察电子激发特征](http://sobereva.com/434)
+[^PT]:[Tanaka H, Shizu K, Miyazaki H, et al. Efficient green thermally activated delayed fluorescence (TADF) from a phenoxazine–triphenyltriazine (PXZ–TRZ) derivative\[J\]. Chemical Communications, 2012, 48(93): 11392-11394.](https://doi.org/10.1039/C2CC36237F)
 
 <div align=center>
 <object data="/assets/images/molecule skeleton/PXZ-TRZ-hole.svg" type="image/svg+xml"></object>
 <object data="/assets/images/molecule skeleton/PXZ-TRZ-electron.svg" type="image/svg+xml"></object>
 </div>
 
-PXZ-TRZ分子的激发态与基态的电子分布存在差异，使用IFCT方法可以分析激发过程中的电子转移[^IFCT]，显示分子中哪些片段增加或减少了电子。下图示出了激发过程中原子的电荷净转移量，正数代表给出电子，负数代表接受电子。由下图发现电荷转移特征与空穴-电子分布相类似，PXZ基团在激发过程中给出电子，TRZ基团接受了电子。
+PXZ-TRZ分子的激发态与基态的电子分布存在差异，使用IFCT方法可以分析激发过程中的电子转移[^IFCT]，显示分子中哪些片段增加或减少了电子。下图示出了激发过程中原子的电荷净转移量，正数代表给出电子，负数代表接受电子。由下图发现电荷转移特征与空穴-电子分布相吻合，PXZ基团在激发过程中给出电子，TRZ基团接受了电子。
 
-[IFCT]:[在Multiwfn中通过IFCT方法计算电子激发过程中任意片段间的电子转移量](http://sobereva.com/433)
+[^IFCT]:[在Multiwfn中通过IFCT方法计算电子激发过程中任意片段间的电子转移量](http://sobereva.com/433)
 
 <div align=center>
 <object data="/assets/images/molecule skeleton/PXZ-TRZ-CT.svg" type="image/svg+xml"></object>
