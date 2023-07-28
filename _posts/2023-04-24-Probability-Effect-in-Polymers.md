@@ -1,6 +1,8 @@
 ---
 title: Probability Effect in Polymers
-tags: Chemistry
+tags: 
+- Probability theory
+- Chemistry
 cover: 
 mathjax_autoNumber: true
 ---

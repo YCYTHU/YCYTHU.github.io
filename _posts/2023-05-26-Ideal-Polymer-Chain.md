@@ -1,6 +1,8 @@
 ---
 title: 理想聚合物链端到端距离的分布
-tags: Chemistry
+tags: 
+- Probability theory
+- Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ideal_chain_random_walk.svg/480px-Ideal_chain_random_walk.svg.png
 mathjax_autoNumber: true
 aside:

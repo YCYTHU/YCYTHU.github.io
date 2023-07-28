@@ -2,7 +2,8 @@
 title: Kabsch算法——衡量两个结构间的几何偏差
 tags:
 - Algorithm
-- MolViewer
+- Python
+- MATLAB
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Singular-Value-Decomposition.svg/531px-Singular-Value-Decomposition.svg.png
 ---
 
@@ -62,7 +63,7 @@ def lrms(P, Q):
     return lrms, R, T
 ```
 
-Matlab实现：
+MATLAB实现：
 
 ```matlab
 function [lrms, R, T] = LRMS(P, Q)
