@@ -3,7 +3,7 @@ title: 使用Python绘制着色分子骨架展示原子属性
 tags: 
 - Chemistry
 - Python
-cover: 
+cover: /assets/images/molecule skeleton/cover.png
 ---
 在图像中展现原子电荷分布或原子对某物理量的贡献时如果直接将数值标在原子上面，不仅不直观而且还难以辨认。一种解决办法是通过原子的颜色来表现这些属性的正负和大小。
 <!--more-->
