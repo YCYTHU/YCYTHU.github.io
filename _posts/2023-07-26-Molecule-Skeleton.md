@@ -117,10 +117,16 @@ if __name__=='__main__':
 效果如下所示。可以明显观察到两个羰基氧和杂环的氮原子带有相当多的负电荷，而橙色的氢原子带有明显的正电荷，与杂原子形成氢键。
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/Guanine-Cytosine.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/Guanine-Cytosine-chg.svg" type="image/svg+xml"></object>
 </div>
 
-除原子电荷外，原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。此外，苯环上羰基邻、对位的碳原子也有一定的贡献。
+这两个分子之间的相互作用可以通过IGMH方法来展示，通过将delta-g划分为原子的贡献并依此着色可以直观地表现出不同原子对相互作用贡献的大小，如下图所示。
+
+<div align=center>
+<object data="/assets/images/molecule skeleton/Guanine-Cytosine-dg.svg" type="image/svg+xml"></object>
+</div>
+
+此外，原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了Becke方法下各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。此外，苯环上羰基邻、对位的碳原子也有一定的贡献。
 
 ```python
 def main():
