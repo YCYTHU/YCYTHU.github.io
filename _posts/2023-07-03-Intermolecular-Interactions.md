@@ -71,9 +71,8 @@ $$U_\mathrm{dd}=\frac{\mu_1\mu_2}{r^3}(\sin\theta_1\sin\theta_2\cos\phi-2\cos\th
 
 相互作用能 $U_\mathrm{dd}$ 的角度部分对 $\theta_1,\theta_2,\phi$ 的切片填色图如图1所示。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\dipole-dipole-orientation.png" width="600">
-</div>
+<div align=center><img width="75%" src="\assets\images\Intermolecular Interactions\dipole-dipole-orientation.png"></div>
+<div align=center><font color="#999999">图1：偶极-偶极相互作用能角度部分的切片填色图</font></div>
 
 如果两个偶极的取向并不固定，而是依照Boltzmann分布，则对所有的角度进行加权平均可得净的相互作用能，为偶极之间距离 $r$ 的函数。
 
@@ -213,9 +212,8 @@ $$u(r)\propto \exp\left(-\frac{r}{\sigma}\right)\quad \sigma>0\nonumber$$
 
 将交换排斥与范德华作用结合，Lennard-Jones势 $V_\mathrm{LJ}(r)=4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]$ 由于其在数学上非常简单而被广泛研究（图2）。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\LJ-potential.png" width="600">
-</div>
+<div align=center><img width="75%" src="\assets\images\Intermolecular Interactions\LJ-potential.png"></div>
+<div align=center><font color="#999999">图2：Lennard-Jones势</font></div>
 
 ## 第二维利系数
 
@@ -265,9 +263,8 @@ $$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac
 
 其中 $R$ 为离子半径。式 $\eqref{dhphi}$ 说明在溶液中静电效应并非以 $r^{-1}$ 的速度衰减，而是以 $\frac{e^{-\kappa r}}{r}$ 的更快速度衰减，如图3所示。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\DH-theory.png" width="400">
-</div>
+<div align=center><img width="60%" src="\assets\images\Intermolecular Interactions\DH-theory.png"></div>
+<div align=center><font color="#999999">图3：真空中和溶液中两种衰减速度的对比</font></div>
 
 从Debye–Hückel理论还可以获得关于超额化学势（或活度系数 $\gamma$ ）的方程：
 
@@ -321,9 +318,8 @@ $$\begin{align}&W(r)\sim-\frac{16\pi^2C\rho^2R^6}{9}\frac{1}{r^6}+\omicron\left(
 
 从式 $\eqref{wssinf}\eqref{wss2r}$ 可以看出，当球体之间距离很近时，势能与球表面的距离成反比关系；当球体之间相距很远时，相互作用能与 $r^{-6}$ 呈正比，与单分子下的情形相同（如图4所示）。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\sphere-sphere.png" width="400">
-</div>
+<div align=center><img width="60%" src="\assets\images\Intermolecular Interactions\sphere-sphere.png"></div>
+<div align=center><font color="#999999">图4：球体间的相互作用</font></div>
 
 ## 无限大平面间的相互作用
 
@@ -373,9 +369,8 @@ $$s\tan s=\frac{\vert\sigma\vert Zeh}{2kT\varepsilon_r\varepsilon_0}\tag{66}\lab
 
 $$\rho(x)=-\varepsilon_r\varepsilon_0\frac{\mathrm{d}^2\phi(x)}{\mathrm{d}x^2}=\frac{2kTs^2\varepsilon_r\varepsilon_0}{Zeh^2}\frac{1}{\cos^2(sx/h)}\tag{67}\label{pbrho}$$
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\charged-layer.png" width="400">
-</div>
+<div align=center><img width="60%" src="\assets\images\Intermolecular Interactions\charged-layer.png"></div>
+<div align=center><font color="#999999">图5：带电平面间的电势与离子浓度</font></div>
 
 由式 $\eqref{pbrho}$ 得到两平面连线中点上和在平面上的电荷密度：
 
@@ -421,6 +416,5 @@ $$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{76}\
 
 $$W(r)=W_\mathrm{vdW}(r)+W_\mathrm{elstat}(r)\tag{77}$$
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\Intermolecular Interactions\DLVO.png" width="400">
-</div>
+<div align=center><img width="60%" src="\assets\images\Intermolecular Interactions\DLVO.png"></div>
+<div align=center><font color="#999999">图6：DLVO理论描述的微粒间的相互作用</font></div>
