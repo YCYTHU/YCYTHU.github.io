@@ -12,29 +12,25 @@ modify_date: 2023-07-28
 
 程序运行后的界面如图1所示。左上角的微调器可以选择配体的数量（不小于1），中间的两列表格显示配体在球坐标系下的方位角。通过编辑表格中的数值可以改变配体的位置，同时可在程序最右侧的3D查看器中查看当前的构型。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\CFSD\Figure1.png" width="600">
-</div>
+<div align=center><img width="60%" src="\assets\images\CFSD\Figure1.png"></div>
+<div align=center><font color="#999999">图1：程序初始界面</font></div>
 
 通过左侧中间的下拉菜单可以选择预设好的配位形式（图2），包括平面正三角、正四面体、正八面体等。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\CFSD\Figure2.png" width="600">
-</div>
+<div align=center><img width="60%" src="\assets\images\CFSD\Figure2.png"></div>
+<div align=center><font color="#999999">图2：通过下拉菜单选择预设几何构型</font></div>
 
-当构型设置完成后，点击菜单右侧"Calculate!"按钮进行分裂能的计算，随后界面左下角的四列表格显示的是能量信息，第一列是以Dq为单位的能量近似值，第二到第四列是能量的解析解的系数（图3）。
+当构型设置完成后，点击菜单右侧 **Calculate!** 按钮进行分裂能的计算，随后界面左下角的四列表格显示的是能量信息，第一列是以Dq为单位的能量近似值，第二到第四列是能量的解析解的系数（图3）。
 
 表格右侧的绘图区会显示当前构型的分裂能级图（相同的能量只绘制一条线），MATLAB命令行中会打印构型信息与能量信息。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\CFSD\Figure3.png" width="600">
-</div>
+<div align=center><img width="60%" src="\assets\images\CFSD\Figure3.png"></div>
+<div align=center><font color="#999999">图3：点击 <b>Calculate!</b> 按钮后得到正四面体构型的能级分裂</font></div>
 
 在3D查看器的左侧有5个选项，勾选后会显示轨道等值面（图4），轨道序号与左下角表格顺序相对应。
 
-<div align=center>
-<img class="image image--xl" src="\assets\images\CFSD\Figure4.png" width="600">
-</div>
+<div align=center><img width="60%" src="\assets\images\CFSD\Figure4.png"></div>
+<div align=center><font color="#999999">图4：勾选Orbital 5后显示 $d_{z^2}$ 轨道等值面</font></div>
 
 ---
 

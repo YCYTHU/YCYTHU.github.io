@@ -14,6 +14,8 @@ cover: /assets/images/molecule skeleton/cover.png
 <object data="/assets/images/molecule skeleton/Caffeine.svg" type="image/svg+xml" width="75%"></object>
 </div>
 
+# 实现
+
 程序需要numpy和matplotlib用于计算与绘图：
 
 ```python
@@ -96,7 +98,9 @@ def drawmol2D(mol_path,colormap,array,scale):
     plt.ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
 ```
 
----
+# 应用示例
+
+## 鸟嘌呤与胞嘧啶的相互作用
 
 下面的示例使用该程序依据Hirshfeld电荷绘制GC碱基对的着色分子骨架。
 
@@ -128,7 +132,9 @@ if __name__=='__main__':
 <object data="/assets/images/molecule skeleton/Guanine-Cytosine-dg.svg" type="image/svg+xml" width="75%"></object>
 </div>
 
-此外，原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了Becke划分下各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。除此之外，苯环上羰基邻、对位的碳原子也有一定的贡献。
+## 二苯甲酮的三重态
+
+原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了Becke划分下各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。除此之外，苯环上羰基邻、对位的碳原子也有一定的贡献。
 
 ```python
 def main():
@@ -147,6 +153,8 @@ if __name__=='__main__':
 <div align=center>
 <object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml" width="60%"></object>
 </div>
+
+## D-$\pi$-A结构分子的的激发态特征
 
 分子激发态的电子特征可以通过考察空穴-电子分布[^HE]来分析，下图示出了PXZ-TRZ分子[^PT]的单重态中每个原子对空穴-电子的贡献百分比。可以发现空穴主要分布在左侧给电子的PXZ基团上，而电子则主要分布在右侧吸电子的TRZ基团上。
 

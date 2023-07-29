@@ -10,21 +10,18 @@ mathjax_autoNumber: true
 
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
 
-<div align=center>
-<img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/>
-</div>
+<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/></div>
+<div align=center><font color="#999999">Figure 1. One-dimensional array of $n$ balls</font></div>
 
-Now randomly pick two adjacent balls and take them away (Figure 2), the removed ball leaves an empty spot in the array. Repeat this process continuously. 
+Now randomly pick two adjacent balls and take them away (Figure 2), the removed balls leave empty spots in the array. Repeat this process continuously. 
 
-<div align=center>
-<img class="image image--lg" src="\assets\images\polymer probability\figure2.png">
-</div>
+<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure2.png"></div>
+<div align=center><font color="#999999">Figure 2. Pick two adjacent balls randomly (shown inside red box) and then take them away</font></div>
 
 Since the positions of the balls to be taken are random, there may be balls that do not have adjacent balls on both sides (Figure 3), such balls will not be picked.
 
-<div align=center>
-<img class="image image--lg" src="\assets\images\polymer probability\figure3.png">
-</div>
+<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure3.png"></div>
+<div align=center><font color="#999999">Figure 3. Balls without neighbours (shown inside red box) will not be picked</font></div>
 
 Continue this process until no balls remain or can be picked. The number of remaining balls in the array is recorded as $s$. Find the mathematical expectation of $s$.
 
@@ -68,14 +65,13 @@ $$f(n)=\frac{(-2)^{n+1}}{\Gamma(n+2)}+\frac{\Gamma(n+3,-2)}{e^2\Gamma(n+2)}$$
 
 Therefore:
 
-$$\lim_{n\to\infty}\frac{f(n)}{n}=\frac{1}{e^2}$$
+$$\lim_{n\to\infty}\frac{f(n)}{n}=\frac{1}{e^2}\label{rate}$$
 
 ---
 
 The following is an instance of aforementioned model. Suppose there is an infinitely long polyvinyl alcohol chain, and then acetalize this chain. Because the acetalization process always occurs on adjacent hydroxyl groups and the positions of acetalization are randomly, there may be some hydroxyl groups cannot be acetalization (Figure 4).
 
-<div align=center>
-<img src="\assets\images\polymer probability\figure4.png" width="300">
-</div>
+<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure4.png"></div>
+<div align=center><font color="#999999">Figure 4. Acetalization of an infinitely long polyvinyl alcohol chain</font></div>
 
-Because of the large degree of polymerization of polyvinyl alcohol, the conversion rate of hydroxyl groups is approximately $1-\frac{1}{e^2}$ in accordance with equation 8.
+Because of the large degree of polymerization of polyvinyl alcohol, the conversion rate of hydroxyl groups is approximately $1-\frac{1}{e^2}$ in accordance with Equation $\eqref{rate}$.
