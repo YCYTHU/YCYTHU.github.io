@@ -8,10 +8,10 @@ cover: /assets/images/molecule skeleton/cover.png
 在图像中展现原子电荷分布或原子对某物理量的贡献时如果直接将数值标在原子上面，不仅不直观而且还难以辨认。一种解决办法是通过原子的颜色来表现这些属性的正负和大小。
 <!--more-->
 
-虽然使用VMD观看.pqr文件可以满足此着色要求，但是VMD的自由度较低，不仅**着色方案十分有限**，而且**不易以矢量格式保存**，有时对于一些立体结构不合适的分子难以同时展现各片段的性质。使用Python处理.mol文件绘制**分子骨架**并依据原子属性进行着色可以很好地弥补这一缺陷，效果如下图所示。下面对程序的实现进行介绍。
+虽然使用VMD观看.pqr文件可以满足此着色要求，但是VMD的自由度较低，不仅**着色方案十分有限**，而且**不易以矢量格式保存**，有时对于一些立体结构不合适的分子难以同时展现各片段的性质。使用Python处理.mol文件（V3000格式）绘制**分子骨架**并依据原子属性进行着色可以很好地弥补这一缺陷，效果如下图所示。下面对程序的实现进行介绍。
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/Caffeine.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/Caffeine.svg" type="image/svg+xml" width="75%"></object>
 </div>
 
 程序需要numpy和matplotlib用于计算与绘图：
@@ -117,7 +117,7 @@ if __name__=='__main__':
 效果如下所示。可以明显观察到两个羰基氧和杂环的氮原子带有相当多的负电荷，而橙色的氢原子带有明显的正电荷，与杂原子形成氢键。
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/Guanine-Cytosine-chg.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/Guanine-Cytosine-chg.svg" type="image/svg+xml" width="75%"></object>
 </div>
 
 这两个分子之间的相互作用可以通过IGMH方法来考察，通过将delta-g划分为原子的贡献[^dg]并依此着色可以直观地表现出不同原子对相互作用贡献的大小，如下图所示。观察发现形成氢键的原子对分子间相互作用的贡献最大。
@@ -125,7 +125,7 @@ if __name__=='__main__':
 [^dg]:[使用Multiwfn做IGMH分析非常清晰直观地展现化学体系中的相互作用](http://sobereva.com/621)
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/Guanine-Cytosine-dg.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/Guanine-Cytosine-dg.svg" type="image/svg+xml" width="75%"></object>
 </div>
 
 此外，原子布居等原子属性也适合用此方法展示。比如二苯甲酮在三重态下存在单电子，下面的图片展示了Becke划分下各原子的贡献。可以观察到羰基的氧原子和碳原子贡献最大，也即单电子主要布居在羰基上。除此之外，苯环上羰基邻、对位的碳原子也有一定的贡献。
@@ -145,7 +145,7 @@ if __name__=='__main__':
 ```
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml" width="60%"></object>
 </div>
 
 分子激发态的电子特征可以通过考察空穴-电子分布[^HE]来分析，下图示出了PXZ-TRZ分子[^PT]的单重态中每个原子对空穴-电子的贡献百分比。可以发现空穴主要分布在左侧给电子的PXZ基团上，而电子则主要分布在右侧吸电子的TRZ基团上。
@@ -153,9 +153,9 @@ if __name__=='__main__':
 [^HE]:[使用Multiwfn做空穴-电子分析全面考察电子激发特征](http://sobereva.com/434)
 [^PT]:[Tanaka H, Shizu K, Miyazaki H, et al. Efficient green thermally activated delayed fluorescence (TADF) from a phenoxazine–triphenyltriazine (PXZ–TRZ) derivative\[J\]. Chemical Communications, 2012, 48(93): 11392-11394.](https://doi.org/10.1039/C2CC36237F)
 
-<div align=center>
-<object data="/assets/images/molecule skeleton/PXZ-TRZ-hole.svg" type="image/svg+xml"></object>
-<object data="/assets/images/molecule skeleton/PXZ-TRZ-electron.svg" type="image/svg+xml"></object>
+<div align="center">
+<object data="/assets/images/molecule skeleton/PXZ-TRZ-hole.svg" type="image/svg+xml" width="45%"></object>
+<object data="/assets/images/molecule skeleton/PXZ-TRZ-electron.svg" type="image/svg+xml" width="45%"></object>
 </div>
 
 PXZ-TRZ分子的激发态与基态的电子分布存在差异，使用IFCT方法可以分析激发过程中的电子转移[^IFCT]，显示分子中哪些片段增加或减少了电子。下图示出了激发过程中原子的电荷净转移量，正数代表给出电子，负数代表接受电子。由下图发现电荷转移特征与空穴-电子分布相吻合，PXZ基团在激发过程中给出电子，TRZ基团接受了电子。
@@ -163,5 +163,5 @@ PXZ-TRZ分子的激发态与基态的电子分布存在差异，使用IFCT方法
 [^IFCT]:[在Multiwfn中通过IFCT方法计算电子激发过程中任意片段间的电子转移量](http://sobereva.com/433)
 
 <div align=center>
-<object data="/assets/images/molecule skeleton/PXZ-TRZ-CT.svg" type="image/svg+xml"></object>
+<object data="/assets/images/molecule skeleton/PXZ-TRZ-CT.svg" type="image/svg+xml" width="75%"></object>
 </div>
