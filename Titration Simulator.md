@@ -3,10 +3,11 @@ layout: page
 permalink: /Titration%20Simulator.html
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Titration Simulator</title>
-	<script language="JavaScript" type="text/javascript">
-		var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
+<html>
+<head>
+	<meta charset="UTF-8">
+<script language="JavaScript" type="text/javascript">
+	var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
 	var acid="Choose", base="Choose", indicator="Choose"; // (Unselected at startup)
 	var strongAcid, strongBase;
 	var titrant, dropRate = 100;
@@ -538,8 +539,8 @@ permalink: /Titration%20Simulator.html
     if (pH==undefined) pHDiff = 0; //*********
 
     else pHDiff = pHInd - pH;		
-//		document.getElementById("warnings").innerHTML = "pHInd = "+pHInd+" pH = "+pH+" pHDiff = "+pHDiff;
-//		document.getElementById("warnings2").innerHTML = indRed1+", "+indGreen1+", "+indBlue1+", "+indRed2+", "+indGreen2+", "+indBlue2;
+	//		document.getElementById("warnings").innerHTML = "pHInd = "+pHInd+" pH = "+pH+" pHDiff = "+pHDiff;
+	//		document.getElementById("warnings2").innerHTML = indRed1+", "+indGreen1+", "+indBlue1+", "+indRed2+", "+indGreen2+", "+indBlue2;
     if (pHDiff >= 1.0) return colourCoder(indRed2, indGreen2, indBlue2, darker);
     if (pHDiff < 1.0 & pHDiff >= -1.0) return colourCoder(
     	(indRed1-(indRed1-indRed2)*(pHDiff+1.0)/2.0), 
@@ -665,12 +666,11 @@ permalink: /Titration%20Simulator.html
 </head>
 
 <body>
-	<div style="display:flex;">
 		<!-- Settings area -->
-		<div style="width:40%;">
+		<div>
 			<center>
 				<p class="SetAcid"><b><span id="acidErr">Acid</span></b><br>
-					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:100px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
 					<select id="acid" onchange="getAcid()">
 						<option disabled="" selected="" value="Choose">Choose acid</option>
 						<option value="Hydrochloric acid">Hydrochloric acid</option>
@@ -681,7 +681,7 @@ permalink: /Titration%20Simulator.html
 					</select>
 				</p>		
 				<p class="SetBase"><b><span id="baseErr">Base</span></b><br>
-					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:100px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
 					<select id="base" onchange="getBase()">
 						<option disabled="" selected="" value="Choose">Choose base</option>
 						<option value="Sodium hydroxide">Sodium hydroxide</option>
@@ -713,14 +713,14 @@ permalink: /Titration%20Simulator.html
 					</center>
 				</div>
 				<!-- Apparatus area -->
-				<div>
-				<div style="position:absolute; top:0px; left:500px; z-index:0;">
+				<div style="position:relative;">
+					<div style="position:absolute; top:0px; left:100px; z-index:0;">
 						<canvas id="liquids" width="120" height="690"></canvas>
 					</div>
-					<div style="position:absolute; top:570px; left:500px; z-index:1;">
+					<div style="position:absolute; top:570px; left:100px; z-index:1;">
 						<canvas id="stirBar" width="120" height="120"></canvas>
 					</div>
-					<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:503px; z-index:2;">
+					<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
 						<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
 					</div>
 				</div>
@@ -737,7 +737,7 @@ permalink: /Titration%20Simulator.html
 					</div>
 					<!-- Messages area -->
 					<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
-					<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
+						<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
 					</div>
-					</div>
-					</body></html>
+				</div>
+			</body></html>
