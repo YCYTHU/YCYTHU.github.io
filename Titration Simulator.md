@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /TiTitration%20Simulator.html
+permalink: /Titration%20Simulator.html
 ---
 
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -662,11 +662,10 @@ permalink: /TiTitration%20Simulator.html
 		border:none;
 	}
 </style>
-<link rel="stylesheet" href="https://ycythu.github.io/assets/css/main.css">
 </head>
 
 <body>
-	<div class="article__content" style="position:absolute; top:10px; left:10px; width:100%; height:100%;">
+	<div style="position:absolute; top:10px; left:10px; width:100%; height:100%;">
 	<!--<div style="position:absolute; top:0px; left:130px; width:400px;">
 		<center><font style="color:#A52A2A;" size="5.5"><b><br>Titration Simulator</b></font></center>
 	</div>-->
@@ -682,7 +681,7 @@ permalink: /TiTitration%20Simulator.html
 	</div>
 	
 	<!-- Titration graph area -->
-	<div style="position:absolute; top:0px; left:720px; width:400px; height:70px;">
+	<div>
 		<center>
 			<table border="0" width="380" cellpadding="5" id="results"><tbody><tr>
 				<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
@@ -693,10 +692,10 @@ permalink: /TiTitration%20Simulator.html
 		<div style="position:absolute; top:135px; left:710px; width:400px;"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
 		</div>
 		<!-- Settings area -->
-		<div style="position:absolute; top:0px; left:50px; width:320px; border:0px solid #ff0000;">
+		<div style="width:40%;">
 			<center>
 				<p class="SetAcid"><b><span id="acidErr">Acid</span></b><br>
-					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50; height:25; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
 					<select id="acid" onchange="getAcid()">
 						<option disabled="" selected="" value="Choose">Choose acid</option>
 						<option value="Hydrochloric acid">Hydrochloric acid</option>
@@ -707,7 +706,7 @@ permalink: /TiTitration%20Simulator.html
 					</select>
 				</p>		
 				<p class="SetBase"><b><span id="baseErr">Base</span></b><br>
-					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50; height:25; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
 					<select id="base" onchange="getBase()">
 						<option disabled="" selected="" value="Choose">Choose base</option>
 						<option value="Sodium hydroxide">Sodium hydroxide</option>
