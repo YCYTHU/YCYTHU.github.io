@@ -635,7 +635,7 @@ permalink: /Titration%20Simulator.html
 		border:1px solid #1890ff;
 		border-radius:.4rem;
 		display: inline-block;
-		width:30%;
+		width:45%;
 		height:90px;
 	}
 	.SetBase{
@@ -644,7 +644,7 @@ permalink: /Titration%20Simulator.html
 		border:1px solid #fa8c16;
 		border-radius:.4rem;
 		display: inline-block;
-		width:30%;
+		width:45%;
 		height:90px;
 	}
 	.SetInd{
@@ -653,7 +653,7 @@ permalink: /Titration%20Simulator.html
 		border:1px solid #52c41a;
 		border-radius:.4rem;
 		display: inline-block;
-		width:30%;
+		width:90%;
 		height:90px;
 	}
 	.SetBur{
@@ -681,49 +681,51 @@ permalink: /Titration%20Simulator.html
 
 <body>
 		<!-- Settings area -->
-		<div>
+		<div style="width:100%;">
 			<center>
-				<p class="SetAcid"><b><span id="acidErr">Acid</span></b><br>
+				<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
 					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
 					<select id="acid" onchange="getAcid()">
-						<option disabled="" selected="" value="Choose">Choose acid</option>
-						<option value="Hydrochloric acid">Hydrochloric acid</option>
-						<option value="Acetic acid">Acetic acid</option>
-						<option value="Chlorous acid">Chlorous acid</option>
-						<option value="Hypochlorous acid">Hypochlorous acid</option>
-						<option value="Hydrocyanic acid">Hydrocyanic acid</option>
+						<option disabled="" selected="" value="Choose">--</option>
+						<option value="Hydrochloric acid">盐酸</option>
+						<option value="Acetic acid">乙酸</option>
+						<option value="Chlorous acid">亚氯酸</option>
+						<option value="Hypochlorous acid">次氯酸</option>
+						<option value="Hydrocyanic acid">氢氰酸</option>
 					</select>
 				</p>
-				<p class="SetBase"><b><span id="baseErr">Base</span></b><br>
+				<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
 					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
 					<select id="base" onchange="getBase()">
-						<option disabled="" selected="" value="Choose">Choose base</option>
-						<option value="Sodium hydroxide">Sodium hydroxide</option>
-						<option value="Ammonia">Ammonia</option>
-						<option value="Methylamine">Methylamine</option>
-						<option value="Ethylamine">Ethylamine</option>
-						<option value="Aniline">Aniline</option>
-						<option value="Pyridine">Pyridine</option>				
+						<option disabled="" selected="" value="Choose">--</option>
+						<option value="Sodium hydroxide">氢氧化钠</option>
+						<option value="Ammonia">氨</option>
+						<option value="Methylamine">甲胺</option>
+						<option value="Ethylamine">乙胺</option>
+						<option value="Aniline">苯胺</option>
+						<option value="Pyridine">吡啶</option>				
 					</select>
 				</p>
-				<p class="SetInd"><b><span id="indErr">Indicator</span></b><br><br>
+				<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
+					<!--<input style="visibility:hidden; width:50px; height:25px; text-align:center;">-->
 					<select id="indicator" onchange="getIndicator()">
-						<option disabled="" selected="" value="Choose">Choose indicator</option>
-						<option value="Phenolphthalein">Phenolphthalein (8.0 - 10.0)</option>
-						<option value="Methyl orange">Methyl orange (3.3 - 4.5)</option>
-						<option value="Bromothymol blue">Bromothymol blue (6.0 - 7.5)</option>
-						<option value="Crystal violet">Crystal violet (0.0 - 1.8)</option>
-						<option value="Alizarin yellow">Alizarin yellow (10.0 - 12.0)</option>
-						<option value="Erichrome black T">Erichrome black T (5.0 - 6.5)</option>				
-					</select><br>		 
+						<option disabled="" selected="" value="Choose">--</option>
+						<option value="Phenolphthalein">酚酞 (8.0 - 10.0)</option>
+						<option value="Methyl orange">甲基橙 (3.3 - 4.5)</option>
+						<option value="Bromothymol blue">溴百里酚蓝 (6.0 - 7.5)</option>
+						<option value="Crystal violet">结晶紫 (0.0 - 1.8)</option>
+						<option value="Alizarin yellow">茜素黄 (10.0 - 12.0)</option>
+						<option value="Erichrome black T">铬黑T (5.0 - 6.5)</option>				
+					</select>	 
 				</p>
-				<p class="SetBur"><b>Buret contains:</b><span id="titrantErr"></span><br>
-					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> Acid
-					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> Base</p>		
+				<p class="SetBur"><b>滴定方式</b><span id="titrantErr"></span><br>
+					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸滴碱
+					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱滴酸</p>		
 					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
-				<p class="SetRate"><b>Drop Rate</b><br>
-					<small>Slow</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>Fast</small><br></p>
-					<p><a id="startButton" class="button button--success button--rounded" style="width:100%;" onclick="reFill()">Add solutions to the buret and flask</a></p>
+				<p style="display:inline-block;"></p>
+				<p class="SetRate"><b>滴定速度</b><br>
+					<small>慢</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>快</small><br></p>
+				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
 			</center>
 		</div>
 				<!-- Apparatus area -->
