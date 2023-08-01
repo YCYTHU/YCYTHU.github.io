@@ -665,32 +665,7 @@ permalink: /Titration%20Simulator.html
 </head>
 
 <body>
-	<div style="position:absolute; top:10px; left:10px; width:100%; height:100%;">
-	<!--<div style="position:absolute; top:0px; left:130px; width:400px;">
-		<center><font style="color:#A52A2A;" size="5.5"><b><br>Titration Simulator</b></font></center>
-	</div>-->
-	<!-- Apparatus area -->
-	<div style="position:absolute; top:0px; left:500px; z-index:0;">
-		<canvas id="liquids" width="120" height="690"></canvas>
-	</div>
-	<div style="position:absolute; top:570px; left:500px; z-index:1;">
-		<canvas id="stirBar" width="120" height="120"></canvas>
-	</div>
-	<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:503px; z-index:2;">
-		<img src="./Titration Simulator_files/titration-new.gif" width="112" height="670" border="0">
-	</div>
-	
-	<!-- Titration graph area -->
-	<div>
-		<center>
-			<table border="0" width="380" cellpadding="5" id="results"><tbody><tr>
-				<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
-				<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td>
-			</tr></tbody></table></center>
-		</div>
-		<!-- Titration graph area -->	
-		<div style="position:absolute; top:135px; left:710px; width:400px;"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
-		</div>
+	<div style="display:flex;">
 		<!-- Settings area -->
 		<div style="width:40%;">
 			<center>
@@ -730,18 +705,39 @@ permalink: /Titration%20Simulator.html
 				</p>
 				<p class="SetBur"><b>Buret contains:</b><span id="titrantErr"></span><br>
 					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> Acid
-					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> Base</p>
-					
-				<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
-				
-				<p class="SetRate"><b>Drop Rate</b><br>
-					<small>Slow</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>Fast</small><br></p>
-				<p><a id="startButton" class="button button--success button--rounded" style="width:100%;" onclick="reFill()">Add solutions to the buret and flask</a></p>
-				</center>
-			</div>
-			<!-- Messages area -->
-			<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
-				<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
-			</div>
-		</div>
-	</body></html>
+					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> Base</p>		
+					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
+					<p class="SetRate"><b>Drop Rate</b><br>
+						<small>Slow</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>Fast</small><br></p>
+						<p><a id="startButton" class="button button--success button--rounded" style="width:100%;" onclick="reFill()">Add solutions to the buret and flask</a></p>
+					</center>
+				</div>
+				<!-- Apparatus area -->
+				<div>
+				<div style="position:absolute; top:0px; left:500px; z-index:0;">
+						<canvas id="liquids" width="120" height="690"></canvas>
+					</div>
+					<div style="position:absolute; top:570px; left:500px; z-index:1;">
+						<canvas id="stirBar" width="120" height="120"></canvas>
+					</div>
+					<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:503px; z-index:2;">
+						<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
+					</div>
+				</div>
+				<!-- Titration graph area -->
+				<div>
+					<center>
+						<table border="0" width="380" cellpadding="5" id="results"><tbody><tr>
+							<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
+							<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td>
+						</tr></tbody></table></center>
+					</div>
+					<!-- Titration graph area -->	
+					<div style="position:absolute; top:135px; left:710px; width:400px;"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
+					</div>
+					<!-- Messages area -->
+					<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
+					<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
+					</div>
+					</div>
+					</body></html>
