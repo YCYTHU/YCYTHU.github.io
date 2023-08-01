@@ -629,40 +629,54 @@ permalink: /Titration%20Simulator.html
 	}
 </script>
 <style>
-	p.SetAcid{
+	.SetAcid{
 		padding:.5rem 1rem;
 		background-color:rgba(24,144,255,0.1);
 		border:1px solid #1890ff;
-		border-radius:.4rem
+		border-radius:.4rem;
+		display: inline-block;
+		width:30%;
+		height:90px;
 	}
-	p.SetBase{
+	.SetBase{
 		padding:.5rem 1rem;
 		background-color:rgba(250,140,22,0.1);
 		border:1px solid #fa8c16;
-		border-radius:.4rem
+		border-radius:.4rem;
+		display: inline-block;
+		width:30%;
+		height:90px;
 	}
-	p.SetInd{
+	.SetInd{
 		padding:.5rem 1rem;
 		background-color:rgba(82,196,26,0.1);
 		border:1px solid #52c41a;
-		border-radius:.4rem
+		border-radius:.4rem;
+		display: inline-block;
+		width:30%;
+		height:90px;
 	}
-	p.SetBur{
+	.SetBur{
 		padding:.5rem 1rem;
 		background-color:rgba(245,34,45,0.1);
 		border:1px solid #f5222d;
-		border-radius:.4rem
+		border-radius:.4rem;
+		display: inline-block;
+		width:45%;
 	}
-	p.SetRate{
+	.SetRate{
 		padding:.5rem 1rem;
 		background-color:rgba(106,61,154,0.1);
 		border:1px solid #6a3d9a;
-		border-radius:.4rem
+		border-radius:.4rem;
+		display: inline-block;
+		width:45%;
 	}
 	#results td{
 		border:none;
 	}
 </style>
+<link rel="stylesheet" href="https://ycythu.github.io/assets/css/main.css">
 </head>
 
 <body>
@@ -670,7 +684,7 @@ permalink: /Titration%20Simulator.html
 		<div>
 			<center>
 				<p class="SetAcid"><b><span id="acidErr">Acid</span></b><br>
-					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:100px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
 					<select id="acid" onchange="getAcid()">
 						<option disabled="" selected="" value="Choose">Choose acid</option>
 						<option value="Hydrochloric acid">Hydrochloric acid</option>
@@ -679,9 +693,9 @@ permalink: /Titration%20Simulator.html
 						<option value="Hypochlorous acid">Hypochlorous acid</option>
 						<option value="Hydrocyanic acid">Hydrocyanic acid</option>
 					</select>
-				</p>		
+				</p>
 				<p class="SetBase"><b><span id="baseErr">Base</span></b><br>
-					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:100px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
+					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
 					<select id="base" onchange="getBase()">
 						<option disabled="" selected="" value="Choose">Choose base</option>
 						<option value="Sodium hydroxide">Sodium hydroxide</option>
@@ -692,7 +706,7 @@ permalink: /Titration%20Simulator.html
 						<option value="Pyridine">Pyridine</option>				
 					</select>
 				</p>
-				<p class="SetInd"><b><span id="indErr">Indicator</span></b><br>
+				<p class="SetInd"><b><span id="indErr">Indicator</span></b><br><br>
 					<select id="indicator" onchange="getIndicator()">
 						<option disabled="" selected="" value="Choose">Choose indicator</option>
 						<option value="Phenolphthalein">Phenolphthalein (8.0 - 10.0)</option>
@@ -707,11 +721,11 @@ permalink: /Titration%20Simulator.html
 					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> Acid
 					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> Base</p>		
 					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
-					<p class="SetRate"><b>Drop Rate</b><br>
-						<small>Slow</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>Fast</small><br></p>
-						<p><a id="startButton" class="button button--success button--rounded" style="width:100%;" onclick="reFill()">Add solutions to the buret and flask</a></p>
-					</center>
-				</div>
+				<p class="SetRate"><b>Drop Rate</b><br>
+					<small>Slow</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>Fast</small><br></p>
+					<p><a id="startButton" class="button button--success button--rounded" style="width:100%;" onclick="reFill()">Add solutions to the buret and flask</a></p>
+			</center>
+		</div>
 				<!-- Apparatus area -->
 				<div style="position:relative;">
 					<div style="position:absolute; top:0px; left:100px; z-index:0;">
@@ -727,17 +741,16 @@ permalink: /Titration%20Simulator.html
 				<!-- Titration graph area -->
 				<div>
 					<center>
-						<table border="0" width="380" cellpadding="5" id="results"><tbody><tr>
+						<table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
 							<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
 							<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td>
 						</tr></tbody></table></center>
 					</div>
 					<!-- Titration graph area -->	
-					<div style="position:absolute; top:135px; left:710px; width:400px;"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
+					<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
 					</div>
 					<!-- Messages area -->
 					<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
 						<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
 					</div>
-				</div>
 			</body></html>
