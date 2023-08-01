@@ -173,3 +173,15 @@ PXZ-TRZ分子的激发态与基态的电子分布存在差异，使用IFCT方法
 <div align=center>
 <object data="/assets/images/molecule skeleton/PXZ-TRZ-CT.svg" type="image/svg+xml" width="75%"></object>
 </div>
+
+# 色彩图
+
+Matplotlib有许多内置的颜色图，下面示出具有连续颜色的色彩图。
+
+<div align=center>
+<object data="/assets/images/molecule skeleton/PUSc.svg" type="image/svg+xml" width="100%"></object>
+<object data="/assets/images/molecule skeleton/Sc.svg" type="image/svg+xml" width="100%"></object>
+<object data="/assets/images/molecule skeleton/S2c.svg" type="image/svg+xml" width="100%"></object>
+<object data="/assets/images/molecule skeleton/Dc.svg" type="image/svg+xml" width="100%"></object>
+<object data="/assets/images/molecule skeleton/Cc.svg" type="image/svg+xml" width="100%"></object>
+</div>
