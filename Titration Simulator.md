@@ -383,7 +383,7 @@ permalink: /Titration%20Simulator.html
 
   function weakAcidWeakBase(){  // Weak acid - weak base case not handled
   	document.getElementById("startButton").disabled = true;
-  	document.getElementById("warnings").innerHTML = "<a class="button button--outline-primary button--rounded">警告：弱酸弱碱</a>";
+  	document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：弱酸弱碱</a>";
   }
 
   function setAcidity() { // Picks the appropriate pKa and base type.
@@ -624,7 +624,7 @@ permalink: /Titration%20Simulator.html
 		stirInterval = setInterval(stirrer,50); //Prepare stirrer loop
 		clearInterval(stirInterval);
 		ready();
-		document.getElementById("warnings").innerHTML = "<a class="button button--outline-primary button--rounded">警告：缺参数</a>";
+		document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：缺参数</a>";
 	}
 </script>
 <style>
