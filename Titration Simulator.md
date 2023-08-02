@@ -27,17 +27,17 @@ permalink: /Titration%20Simulator.html
   function getAcid() {
   	clearInterval(titreInterval);
 		acid = document.getElementById("acid").value; setAcidity();	// Set acid and its Ka
-		document.getElementById("acidErr").innerHTML = "Acid"; ready();
+		document.getElementById("acidErr").innerHTML = "酸"; ready();
 	}
 	function getBase() { 
 		clearInterval(titreInterval);
 		base = document.getElementById("base").value; setBasicity(); // Set base and its Kb
-		document.getElementById("baseErr").innerHTML = "Base"; ready();
+		document.getElementById("baseErr").innerHTML = "碱"; ready();
 	}
 	function getIndicator() {
 		clearInterval(titreInterval);
 		indicator = document.getElementById("indicator").value; setIndicator(indicator); // Set indicator and its parameters
-		document.getElementById("indErr").innerHTML = "Indicator"; ready();
+		document.getElementById("indErr").innerHTML = "指示剂"; ready();
 	}
 	function getConcAcid() {  // Get acid concenration
 		clearInterval(titreInterval);
@@ -109,9 +109,9 @@ permalink: /Titration%20Simulator.html
 	}
 	function ready() { // Check that everything has been set first time through
 		liquidsAdded = false;
-		if (acid=="Choose") document.getElementById("acidErr").innerHTML = "Acid"+errFlag;
-		if (base=="Choose") document.getElementById("baseErr").innerHTML = "Base"+errFlag;
-		if (indicator=="Choose") document.getElementById("indErr").innerHTML = "Indicator"+errFlag;
+		if (acid=="Choose") document.getElementById("acidErr").innerHTML = "酸"+errFlag;
+		if (base=="Choose") document.getElementById("baseErr").innerHTML = "碱"+errFlag;
+		if (indicator=="Choose") document.getElementById("indErr").innerHTML = "指示剂"+errFlag;
 		if (concAcid==undefined) document.getElementById("concAcidErr").innerHTML = errFlag;
 		if (concBase==undefined) document.getElementById("concBaseErr").innerHTML = errFlag;
 		if (titrant==undefined) document.getElementById("titrantErr").innerHTML = errFlag;
@@ -684,7 +684,7 @@ permalink: /Titration%20Simulator.html
 		<div style="width:100%;">
 			<center>
 				<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
-					<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:50px; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup>
+					<nobr><input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:30%; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="acid" onchange="getAcid()">
 						<option disabled="" selected="" value="Choose">--</option>
 						<option value="Hydrochloric acid">盐酸</option>
@@ -695,7 +695,7 @@ permalink: /Titration%20Simulator.html
 					</select>
 				</p>
 				<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
-					<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:50px; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup>
+					<nobr><input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:30%; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="base" onchange="getBase()">
 						<option disabled="" selected="" value="Choose">--</option>
 						<option value="Sodium hydroxide">氢氧化钠</option>
@@ -722,9 +722,9 @@ permalink: /Titration%20Simulator.html
 					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸滴碱
 					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱滴酸</p>		
 					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
-				<p style="display:inline-block;"></p>
+				<!--<p style="display:inline-block;"></p>-->
 				<p class="SetRate"><b>滴定速度</b><br>
-					<small>慢</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:150;">&nbsp;&nbsp;<small>快</small><br></p>
+					<small>慢</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;<small>快</small><br></p>
 				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
 			</center>
 		</div>
