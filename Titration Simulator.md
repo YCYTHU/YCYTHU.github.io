@@ -383,7 +383,7 @@ permalink: /Titration%20Simulator.html
 
   function weakAcidWeakBase(){  // Weak acid - weak base case not handled
   	document.getElementById("startButton").disabled = true;
-  	document.getElementById("warnings").innerHTML = "警告：弱酸弱碱";
+  	document.getElementById("warnings").innerHTML = "<a class="button button--outline-primary button--rounded">警告：弱酸弱碱</a>";
   }
 
   function setAcidity() { // Picks the appropriate pKa and base type.
@@ -624,7 +624,7 @@ permalink: /Titration%20Simulator.html
 		stirInterval = setInterval(stirrer,50); //Prepare stirrer loop
 		clearInterval(stirInterval);
 		ready();
-		document.getElementById("warnings").innerHTML = "警告：缺参数";
+		document.getElementById("warnings").innerHTML = "<a class="button button--outline-primary button--rounded">警告：缺参数</a>";
 	}
 </script>
 <style>
@@ -725,7 +725,7 @@ permalink: /Titration%20Simulator.html
 				<p class="SetRate"><b>滴定速度</b><br>
 					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
 				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
-				<p><a id="warnings" class="button button--outline-primary button--rounded"></a></p>
+				<p id="warnings"></p>
 			</center>
 		</div>
 		<!-- Apparatus area -->
