@@ -117,7 +117,7 @@ permalink: /Titration%20Simulator.html
 		if (titrant==undefined) document.getElementById("titrantErr").innerHTML = errFlag;
 		if (acid=="Choose" || base=="Choose" || indicator=="Choose" || concAcid==undefined || concBase==undefined || titrant==undefined)
 			return false; 
-		//document.getElementById("warnings").innerHTML = 'Click the button "Add solutions...", and then click on the buret tap to start, continue, or pause the titration.';
+		document.getElementById("warnings").innerHTML = '';
 		document.getElementById("startButton").disabled = false;
 		return true;
 	} 
@@ -728,7 +728,6 @@ permalink: /Titration%20Simulator.html
 				<p id="warnings" class="button button--outline-primary button--rounded"></p>
 			</center>
 		</div>
-		<hr />
 		<!-- Apparatus area -->
 		<div id="apparatus" style="position:relative;">
 			<div style="position:absolute; top:0px; left:100px; z-index:0;">
@@ -746,7 +745,7 @@ permalink: /Titration%20Simulator.html
 			<div>
 				<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
 						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
-						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></tabl>
+						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
 				</center>
 			</div>
 			<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="40"	height="400" style="background-color:white;"></canvas>
