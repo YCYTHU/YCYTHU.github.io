@@ -117,8 +117,7 @@ permalink: /Titration%20Simulator.html
 		if (titrant==undefined) document.getElementById("titrantErr").innerHTML = errFlag;
 		if (acid=="Choose" || base=="Choose" || indicator=="Choose" || concAcid==undefined || concBase==undefined || titrant==undefined)
 			return false; 
-		//document.getElementById("warnings").innerHTML = 
-		//	'<font color="green"><blockquote>Click the button "Add solutions...", and then click on the buret tap to start, continue, or pause the titration.</blockquote></font>';
+		//document.getElementById("warnings").innerHTML = 'Click the button "Add solutions...", and then click on the buret tap to start, continue, or pause the titration.';
 		document.getElementById("startButton").disabled = false;
 		return true;
 	} 
@@ -384,7 +383,7 @@ permalink: /Titration%20Simulator.html
 
   function weakAcidWeakBase(){  // Weak acid - weak base case not handled
   	document.getElementById("startButton").disabled = true;
-  	document.getElementById("warnings").innerHTML = "<font color='red'>weak!<br></font>";
+  	document.getElementById("warnings").innerHTML = "警告：弱酸弱碱";
   }
 
   function setAcidity() { // Picks the appropriate pKa and base type.
@@ -625,7 +624,7 @@ permalink: /Titration%20Simulator.html
 		stirInterval = setInterval(stirrer,50); //Prepare stirrer loop
 		clearInterval(stirInterval);
 		ready();
-		//document.getElementById("warnings").innerHTML = "<font color='red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* One or more required parameters have not been set.</font>";
+		document.getElementById("warnings").innerHTML = "警告：缺参数";
 	}
 </script>
 <style>
@@ -686,30 +685,30 @@ permalink: /Titration%20Simulator.html
 				<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
 					<nobr><input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:30%; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="acid" onchange="getAcid()">
-						<option disabled="" selected="" value="Choose">--</option>
-						<option value="Hydrochloric acid">HCl</option>
-						<option value="Acetic acid">HAc</option>
-						<option value="Chlorous acid">HClO<sub>2</sub></option>
-						<option value="Hypochlorous acid">HClO</option>
-						<option value="Hydrocyanic acid">HCN</option>
+						<option disabled="" selected="" value="Choose">请选择酸</option>
+						<option value="Hydrochloric acid">盐酸</option>
+						<option value="Acetic acid">乙酸</option>
+						<option value="Chlorous acid">亚氯酸</option>
+						<option value="Hypochlorous acid">次氯酸</option>
+						<option value="Hydrocyanic acid">氢氰酸</option>
 					</select>
 				</p>
 				<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
 					<nobr><input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:30%; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="base" onchange="getBase()">
-						<option disabled="" selected="" value="Choose">--</option>
-						<option value="Sodium hydroxide">NaOH</option>
-						<option value="Ammonia">NH<sub>3</sub></option>
-						<option value="Methylamine">CH<sub>3</sub>NH<sub>2</sub></option>
-						<option value="Ethylamine">CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub></option>
-						<option value="Aniline">PhNH<sub>2</sub></option>
-						<option value="Pyridine">C<sub>6</sub>H<sub>5</sub>N</option>				
+						<option disabled="" selected="" value="Choose">请选择碱</option>
+						<option value="Sodium hydroxide">氢氧化钠</option>
+						<option value="Ammonia">氨</option>
+						<option value="Methylamine">甲胺</option>
+						<option value="Ethylamine">乙胺</option>
+						<option value="Aniline">苯胺</option>
+						<option value="Pyridine">吡啶</option>				
 					</select>
 				</p>
 				<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
 					<!--<input style="visibility:hidden; width:50px; height:25px; text-align:center;">-->
 					<select id="indicator" onchange="getIndicator()">
-						<option disabled="" selected="" value="Choose">--</option>
+						<option disabled="" selected="" value="Choose">请选择指示剂</option>
 						<option value="Phenolphthalein">酚酞 (8.0 - 10.0)</option>
 						<option value="Methyl orange">甲基橙 (3.3 - 4.5)</option>
 						<option value="Bromothymol blue">溴百里酚蓝 (6.0 - 7.5)</option>
@@ -724,35 +723,38 @@ permalink: /Titration%20Simulator.html
 					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
 				<!--<p style="display:inline-block;"></p>-->
 				<p class="SetRate"><b>滴定速度</b><br>
-					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
+					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
 				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
+				<p id="warnings" class="button button--outline-primary button--rounded"></p>
 			</center>
 		</div>
-				<!-- Apparatus area -->
-				<div style="position:relative;">
-					<div style="position:absolute; top:0px; left:100px; z-index:0;">
-						<canvas id="liquids" width="120" height="690"></canvas>
-					</div>
-					<div style="position:absolute; top:570px; left:100px; z-index:1;">
-						<canvas id="stirBar" width="120" height="120"></canvas>
-					</div>
-					<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
-						<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
-					</div>
-				</div>
-				<!-- Titration graph area -->
-				<div>
-					<center>
-						<table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
-							<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
-							<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td>
-						</tr></tbody></table></center>
-					</div>
-					<!-- Titration graph area -->	
-					<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400" height="400" style="background-color:white;"></canvas>
-					</div>
-					<!-- Messages area -->
-					<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
-						<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
-					</div>
-			</body></html>
+		<hr />
+		<!-- Apparatus area -->
+		<div id="apparatus" style="position:relative;">
+			<div style="position:absolute; top:0px; left:100px; z-index:0;">
+				<canvas id="liquids" width="120" height="690"></canvas>
+			</div>
+			<div style="position:absolute; top:570px; left:100px; z-index:1;">
+				<canvas id="stirBar" width="120" height="120"></canvas>
+			</div>
+			<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
+				<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
+			</div>
+		</div>
+		<!-- Titration graph area -->
+		<div>
+			<div>
+				<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
+						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
+						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></tabl>
+				</center>
+			</div>
+			<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="40"	height="400" style="background-color:white;"></canvas>
+			</div>
+		</div>
+			<!-- Messages area -->
+			<!--<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
+				<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
+			</div>-->
+		</body>
+	</html>
