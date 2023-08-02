@@ -725,11 +725,11 @@ permalink: /Titration%20Simulator.html
 				<p class="SetRate"><b>滴定速度</b><br>
 					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
 				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
-				<p id="warnings" class="button button--outline-primary button--rounded"></p>
+				<p><a id="warnings" class="button button--outline-primary button--rounded"></a></p>
 			</center>
 		</div>
 		<!-- Apparatus area -->
-		<div id="apparatus" style="position:relative;">
+		<div id="apparatus_area" style="position:relative;">
 			<div style="position:absolute; top:0px; left:100px; z-index:0;">
 				<canvas id="liquids" width="120" height="690"></canvas>
 			</div>
@@ -741,14 +741,14 @@ permalink: /Titration%20Simulator.html
 			</div>
 		</div>
 		<!-- Titration graph area -->
-		<div>
+		<div id="graph_area">
 			<div>
 				<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
 						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
 						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
 				</center>
 			</div>
-			<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="40"	height="400" style="background-color:white;"></canvas>
+			<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;"></canvas>
 			</div>
 		</div>
 			<!-- Messages area -->
