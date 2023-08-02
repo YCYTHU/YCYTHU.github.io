@@ -687,23 +687,23 @@ permalink: /Titration%20Simulator.html
 					<nobr><input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:30%; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="acid" onchange="getAcid()">
 						<option disabled="" selected="" value="Choose">--</option>
-						<option value="Hydrochloric acid">盐酸</option>
-						<option value="Acetic acid">乙酸</option>
-						<option value="Chlorous acid">亚氯酸</option>
-						<option value="Hypochlorous acid">次氯酸</option>
-						<option value="Hydrocyanic acid">氢氰酸</option>
+						<option value="Hydrochloric acid">HCl</option>
+						<option value="Acetic acid">HAc</option>
+						<option value="Chlorous acid">HClO<sub>2</sub></option>
+						<option value="Hypochlorous acid">HClO</option>
+						<option value="Hydrocyanic acid">HCN</option>
 					</select>
 				</p>
 				<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
 					<nobr><input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:30%; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup></nobr>
 					<select id="base" onchange="getBase()">
 						<option disabled="" selected="" value="Choose">--</option>
-						<option value="Sodium hydroxide">氢氧化钠</option>
-						<option value="Ammonia">氨</option>
-						<option value="Methylamine">甲胺</option>
-						<option value="Ethylamine">乙胺</option>
-						<option value="Aniline">苯胺</option>
-						<option value="Pyridine">吡啶</option>				
+						<option value="Sodium hydroxide">NaOH</option>
+						<option value="Ammonia">NH<sub>3</sub></option>
+						<option value="Methylamine">CH<sub>3</sub>NH<sub>2</sub></option>
+						<option value="Ethylamine">CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub></option>
+						<option value="Aniline">PhNH<sub>2</sub></option>
+						<option value="Pyridine">C<sub>6</sub>H<sub>5</sub>N</option>				
 					</select>
 				</p>
 				<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
@@ -718,13 +718,13 @@ permalink: /Titration%20Simulator.html
 						<option value="Erichrome black T">铬黑T (5.0 - 6.5)</option>				
 					</select>	 
 				</p>
-				<p class="SetBur"><b>滴定方式</b><span id="titrantErr"></span><br>
-					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸滴碱
-					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱滴酸</p>		
+				<p class="SetBur"><b>滴定剂</b><span id="titrantErr"></span><br>
+					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸
+					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱</p>		
 					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
 				<!--<p style="display:inline-block;"></p>-->
 				<p class="SetRate"><b>滴定速度</b><br>
-					<small>慢</small>&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;<small>快</small><br></p>
+					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.1" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
 				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
 			</center>
 		</div>
