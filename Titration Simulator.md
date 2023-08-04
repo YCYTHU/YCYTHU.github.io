@@ -6,26 +6,35 @@ permalink: /Titration%20Simulator.html
 <html>
 <head>
 	<meta charset="UTF-8">
-<script language="JavaScript" type="text/javascript">
-	var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
-	var acid="Choose", base="Choose", indicator="Choose"; // (Unselected at startup)
+	<script language="JavaScript" type="text/javascript">
+		var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
+	var acid="Choose", base="Choose", indicator="Choose"; aliquot = "Choose"; // (Unselected at startup)
+	var pipet = 0;
 	var strongAcid, strongBase;
-	var titrant, dropRate = 100;
+	var titrant, dropRate = 70;
 	var startLevel, level = 0, titre = 0, titreAtEqPt, buretReading;
+	var colourDpt = false;
 	var reading, titre, prevTitre;
 	var colour, darkerColour;
 	var pH, pHInd, pHReading, pHAtEqPt, buretReading;
 	var prevpH, concAcid, concBase;
 	var pHDiff, prevpHDiff, eqPtFound = false;
 	var Ka, Kb, Kw = 1.0e-14;
-  var paleGrey = "#f0f0f0"; // pale grey
-  var indRed1=255, indGreen1=255, indBlue1=255, indRed2=255, indGreen2=255, indBlue2=255; // No indicator at startup
-  var titreInterval;
-  var tapOpen = false, liquidsAdded = false, stirCount;
-  var s = "", errFlag = "<font color='red'><b>*</b></font>", noErrFlag = "";
+  	var paleGrey = "#f0f0f0"; // pale grey
+  	var indRed1=255, indGreen1=255, indBlue1=255, indRed2=255, indGreen2=255, indBlue2=255; // No indicator at startup
+  	var titreInterval;
+  	var tapOpen = false, liquidsAdded = false, stirCount;
+  	var s = "", errFlag = "<font color='red'><b>*</b></font>", noErrFlag = "";
+  	var tableTop = '<table width = "300" border="2">' +
+  	'<tr><td width="100" align="center">Reading</td><td  width="100" align="center">Buret (mL)</td><td align="center">pH</td></tr>';
+  	var tableBottom = '</table>';
+  	var tableRows = "";
+  	var tableRowNumber = 1;
+  	var infinity = "inf."
 	// functions changing parameters	
-  function getAcid() {
-  	clearInterval(titreInterval);
+
+  	function getAcid() {
+  		clearInterval(titreInterval);
 		acid = document.getElementById("acid").value; setAcidity();	// Set acid and its Ka
 		document.getElementById("acidErr").innerHTML = "酸"; ready();
 	}
@@ -39,7 +48,12 @@ permalink: /Titration%20Simulator.html
 		indicator = document.getElementById("indicator").value; setIndicator(indicator); // Set indicator and its parameters
 		document.getElementById("indErr").innerHTML = "指示剂"; ready();
 	}
-	function getConcAcid() {  // Get acid concenration
+	function getAliquot() {  // Get aliquot volume
+		clearInterval(titreInterval);
+		aliquot = document.getElementById("aliquot").value; setAliquot(aliquot);
+		document.getElementById("aliquotErr").innerHTML = "试样体积"; ready();
+	}
+	function getConcAcid() {  // Get acid concentration
 		clearInterval(titreInterval);
 		concAcid = document.getElementById("concAcid").value;
 		document.getElementById("concAcidErr").innerHTML = noErrFlag; ready();
@@ -81,23 +95,31 @@ permalink: /Titration%20Simulator.html
 		startLevel = 84 + Math.random()*20 // Does not quite fill the buret to zero (randomly)
 		reading = (startLevel+level-84)/15;	 //buret in mL	
 		if (titrant == "acid") { // Calculate equivalence point titre and pH
-			titre = 25.0*concBase/concAcid;
+			titre = pipet*concBase/concAcid;
 		} else {
-			titre = 25.0*concAcid/concBase;
+			titre = pipet*concAcid/concBase;
 		}
 		titreAtEqPt = titre; // + reading; 
 		getpH();	
 		pHAtEqPt = pH;
 		titre = 0;			
-		buretReading = reading.toFixed(2).toString();
-		document.getElementById("buretReading").innerHTML = "<b>Buret Reading</b><br>"+buretReading+" mL";
-		getpH();	
-		pHReading = pH.toFixed(2).toString();
-		document.getElementById("pHReading").innerHTML = "<b>pH Reading</b><br>"+pHReading;
-		showLiquids(level);
+  	buretReading = ((reading/2).toFixed(2)*2).toFixed(2).toString(); // Reading to nearest 0.02 mL
+  	document.getElementById("buretReading").innerHTML = "<b>Buret Reading</b><br>"+buretReading+" mL";
+  	getpH();	
+  	pHReading = pH.toFixed(2).toString();
+  	document.getElementById("pHReading").innerHTML = "<b>pH Reading</b><br>"+pHReading;
+  	showLiquids(level);
 		clearInterval(stirInterval); // Start stirring first time
 		stirInterval = setInterval(stirrer,50);
 		clearInterval(titreInterval); titreInterval = setInterval(titrationPlot,dropRate); // Allow titration	
+		tableRows = ""; document.getElementById("data").innerHTML = ""; // Clear data area and reinitialize
+		if(document.getElementById("dpts").checked) {
+			tableRowNumber = 1 // Write a starting entry in the data table
+			tableRows = tableRows + '<tr><td align = "center">' + tableRowNumber + 
+			'</td><td align = "center">' + buretReading + 
+			'</td><td align = "center">' + pHReading + '</td></tr>';
+			document.getElementById("data").innerHTML = tableTop + tableRows + tableBottom;
+		}
 	}
 	function getpH() { // Calculate the pH in the flask
 		if (strongAcid & strongBase) strongAcidStrongBase();   
@@ -111,11 +133,18 @@ permalink: /Titration%20Simulator.html
 		liquidsAdded = false;
 		if (acid=="Choose") document.getElementById("acidErr").innerHTML = "酸"+errFlag;
 		if (base=="Choose") document.getElementById("baseErr").innerHTML = "碱"+errFlag;
+		//if (document.getElementById("acidKa").value == "--") document.getElementById("acidKaErr").innerHTML = errFlag;
+		//if (document.getElementById("baseKb").value == "--") document.getElementById("baseKbErr").innerHTML = errFlag;
+		
+		//if (Ka == undefined) document.getElementById("acidKaErr").innerHTML = errFlag;
+		//if (Kb == undefined) document.getElementById("baseKbErr").innerHTML = errFlag; 
+
 		if (indicator=="Choose") document.getElementById("indErr").innerHTML = "指示剂"+errFlag;
 		if (concAcid==undefined) document.getElementById("concAcidErr").innerHTML = errFlag;
 		if (concBase==undefined) document.getElementById("concBaseErr").innerHTML = errFlag;
 		if (titrant==undefined) document.getElementById("titrantErr").innerHTML = errFlag;
-		if (acid=="Choose" || base=="Choose" || indicator=="Choose" || concAcid==undefined || concBase==undefined || titrant==undefined)
+		if (aliquot=="Choose") document.getElementById("aliquotErr").innerHTML = "试样体积"+errFlag;
+		if (acid=="Choose" || base=="Choose" || indicator=="Choose" || aliquot=="Choose" || concAcid==undefined || concBase==undefined || titrant==undefined || Ka==undefined || Kb==undefined)
 			return false; 
 		document.getElementById("warnings").innerHTML = '';
 		document.getElementById("startButton").disabled = false;
@@ -123,22 +152,41 @@ permalink: /Titration%20Simulator.html
 	} 
 	function titrationPlot() {	// Main loop to display the titration progress.
 		if (!tapOpen) return;
+		colourDpt = false;
 		showLiquids(level);		
   	reading = (startLevel+level-84)/15;	 // Buret reading in mL					
-  	buretReading = reading.toFixed(2).toString();
+  	buretReading = ((reading/2).toFixed(2)*2).toFixed(2).toString(); // Reading to nearest 0.02 mL
+  	pHReading = pH.toFixed(2).toString();
   	document.getElementById("buretReading").innerHTML = "<b>Buret Reading</b><br>"+buretReading+" mL";
-  	level++; 
+  	level=level + 0.4; 
   	if (reading >= 25) { // Stop titration when buret is empty!
   		clearInterval(titreInterval); tapOpen = false; showLiquids(level); 
-  		document.getElementById("startButton").disabled = false; 
-  		return;
-  	} 
-  	prevpH = pH; prevTitre = titre;
-  	titre = level/15; 
-  	getpH();
-  	pHReading = pH.toFixed(2).toString();
-  	document.getElementById("pHReading").innerHTML = "<b>pH Reading</b><br>"+pHReading;
-  	graphCTX.lineWidth = 2;
+  		document.getElementById("startButton").disabled = false;
+  		if (document.getElementById("dpts").checked) {
+  			if (!colourDpt) {
+					tableRowNumber = tableRowNumber + 1 // Write an entry in the data table
+					tableRows = tableRows + "<tr ><td align = 'center'>" + tableRowNumber + 
+					"</td><td align = 'center'>" + buretReading + 
+					"</td><td align = 'center'>" + pHReading + "</td></tr>";
+					document.getElementById("data").innerHTML = tableTop + tableRows + tableBottom;
+				}
+					else { // This attempt to highlight the reading nearest to the euivalence point in blue is not working!
+					tableRowNumber = tableRowNumber + 1 // Write an entry in the data table
+					tableRows = tableRows + "<tr bgcolor='lightblue'><td align = 'center'>" + tableRowNumber + " *" +
+					"</td><td align = 'center'>" + buretReading + 
+					"</td><td align = 'center'>" + pHReading + "</td></tr>";
+					document.getElementById("data").innerHTML = tableTop + tableRows + tableBottom;
+					colourDpt = false;
+				}	 
+			} 
+			return;
+		} 
+		prevpH = pH; prevTitre = titre;
+		titre = level/15; 
+		getpH();
+  	//pHReading = pH.toFixed(2).toString();
+		document.getElementById("pHReading").innerHTML = "<b>pH Reading</b><br>"+pHReading;
+		graphCTX.lineWidth = 2;
 		if (level > 1) {// plot graph points
 			graphCTX.beginPath(); graphCTX.strokeStyle = "#ff0000";
 			graphCTX.moveTo(50+(prevTitre*12),351-(prevpH*300/14)); 
@@ -163,8 +211,12 @@ permalink: /Titration%20Simulator.html
 			graphCTX.fillText("Eq. Pt.",33+(titreAtEqPt*12),81);
 			graphCTX.lineWidth = 2;  graphCTX.strokeStyle = "#ff0000";
 			eqPtFound = true;
+			colourDpt = true; // Flag to make the next data point blue if the table is being written
 		}
 	}
+	function writeDataTable() {
+	}
+	
 	function titrate(event) { // Start/stop the titration by clicking the tap
 		var x, y,
 		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
@@ -182,7 +234,40 @@ permalink: /Titration%20Simulator.html
     		document.getElementById("startButton").disabled = false;
     	} 
     }
-  }
+}
+	function titrateStart(event) { //Start titrating by mouse down on tap
+		var x, y,
+		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
+		y = (event.clientY-document.getElementById("buret").getBoundingClientRect().top);
+  	if((x > 75) && (x < 90) && (y > 465) && (y < 485)) { // tap clicked
+  		if (!liquidsAdded) return;
+			if(!tapOpen) { // Tap not open. Open it and start titrating
+				tapOpen = true;
+				showLiquids(level);
+				clearInterval(titreInterval); titreInterval = setInterval(titrationPlot,dropRate);
+				document.getElementById("startButton").disabled = true;   	
+			}
+		}      
+	}
+	function titrateStop(event) { //stop titrating on releasing the mouse
+		var x, y,
+		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
+		y = (event.clientY-document.getElementById("buret").getBoundingClientRect().top);
+  	if((x > 75) && (x < 90) && (y > 465) && (y < 485)) { // tap clicked
+  		if (!liquidsAdded) return;
+			if(tapOpen) { // tap open. Close it and stop the titration.
+				tapOpen = false; clearInterval(titreInterval); showLiquids(level);
+				document.getElementById("startButton").disabled = false;
+				if (document.getElementById("dpts").checked) {
+  				tableRowNumber = tableRowNumber + 1 // Write an entry in the data table
+  				tableRows = tableRows + '<tr><td align = "center">' + tableRowNumber + 
+  				'</td><td align = "center">' + buretReading + 
+  				'</td><td align = "center">' + pHReading + '</td></tr>';
+  				document.getElementById("data").innerHTML = tableTop + tableRows + tableBottom; 
+  			}
+  		} 
+  	}
+  }	
 	function graphAxes() {			//draw the graph frame 
 		graphFrame();
 		graphLabels();
@@ -254,6 +339,7 @@ permalink: /Titration%20Simulator.html
 	}
 	function showLiquids(level) {
   	var x = level/900.0 + 0.3;	//height in the flask fudge factor!
+		//var x = level/900.0 + 0.3;	//height in the flask fudge factor!
   	liquidsAdded = true;
 		liquidsCTX.fillStyle = "#ffffff"; liquidsCTX.fillRect(0,0,120,690); // Clear the liquids canvas
   	liquidsCTX.fillStyle = "#f0f0f0";  // liquid in buret will be pale grey
@@ -261,13 +347,34 @@ permalink: /Titration%20Simulator.html
   	liquidsCTX.strokeStyle = "#000000"; liquidsCTX.beginPath(); //meniscus in buret
   	liquidsCTX.arc(57,startLevel+level-9,10,0.27*Math.PI,0.73*Math.PI); liquidsCTX.stroke(); 
 		liquidsCTX.fillStyle = getColour(1.0); // bulk colour 
-		liquidsCTX.fillRect(20,630-(45.0*x),80,(45.0*x)+10); // show flask contents
-    liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour	
-    liquidsCTX.beginPath(); liquidsCTX.moveTo(24+15*x,630-45*x); 
-    liquidsCTX.bezierCurveTo(24+15*x,625-45*x,90-15*x,625-45*x,90-15*x,630-45*x);
-    liquidsCTX.bezierCurveTo(90-15*x,635-45*x,24+15*x,635-45*x,24+15*x,630-45*x); 
-    liquidsCTX.stroke();liquidsCTX.fill();
-    liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
+		switch (aliquot) {
+		case "10 mL": {
+  		liquidsCTX.fillRect(20,635-(45.0*x),80,(45.0*x)+10); // show flask contents
+      liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour
+      liquidsCTX.beginPath(); liquidsCTX.moveTo(22+15*x,635-45*x); 
+      liquidsCTX.bezierCurveTo(22+15*x,630-45*x,92-15*x,630-45*x,92-15*x,635-45*x);
+      liquidsCTX.bezierCurveTo(92-15*x,640-45*x,22+15*x,640-45*x,22+15*x,635-45*x);
+      break;
+  }
+case "20 mL": {
+  		liquidsCTX.fillRect(20,631-(45.0*x),80,(45.0*x)+10); // show flask contents
+      liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour
+      liquidsCTX.beginPath(); liquidsCTX.moveTo(24+15*x,631-45*x); 
+      liquidsCTX.bezierCurveTo(24+15*x,626-45*x,90-15*x,626-45*x,90-15*x,631-45*x);
+      liquidsCTX.bezierCurveTo(90-15*x,636-45*x,24+15*x,636-45*x,24+15*x,631-45*x);
+      break;
+  }
+case "25 mL": {
+  		liquidsCTX.fillRect(20,630-(45.0*x),80,(45.0*x)+10); // show flask contents
+      liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour
+      liquidsCTX.beginPath(); liquidsCTX.moveTo(24+15*x,630-45*x); 
+      liquidsCTX.bezierCurveTo(24+15*x,625-45*x,90-15*x,625-45*x,90-15*x,630-45*x);
+      liquidsCTX.bezierCurveTo(90-15*x,635-45*x,24+15*x,635-45*x,24+15*x,630-45*x);
+      break;
+  }
+}
+liquidsCTX.stroke();liquidsCTX.fill();
+liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
     if (tapOpen) { // Shows the drips
     	drip = Math.round(35.0*Math.random());
     	if(level%2 == 0) {
@@ -277,16 +384,16 @@ permalink: /Titration%20Simulator.html
     		liquidsCTX.beginPath(); liquidsCTX.moveTo(56,560+drip); liquidsCTX.lineTo(56,565+drip); liquidsCTX.stroke();
     	}
     }
-  }
+}
 	function strongAcidStrongBase() { // Strong acid - strong base case
 		var volAcid, volBase, totVol;				  
 		var concAcidNow;
 		var b, c, x, y;
 		if (titrant == "acid") {
 			volAcid = titre/1000;
-			volBase = 0.025;
+			volBase = pipet/1000;
 		} else {
-			volAcid = 0.025;
+			volAcid = pipet/1000;
 			volBase = titre/1000;
 		}
     totVol = volBase + volAcid;     // Stoichiometric calc.
@@ -296,13 +403,13 @@ permalink: /Titration%20Simulator.html
       c = -Kw;
       x = quadPlus(b,c);
       pH = - Math.log(x + concAcidNow)/Math.LN10;
-    } else {
-    	b = -concAcidNow;
-    	c = -Kw;
-    	x = quadPlus(b,c);
-    	pH = 14.0 + Math.log(x - concAcidNow)/Math.LN10;
-    }
+  } else {
+  	b = -concAcidNow;
+  	c = -Kw;
+  	x = quadPlus(b,c);
+  	pH = 14.0 + Math.log(x - concAcidNow)/Math.LN10;
   }
+}
   function weakAcidStrongBase()  { // Weak acid - strong base case
   	var volAcid, volBase, totVol;
   	var roots = [];
@@ -311,9 +418,9 @@ permalink: /Titration%20Simulator.html
   	var cubic;
   	if (titrant == "acid") {
   		volAcid = titre/1000;
-  		volBase = 0.025;
+  		volBase = pipet/1000;
   	} else {
-  		volAcid = 0.025;
+  		volAcid = pipet/1000;
   		volBase = titre/1000;
   	}
   	totVol = volAcid + volBase;
@@ -331,16 +438,16 @@ permalink: /Titration%20Simulator.html
       roots = cubicPlus(-Ka,-(Kw+Ka*concAcidNow),(concConjBase*Kw+Ka*Kw),(Kw*Kw));
       y = pickRoot(roots);  // Hydronium from weak acid
       if (y != 0.0) pH = -Math.log(Kw/y)/Math.LN10; else pH = 14.0+Math.log(Math.sqrt(concConjBase*Kw/Ka))/Math.LN10;                       
-    }
-    if (concAcidNow < -2.0e-3) {
-    	cubic = false;
+  }
+  if (concAcidNow < -2.0e-3) {
+  	cubic = false;
       concConjBase = (volAcid*concAcid)/totVol; // This will be the stoichiometric final base conc.
       b = -concAcidNow;   // This will be the OH- concentration when negative
       c = -Kw;
       x = quadPlus(b,c);
       pH = 14.0 + Math.log(x - concAcidNow)/Math.LN10;
-    }
   }
+}
 
   function strongAcidWeakBase() {  // Strong acid - weak base case
   	var volAcid, volBase, totVol;				   
@@ -350,9 +457,9 @@ permalink: /Titration%20Simulator.html
   	var cubic;
   	if (titrant == "acid") {
   		volAcid = titre/1000;
-  		volBase = 0.025;
+  		volBase = pipet/1000;
   	}  else {
-  		volAcid = 0.025;
+  		volAcid = pipet/1000;
   		volBase = titre/1000;
   	}
   	totVol = volAcid + volBase;
@@ -370,58 +477,89 @@ permalink: /Titration%20Simulator.html
         roots = cubicPlus(-Kb,-(Kw+Kb*concBaseNow),(concConjAcid*Kw+Kb*Kw),(Kw*Kw));
         y = pickRoot(roots);  // Hydroxide from weak base
         if (y != 0.0) pH = 14.0 + Math.log(Kw/y)/Math.LN10; else pH = -Math.log(Math.sqrt(concConjAcid*Kw/Kb))/Math.LN10;                      
-      }
-      if (concBaseNow < -2.0e-3){
-      	cubic = false;
+    }
+    if (concBaseNow < -2.0e-3){
+    	cubic = false;
         concConjAcid = (volAcid*concAcid)/totVol; // This will be the stoichiometric final acid conc.
         b = -concBaseNow;   // This will be the H+ concentration when negative
         c = -Kw;
         x = quadPlus(b,c);
         pH = - Math.log(x - concBaseNow)/Math.LN10;
-      }
     }
+}
 
   function weakAcidWeakBase(){  // Weak acid - weak base case not handled
   	document.getElementById("startButton").disabled = true;
   	document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：弱酸弱碱</a>";
   }
 
-  function setAcidity() { // Picks the appropriate pKa and base type.
+  function setAcidity() { // Picks the appropriate Ka and base type.
+  	var KAcid;
+  	document.getElementById("acidKa").disabled = true;
   	switch (acid)
   	{
   	case "Hydrochloric acid":
   		{				
-  			Ka = 0.0;
-  			strongAcid = true;
-  			break;
-  		}
-  	case "Acetic acid":
-  		{
-  			Ka = 1.8e-5;
-  			strongAcid = false;
-  			break;
-  		}
-  	case "Chlorous acid":
-  		{
-  			Ka = 1.2e-2;
-  			strongAcid = false;
-  			break;
-  		}
-  	case "Hypochlorous acid":
-  		{
-  			Ka = 3.5e-8;
-  			strongAcid = false;
-  			break;
-  		}
-  	case "Hydrocyanic acid":
-  		{
-  			Ka = 6.2e-10;
-  			strongAcid = false;
-  			break;
-  		}
-  	}
-  }
+        Ka = 0.0; // Not used - should be infinity!
+        strongAcid = true;
+        break;
+    }
+case "Acetic acid":
+	{
+		Ka = 1.8e-5;
+		strongAcid = false;
+		break;
+	}
+case "Chlorous acid":
+	{
+		Ka = 1.2e-2;
+		strongAcid = false;
+		break;
+	}
+case "Hypochlorous acid":
+	{
+		Ka = 3.5e-8;
+		strongAcid = false;
+		break;
+	}
+case "Hydrocyanic acid":
+	{
+		Ka = 6.2e-10;
+		strongAcid = false;
+		break;
+	}
+case "Custom":
+			//default: //User's acid
+	{
+		document.getElementById("acidKa").disabled = false;
+		KAcid = document.getElementById("acidKa").value;
+				if (KAcid == "--") { // Ka not entered?
+					//document.getElementById("warnings2").innerHTML = "<font color='red'><blockquote>* Please enter a K<sub>a</sub> value for your acid</blockquote></font>";
+					break;
+				}
+				else { // Yes it is
+					//document.getElementById("warnings2").innerHTML = "";
+				}
+				if (KAcid.toLowerCase() == "inf") { // Strong acid case
+					Ka = 0.0; // Not used - should be ~infinity!
+					strongAcid = true;
+				}
+				else { // Weak acid case
+					Ka = parseFloat(KAcid);
+					strongAcid = false;
+				}
+				//document.getElementById("acidKaErr").innerHTML = noErrFlag;
+				break;
+			}
+		}
+		if (Ka !== undefined) {
+			document.getElementById("acidKaErr").innerHTML = noErrFlag;
+			if (Ka == 0.0) document.getElementById("acidKa").value = "Inf"; else document.getElementById("acidKa").value = Ka.toExponential(1);
+		}
+	}
   function setBasicity() {  // Picks the appropriate pKa and acid type.
+  	var KBase;
+  	document.getElementById("baseKb").disabled = true;
   	switch (base)
   	{
   	case "Sodium hydroxide":
@@ -460,25 +598,51 @@ permalink: /Titration%20Simulator.html
   			strongBase = false;
   			break;
   		}
-  	}
-  }
+	case "Custom"://	default: //User's base
+		{
+			document.getElementById("baseKb").disabled = false;
+			KBase = document.getElementById("baseKb").value;
+				if (KBase == "--") { // Kb not entered?
+					//document.getElementById("warnings2").innerHTML = "<font color='red'><blockquote>Please enter a K<sub>b</sub> value for your base</blockquote></font>";
+					break;
+				}
+				else { // Yes it is
+					//document.getElementById("warnings2").innerHTML = "";
+				}
+				if (KBase.toLowerCase() == "inf") { // Strong base case
+					Kb = 0.0; // Not used - should be ~infinity!
+					strongBase = true;
+				}
+				else { // Weak acid case
+					Kb = parseFloat(KBase);
+					strongBase = false;
+				}
+				//document.getElementById("baseKbErr").innerHTML = noErrFlag;
+				break;
+			}
+		}	
+		if (Kb !== undefined) {
+			document.getElementById("baseKbErr").innerHTML = noErrFlag;
+			if (Kb == 0.0) document.getElementById("baseKb").value = "Inf"; else document.getElementById("baseKb").value = Kb.toExponential(1);
+		}
+	}
   function setIndicator(){ // Sets pH and colours
   	switch (indicator)
   	{
   	case "Phenolphthalein":
   		{
-  			pHInd =	9.0;
+  		  pHInd =	9.0;
           indRed1 = 255;   //1.0;			//in base (pink)
-          indGreen1 = 200;   //0.027;
+          indGreen1 = 100;   //0.027;
           indBlue1 = 255;  //0.447;
           indRed2 = 255;   //1.0;			//in acid (colorless)
           indGreen2 = 255; //1.0;
           indBlue2 = 255;  //1.0;
           break;
-        }
-      case "Methyl orange":
-      	{
-      		pHInd = 3.8;
+      }
+  case "Methyl orange":
+  	{
+  		  pHInd = 3.8;
           indRed1 = 255;   			//in base (yellow)
           indGreen1 = 255; 
           indBlue1 = 0;    
@@ -486,10 +650,10 @@ permalink: /Titration%20Simulator.html
           indGreen2 = 51;  
           indBlue2 = 0;    
           break;
-        }
-      case "Bromothymol blue":
-      	{
-      		pHInd = 7.0;
+      }
+  case "Bromothymol blue":
+  	{
+  		pHInd = 7.0;
           indRed1 = 0;     			//in base (blue)
           indGreen1 = 0;   
           indBlue1 = 255;  
@@ -497,10 +661,10 @@ permalink: /Titration%20Simulator.html
           indGreen2 = 255; 
           indBlue2 = 0;    
           break;
-        }
-      case "Crystal violet":
-      	{
-      		pHInd = 1.0;			
+      }
+  case "Crystal violet":
+  	{
+  		pHInd = 1.0;			
           indRed1 = 99;    			//in base (blue)
           indGreen1 = 0;   
           indBlue1 = 217; 
@@ -508,10 +672,10 @@ permalink: /Titration%20Simulator.html
           indGreen2 = 255; 
           indBlue2 = 0;    
           break;
-        }
-      case "Alizarin yellow":
-      	{
-      		pHInd = 11.0;				
+      }
+  case "Alizarin yellow":
+  	{
+  		pHInd = 11.0;				
           indRed1 = 255;   			//in base (orange-red)
           indGreen1 = 77;  
           indBlue1 = 0;    
@@ -519,10 +683,10 @@ permalink: /Titration%20Simulator.html
           indGreen2 = 255; 
           indBlue2 = 0;    
           break;
-        }
-      case "Erichrome black T":
-      	{
-      		pHInd = 5.8;				
+      }
+  case "Erichrome black T":
+  	{
+  		pHInd = 5.8;				
           indRed1 = 99;    			// base (blue)
           indGreen1 = 0;   
           indBlue1 = 199;  
@@ -530,9 +694,30 @@ permalink: /Titration%20Simulator.html
           indGreen2 = 0;   
           indBlue2 = 0;    
           break;
-        }
       }
-    }	
+  }
+}
+function setAliquot() {
+	switch (aliquot)
+	{
+	case "10 mL":
+		{
+			pipet = 10;
+			break;
+		}
+	case "20 mL":
+		{
+			pipet = 20;
+			break;
+		}
+	case "25 mL":
+		{
+			pipet = 25;
+			break;
+		}
+	}			
+}
+
   function getColour(darker)  { // make the colours of the flask contents
   	var pHDiff;
     if (pH==undefined) pHDiff = 0; //*********
@@ -546,7 +731,7 @@ permalink: /Titration%20Simulator.html
     	(indGreen1-(indGreen1-indGreen2)*(pHDiff+1.0)/2.0),
     	(indBlue1-(indBlue1-indBlue2)*(pHDiff+1.0)/2.0),darker);
     	if (pHDiff < -1.0) return colourCoder(indRed1, indGreen1, indBlue1, darker);
-  }
+}
   function colourCoder(red, green, blue, darker) { // forms a color code from rgb's in range 0 - 255 and a darkener (1 - 0, 0 = darkest)
   	return "#"+(0x1000000 + Math.round(blue*darker) + 0x100 * Math.round(green*darker) + 0x10000 * Math.round(red*darker)).toString(16).substr(1); return;
   } 
@@ -591,10 +776,10 @@ permalink: /Titration%20Simulator.html
     	return root;
     }
     return root;
-  }   
-  function pickRoot(roots) 
-  {
-  	var root = 0.0;
+}   
+function pickRoot(roots) 
+{
+	var root = 0.0;
   	if (roots[4] != 0.0) { // Only one of the three is real (Should not happen)
   		root = roots[0];
   		return 0.0;
@@ -635,7 +820,7 @@ permalink: /Titration%20Simulator.html
 		border-radius:.4rem;
 		display: inline-block;
 		width:45%;
-		height:90px;
+		height:100px;
 	}
 	.SetBase{
 		padding:.5rem 1rem;
@@ -644,7 +829,7 @@ permalink: /Titration%20Simulator.html
 		border-radius:.4rem;
 		display: inline-block;
 		width:45%;
-		height:90px;
+		height:100px;
 	}
 	.SetInd{
 		padding:.5rem 1rem;
@@ -652,24 +837,35 @@ permalink: /Titration%20Simulator.html
 		border:1px solid #52c41a;
 		border-radius:.4rem;
 		display: inline-block;
-		width:90%;
-		height:90px;
+		width:45%;
+		height:80px;
 	}
-	.SetBur{
+	.SetVol{
 		padding:.5rem 1rem;
 		background-color:rgba(245,34,45,0.1);
 		border:1px solid #f5222d;
 		border-radius:.4rem;
 		display: inline-block;
 		width:45%;
+		height:80px;
 	}
-	.SetRate{
+	.SetBur{
 		padding:.5rem 1rem;
 		background-color:rgba(106,61,154,0.1);
 		border:1px solid #6a3d9a;
 		border-radius:.4rem;
 		display: inline-block;
 		width:45%;
+		height:80px;
+	}
+	.SetRate{
+		padding:.5rem 1rem;
+		background-color:rgba(140,86,75,0.1);
+		border:1px solid #8c564b;
+		border-radius:.4rem;
+		display: inline-block;
+		width:45%;
+		height:80px;
 	}
 	#results td{
 		border:none;
@@ -679,81 +875,93 @@ permalink: /Titration%20Simulator.html
 </head>
 
 <body>
-		<!-- Settings area -->
-		<div style="width:100%;">
-			<center>
-				<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
-					<nobr><input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:30%; height:25px; text-align:center;"><span id="concAcidErr"></span> mol·L<sup>-1</sup></nobr>
-					<select id="acid" onchange="getAcid()">
-						<option disabled="" selected="" value="Choose">请选择酸</option>
-						<option value="Hydrochloric acid">盐酸</option>
-						<option value="Acetic acid">乙酸</option>
-						<option value="Chlorous acid">亚氯酸</option>
-						<option value="Hypochlorous acid">次氯酸</option>
-						<option value="Hydrocyanic acid">氢氰酸</option>
-					</select>
-				</p>
-				<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
-					<nobr><input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:30%; height:25px; text-align:center;"><span id="concBaseErr"></span> mol·L<sup>-1</sup></nobr>
-					<select id="base" onchange="getBase()">
-						<option disabled="" selected="" value="Choose">请选择碱</option>
-						<option value="Sodium hydroxide">氢氧化钠</option>
-						<option value="Ammonia">氨</option>
-						<option value="Methylamine">甲胺</option>
-						<option value="Ethylamine">乙胺</option>
-						<option value="Aniline">苯胺</option>
-						<option value="Pyridine">吡啶</option>				
-					</select>
-				</p>
-				<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
-					<!--<input style="visibility:hidden; width:50px; height:25px; text-align:center;">-->
-					<select id="indicator" onchange="getIndicator()">
-						<option disabled="" selected="" value="Choose">请选择指示剂</option>
-						<option value="Phenolphthalein">酚酞 (8.0 - 10.0)</option>
-						<option value="Methyl orange">甲基橙 (3.3 - 4.5)</option>
-						<option value="Bromothymol blue">溴百里酚蓝 (6.0 - 7.5)</option>
-						<option value="Crystal violet">结晶紫 (0.0 - 1.8)</option>
-						<option value="Alizarin yellow">茜素黄 (10.0 - 12.0)</option>
-						<option value="Erichrome black T">铬黑T (5.0 - 6.5)</option>				
-					</select>	 
-				</p>
-				<p class="SetBur"><b>滴定剂</b><span id="titrantErr"></span><br>
-					<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸
-					&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱</p>		
-					<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
+	<!-- Settings area -->
+	<div style="width:100%;">
+		<center>
+			<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
+				<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:20%; height:25px; text-align:center;"><span id="concAcidErr"></span><font face="Times New Roman"> mol·L<sup>-1</sup></font><br>
+				<select id="acid" onchange="getAcid()">
+					<option disabled="" selected="" value="Choose">请选择酸</option>
+					<option value="Custom">自定义</option>
+					<option value="Hydrochloric acid">盐酸</option>
+					<option value="Acetic acid">乙酸</option>
+					<option value="Chlorous acid">亚氯酸</option>
+					<option value="Hypochlorous acid">次氯酸</option>
+					<option value="Hydrocyanic acid">氢氰酸</option>
+				</select>
+				<font face="Times New Roman">K<sub>a</sub>: </font><input type="text" id="acidKa" value="--" onchange="getAcid()" style="width:20%; height:25px; text-align:center;" disabled=""><span id="acidKaErr"></span>
+			</p>
+			<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
+				<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:20%; height:25px; text-align:center;"><span id="concBaseErr"></span><font face="Times New Roman"> mol·L<sup>-1</sup></font><br>
+				<select id="base" onchange="getBase()">
+					<option disabled="" selected="" value="Choose">请选择碱</option>
+					<option value="Custom">自定义</option>
+					<option value="Sodium hydroxide">氢氧化钠</option>
+					<option value="Ammonia">氨</option>
+					<option value="Methylamine">甲胺</option>
+					<option value="Ethylamine">乙胺</option>
+					<option value="Aniline">苯胺</option>
+					<option value="Pyridine">吡啶</option>				
+				</select>
+				<font face="Times New Roman">K<sub>b</sub>: </font><input type="text" id="baseKb" value="--" onchange="getBase()" style="width:20%; height:25px; text-align:center;" disabled=""><span id="baseKbErr"></span>
+			</p>
+			<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
+				<!--<input style="visibility:hidden; width:50px; height:25px; text-align:center;">-->
+				<select id="indicator" onchange="getIndicator()">
+					<option disabled="" selected="" value="Choose">请选择指示剂</option>
+					<option value="Phenolphthalein">酚酞 (8.0 - 10.0)</option>
+					<option value="Methyl orange">甲基橙 (3.3 - 4.5)</option>
+					<option value="Bromothymol blue">溴百里酚蓝 (6.0 - 7.5)</option>
+					<option value="Crystal violet">结晶紫 (0.0 - 1.8)</option>
+					<option value="Alizarin yellow">茜素黄 (10.0 - 12.0)</option>
+					<option value="Erichrome black T">铬黑T (5.0 - 6.5)</option>				
+				</select>	 
+			</p>
+			<p class="SetVol"><b><span id="aliquotErr">试样体积</span></b><br>
+				<select id="aliquot" onchange="getAliquot()">
+					<option disabled="" selected="" value="Choose">请选择试样体积</option>
+					<option value="10 mL">10 mL</option>
+					<option value="20 mL">20 mL</option>
+					<option value="25 mL">25 mL</option>
+				</select>
+			</p>
+			<p class="SetBur"><b>滴定剂</b><span id="titrantErr"></span><br>
+				<input type="radio" name="titrant" id="titrantA" value="acid" onchange="getTitrantA()"> 酸
+				&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱</p>		
+				<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
 				<!--<p style="display:inline-block;"></p>-->
 				<p class="SetRate"><b>滴定速度</b><br>
 					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
-				<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
-				<p id="warnings"></p>
-			</center>
-		</div>
-		<!-- Apparatus area -->
-		<div id="apparatus_area" style="position:relative;">
-			<div style="position:absolute; top:0px; left:100px; z-index:0;">
-				<canvas id="liquids" width="120" height="690"></canvas>
-			</div>
-			<div style="position:absolute; top:570px; left:100px; z-index:1;">
-				<canvas id="stirBar" width="120" height="120"></canvas>
-			</div>
-			<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
-				<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
-			</div>
-		</div>
-		<!-- Titration graph area -->
-		<div id="graph_area">
-			<div>
-				<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
-						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
-						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
+					<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
+					<p id="warnings"></p>
 				</center>
 			</div>
-			<div style="width:400px;height:560px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;"></canvas>
+			<!-- Apparatus area -->
+			<div id="apparatus_area" style="position:relative;">
+				<div style="position:absolute; top:0px; left:100px; z-index:0;">
+					<canvas id="liquids" width="120" height="690"></canvas>
+				</div>
+				<div style="position:absolute; top:570px; left:100px; z-index:1;">
+					<canvas id="stirBar" width="120" height="120"></canvas>
+				</div>
+				<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
+					<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
+				</div>
 			</div>
-		</div>
+			<!-- Titration graph area -->
+			<div id="graph_area">
+				<div>
+					<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
+						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
+						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
+					</center>
+				</div>
+				<div style="width:400px;height:600px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;"></canvas>
+				</div>
+			</div>
 			<!-- Messages area -->
 			<!--<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
 				<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
 			</div>-->
 		</body>
-	</html>
+		</html>

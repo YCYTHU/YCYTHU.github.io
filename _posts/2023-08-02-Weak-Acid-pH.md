@@ -28,7 +28,7 @@ $$\frac{[\mathrm{H}^+]}{\sqrt{K_\mathrm{w}}}=\frac{t+\sqrt{t^2+4}}{2}\tag{4}$$
 
 使用泰勒展开对式4进行近似，得到：
 
-$$[\mathrm{H}^+]=\left\{\begin{align}&\frac{c}{2}+\sqrt{K_\mathrm{w}}+\color{red}{\omicron(c^2)}&&c<\frac{\sqrt{K_\mathrm{w}}}{2}\\&\frac{3c}{4}+\frac{\sqrt{3K_\mathrm{w}}}{2}+\color{red}{\omicron(c^2)}&&\frac{\sqrt{K_\mathrm{w}}}{2}<c<2\sqrt{K_\mathrm{w}}\\&c+\frac{K_\mathrm{w}}{c}+\color{red}{\omicron(\frac{1}{c^2})}&&c>2\sqrt{K_\mathrm{w}}\end{align}\right.\tag{5}$$
+$$[\mathrm{H}^+]=\begin{cases}\frac{c}{2}+\sqrt{K_\mathrm{w}}+\color{red}{\omicron(c^2)}&c<\frac{\sqrt{K_\mathrm{w}}}{2}\\\frac{3c}{4}+\frac{\sqrt{3K_\mathrm{w}}}{2}+\color{red}{\omicron(c^2)}&\frac{\sqrt{K_\mathrm{w}}}{2}<c<2\sqrt{K_\mathrm{w}}\\c+\frac{K_\mathrm{w}}{c}+\color{red}{\omicron(\frac{1}{c^2})}&c>2\sqrt{K_\mathrm{w}}\end{cases}\tag{5}$$
 
 其中红色部分示出误差的量级。式5计算值与式3计算值的关系如图1所示：
 
@@ -37,7 +37,7 @@ $$[\mathrm{H}^+]=\left\{\begin{align}&\frac{c}{2}+\sqrt{K_\mathrm{w}}+\color{red
 
 式5定义的函数是一个分段函数，在实际应用中第一段与第三段使用频率最高。与传统近似公式（式6）不同，式5的这两段函数多保留了一项，因而适用范围更广一些，这在图2中得到体现。
 
-$$[\mathrm{H}^+]=\left\{\begin{align}&\sqrt{K_\mathrm{w}}&&c<\frac{\sqrt{K_\mathrm{w}}}{1000}\\&c&&c>5\sqrt{K_\mathrm{w}}\end{align}\right.\tag{6}$$
+$$[\mathrm{H}^+]=\begin{cases}\sqrt{K_\mathrm{w}}&c<\frac{\sqrt{K_\mathrm{w}}}{1000}\\c&c>5\sqrt{K_\mathrm{w}}\end{cases}\tag{6}$$
 
 <div align=center><object data="/assets/images/weak acid/Approx Strong Acid.svg" type="image/svg+xml" width="75%"></object></div>
 <div align=center><font color="#999999">图2：两种近似公式误差的比较</font></div>
