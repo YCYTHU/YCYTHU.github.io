@@ -810,16 +810,16 @@ permalink: /Titration%20Simulator.html
 		clearInterval(stirInterval);
 		ready();
 		document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：缺参数</a>";
-		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
-		if (graph_scale < 0.5) graph_scale = 0.5;
-		var apparatus_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("apparatus_area").clientWidth;
+		var graph_scale = document.getElementById("results").clientWidth/document.getElementById("graph_div").clientWidth;
+		//if (graph_scale < 0.5) graph_scale = 0.5;
+		var apparatus_scale = 1.5*graph_scale*document.getElementById("graph").clientHeight/690;
 		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
 		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
 	}
 	window.onresize = function(){
-		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
-		if (graph_scale < 0.5) graph_scale = 0.5;
-		var apparatus_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("apparatus_area").clientWidth;
+		var graph_scale = document.getElementById("results").clientWidth/document.getElementById("graph_div").clientWidth;
+		//if (graph_scale < 0.5) graph_scale = 0.5;
+		var apparatus_scale = 1.5*graph_scale*document.getElementById("graph").clientHeight/690;
 		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
 		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
 	}
@@ -949,7 +949,7 @@ permalink: /Titration%20Simulator.html
 				</center>
 			</div>
 			<!-- Apparatus area -->
-			<div id="apparatus_area" style="position:relative;transform:scale(1);transform-origin:left center">
+			<div id="apparatus_area" style="position:relative;transform:scale(1);transform-origin:left top;">
 				<div style="position:absolute; top:0px; left:100px; z-index:0;">
 					<canvas id="liquids" width="120" height="690"></canvas>
 				</div>
