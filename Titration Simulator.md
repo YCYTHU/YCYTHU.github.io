@@ -810,18 +810,33 @@ permalink: /Titration%20Simulator.html
 		clearInterval(stirInterval);
 		ready();
 		document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：缺参数</a>";
-		var graph_scale = document.getElementById("results").clientWidth/document.getElementById("graph_div").clientWidth;
-		//if (graph_scale < 0.5) graph_scale = 0.5;
+		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
+		var graph_trx;
+		if (graph_scale > 0.5) {
+			graph_trx = 0;
+		}
+		else{
+			graph_trx = 1000*(graph_scale-0.5);
+		}
+		//graph_trx=4*graph_trx;
 		var apparatus_scale = 1.5*graph_scale*document.getElementById("graph").clientHeight/690;
 		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
-		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
+		document.getElementById("graph_div").style.transform = "scale("+graph_scale+") translatex("+graph_trx+"px)";
 	}
 	window.onresize = function(){
-		var graph_scale = document.getElementById("results").clientWidth/document.getElementById("graph_div").clientWidth;
+		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
 		//if (graph_scale < 0.5) graph_scale = 0.5;
+		var graph_trx;
+		if (graph_scale > 0.5) {
+			graph_trx = 0;
+		}
+		else{
+			graph_trx = 1000*(graph_scale-0.5);
+		}
+		//graph_trx=4*graph_trx;
 		var apparatus_scale = 1.5*graph_scale*document.getElementById("graph").clientHeight/690;
 		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
-		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
+		document.getElementById("graph_div").style.transform = "translatex("+graph_trx+"px) scale("+graph_scale+")";
 	}
 </script>
 <style>
@@ -965,18 +980,18 @@ permalink: /Titration%20Simulator.html
 				</div>
 			</div>
 			<!-- Titration graph area -->
-			<div id="graph_area">
+			<!--<div id="graph_area">-->
 				<div>
 					<table style="border:0;width:50%;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
 						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
 						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
 					
 				</div>
-				<div id="graph_div" style="width:400px;height:600px;margin-left:auto;transform-origin:right top;">
+				<div id="graph_div" style="width:400px;margin-left:auto;transform-origin:right top;">
 					<canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;">
 					</canvas>
 				</div>
-			</div>
+			<!--</div>-->
 			<!-- Messages area -->
 			<!--<div style="position:absolute; top:550; left:700; width:400px; border:0px solid #ff0000;">
 				<p id="warnings"><font color="green"><blockquote></blockquote></font></p><p id="warnings2"></p>
