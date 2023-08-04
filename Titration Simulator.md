@@ -112,7 +112,7 @@ permalink: /Titration%20Simulator.html
 		clearInterval(stirInterval); // Start stirring first time
 		stirInterval = setInterval(stirrer,50);
 		clearInterval(titreInterval); titreInterval = setInterval(titrationPlot,dropRate); // Allow titration	
-		tableRows = ""; document.getElementById("data").innerHTML = ""; // Clear data area and reinitialize
+		//tableRows = ""; document.getElementById("data").innerHTML = ""; // Clear data area and reinitialize
 		if(document.getElementById("dpts").checked) {
 			tableRowNumber = 1 // Write a starting entry in the data table
 			tableRows = tableRows + '<tr><td align = "center">' + tableRowNumber + 
@@ -191,7 +191,7 @@ permalink: /Titration%20Simulator.html
 			graphCTX.beginPath(); graphCTX.strokeStyle = "#ff0000";
 			graphCTX.moveTo(50+(prevTitre*12),351-(prevpH*300/14)); 
 			graphCTX.lineTo(50+(titre*12),351-(pH*300/14)); graphCTX.stroke(); graphCTX.closePath();
-			if (titre > titreAtEqPt+0.2) drawEqPt(document.getElementById("eqpt").checked); // Shows the equivalence point if checkbox checked just after it is passed
+			//if (titre > titreAtEqPt+0.2) drawEqPt(document.getElementById("eqpt").checked); // Shows the equivalence point if checkbox checked just after it is passed
 		}
 		if(level > 1)	{ // plot indicator colour
 			graphCTX.beginPath(); graphCTX.strokeStyle = getColour(1.0);
@@ -217,11 +217,11 @@ permalink: /Titration%20Simulator.html
 	function writeDataTable() {
 	}
 	
-	function titrate(event) { // Start/stop the titration by clicking the tap
-		var x, y,
-		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
-		y = (event.clientY-document.getElementById("buret").getBoundingClientRect().top);
-  	if((x > 75) && (x < 90) && (y > 465) && (y < 485)) { // tap clicked
+	function titrate(){//event) { // Start/stop the titration by clicking the tap
+		//var x, y,
+		//x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
+		//y = (event.clientY-document.getElementById("buret").getBoundingClientRect().top);
+  	//if((x > 75) && (x < 90) && (y > 465) && (y < 485)) { // tap clicked
   		if (!liquidsAdded) return;
 			if(!tapOpen) { // Tap not open. Open it and start titrating
 				tapOpen = true;
@@ -234,7 +234,7 @@ permalink: /Titration%20Simulator.html
     		document.getElementById("startButton").disabled = false;
     	} 
     }
-	}
+	//}
 	function titrateStart(event) { //Start titrating by mouse down on tap
 		var x, y,
 		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
@@ -892,7 +892,7 @@ permalink: /Titration%20Simulator.html
 		<center>
 			<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
 				<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:20%; height:25px; text-align:center;"><span id="concAcidErr"></span><font face="Times New Roman"> mol·L<sup>-1</sup></font><br>
-				<select id="acid" onchange="getAcid()">
+				<select id="acid" onchange="getAcid()" style="width:30%;">
 					<option disabled="" selected="" value="Choose">请选择酸</option>
 					<option value="Custom">自定义</option>
 					<option value="Hydrochloric acid">盐酸</option>
@@ -905,7 +905,7 @@ permalink: /Titration%20Simulator.html
 			</p>
 			<p class="SetBase"><b><span id="baseErr">碱</span></b><br>
 				<input type="text" id="concBase" value="--" oninput="getConcBase()" style="width:20%; height:25px; text-align:center;"><span id="concBaseErr"></span><font face="Times New Roman"> mol·L<sup>-1</sup></font><br>
-				<select id="base" onchange="getBase()">
+				<select id="base" onchange="getBase()" style="width:30%;">
 					<option disabled="" selected="" value="Choose">请选择碱</option>
 					<option value="Custom">自定义</option>
 					<option value="Sodium hydroxide">氢氧化钠</option>
@@ -919,7 +919,7 @@ permalink: /Titration%20Simulator.html
 			</p>
 			<p class="SetInd"><b><span id="indErr">指示剂</span></b><br>
 				<!--<input style="visibility:hidden; width:50px; height:25px; text-align:center;">-->
-				<select id="indicator" onchange="getIndicator()">
+				<select id="indicator" onchange="getIndicator()" style="width:80%;">
 					<option disabled="" selected="" value="Choose">请选择指示剂</option>
 					<option value="Phenolphthalein">酚酞 (8.0 - 10.0)</option>
 					<option value="Methyl orange">甲基橙 (3.3 - 4.5)</option>
@@ -930,7 +930,7 @@ permalink: /Titration%20Simulator.html
 				</select>	 
 			</p>
 			<p class="SetVol"><b><span id="aliquotErr">试样体积</span></b><br>
-				<select id="aliquot" onchange="getAliquot()">
+				<select id="aliquot" onchange="getAliquot()" style="width:80%;">
 					<option disabled="" selected="" value="Choose">请选择试样体积</option>
 					<option value="10 mL">10 mL</option>
 					<option value="20 mL">20 mL</option>
@@ -942,11 +942,15 @@ permalink: /Titration%20Simulator.html
 				&nbsp;<input type="radio" name="titrant" id="titrantB" value="base" onchange="getTitrantB()"> 碱</p>		
 				<!--<p><b>Show the equivalence point&nbsp;&nbsp;</b><input type="checkbox" name="eqpt" id="eqpt"></p>-->
 				<!--<p style="display:inline-block;"></p>-->
-				<p class="SetRate"><b>滴定速度</b><br>
-					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br></p>
-					<p><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液并开始滴定</a></p>
-					<p id="warnings"></p>
-				</center>
+			<p class="SetRate"><b>滴定速度</b><br>
+					慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br>
+			</p><br>
+			<p style="display: inline-block;"><a id="titrateButton" class="button button--secondary button--rounded" onclick="titrate()">开始/停止滴定</a>
+			</p>
+			<p style="display: inline-block;"><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液准备滴定</a>
+			</p>
+			<p style="display: inline-block;" id="warnings"></p>
+		</center>
 			</div>
 			<!-- Apparatus area -->
 			<div id="apparatus_area" style="position:relative;transform:scale(1);transform-origin:left top;">
@@ -956,7 +960,7 @@ permalink: /Titration%20Simulator.html
 				<div style="position:absolute; top:570px; left:100px; z-index:1;">
 					<canvas id="stirBar" width="120" height="120"></canvas>
 				</div>
-				<div onclick="titrate(event)" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
+				<div onclick="titrate()" id="buret" style="position:absolute; top:10px; left:103px; z-index:2;">
 					<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
 				</div>
 			</div>
