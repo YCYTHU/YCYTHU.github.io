@@ -1,7 +1,7 @@
 ---
 title: 快速近似计算酸溶液pH值及误差
 tags: Chemistry
-cover: /assets/images/molecule skeleton/cover.png
+cover: /assets/images/weak acid/cover.jpg
 ---
 由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似是十分必要的。
 <!--more-->
@@ -88,20 +88,6 @@ $$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}\
 
 $$[\mathrm{H}^+]=\sqrt{cK_\mathrm{a}}\tag{14}$$
 
-<!--## 情况一：$t\ll1,p\ll1$
-
-该情况比如极稀的苯酚溶液。此时式10近似为：
-
-$$h^3-h=0\tag{11}$$
-
-该方程的正实数解是 $h=1$，又因为：
-
-$$\begin{align}&\left.\left(\frac{\partial h}{\partial t}\right)\right|_{t\to0,p\to0,h\to1}=\left.\left(\frac{hp}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to0,h\to1}\simeq\frac{p}{2}\\&\left.\left(\frac{\partial h}{\partial p}\right)\right|_{t\to0,p\to0,h\to1}=\left.\left(\frac{th+1-h^2}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to0,h\to1}\simeq\frac{t}{2}\end{align}\tag{12}$$
-
-因此此时氢离子浓度
-
-$$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{tp}{2}\tag{13}$$-->
-
 ## 情况二：$p\gg1,t\gg1$
 
 该情况比如 $c=0.01\ \mathrm{M}$ 的甲酸溶液。将式9代入到式7，得到：
@@ -136,12 +122,22 @@ $$\begin{align}&\left.\left(\frac{\partial h}{\partial t}\right)\right|_{t\to0,p
 
 $$h=1+\frac{t}{2}\tag{20}$$
 
-<!--## 情况四：$p\ll1,tp\gg1$
+$$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{c}{2}\tag{21}$$
 
-此情况比如 $c=0.1\ \mathrm{M}$ 的苯酚溶液。此时式14满足：
+# 二元弱酸
 
-$$\frac{tp}{h+p}\gg\frac{1}{h}$$
+二元弱酸 $\mathrm{H_2A}$ 溶液的电荷平衡式：
 
-因此仍可以使用是15进行近似计算。
+$$[\mathrm{H}^+]=[\mathrm{HA}^-]+2[\mathrm{A}^{2-}]+[\mathrm{OH}^-]\tag{22}$$
 
-## 情况五：$p\gg1,tp\ll1$-->
+代入分布系数表达式：
+
+$$[\mathrm{H}^+]=\frac{c(K_\mathrm{a_1}[\mathrm{H}^+]+2K_\mathrm{a_1}K_\mathrm{a_2})}{[\mathrm{H}^+]^2+K_\mathrm{a_1}[\mathrm{H}^+]+K_\mathrm{a_1}K_\mathrm{a_2}}+\frac{K_\mathrm{w}}{[\mathrm{H}^+]}\tag{23}$$
+
+同样定义无量纲量：
+
+$$\begin{align}&h=\frac{[\mathrm{H}^+]}{\sqrt{K_\mathrm{w}}}\\&t=\frac{c}{\sqrt{K_\mathrm{w}}}\\&p_1=\frac{K_\mathrm{a_1}}{\sqrt{K_\mathrm{w}}}\\&p_2=\frac{K_\mathrm{a_2}}{\sqrt{K_\mathrm{w}}}\end{align}\tag{24}$$
+
+式24代入式23并化简，得：
+
+$$h^4+p_1h^3+(p_1p_2-tp_1-1)h^2-(2tp_1p_2+p_1)h-p_1p_2=0\tag{25}$$
