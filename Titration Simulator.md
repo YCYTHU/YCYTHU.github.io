@@ -5,9 +5,9 @@ permalink: /Titration%20Simulator.html
 
 <html>
 <head>
-	<meta charset="UTF-8">
-	<script language="JavaScript" type="text/javascript">
-		var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
+<meta charset="UTF-8">
+<script language="JavaScript" type="text/javascript">
+	var graph, graphCTX, liquids, liquidsCTX, stirBar, stirBarCTX; 
 	var acid="Choose", base="Choose", indicator="Choose"; aliquot = "Choose"; // (Unselected at startup)
 	var pipet = 0;
 	var strongAcid, strongBase;
@@ -234,7 +234,7 @@ permalink: /Titration%20Simulator.html
     		document.getElementById("startButton").disabled = false;
     	} 
     }
-}
+	}
 	function titrateStart(event) { //Start titrating by mouse down on tap
 		var x, y,
 		x = (event.clientX-document.getElementById("buret").getBoundingClientRect().left);
@@ -356,7 +356,7 @@ permalink: /Titration%20Simulator.html
       liquidsCTX.bezierCurveTo(92-15*x,640-45*x,22+15*x,640-45*x,22+15*x,635-45*x);
       break;
   }
-case "20 mL": {
+	case "20 mL": {
   		liquidsCTX.fillRect(20,631-(45.0*x),80,(45.0*x)+10); // show flask contents
       liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour
       liquidsCTX.beginPath(); liquidsCTX.moveTo(24+15*x,631-45*x); 
@@ -364,7 +364,7 @@ case "20 mL": {
       liquidsCTX.bezierCurveTo(90-15*x,636-45*x,24+15*x,636-45*x,24+15*x,631-45*x);
       break;
   }
-case "25 mL": {
+	case "25 mL": {
   		liquidsCTX.fillRect(20,630-(45.0*x),80,(45.0*x)+10); // show flask contents
       liquidsCTX.fillStyle = getColour(0.9); // surface (darker) colour
       liquidsCTX.beginPath(); liquidsCTX.moveTo(24+15*x,630-45*x); 
@@ -372,9 +372,9 @@ case "25 mL": {
       liquidsCTX.bezierCurveTo(90-15*x,635-45*x,24+15*x,635-45*x,24+15*x,630-45*x);
       break;
   }
-}
-liquidsCTX.stroke();liquidsCTX.fill();
-liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
+	}
+	liquidsCTX.stroke();liquidsCTX.fill();
+	liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
     if (tapOpen) { // Shows the drips
     	drip = Math.round(35.0*Math.random());
     	if(level%2 == 0) {
@@ -384,7 +384,7 @@ liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
     		liquidsCTX.beginPath(); liquidsCTX.moveTo(56,560+drip); liquidsCTX.lineTo(56,565+drip); liquidsCTX.stroke();
     	}
     }
-}
+	}
 	function strongAcidStrongBase() { // Strong acid - strong base case
 		var volAcid, volBase, totVol;				  
 		var concAcidNow;
@@ -409,7 +409,7 @@ liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
   	x = quadPlus(b,c);
   	pH = 14.0 + Math.log(x - concAcidNow)/Math.LN10;
   }
-}
+	}
   function weakAcidStrongBase()  { // Weak acid - strong base case
   	var volAcid, volBase, totVol;
   	var roots = [];
@@ -447,7 +447,7 @@ liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
       x = quadPlus(b,c);
       pH = 14.0 + Math.log(x - concAcidNow)/Math.LN10;
   }
-}
+	}
 
   function strongAcidWeakBase() {  // Strong acid - weak base case
   	var volAcid, volBase, totVol;				   
@@ -486,7 +486,7 @@ liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
         x = quadPlus(b,c);
         pH = - Math.log(x - concBaseNow)/Math.LN10;
     }
-}
+	}
 
   function weakAcidWeakBase(){  // Weak acid - weak base case not handled
   	document.getElementById("startButton").disabled = true;
@@ -504,31 +504,31 @@ liquidsCTX.strokeStyle = "#000000"; liquidsCTX.lineWidth = 1;
         strongAcid = true;
         break;
     }
-case "Acetic acid":
+	case "Acetic acid":
 	{
 		Ka = 1.8e-5;
 		strongAcid = false;
 		break;
 	}
-case "Chlorous acid":
+	case "Chlorous acid":
 	{
 		Ka = 1.2e-2;
 		strongAcid = false;
 		break;
 	}
-case "Hypochlorous acid":
+	case "Hypochlorous acid":
 	{
 		Ka = 3.5e-8;
 		strongAcid = false;
 		break;
 	}
-case "Hydrocyanic acid":
+	case "Hydrocyanic acid":
 	{
 		Ka = 6.2e-10;
 		strongAcid = false;
 		break;
 	}
-case "Custom":
+	case "Custom":
 			//default: //User's acid
 	{
 		document.getElementById("acidKa").disabled = false;
@@ -664,18 +664,18 @@ case "Custom":
       }
   case "Crystal violet":
   	{
-  		pHInd = 1.0;			
-          indRed1 = 99;    			//in base (blue)
-          indGreen1 = 0;   
-          indBlue1 = 217; 
-          indRed2 = 84;    			//in acid (green)
-          indGreen2 = 255; 
-          indBlue2 = 0;    
+  		pHInd = 1.0;		
+          indRed1 = 99;	//in base (blue)
+          indGreen1 = 0;
+          indBlue1 = 217;
+          indRed2 = 84;		//in acid (green)
+          indGreen2 = 255;
+          indBlue2 = 0;
           break;
       }
   case "Alizarin yellow":
   	{
-  		pHInd = 11.0;				
+  		  pHInd = 11.0;				
           indRed1 = 255;   			//in base (orange-red)
           indGreen1 = 77;  
           indBlue1 = 0;    
@@ -686,7 +686,7 @@ case "Custom":
       }
   case "Erichrome black T":
   	{
-  		pHInd = 5.8;				
+  		  pHInd = 5.8;				
           indRed1 = 99;    			// base (blue)
           indGreen1 = 0;   
           indBlue1 = 199;  
@@ -696,8 +696,8 @@ case "Custom":
           break;
       }
   }
-}
-function setAliquot() {
+	}
+	function setAliquot() {
 	switch (aliquot)
 	{
 	case "10 mL":
@@ -716,7 +716,7 @@ function setAliquot() {
 			break;
 		}
 	}			
-}
+	}
 
   function getColour(darker)  { // make the colours of the flask contents
   	var pHDiff;
@@ -731,7 +731,7 @@ function setAliquot() {
     	(indGreen1-(indGreen1-indGreen2)*(pHDiff+1.0)/2.0),
     	(indBlue1-(indBlue1-indBlue2)*(pHDiff+1.0)/2.0),darker);
     	if (pHDiff < -1.0) return colourCoder(indRed1, indGreen1, indBlue1, darker);
-}
+	}
   function colourCoder(red, green, blue, darker) { // forms a color code from rgb's in range 0 - 255 and a darkener (1 - 0, 0 = darkest)
   	return "#"+(0x1000000 + Math.round(blue*darker) + 0x100 * Math.round(green*darker) + 0x10000 * Math.round(red*darker)).toString(16).substr(1); return;
   } 
@@ -776,9 +776,9 @@ function setAliquot() {
     	return root;
     }
     return root;
-}   
-function pickRoot(roots) 
-{
+	}   
+	function pickRoot(roots) 
+	{
 	var root = 0.0;
   	if (roots[4] != 0.0) { // Only one of the three is real (Should not happen)
   		root = roots[0];
@@ -810,6 +810,18 @@ function pickRoot(roots)
 		clearInterval(stirInterval);
 		ready();
 		document.getElementById("warnings").innerHTML = "<a class=\"button button--outline-primary button--rounded\">警告：缺参数</a>";
+		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
+		if (graph_scale < 0.5) graph_scale = 0.5;
+		var apparatus_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("apparatus_area").clientWidth;
+		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
+		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
+	}
+	window.onresize = function(){
+		var graph_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("graph_div").clientWidth;
+		if (graph_scale < 0.5) graph_scale = 0.5;
+		var apparatus_scale = 0.5*document.getElementById("settings_area").clientWidth/document.getElementById("apparatus_area").clientWidth;
+		document.getElementById("apparatus_area").style.transform = "scale("+apparatus_scale+")";
+		document.getElementById("graph_div").style.transform = "scale("+graph_scale+")";
 	}
 </script>
 <style>
@@ -876,7 +888,7 @@ function pickRoot(roots)
 
 <body>
 	<!-- Settings area -->
-	<div style="width:100%;">
+	<div id="settings_area" style="width:100%;">
 		<center>
 			<p class="SetAcid"><b><span id="acidErr">酸</span></b><br>
 				<input type="text" id="concAcid" value="--" oninput="getConcAcid()" style="width:20%; height:25px; text-align:center;"><span id="concAcidErr"></span><font face="Times New Roman"> mol·L<sup>-1</sup></font><br>
@@ -937,7 +949,7 @@ function pickRoot(roots)
 				</center>
 			</div>
 			<!-- Apparatus area -->
-			<div id="apparatus_area" style="position:relative;">
+			<div id="apparatus_area" style="position:relative;transform:scale(1);transform-origin:left center">
 				<div style="position:absolute; top:0px; left:100px; z-index:0;">
 					<canvas id="liquids" width="120" height="690"></canvas>
 				</div>
@@ -951,12 +963,14 @@ function pickRoot(roots)
 			<!-- Titration graph area -->
 			<div id="graph_area">
 				<div>
-					<center><table style="border:0;width:400px;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
+					<table style="border:0;width:50%;cellpadding:5px;margin-left:auto;" id="results"><tbody><tr>
 						<td width="50%" border="none"><center><p id="buretReading"><b>Buret Reading</b><br>--</p></center></td>
 						<td width="50%"><center><p id="pHReading"><b>pH Reading</b><br>--</p></center></td></tr></tbody></table>
-					</center>
+					
 				</div>
-				<div style="width:400px;height:600px;margin-left:auto"><canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;"></canvas>
+				<div id="graph_div" style="width:400px;height:600px;margin-left:auto;transform-origin:right top;">
+					<canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;">
+					</canvas>
 				</div>
 			</div>
 			<!-- Messages area -->
