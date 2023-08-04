@@ -42,7 +42,7 @@ $$[\mathrm{H}^+]=\left\{\begin{align}&\sqrt{K_\mathrm{w}}&&c<\frac{\sqrt{K_\math
 <div align=center><object data="/assets/images/weak acid/Approx Strong Acid.svg" type="image/svg+xml" width="75%"></object></div>
 <div align=center><font color="#999999">图2：两种近似公式误差的比较</font></div>
 
-而且由式5发现，当酸溶液浓度很小时（$c<\frac{\sqrt{K_\mathrm{w}}}{2}$），氢离子浓度的增加速率只有酸浓度增加速率的 $\frac12$，也即从表象上看似乎只有一半的强酸发生了解离。
+而且由式5发现，当酸溶液浓度很小时（$c<\frac{\sqrt{K_\mathrm{w}}}{2}$），氢离子浓度的增加速率只有酸浓度增加速率的 $\frac12$，也即从表象上看似乎只有一半的强酸发生了解离。这在后文一元弱酸的讨论中会再次出现。
 
 # 一元弱酸
 
@@ -62,9 +62,33 @@ $$\begin{align}&h=\frac{[\mathrm{H}^+]}{\sqrt{K_\mathrm{w}}}\\&t=\frac{c}{\sqrt{
 
 $$h^3+ph^2-(tp+1)h-p=0\tag{10}$$
 
-虽然式10存在解析解，但是这种近似方式并不适合推广到四次及更高次的方程上，因此此处不采用对解析解进行近似的方式推导近似公式。
+虽然式10存在解析解，但是这种近似方式并不适合推广到四次及更高次的方程上，因此此处不采用对解析解进行近似的方式推导近似公式。不过通过物理意义可以确定式10的正整数解满足 $h>1$，这在接下来的讨论中会用到。
 
-## 情况一：$t\ll1,p\ll1$
+## 情况一：$p\ll1$
+
+该情况比如苯酚溶液。此时式10近似为：
+
+$$h^3-(tp+1)h=0\tag{11}$$
+
+式11的正实数解为 $h=\sqrt{tp+1}$，因此氢离子浓度：
+
+$$[\mathrm{H}^+]=\sqrt{cK_\mathrm{a}+K_\mathrm{w}}\tag{12}$$
+
+特别地，对于两种特殊情况，式12还可以进一步化简。
+
+### 情况1a：$tp\ll1$
+
+当 $tp\to0$ 时，$\sqrt{tp+1}\sim\frac{tp}{2}+1$，因此当 $cK_\mathrm{a}\ll K_\mathrm{w}$ 时氢离子浓度简化为：
+
+$$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}\tag{13}$$
+
+### 情况1b：$tp\gg1$
+
+当 $tp\to+\infty$ 时，$\sqrt{tp+1}\sim\sqrt{tp}$，因此当 $cK_\mathrm{a}\gg K_\mathrm{w}$ 时氢离子浓度简化为：
+
+$$[\mathrm{H}^+]=\sqrt{cK_\mathrm{a}}\tag{14}$$
+
+<!--## 情况一：$t\ll1,p\ll1$
 
 该情况比如极稀的苯酚溶液。此时式10近似为：
 
@@ -72,18 +96,52 @@ $$h^3-h=0\tag{11}$$
 
 该方程的正实数解是 $h=1$，又因为：
 
-$$\begin{align}&\lim_{t\to0,p\to0}\left(\frac{\partial h}{\partial t}\right)=\lim_{t\to0,p\to0}\left(\frac{hp}{3h^2+2hp-tp-1}\right)=0\\&\lim_{t\to0,p\to0}\left(\frac{\partial h}{\partial p}\right)=\lim_{t\to0,p\to0}\left(\frac{th+1-h^2}{3h^2+2hp-tp-1}\right)=0\end{align}\tag{12}$$
+$$\begin{align}&\left.\left(\frac{\partial h}{\partial t}\right)\right|_{t\to0,p\to0,h\to1}=\left.\left(\frac{hp}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to0,h\to1}\simeq\frac{p}{2}\\&\left.\left(\frac{\partial h}{\partial p}\right)\right|_{t\to0,p\to0,h\to1}=\left.\left(\frac{th+1-h^2}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to0,h\to1}\simeq\frac{t}{2}\end{align}\tag{12}$$
 
 因此此时氢离子浓度
 
-$$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\omicron(c^2,K_\mathrm{a}^2)\tag{13}$$
+$$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{tp}{2}\tag{13}$$-->
 
-## 情况二：$t\gg1,p\gg1$
+## 情况二：$p\gg1,t\gg1$
 
-该情况比如 $c=0.01\ \mathrm{M}$ 的甲酸溶液。此时式10的正实数解满足 $h>1$，这可以由函数 $f(h)=h^3+ph^2-(tp+1)h-p$ 的单调性判断。将式9代入到式7，得到：
+该情况比如 $c=0.01\ \mathrm{M}$ 的甲酸溶液。将式9代入到式7，得到：
 
-$$h=\frac{tp}{h+p}+\frac{1}{h}\tag{14}$$
+$$h=\frac{tp}{h+p}+\frac{1}{h}\tag{15}$$
 
-由于 $t,p$ 均远大于 $1$，因此 $\frac{tp}{h+p}\gg\frac{1}{h}$，忽略式14等号右侧第二项从而化简为二次方程，解得：
+由于 $t,p\gg1$ 且 $h>1$，因此 $\frac{tp}{h+p}\gg\frac{1}{h}$，忽略式14等号右侧第二项从而化简为二次方程，解得：
 
-$$h=\frac{-p+\sqrt{p^2+4pt}}{2}\tag{15}$$
+$$h=\frac{-p+\sqrt{p^2+4pt}}{2}\tag{16}$$
+
+特别地，对于两种特殊情况，式12还可以进一步化简。
+
+### 情况2a：$t\gg p\gg1$
+
+当 $t\gg p$ 时，$\frac{-p+\sqrt{p^2+4pt}}{2}\sim\sqrt{tp}-\frac{p}{2}$，因此当 $c\gg K_\mathrm{a}$ 时氢离子浓度简化为：
+
+$$[\mathrm{H}^+]=\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}\tag{17}$$
+
+### 情况2b：$1\ll t\ll p$
+
+当 $t\ll p$ 时，$\frac{-p+\sqrt{p^2+4pt}}{2}\sim t$，因此当 $c\ll K_\mathrm{a}$ 时氢离子浓度简化为：
+
+$$[\mathrm{H}^+]=c\tag{18}$$
+
+## 情况三：$p\gg1,t\ll1$
+
+此情况比如 $c=10^{-10}\ \mathrm{M}$ 的甲酸溶液。由化学直觉知式10的解 $h\approx1$（极稀的酸酸溶液pH值约为7）。又由于：
+
+$$\begin{align}&\left.\left(\frac{\partial h}{\partial t}\right)\right|_{t\to0,p\to\infty,h\approx1}=\left.\left(\frac{hp}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to\infty,h\approx1}\simeq\frac{1}{2}\\&\left.\left(\frac{\partial h}{\partial p}\right)\right|_{t\to0,p\to\infty,h\approx1}=\left.\left(\frac{th+1-h^2}{3h^2+2hp-tp-1}\right)\right|_{t\to0,p\to\infty,h\approx1}\simeq0\end{align}\tag{19}$$
+
+因此氢离子浓度
+
+$$h=1+\frac{t}{2}\tag{20}$$
+
+<!--## 情况四：$p\ll1,tp\gg1$
+
+此情况比如 $c=0.1\ \mathrm{M}$ 的苯酚溶液。此时式14满足：
+
+$$\frac{tp}{h+p}\gg\frac{1}{h}$$
+
+因此仍可以使用是15进行近似计算。
+
+## 情况五：$p\gg1,tp\ll1$-->
