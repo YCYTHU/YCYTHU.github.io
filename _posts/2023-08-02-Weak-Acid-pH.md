@@ -9,10 +9,15 @@ cover: /assets/images/weak acid/cover.jpg
 下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
 
 $$\begin{array}{l|cl|c}
+种类&近似式&适用条件&最大误差\\\hline
 \mathrm{HA(Strong)}&\sqrt{K_\mathrm{w}}+\frac{c}{2}&c<\frac{\sqrt{K_\mathrm{w}}}{2}&\%<1\\
 &c+\frac{\sqrt{K_\mathrm{w}}}{c}&c>2\sqrt{K_\mathrm{w}}&\%<1\\\hline
 \mathrm{HA(Weak)}&\sqrt{cK_\mathrm{a}+K_\mathrm{w}}&K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}&0\\
-&\tiny{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\tiny{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0
+&\textcolor[rgb]{0.388,0.388,0.388}{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\textcolor[rgb]{0.388,0.388,0.388}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0\\
+&\textcolor[rgb]{0.388,0.388,0.388}{\sqrt{cK_\mathrm{a}}}&\textcolor[rgb]{0.388,0.388,0.388}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}}&0\\
+&\frac{-K_\mathrm{a}+\sqrt{K_\mathrm{a}^2+4cK_\mathrm{a}}}{2}&K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\gg\sqrt{K_\mathrm{w}}\\
+&\textcolor[rgb]{0.388,0.388,0.388}{\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}}&\textcolor[rgb]{0.388,0.388,0.388}{c\gg K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}}&0\\
+&\textcolor[rgb]{0.388,0.388,0.388}{c}&\textcolor[rgb]{0.388,0.388,0.388}{K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}}&0\\
 \end{array}$$
 
 接下来从一元酸开始介绍可用于快速计算pH值的近似公式，并分析这些公式所引入的误差对最终结果的影响，随后将公式延伸到二元酸与多元酸。作为最简单的情况，先从**一元强酸**开始推导。
