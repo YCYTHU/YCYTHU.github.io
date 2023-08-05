@@ -82,6 +82,18 @@ permalink: /Titration%20Simulator.html
 		dropRate = Math.pow(10,(4 - dropRate));
 		clearInterval(titreInterval); titreInterval = setInterval(titrationPlot,dropRate); 
 	}
+	function setNormalMode() {
+		document.getElementById("normal").checked = true;
+		document.getElementById("cheating").checked = false;
+		document.getElementById("graph_div").style.visibility='hidden';
+		document.getElementById("results").style.visibility='hidden';
+	}
+	function setCheatingMode() {
+		document.getElementById("cheating").checked = true;
+		document.getElementById("normal").checked = false;
+		document.getElementById("graph_div").style.visibility='visible';
+		document.getElementById("results").style.visibility='visible';
+	}
 	function clearGraph(){ // Clears the graph area if it is clicked
 		graphFrame();
 		graphCTX.fillStyle = "#ffffff"; graphCTX.fillRect(51,42,299,7);	// (Remove weird black line at previous stopping point)
@@ -949,8 +961,8 @@ permalink: /Titration%20Simulator.html
 			</p>
 			<p style="display: inline-block;" id="warnings"></p>
 			<p>
-				<input type="radio" name="mode" id="normal" value="normal"> 正常模式
-				&nbsp;<input type="radio" name="mode" id="cheat" value="cheating"> 作弊模式</p>
+				<input type="radio" id="normal" onchange="setNormalMode()">  正常模式
+				&nbsp;<input type="radio" id="cheating" checked="true" onchange="setCheatingMode()"> 作弊模式</p>
 		</center>
 			</div>
 		<div><center>
