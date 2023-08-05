@@ -129,11 +129,15 @@ permalink: /Titration%20Simulator.html
 				<b>滴定速度</b><br>
 				慢&nbsp;&nbsp;<input type="range" id="dropRate" min="1" max="3" value="2" step="0.05" onchange="getDropRate()" style="width:50%;">&nbsp;&nbsp;快<br>
 			</p><br>
-			<p style="display: inline-block;"><a id="titrateButton" class="button button--secondary button--rounded" onclick="titrate()">开始/停止滴定</a>
-			</p>
 			<p style="display: inline-block;"><a id="startButton" class="button button--success button--rounded" onclick="reFill()">添加溶液准备滴定</a>
 			</p>
+			<p style="display: inline-block;"><a id="titrateButton" class="button button--secondary button--rounded" onclick="titrate()">开始/停止滴定</a>
+			</p>
+			<p style="display: inline-block;"><a id="titrateButton" class="button button--info button--rounded" onclick="score()">终止滴定并显示结果</a>
+			</p><br>
 			<p style="display: inline-block;" id="warnings"></p>
+			<p>
+			<p style="display: inline-block;" id="score"></p>
 			<p>
 				<input type="radio" id="normal" onchange="setNormalMode()">  正常模式&nbsp;<input type="radio" id="cheating" checked="true" onchange="setCheatingMode()"> 作弊模式</p>
 		</center>
