@@ -133,7 +133,7 @@ permalink: /Titration%20Simulator.html
 			</p>
 			<p style="display: inline-block;"><a id="titrateButton" class="button button--outline-warning button--rounded" onclick="titrate()">开始/停止滴定</a>
 			</p>
-			<p style="display: inline-block;"><a id="titrateButton" class="button button--outline-success button--rounded" onclick="score()">终止滴定并显示结果</a>
+			<p style="display: inline-block;"><a id="scoreButton" class="button button--outline-success button--rounded" onclick="score()">终止滴定并显示结果</a>
 			</p><br>
 			<p style="display: inline-block;" id="warnings"></p>
 			<p style="display: inline-block;" id="score"></p><br>
