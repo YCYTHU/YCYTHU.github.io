@@ -792,6 +792,9 @@ function pickRoot(roots)
   	return root; // Should not happen 
 }
 function score() {
+	if (isNaN(titre) || isNaN(titreAtEqPt)) {
+		return;
+	}
 	if (tapOpen){
 		tapOpen = false; clearInterval(titreInterval); showLiquids(level);
     	document.getElementById("startButton").disabled = false;
@@ -801,11 +804,11 @@ function score() {
 	error = error.toFixed(2).toString();
 	RE = RE.toFixed(2).toString();
 	if (error > 0) {
-		document.getElementById("score").innerHTML = "<a class=\"button button--outline-primary button--rounded\">滴定过量了"+error+"ml,相对偏差"+RE+"%</a>";
+		document.getElementById("score").innerHTML = "<a class=\"button button--outline-primary button--rounded\">滴定过量了"+error+" ml,相对偏差"+RE+"%</a>";
 	}
 	else {
 		error = -error;
-		document.getElementById("score").innerHTML = "<a class=\"button button--outline-primary button--rounded\">距等当点还差"+error+"ml,相对偏差"+RE+"%</a>";
+		document.getElementById("score").innerHTML = "<a class=\"button button--outline-primary button--rounded\">距等当点还差"+error+" ml,相对偏差"+RE+"%</a>";
 	}
 	
 }
