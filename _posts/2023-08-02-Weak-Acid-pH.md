@@ -6,7 +6,16 @@ cover: /assets/images/weak acid/cover.jpg
 由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似是十分必要的。
 <!--more-->
 
-本文从一元酸开始介绍可用于快速计算pH值的近似公式，并分析这些公式所引入的误差对最终结果的影响，随后将公式延伸到二元酸与多元酸。作为最简单的情况，先从**一元强酸**开始推导。
+下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
+
+$$\begin{array}{l|cl|c}
+\mathrm{HA(Strong)}&\sqrt{K_\mathrm{w}}+\frac{c}{2}&c<\frac{\sqrt{K_\mathrm{w}}}{2}&\%<1\\
+&c+\frac{\sqrt{K_\mathrm{w}}}{c}&c>2\sqrt{K_\mathrm{w}}&\%<1\\\hline
+\mathrm{HA(Weak)}&\sqrt{cK_\mathrm{a}+K_\mathrm{w}}&K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}&0\\
+&\tiny{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\tiny{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0
+\end{array}$$
+
+接下来从一元酸开始介绍可用于快速计算pH值的近似公式，并分析这些公式所引入的误差对最终结果的影响，随后将公式延伸到二元酸与多元酸。作为最简单的情况，先从**一元强酸**开始推导。
 
 # 一元强酸
 
