@@ -136,10 +136,8 @@ permalink: /Titration%20Simulator.html
 			<p style="display: inline-block;"><a id="titrateButton" class="button button--info button--rounded" onclick="score()">终止滴定并显示结果</a>
 			</p><br>
 			<p style="display: inline-block;" id="warnings"></p>
-			<p>
 			<p style="display: inline-block;" id="score"></p>
-			<p>
-				<input type="radio" id="normal" onchange="setNormalMode()">  正常模式&nbsp;<input type="radio" id="cheating" checked="true" onchange="setCheatingMode()"> 作弊模式</p>
+			<input type="radio" id="normal" onchange="setNormalMode()">  正常模式&nbsp;<input type="radio" id="cheating" checked="true" onchange="setCheatingMode()"> 作弊模式</p>
 		</center>
 	</div>
 	<div>

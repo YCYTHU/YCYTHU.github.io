@@ -10,14 +10,14 @@ cover: /assets/images/weak acid/cover.jpg
 
 $$\begin{array}{l|cl|c}
 种类&近似式&适用条件&最大误差\\\hline
-\mathrm{HA(Strong)}&\sqrt{K_\mathrm{w}}+\frac{c}{2}&c<\frac{\sqrt{K_\mathrm{w}}}{2}&\%<1\\
+\mathrm{HA(Strong)}&\sqrt{K_\mathrm{w}}+\frac{c}{2}&c<\frac{\sqrt{K_\mathrm{w}}}{2}&\%<1\\~\\
 &c+\frac{\sqrt{K_\mathrm{w}}}{c}&c>2\sqrt{K_\mathrm{w}}&\%<1\\\hline
 \mathrm{HA(Weak)}&\sqrt{cK_\mathrm{a}+K_\mathrm{w}}&K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}&0\\
-&\color{lightgray}{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0\\
-&\color{gray}{\sqrt{cK_\mathrm{a}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}}&0\\
+&\color{gray}{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0\\
+&\color{gray}{\sqrt{cK_\mathrm{a}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}}&0\\~\\
 &\frac{-K_\mathrm{a}+\sqrt{K_\mathrm{a}^2+4cK_\mathrm{a}}}{2}&K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\gg\sqrt{K_\mathrm{w}}&0\\
 &\color{gray}{\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}}&\color{gray}{c\gg K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}}&0\\
-&\color{gray}{c}&\color{gray}{K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}}&0\\
+&\color{gray}{c}&\color{gray}{K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}}&0\\~\\
 &\sqrt{K_\mathrm{w}}+\frac{c}{2}&K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\ll\sqrt{K_\mathrm{w}}&0\\\hline
 \mathrm{H_2A(Weak)}&
 \end{array}$$

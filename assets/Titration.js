@@ -792,8 +792,14 @@ function pickRoot(roots)
   	return root; // Should not happen 
 }
 function score() {
+	if (tapOpen){
+		tapOpen = false; clearInterval(titreInterval); showLiquids(level);
+    	document.getElementById("startButton").disabled = false;
+	}
 	var error = titre-titreAtEqPt;
 	var RE = error / titreAtEqPt * 100;
+	error = error.toFixed(2).toString();
+	RE = RE.toFixed(2).toString();
 	if (error > 0) {
 		document.getElementById("score").innerHTML = "<a class=\"button button--outline-primary button--rounded\">滴定过量了"+error+"ml,相对偏差"+RE+"%</a>";
 	}
