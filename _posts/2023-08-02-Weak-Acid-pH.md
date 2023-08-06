@@ -3,10 +3,36 @@ title: 快速近似计算酸溶液pH值及误差
 tags: Chemistry
 cover: /assets/images/weak acid/cover.jpg
 ---
-由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似是十分必要的。
+由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，在不使用计算其时手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似简化计算是十分必要的。
 <!--more-->
 
 下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
+
+<style>
+	table thead td {
+		text-align: center;
+	}
+	table td {
+		border:none;
+	}
+</style>
+<div  align="center">
+	<table>
+		<thead>
+			<tr>
+				<td>种类</td>
+				<td>近似式</td>
+				<td>适用条件</td>
+				<td>最大误差</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>$\mathrm{HA(Strong)}$</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 $$\begin{array}{l|cl|c}
 种类&近似式&适用条件&最大误差\\\hline
