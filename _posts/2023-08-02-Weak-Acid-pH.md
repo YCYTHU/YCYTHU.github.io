@@ -17,12 +17,12 @@ cover: /assets/images/weak acid/cover.jpg
 		border:none;
 	}
 	#conclusion td.gray {
-		color: #999;
+		color: #BBB;
 	}
 </style>
 <div  align="center">
 	<table id="conclusion">
-		<thead>
+		<thead style="border-bottom: 1px solid #555;">
 			<tr>
 				<td>种类</td>
 				<td>近似式</td>
@@ -32,55 +32,48 @@ cover: /assets/images/weak acid/cover.jpg
 		</thead>
 		<tbody>
 			<tr>
-				<td rowspan="2">$\mathrm{HA(Strong)}$</td>
+				<td rowspan="2" style="border-bottom: 1px solid #999;">$\mathrm{HA(Strong)}$</td>
 				<td>$\sqrt{K_\mathrm{w}}+\frac{c}{2}$</td>
 				<td>$c<\frac{\sqrt{K_\mathrm{w}}}{2}$</td>
 				<td>$<9$</td>
 			</tr>
-			<tr>
-				<td></td>
+			<tr style="border-bottom: 1px solid #999;">
 				<td>$c+\frac{\sqrt{K_\mathrm{w}}}{c}$</td>
 				<td>$c>2\sqrt{K_\mathrm{w}}$</td>
 				<td>$<9$</td>
 			</tr>
 			<tr>
-				<td rowspan="7">$\mathrm{HA(Weak)}$</td>
+				<td rowspan="7" style="border-bottom: 1px solid #999;">$\mathrm{HA(Weak)}$</td>
 				<td>$\sqrt{cK_\mathrm{a}+K_\mathrm{w}}$</td>
 				<td>$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}$</td>
 				<td>$<9$</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td class="gray">$\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}$</td>
 				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}$</td>
 				<td class="gray">$<9$</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td class="gray">$\sqrt{cK_\mathrm{a}}$</td>
 				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}$</td>
 				<td class="gray">$<9$</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td>$\frac{-K_\mathrm{a}+\sqrt{K_\mathrm{a}^2+4cK_\mathrm{a}}}{2}$</td>
 				<td>$K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\gg\sqrt{K_\mathrm{w}}$</td>
 				<td>$<9$</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td class="gray">$\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}$</td>
 				<td class="gray">$c\gg K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}$</td>
 				<td class="gray">$<9$</td>
 			</tr>
 			<tr>
-				<td></td>
 				<td class="gray">$c$</td>
 				<td class="gray">$K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}$</td>
 				<td class="gray">$<9$</td>
 			</tr>
-			<tr>
-				<td></td>
+			<tr style="border-bottom: 1px solid #999;">
 				<td>$\sqrt{K_\mathrm{w}}+\frac{c}{2}$</td>
 				<td>$K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\ll\sqrt{K_\mathrm{w}}$</td>
 				<td>$<9$</td>
@@ -88,20 +81,6 @@ cover: /assets/images/weak acid/cover.jpg
 		</tbody>
 	</table>
 </div>
-
-$$\begin{array}{l|cl|c}
-种类&近似式&适用条件&最大误差\\\hline
-\mathrm{HA(Strong)}&\sqrt{K_\mathrm{w}}+\frac{c}{2}&c<\frac{\sqrt{K_\mathrm{w}}}{2}&\%<1\\~\\
-&c+\frac{\sqrt{K_\mathrm{w}}}{c}&c>2\sqrt{K_\mathrm{w}}&\%<1\\\hline
-\mathrm{HA(Weak)}&\sqrt{cK_\mathrm{a}+K_\mathrm{w}}&K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}&0\\
-&\color{gray}{\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}}&0\\
-&\color{gray}{\sqrt{cK_\mathrm{a}}}&\color{gray}{K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}}&0\\~\\
-&\frac{-K_\mathrm{a}+\sqrt{K_\mathrm{a}^2+4cK_\mathrm{a}}}{2}&K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\gg\sqrt{K_\mathrm{w}}&0\\
-&\color{gray}{\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}}&\color{gray}{c\gg K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}}&0\\
-&\color{gray}{c}&\color{gray}{K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}}&0\\~\\
-&\sqrt{K_\mathrm{w}}+\frac{c}{2}&K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\ll\sqrt{K_\mathrm{w}}&0\\\hline
-\mathrm{H_2A(Weak)}&
-\end{array}$$
 
 接下来从一元酸开始介绍可用于快速计算pH值的近似公式，并分析这些公式所引入的误差对最终结果的影响，随后将公式延伸到二元酸与多元酸。作为最简单的情况，先从**一元强酸**开始推导。
 
