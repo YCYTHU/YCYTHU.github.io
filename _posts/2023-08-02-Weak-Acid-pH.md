@@ -9,19 +9,19 @@ cover: /assets/images/weak acid/cover.jpg
 下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
 
 <style>
-	table {
+	#conclusion {
 		display: table;
 	}
-	table td {
+	#conclusion td {
 		text-align: center;
 		border:none;
 	}
-	td.gray {
-		color: gray;
+	#conclusion td.gray {
+		color: #999;
 	}
 </style>
 <div  align="center">
-	<table>
+	<table id="conclusion">
 		<thead>
 			<tr>
 				<td>种类</td>
@@ -32,7 +32,7 @@ cover: /assets/images/weak acid/cover.jpg
 		</thead>
 		<tbody>
 			<tr>
-				<td>$\mathrm{HA(Strong)}$</td>
+				<td rowspan="2">$\mathrm{HA(Strong)}$</td>
 				<td>$\sqrt{K_\mathrm{w}}+\frac{c}{2}$</td>
 				<td>$c<\frac{\sqrt{K_\mathrm{w}}}{2}$</td>
 				<td>$<9$</td>
@@ -44,7 +44,7 @@ cover: /assets/images/weak acid/cover.jpg
 				<td>$<9$</td>
 			</tr>
 			<tr>
-				<td>$\mathrm{HA(Weak)}$</td>
+				<td rowspan="7">$\mathrm{HA(Weak)}$</td>
 				<td>$\sqrt{cK_\mathrm{a}+K_\mathrm{w}}$</td>
 				<td>$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}$</td>
 				<td>$<9$</td>
@@ -52,8 +52,38 @@ cover: /assets/images/weak acid/cover.jpg
 			<tr>
 				<td></td>
 				<td class="gray">$\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}$</td>
-				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}$</td>
+				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\ll K_\mathrm{w}$</td>
 				<td class="gray">$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="gray">$\sqrt{cK_\mathrm{a}}$</td>
+				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}\ \&\ cK_\mathrm{a}\gg K_\mathrm{w}$</td>
+				<td class="gray">$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>$\frac{-K_\mathrm{a}+\sqrt{K_\mathrm{a}^2+4cK_\mathrm{a}}}{2}$</td>
+				<td>$K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\gg\sqrt{K_\mathrm{w}}$</td>
+				<td>$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="gray">$\sqrt{cK_\mathrm{a}}-\frac{K_\mathrm{a}}{2}$</td>
+				<td class="gray">$c\gg K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}$</td>
+				<td class="gray">$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="gray">$c$</td>
+				<td class="gray">$K_\mathrm{a}\gg c\gg \sqrt{K_\mathrm{w}}$</td>
+				<td class="gray">$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>$\sqrt{K_\mathrm{w}}+\frac{c}{2}$</td>
+				<td>$K_\mathrm{a}\gg\sqrt{K_\mathrm{w}}\ \&\ c\ll\sqrt{K_\mathrm{w}}$</td>
+				<td>$<9$</td>
 			</tr>
 		</tbody>
 	</table>
