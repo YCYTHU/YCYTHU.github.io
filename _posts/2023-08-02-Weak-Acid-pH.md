@@ -9,11 +9,15 @@ cover: /assets/images/weak acid/cover.jpg
 下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
 
 <style>
-	table thead td {
-		text-align: center;
+	table {
+		display: table;
 	}
 	table td {
+		text-align: center;
 		border:none;
+	}
+	td.gray {
+		color: gray;
 	}
 </style>
 <div  align="center">
@@ -29,6 +33,27 @@ cover: /assets/images/weak acid/cover.jpg
 		<tbody>
 			<tr>
 				<td>$\mathrm{HA(Strong)}$</td>
+				<td>$\sqrt{K_\mathrm{w}}+\frac{c}{2}$</td>
+				<td>$c<\frac{\sqrt{K_\mathrm{w}}}{2}$</td>
+				<td>$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>$c+\frac{\sqrt{K_\mathrm{w}}}{c}$</td>
+				<td>$c>2\sqrt{K_\mathrm{w}}$</td>
+				<td>$<9$</td>
+			</tr>
+			<tr>
+				<td>$\mathrm{HA(Weak)}$</td>
+				<td>$\sqrt{cK_\mathrm{a}+K_\mathrm{w}}$</td>
+				<td>$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}$</td>
+				<td>$<9$</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="gray">$\sqrt{K_\mathrm{w}}+\frac{cK_\mathrm{a}}{2\sqrt{K_\mathrm{w}}}$</td>
+				<td class="gray">$K_\mathrm{a}\ll\sqrt{K_\mathrm{w}}$</td>
+				<td class="gray">$<9$</td>
 			</tr>
 		</tbody>
 	</table>
