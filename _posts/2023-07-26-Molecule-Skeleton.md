@@ -49,7 +49,7 @@ def mol2graph(mol_path):
     return coordinates,bond_matrix
 ```
 
-函数`graph2coords()`依据邻接矩阵在坐标中插入`numpy.nan`，方便直接使用plt.plot()绘图。
+函数`graph2coords()`依据邻接矩阵在坐标中插入`numpy.nan`，方便直接使用`plt.plot()`绘图。
 
 ```python
 def graph2coords(XYCoords,A):
@@ -154,7 +154,7 @@ if __name__=='__main__':
 <object data="/assets/images/molecule skeleton/Benzophenone.svg" type="image/svg+xml" width="60%"></object>
 </div>
 
-## D-$\pi$-A结构分子的的激发态特征
+## D-$\pi$-A结构分子的激发态特征
 
 分子激发态的电子特征可以通过考察空穴-电子分布[^HE]来分析，下图示出了PXZ-TRZ分子[^PT]的单重态中每个原子对空穴-电子的贡献百分比。可以发现空穴主要分布在左侧给电子的PXZ基团上，而电子则主要分布在右侧吸电子的TRZ基团上。
 
