@@ -161,12 +161,12 @@ permalink: /Titration%20Simulator.html
 				<canvas id="stirBar" width="120" height="120"></canvas>
 			</div>
 			<div onclick="titrate()" id="buret" style="position:absolute; top:10px; left:3px; z-index:2;">
-				<img src="/assets/images/titration simulator.gif" width="112" height="670" border="0">
+				<img src="/assets/images/titration simulator/titration simulator.gif" width="112" height="670" border="0">
 			</div>
 		</div>
 		<!-- Titration graph area -->
 		<!--<div id="graph_area">-->
-		<div id="graph_div" style="width: 400px; transform-origin: right top; transform: scale(0.3775); position: absolute; right: 0px;">
+		<div id="graph_div" style="width: 400px; transform-origin: right top; transform: scale(1.0); position: absolute; right: 0px;">
 			<canvas id="graph" onclick="clearGraph()" width="400"	height="400" style="background-color:white;"></canvas>
 		</div>
 	</div>

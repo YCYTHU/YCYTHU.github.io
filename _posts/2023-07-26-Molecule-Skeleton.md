@@ -75,27 +75,28 @@ def graph2coords(XYCoords,A):
 - `array`：着色的依据，比如原子电荷
 - `scale`：当设置为0时，绘图时使用统一的原子半径；当设置为非0值时依据`array`的值对原子半径进行放缩，半径等于`abs(scale*array)`
 
-函数中首先调用前文的两个子函数得到用于绘图的两个向量`x,y`，随后利用plt.plot()函数绘制化学键。各原子则使用`plt.scatter()`函数依据`array`参数的值绘制为填充圆形，着色方案使用`colormap`参数。
+函数中首先调用前文的两个子函数得到用于绘图的两个向量`x,y`，随后利用`plt.plot()`函数绘制化学键。各原子则使用`plt.scatter()`函数依据`array`参数的值绘制为填充圆形，着色方案使用`colormap`参数。
 
 ```python
 def drawmol2D(mol_path,colormap,array,scale):
     coordinates,bond_matrix=mol2graph(mol_path)
     x,y=graph2coords(coordinates,bond_matrix)
-    plt.plot(x,y,color='k',linestyle='-',linewidth=8.0,zorder=1)
-    ax=plt.gca()
+    fig,ax=plt.subplots()
     ax.set_aspect(1)
+    ax.set_axis_off()
     
     if scale:
         size=abs(scale*array)
     else:
         size=1000
-
+    
+    ax.plot(x,y,color='k',linestyle='-',linewidth=8.0,zorder=1)
     plt.scatter(coordinates[:,0],coordinates[:,1],s=size,c=array,marker='o',cmap=colormap,linewidths=5.0,edgecolors='k',zorder=2)     
     
-    plt.axis('off')
-    plt.colorbar()
-    plt.xlim((1.2*min(coordinates[:,0]),1.2*max(coordinates[:,0])))
-    plt.ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
+    cb=plt.colorbar(fraction=0.018,pad=0.1)
+    cb.ax.tick_params(labelsize=16)
+    ax.set_xlim((1.2*min(coordinates[:,0]),1.2*max(coordinates[:,0])))
+    ax.set_ylim((1.2*min(coordinates[:,1]),1.2*max(coordinates[:,1])))
 ```
 
 # 应用示例
