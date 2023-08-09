@@ -22,9 +22,20 @@ cover: /assets/images/default.jpg
 {:.info}
 
 <div align=center>
-<img src="/assets/images/titration simulator/settings_area.png" width="75%">
+<img src="/assets/images/titration simulator/settings_area.png" style="width:75%; box-shadow:0 8px 16px rgba(0,0,0,0.23);">
 </div>
 <div align=center><font color="#999999">图1：滴定模拟器设置界面</font></div>
+
+<div class="card" align="center">
+	<div class="card__image">
+		<img src="/assets/images/titration simulator/settings_area.png">
+	</div>
+	<div class="card__content">
+		<div class="card__header">
+			<h4>图1：滴定模拟器设置界面</h4>
+		</div>
+	</div>
+</div>
 
 当完成全部设置后，下方<a class="button button--outline-primary button--rounded">警告：部分参数未设置</a>的红色提示将会消失，此时点击蓝色<a class="button button--outline-info button--rounded">添加溶液准备滴定</a>按钮，滴定界面中锥形瓶和滴定管内被填充溶液，完成滴定前设置。
 
