@@ -18,7 +18,7 @@ cover: /assets/images/default.jpg
 - 滴定剂（酸滴定碱或碱滴定酸）
 - 滴定速度，拖动滚动条设置，越靠近右侧滴定速度越快
 
-在滴定过程中仍可以拖动滚动条调节滴定速度。
+ⓘ在滴定过程中仍可以拖动滚动条调节滴定速度。
 {:.info}
 
 <div class="card" style="margin:0 auto;max-width:75%">
@@ -36,7 +36,7 @@ cover: /assets/images/default.jpg
 
 在滴定界面中（图2），左侧为实验仪器，右侧为滴定过程中pH值的变化图像，顶部的表格为滴定过程中的读数数据。
 
-当设置界面中的模式设置为正常模式时，滴定界面只显示实验仪器；当设置为作弊模式时才会显示数据与图像。
+⚠当设置界面中的模式设置为正常模式时，滴定界面只显示实验仪器；当设置为作弊模式时才会显示数据与图像。
 {:.warning}
 
 <div class="card" style="margin:0 auto;max-width:75%">
@@ -52,5 +52,5 @@ cover: /assets/images/default.jpg
 
 用户在完成滴定前设置之后，可点击黄色按钮<a class="button button--outline-warning button--rounded">开始/停止滴定</a>控制滴定，也可以通过点击滴定管活塞控制滴定。当用户认为已经到达滴定终点时，可点击绿色按钮<a class="button button--outline-success button--rounded">终止滴定并显示结果</a>查看滴定结果（包括绝对误差与相对误差）。
 
-用户在任意时刻都可以在设置界面中重新设置并点击蓝色按钮重新开始滴定。
+ⓘ用户在任意时刻都可以在设置界面中重新设置并点击蓝色按钮重新开始滴定。
 {:.info}
