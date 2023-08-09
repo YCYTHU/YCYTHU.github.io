@@ -21,18 +21,13 @@ cover: /assets/images/default.jpg
 在滴定过程中仍可以拖动滚动条调节滴定速度。
 {:.info}
 
-<div align=center>
-<img src="/assets/images/titration simulator/settings_area.png" style="width:75%; box-shadow:0 8px 16px rgba(0,0,0,0.23);">
-</div>
-<div align=center><font color="#999999">图1：滴定模拟器设置界面</font></div>
-
-<div class="card" align="center">
+<div class="card" style="margin:0 auto;max-width:75%">
 	<div class="card__image">
 		<img src="/assets/images/titration simulator/settings_area.png">
 	</div>
-	<div class="card__content">
+	<div class="card__content" align="center">
 		<div class="card__header">
-			<h4>图1：滴定模拟器设置界面</h4>
+			<font color="#999999">图1：滴定模拟器设置界面</font>
 		</div>
 	</div>
 </div>
@@ -44,10 +39,16 @@ cover: /assets/images/default.jpg
 当设置界面中的模式设置为正常模式时，滴定界面只显示实验仪器；当设置为作弊模式时才会显示数据与图像。
 {:.warning}
 
-<div align=center>
-<img src="/assets/images/titration simulator/titration_area.png" width="75%">
+<div class="card" style="margin:0 auto;max-width:75%">
+	<div class="card__image">
+		<img src="/assets/images/titration simulator/titration_area.png">
+	</div>
+	<div class="card__content" align="center">
+		<div class="card__header">
+			<font color="#999999">图2：滴定界面，左侧为仪器部分，右侧为pH值的变化图像</font>
+		</div>
+	</div>
 </div>
-<div align=center><font color="#999999">图2：滴定界面，左侧为仪器部分，右侧为pH值的变化图像</font></div>
 
 用户在完成滴定前设置之后，可点击黄色按钮<a class="button button--outline-warning button--rounded">开始/停止滴定</a>控制滴定，也可以通过点击滴定管活塞控制滴定。当用户认为已经到达滴定终点时，可点击绿色按钮<a class="button button--outline-success button--rounded">终止滴定并显示结果</a>查看滴定结果（包括绝对误差与相对误差）。
 
