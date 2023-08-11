@@ -5,7 +5,7 @@ cover: /assets/images/weak acid/cover.jpg
 aside:
   toc: true
 ---
-由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，在不使用计算其时手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似简化计算是十分必要的。
+由于弱酸（弱碱）溶液中存在多种质子化形态，因此在计算弱酸溶液的pH值时常常面临一元高次方程的求解。即使求解一元弱酸时也要手搓三次方程，而对于多元酸的情况，在不使用计算器时手搓四次及以上方程几乎是不可能的，因此在允许的误差范围内引入适当的近似简化计算是十分必要的。
 <!--more-->
 
 下面的表格总结了不同情况下适用的近似公式及其误差，这些公式的推导过程见下文。
@@ -240,7 +240,7 @@ $$\begin{align}&\left.\left(\frac{\partial h}{\partial t}\right)\right|_{t\to0,p
 
 $$[\mathrm{H}^+]=\sqrt{K_\mathrm{w}}+\frac{c}{2}\tag{28}$$
 
-# 缓冲溶液
+<!--# 缓冲溶液
 
 此处只考虑一元弱酸 $\mathrm{HA}$ 与其盐 $\mathrm{MA}$ 形成的缓冲溶液，二者浓度分别为 $c_\mathrm{a},c_\mathrm{b}$，弱酸电离常数 $K_\mathrm{a}$。仍然列出电荷平衡等式：
 
@@ -256,5 +256,5 @@ $$h^3+(p+t_b)h^2-(t_ap+1)h-p=0\tag{31}$$
 
 其中
 
-$$\begin{align}&h=\frac{[\mathrm{H}^+]}{\sqrt{K_\mathrm{w}}}\\&t_a=\frac{c_\mathrm{a}}{\sqrt{K_\mathrm{w}}}\\&t_b=\frac{c_\mathrm{b}}{\sqrt{K_\mathrm{w}}}\\&p=\frac{K_\mathrm{a}}{\sqrt{K_\mathrm{w}}}\end{align}\tag{32}$$
+$$\begin{align}&h=\frac{[\mathrm{H}^+]}{\sqrt{K_\mathrm{w}}}\\&t_a=\frac{c_\mathrm{a}}{\sqrt{K_\mathrm{w}}}\\&t_b=\frac{c_\mathrm{b}}{\sqrt{K_\mathrm{w}}}\\&p=\frac{K_\mathrm{a}}{\sqrt{K_\mathrm{w}}}\end{align}\tag{32}$$-->
 
