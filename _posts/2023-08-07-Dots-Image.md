@@ -1,9 +1,9 @@
 ---
-title: 使用Python绘制由圆点构成的矢量图
+title: 使用Python绘制由实心圆构成的矢量图
 tags: Python
 cover: /assets/images/dots image/cover.jpg
 ---
-通过在指定的格点处对图片进行采样，可以实现通过大小、颜色不同的圆点来模拟图像，如下图1所示。这一过程可以借助于Python实现，而且由于输出图片仅由原点构成，因此可轻松制作矢量图片（如.svg格式）。
+通过在指定的格点处对图片进行采样，可以实现由大小、颜色不同的实心圆来模拟图像，如下图1所示。这一过程可以借助于Python实现，而且由于输出图片仅由填充圆形构成，因此可轻松制作矢量图片（如.svg格式）。
 <!--more-->
 
 <table style="width: 75%;margin: 0 auto;">
@@ -34,7 +34,7 @@ import numpy as np
 - 第三个参数`color`为圆点的颜色，当`color`设置为**HEX（十六进制）格式**的颜色时，程序使用该颜色填充输出的图片中的圆点；当`color`被设置为`'rgb'`时，输出图片中圆点的颜色由原图片该位置对应的颜色所决定
 - 第四个参数`grid`设置格点的样式，当`grid`设置为`square`时，按正方形样式确定格点位置（图2左）；当`grid`设置为`hexagonal`时，按正六边形确定格点位置（图2右）
 
-<div align="center">
+<div style="display:flex; justify-content:space-evenly;">
     <object data="/assets/images/dots image/square.svg" type="image/svg+xml" width="30%"></object>
     <object data="/assets/images/dots image/hexagonal.svg" type="image/svg+xml" width="30%"></object>
 </div>
@@ -58,7 +58,7 @@ def DotsImg(path,width=256,color='rgb',grid='square'):
     else:
         color_list=[color for i in range(len(radius))]
    
-    head=['<svg viewBox="0 0 '+str(2*img.shape[1])+' '+str(2*img.shape[0])+'" xmlns="http://www.w3.org/2000/svg">\n']
+    head=['<svg viewBox="0 0 '+str(round(2*max(x)+2,2))+' '+str(round(2*max(y)+2,2))+'" xmlns="http://www.w3.org/2000/svg">\n']
     bottom=['</svg>']
     data_list=[]
     if img.shape[2]>3:
