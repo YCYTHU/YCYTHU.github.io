@@ -6,9 +6,8 @@ tags:
 cover: 
 mathjax_autoNumber: true
 ---
-<!--more-->
-
 Suppose there is a one-dimensional array of $n$ balls, as shown in Figure 1.
+<!--more-->
 
 <div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/></div>
 <div align=center><font color="#999999">Figure 1. One-dimensional array of $n$ balls</font></div>

@@ -5,7 +5,7 @@ tags:
 - Chemistry
 cover: /assets/images/default.jpg
 ---
-
+<!--more-->
 <style>
 	@font-face {
 		font-family: Alchemy;
