@@ -203,7 +203,7 @@ exclude:
 
 collections:
   jottings:
-    output: true
+    output: false
 
 defaults:
   ## posts
