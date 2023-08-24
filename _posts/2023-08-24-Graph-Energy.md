@@ -1,7 +1,9 @@
 ---
 title: $\pi$ 骨架的线性共轭与交叉共轭——图的能量
-tags: Chemistry
-cover: /assets/images/default.jpg
+tags: 
+- Chemistry
+- Graph theory
+cover: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/640px-6n-graf.svg.png
 mathjax_autoNumber: true
 ---
 对于一个具有 $n$ 个顶点，$m$ 条边的图 $G$，其邻接矩阵 $A$ 的特征值为 $\lambda_1,\lambda_2,\dots,\lambda_n$，定义图 $G$ 的能量：
@@ -28,13 +30,13 @@ $$E(G_{交叉})<E(G_{线性})$$
 <div align=center><img width="75%" src="\assets\images\graph energy\path_cross.svg"></div>
 <div align=center><font color="#999999">图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）</font></div>
 
-这可以使用下面的Coulson integral formula[^Coulson]加以证明。
+这可以使用下面的 Coulson integral formula[^Coulson]加以证明。
 
 [^Coulson]:[On the calculation of the energy in unsaturated hydrocarbon molecules](https://doi.org/10.1017/S0305004100017175)
 
 $$E(G)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\left(n-\frac{ix\phi'(ix)}{\phi(ix)}\right)\mathrm{d}x=\frac{1}{\pi}\int_{-\infty}^{+\infty}\left(n-x\frac{\mathrm{d}}{\mathrm{d}x}\ln\phi(ix)\right)\mathrm{d}x\label{Coulson}$$
 
-考虑复数域上的函数 $\phi(z)$ 在闭曲线 $\gamma$ （图2）上的积分：
+首先对式 $\eqref{Coulson}$ 进行证明。考虑复数域上的函数 $\phi(z)$ 在闭曲线 $\gamma$ （图2）上的积分：
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z$$
 
@@ -61,7 +63,7 @@ $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\frac{iy\phi'(iy)}{\phi(iy)}-n\rig
 
 $$E(G)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\left(n-\frac{ix\phi'(ix)}{\phi(ix)}\right)\mathrm{d}x$$
 
-如果 $G$ 是无环图，则其特征多项式可以表示为
+Coulson integral formula 得证。如果 $G$ 是无环图，则其特征多项式可以表示为
 
 $$\phi(x)=\sum_{k\geq0}(-1)^km_k(G)x^{n-2k}$$
 
