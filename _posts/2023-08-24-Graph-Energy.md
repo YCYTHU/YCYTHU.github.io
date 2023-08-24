@@ -26,7 +26,6 @@ $$E_\pi=n\alpha+\frac{E(G)}{2}\beta$$
 $$E(G_{交叉})<E(G_{线性})$$
 
 <div align=center><img width="75%" src="\assets\images\graph energy\path_cross.svg"></div>
-<div align=center><img width="75%" src="\assets\images\graph energy\path_cross.png"></div>
 <div align=center><font color="#999999">图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）</font></div>
 
 这可以使用下面的Coulson integral formula[^Coulson]加以证明。
