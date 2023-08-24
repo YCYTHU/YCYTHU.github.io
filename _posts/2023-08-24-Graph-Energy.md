@@ -21,11 +21,11 @@ $$\sum\{\lambda_i:\lambda_i<0\}=-\frac{E(G)}{2}\label{neg2}$$
 
 $$E_\pi=n\alpha+\frac{E(G)}{2}\beta$$
 
-在有机化学中，交叉共轭的稳定化作用被认为不如线性共轭（图1），如果将 $\pi$ 骨架抽象为图并利用 Hückel 方法，则此观点的数学表述为
+在有机化学中，交叉共轭的稳定化作用被认为不如线性共轭（图1）。利用前文的概念，此观点的数学表述为
 
 $$E(G_{交叉})<E(G_{线性})$$
 
-<div align=center><img width="75%" src="\assets\images\pass_cross.png"></div>
+<div align=center><img width="75%" src="\assets\images\graph energy\pass_cross.png"></div>
 <div align=center><font color="#999999">图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）</font></div>
 
 这可以使用下面的Coulson integral formula[^Coulson]加以证明。
@@ -38,10 +38,10 @@ $$E(G)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\left(n-\frac{ix\phi'(ix)}{\phi(ix)}
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z$$
 
-<div align=center><img width="60%" src="\assets\images\gamma_curve.png"></div>
+<div align=center><img width="60%" src="\assets\images\graph energy\gamma_curve.png"></div>
 <div align=center><font color="#999999">图2：闭曲线 $\gamma$</font></div>
 
-由留数定理知该积分等于 $\gamma$ 内部所有极点（也即 $\phi(z)$ 的所有负零点 $z_1,z_2,\dots,z_r$）的留数的和：
+由留数定理知该积分等于 $\gamma$ 内部所有极点（也即 $\phi(z)$ 的所有负零点 $z_1,z_2,\dots,z_r$）的留数之和：
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z=\sum_{i=1}^r\mathrm{Res}\left(\frac{z\phi'(z)}{\phi(z)}-n,z_i\right)=\sum_{i=1}^rz_i\label{res}$$
 
@@ -72,3 +72,5 @@ $$E(G)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\frac{\mathrm{d}x}{x^2}\ln\left(\sum
 因此对于节点数确定的无环图，星 $S_n$ 的能量最小，道路 $P_n$ 的能量最大，对于其它所有的树 $T_n$ 有：
 
 $$E(S_n)<E(T_n)<E(P_n)$$
+
+由于 $P_n$ 对应 $\pi$ 骨架的线性共轭形式，而 $T_n$ 对应交叉共轭形式，故交叉共轭的稳定化作用被认为不如线性共轭。
