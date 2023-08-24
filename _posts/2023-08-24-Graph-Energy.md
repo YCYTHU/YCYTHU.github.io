@@ -53,7 +53,7 @@ $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z
 
 $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\frac{iy\phi'(iy)}{\phi(iy)}-n\right)\mathrm{d}y=\sum_{i=1}^rz_i$$
 
-由于 $\phi(z)$ 的所有负零点 $z_1,z_2,\dots,z_r$ 之和等于 $\sum\{\lambda_i:\lambda_i<0\}$，结合式 $\eqref{neg2}$，得到：
+由于 $\phi(z)$ 的所有负零点 $z_1,z_2,\dots,z_r$ 即为邻接矩阵 $A$ 的所有负特征值，结合式 $\eqref{neg2}$，得到：
 
 $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\frac{iy\phi'(iy)}{\phi(iy)}-n\right)\mathrm{d}y=-\frac{E(G)}{2}$$
 
