@@ -2,6 +2,7 @@
 title: 使用Python绘制着色分子骨架展示原子属性
 tags: 
 - Chemistry
+- Code
 - Python
 cover: /assets/images/molecule skeleton/cover.png
 ---

@@ -2,8 +2,8 @@
 title: 利用MATLAB计算晶体场d轨道分裂能
 tags: 
 - Chemistry
+- Code
 - MATLAB
-- Algorithm
 cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 modify_date: 2023-07-28
 ---

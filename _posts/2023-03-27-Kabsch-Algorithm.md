@@ -2,6 +2,7 @@
 title: Kabsch算法——衡量两个结构间的几何偏差
 tags:
 - Algorithm
+- Code
 - Python
 - MATLAB
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Singular-Value-Decomposition.svg/531px-Singular-Value-Decomposition.svg.png

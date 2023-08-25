@@ -1,6 +1,8 @@
 ---
 title: 使用Python绘制由实心圆构成的矢量图
-tags: Python
+tags: 
+- Code
+- Python
 cover: /assets/images/dots image/cover.jpg
 ---
 通过在指定的格点处对图片进行采样，可以实现由大小、颜色不同的实心圆来模拟图像，如下图1所示。这一过程可以借助于Python实现，而且由于输出图片仅由填充圆形构成，因此可轻松制作矢量图片（如.svg格式）。
