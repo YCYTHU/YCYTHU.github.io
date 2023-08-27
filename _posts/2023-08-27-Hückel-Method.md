@@ -1,5 +1,5 @@
 ---
-title: Hückel分子轨道理论（HMO）解的可视化
+title: Hückel 分子轨道理论解的可视化
 tags: 
 - Chemistry
 - Code
@@ -94,26 +94,26 @@ if __name__=='__main__':
 # 效果展示
 
 <style>
-    table {
+    #HMO {
+        display: table;
         width: 100%;
         text-align: center;
-        border: 1.5px solid;
     }
-    table tr {
+    #HMO tr {
     }
-    table td {
+    #HMO td {
         border: 1px solid;
     }
-    table td img {
+    #HMO td img {
         width: 40%;
     }
 </style>
 
-<table><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
-<tr><td>1</td><td>-2.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_0.svg"></td></tr>
-<tr><td>2</td><td>-1.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_1.svg"></td></tr>
-<tr><td>3</td><td>-1.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_2.svg"></td></tr>
-<tr><td>4</td><td>1.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_3.svg"></td></tr>
-<tr><td>5</td><td>1.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_4.svg"></td></tr>
-<tr><td>6</td><td>2.0</td><td><img src="C:/Users/Yaocy/Downloads/huckel/orbital_5.svg"></td></tr>
+<table class="HMO"><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
+<tr><td>1</td><td>-2.0</td><td><img src="/assets/images/hückel method/orbital_0.svg"></td></tr>
+<tr><td>2</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_1.svg"></td></tr>
+<tr><td>3</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_2.svg"></td></tr>
+<tr><td>4</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_3.svg"></td></tr>
+<tr><td>5</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_4.svg"></td></tr>
+<tr><td>6</td><td>2.0</td><td><img src="/assets/images/hückel method/orbital_5.svg"></td></tr>
 </tbody></table>
