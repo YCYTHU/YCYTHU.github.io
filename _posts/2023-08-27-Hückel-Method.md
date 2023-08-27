@@ -93,18 +93,20 @@ if __name__=='__main__':
 
 # 效果展示
 
+利用此程序计算苯分子的HMO并可视化如下。
+
 <style>
-    #HMO {
+    .HMO {
         display: table;
         width: 100%;
         text-align: center;
     }
-    #HMO tr {
+    .HMO tr {
     }
-    #HMO td {
+    .HMO td {
         border: 1px solid;
     }
-    #HMO td img {
+    .HMO td img {
         width: 40%;
     }
 </style>
