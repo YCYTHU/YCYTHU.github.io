@@ -4,7 +4,7 @@ tags:
 - Chemistry
 - Code
 - Python
-cover: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/640px-6n-graf.svg.png
+cover: /assets/images/hückel method/cover.jpg
 mathjax_autoNumber: true
 ---
 Hückel分子轨道理论（HMO）由 Erich Hückel 于 1930 年提出，是一种将分子轨道作为原子轨道的线性组合进行处理的简单方法。在此方法中，$\pi$ 轨道被认为与 $\sigma$ 轨道完全分离。后者被认为只是为分子提供了一个刚性的骨架，决定了分子的形状，但是不影响 $\pi$ 轨道的性质。
@@ -93,25 +93,29 @@ if __name__=='__main__':
 
 # 效果展示
 
-利用此程序计算苯分子的HMO并可视化如下。
+利用此程序计算苯分子的 HMO 并可视化如下。红色与蓝色分别代表原子轨道的系数为正或负，颜色的深浅指示了系数绝对值的大小。
 
 <style>
-    .HMO {
+    #HMO {
         display: table;
         width: 100%;
         text-align: center;
     }
-    .HMO tr {
+    #HMO thead {
+        font-weight: bold;
     }
-    .HMO td {
+    #HMO tbody {
+        font-family: Times New Roman;
+    }
+    #HMO td {
         border: 1px solid;
     }
-    .HMO td img {
+    #HMO td img {
         width: 40%;
     }
 </style>
 
-<table class="HMO"><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
+<table id="HMO"><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
 <tr><td>1</td><td>-2.0</td><td><img src="/assets/images/hückel method/orbital_0.svg"></td></tr>
 <tr><td>2</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_1.svg"></td></tr>
 <tr><td>3</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_2.svg"></td></tr>
