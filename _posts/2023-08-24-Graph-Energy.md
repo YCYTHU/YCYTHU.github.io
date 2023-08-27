@@ -47,7 +47,7 @@ $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z=\sum_{i=1}^r\mathrm{Res}\left(\frac{z\phi'(z)}{\phi(z)}-n,z_i\right)=\sum_{i=1}^rz_i\label{res}$$
 
-当闭曲线 $\gamma$ 的半径趋于无穷大时，半圆部分对积分的贡献为 $0$，因此该积分的值全部由沿 $y$ 轴的积分所贡献（$z=iy$）：
+当闭曲线 $\gamma$ 的半径趋于无穷大时，由于 $\phi(z)$ 具有特征多项式的形式，故半圆部分对积分的贡献为 $0$，因此该积分的值全部由沿 $y$ 轴的积分所贡献（$z=iy$）：
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\frac{iy\phi'(iy)}{\phi(iy)}-n\right)\mathrm{d}y\label{inty}$$
 
