@@ -3,6 +3,7 @@ title: 基于PyScript的在线分布系数曲线计算器
 tags: 
 - Chemistry
 - Code
+- Python
 cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---
 <!--more-->

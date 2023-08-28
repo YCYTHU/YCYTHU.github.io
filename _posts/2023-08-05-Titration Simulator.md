@@ -1,7 +1,7 @@
 ---
 title: 在线酸碱滴定模拟器及实现
 tags: Chemistry
-cover: /assets/images/default.jpg
+cover: /assets/images/titration simulator/cover.jpg
 ---
 借助JavaScript实现在线模拟酸碱滴定过程中指示剂颜色的变化。该模拟器的设计参考了[Peter H. Bird的JavaScript](http://faculty.concordia.ca/bird/javascript/titration/Titration-JS-v4.html)，使用说明如下。
 <!--more-->

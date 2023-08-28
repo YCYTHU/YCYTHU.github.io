@@ -1,5 +1,5 @@
 ---
-title: Hückel 分子轨道理论解的可视化
+title: Hückel 分子轨道理论的解与可视化
 tags: 
 - Chemistry
 - Code
@@ -7,7 +7,7 @@ tags:
 cover: /assets/images/hückel method/cover.jpg
 mathjax_autoNumber: true
 ---
-Hückel分子轨道理论（HMO）由 Erich Hückel 于 1930 年提出，是一种将分子轨道作为原子轨道的线性组合进行处理的简单方法。在此方法中，$\pi$ 轨道被认为与 $\sigma$ 轨道完全分离。后者被认为只是为分子提供了一个刚性的骨架，决定了分子的形状，但是不影响 $\pi$ 轨道的性质。
+Hückel分子轨道理论（HMO）由 Erich Hückel 于 1930 年提出，是一种将分子轨道作为原子轨道的线性组合进行处理的简单方法。在此方法中，$\pi$ 轨道被认为与 $\sigma$ 轨道完全分离。后者被认为只是为分子提供刚性的骨架但不影响 $\pi$ 轨道的性质。本文介绍了一种通过绘制着色分子骨架以可视化 HMO 解的方法。
 <!--more-->
 
 # 理论基础
@@ -44,7 +44,7 @@ $$\color{red}{\vert(\alpha-E)\mathrm{I}_n+\beta A\vert=0}$$
 
 $$\vert x\mathrm{I}_n+A\vert=0$$
 
-因此求 $x$ 也即求矩阵 $A$ 的特征值。各原子轨道的系数组成的向量为矩阵 $\begin{bmatrix}x\mathrm{I}_n+A\end{bmatrix}$ 的零向量，因此也是矩阵 $A$ 的特征向量。因而求 HMO 的解相当于求 $\pi$ 骨架邻接矩阵的特征值与特征向量。
+因此求 $x$ 也即求矩阵 $A$ 的特征值。各原子轨道的系数组成的向量为矩阵 $\begin{bmatrix}x\mathrm{I}_n+A\end{bmatrix}$ 的零向量，因此也是矩阵 $A$ 的特征向量。因而**求 HMO 的解相当于求 $\pi$ 骨架邻接矩阵的特征值与特征向量**。
 
 # Python 实现
 
@@ -106,9 +106,6 @@ if __name__=='__main__':
     }
     #HMO tbody {
         font-family: Times New Roman;
-    }
-    #HMO td {
-        border: 1px solid;
     }
     #HMO td img {
         width: 40%;
