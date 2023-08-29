@@ -1,7 +1,7 @@
 ---
 layout: articles
 title: Chemistry Collections
-permalink:/chemcoll
+permalink: /chemcoll
 articles:
 	data_source: site.chemcoll
 	type: grid
