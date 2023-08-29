@@ -2,6 +2,7 @@
 layout: article
 title: 点群与特征标表
 cover: /assets/images/default.jpg
+permalink: /chemcoll/Point-Group.html
 ---
 <!--more-->
 点群判断流程
