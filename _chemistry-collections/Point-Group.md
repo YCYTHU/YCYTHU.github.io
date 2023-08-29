@@ -8,7 +8,7 @@ cover: /assets/images/symmetry.jpg
 <div align=center><object data="/assets/images/point group.svg" type="image/svg+xml" width="100%"></object></div>
 
 <script>
-	function showCT(ID) {
+	function ShowTable(ID) {
 		console.log(ID);
 	}
 </script>
