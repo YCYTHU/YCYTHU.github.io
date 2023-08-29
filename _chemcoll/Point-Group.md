@@ -1,7 +1,6 @@
 ---
 layout: article
 title: 点群与特征标表
-tags: Chemistry
 cover: /assets/images/default.jpg
 modify_date: 2023-08-29
 ---
