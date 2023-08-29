@@ -202,7 +202,7 @@ exclude:
   - /vendor
 
 collections:
-  chemistry_collections:
+  chemistry-collections:
     output: true
 
 defaults:
@@ -216,7 +216,7 @@ defaults:
   ## Chemistry Collections
   - scope:
       path: ""
-      type: chemistry_collections
+      type: chemistry-collections
     values:
       layout: article
 
