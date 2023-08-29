@@ -4,6 +4,6 @@ title: Chemistry Collections
 permalink: /chemcoll
 articles:
 	data_source: site.chemcoll
-	type: grid
-	size: sm
+	type: brief
+	show_info: true
 ---

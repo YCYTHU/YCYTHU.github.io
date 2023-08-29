@@ -64,6 +64,9 @@ cover: /assets/images/default.jpg
 		#results td{
 			border:none;
 		}
+		#buret img {
+			max-width: none;
+		}
 	</style>
 </head>
 

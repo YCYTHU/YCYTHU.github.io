@@ -2,7 +2,6 @@
 layout: article
 title: 点群与特征标表
 cover: /assets/images/default.jpg
-modify_date: 2023-08-29
 ---
 <!--more-->
 点群判断流程
