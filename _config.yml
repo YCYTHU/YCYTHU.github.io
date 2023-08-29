@@ -202,8 +202,8 @@ exclude:
   - /vendor
 
 collections:
-  jottings:
-    output: false
+  chemcoll:
+    output: true
 
 defaults:
   ## posts
@@ -213,10 +213,10 @@ defaults:
     values:
       layout: article
       cover: /assets/images/default.jpg
-  ## jottings
+  ## Chemistry Collections
   - scope:
       path: ""
-      type: jottings
+      type: chemcoll
     values:
       layout: article
 
