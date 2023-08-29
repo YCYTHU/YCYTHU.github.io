@@ -1,7 +1,7 @@
 ---
 layout: article
 title: 滴定模拟器
-cover: /assets/images/default.jpg
+cover: /assets/images/titration.jpg
 ---
 <head>
 	<meta charset="UTF-8">
