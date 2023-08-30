@@ -21,9 +21,7 @@ cover: /assets/images/symmetry.jpg
 		}
 		#Table {
 			display: table;
-			width: 100%;
 			text-align: center;
-			table-layout: fixed;
 		}
 	</style>
 </head>
@@ -43,22 +41,169 @@ cover: /assets/images/symmetry.jpg
 				<td>$i$</td>
 				<td>$2S_\infty^\Phi$</td>
 				<td>$\cdots$</td>
-				<td>$\infty C_2$</td>
+				<td>$\infty C'_2$</td>
+				<td>$\mathrm{Linear,Rotations}$</td>
+				<td>$\mathrm{Quadratic}$</td>
+				<td>$\mathrm{Cubic}$</td>
 			</tr></thead>
 			<tbody>
 				<tr>
 					<td>$A_\mathrm{1g}\equiv\Sigma_\mathrm{g}^+$</td>
-					<td>1</td>
-					<td>1</td>
+					<td>$1$</td>
+					<td>$1$</td>
 					<td>$\cdots$</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
+					<td>$1$</td>
+					<td>$1$</td>
+					<td>$1$</td>
 					<td>$\cdots$</td>
-					<td>1</td>
+					<td>$1$</td>
+					<td></td>
+					<td>$x^2+y^2,z^2$</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$A_\mathrm{2g}\equiv\Sigma_\mathrm{g}^-$</td>
+					<td>$1$</td>
+					<td>$1$</td>
+					<td>$\cdots$</td>
+					<td>$-1$</td>
+					<td>$1$</td>
+					<td>$1$</td>
+					<td>$\cdots$</td>
+					<td>$-1$</td>
+					<td>$R_z$</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$E_\mathrm{1g}\equiv\Pi_\mathrm{g}$</td>
+					<td>$2$</td>
+					<td>$2\cos\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$2$</td>
+					<td>$-2\cos\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$(R_x,R_y)$</td>
+					<td>$(xz,yz)$</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$E_\mathrm{2g}\equiv\Delta_\mathrm{g}$</td>
+					<td>$2$</td>
+					<td>$2\cos2\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$2$</td>
+					<td>$2\cos2\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td></td>
+					<td>$(x^2-y^2,xy)$</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$A_\mathrm{1u}\equiv\Sigma_\mathrm{u}^+$</td>
+					<td>$1$</td>
+					<td>$1$</td>
+					<td>$\cdots$</td>
+					<td>$1$</td>
+					<td>$-1$</td>
+					<td>$-1$</td>
+					<td>$\cdots$</td>
+					<td>$-1$</td>
+					<td>$z$</td>
+					<td></td>
+					<td>$z^3$</td>
+				</tr>
+				<tr>
+					<td>$A_\mathrm{2u}\equiv\Sigma_\mathrm{u}^-$</td>
+					<td>$1$</td>
+					<td>$1$</td>
+					<td>$\cdots$</td>
+					<td>$-1$</td>
+					<td>$-1$</td>
+					<td>$-1$</td>
+					<td>$\cdots$</td>
+					<td>$1$</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>$E_\mathrm{1u}\equiv\Pi_\mathrm{u}$</td>
+					<td>$2$</td>
+					<td>$2\cos\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$-2$</td>
+					<td>$2\cos\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$(x,y)$</td>
+					<td></td>
+					<td>$(xz^2,yz^2)$</td>
+				</tr>
+				<tr>
+					<td>$E_\mathrm{2u}\equiv\Delta_\mathrm{u}$</td>
+					<td>$2$</td>
+					<td>$2\cos2\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$-2$</td>
+					<td>$-2\cos2\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td></td>
+					<td></td>
+					<td>$[xyz,z(x^2-y^2)]$</td>
+				</tr>
+				<tr>
+					<td>$E_\mathrm{3u}\equiv\Phi_\mathrm{u}$</td>
+					<td>$2$</td>
+					<td>$2\cos3\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td>$-2$</td>
+					<td>$2\cos3\phi$</td>
+					<td>$\cdots$</td>
+					<td>$0$</td>
+					<td></td>
+					<td></td>
+					<td>$[x(x^2-3y^2),y(3x^2-y^2)]$</td>
+				</tr>
+				<tr>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td>$\cdots$</td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
 			</tbody>
 		</table>
+		$^*D_\mathrm{\infty h}=D_\infty\timesC_\mathrm{i}$
 	</div>
 </body>
 <script>
