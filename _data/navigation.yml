@@ -27,7 +27,7 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Chem. Coll.
+      en      : &EN       Chem. Coll.
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
