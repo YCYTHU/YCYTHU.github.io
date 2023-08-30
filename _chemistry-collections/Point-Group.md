@@ -17,11 +17,13 @@ cover: /assets/images/symmetry.jpg
 			left: 0;
 			bottom: 8px;
 			background: transparent;
-			/*border: none;*/
+			border: none;
 		}
 		#Table {
 			display: table;
+			width: 100%;
 			text-align: center;
+			table-layout: fixed;
 		}
 	</style>
 </head>
@@ -43,12 +45,30 @@ cover: /assets/images/symmetry.jpg
 				<td>$\cdots$</td>
 				<td>$\infty C_2$</td>
 			</tr></thead>
-			<tbody></tbody>
+			<tbody>
+				<tr>
+					<td>$A_\mathrm{1g}\equiv\Sigma_\mathrm{g}^+$</td>
+					<td>1</td>
+					<td>1</td>
+					<td>$\cdots$</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>$\cdots$</td>
+					<td>1</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>
 <script>
-	function ResizeButton() {
+	window.onload = function() {
+		var width = document.getElementById('flowchart').clientWidth * (40 / 939);
+		var button = document.getElementById('point_group_button');
+		button.style.height = width + 'px';
+		//button.style.margin = -width + 'px 0';
+	}
+	window.onresize = function() {
 		var width = document.getElementById('flowchart').clientWidth * (40 / 939);
 		var button = document.getElementById('point_group_button');
 		button.style.height = width + 'px';
@@ -104,6 +124,4 @@ cover: /assets/images/symmetry.jpg
 			break;
 		}
 	}
-	window.onload = ResizeButton();
-	window.onresize = ResizeButton();
 </script>
