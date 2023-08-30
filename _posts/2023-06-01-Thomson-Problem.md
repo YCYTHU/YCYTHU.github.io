@@ -30,27 +30,18 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 - $\theta_1$ 是最近的电荷对所对应的矢量对的角度
 
 <style>
-	h1 {
-		font-family:Georgia;
-		font-size:24px;
-		text-align:center;
-	}
-	.table-container {
-		overflow-x: scroll;
-		width: 100%;
-		style="table-layout: fixed;
-	}
-	table {
+	#Thomson {
 		font-family: Times New Roman, serif;
 		font-size: 16px;
-		width: 200%;
+		width: 100%;
+		display: table;
 	}
-	tbody tr td {
+	#Thomson tbody tr td {
 		text-align: center;
 	}
 </style>
 
-<table>
+<table id="Thomson">
 	<tbody><tr>
 		<th><i>N</i>
 		</th>

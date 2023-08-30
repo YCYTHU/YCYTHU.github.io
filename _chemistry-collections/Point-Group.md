@@ -20,7 +20,7 @@ cover: /assets/images/symmetry.jpg
 			border: none;
 		}
 		#Table {
-			display: table;
+			display: block;
 			text-align: center;
 		}
 	</style>
@@ -35,11 +35,11 @@ cover: /assets/images/symmetry.jpg
 			<thead><tr>
 				<td>$D_\mathrm{\infty h}$</td>
 				<td>$E$</td>
-				<td>$2C_\infty^\Phi$</td>
+				<td>$2C_\infty^\phi$</td>
 				<td>$\cdots$</td>
 				<td>$\infty \sigma_\mathrm{v}$</td>
 				<td>$i$</td>
-				<td>$2S_\infty^\Phi$</td>
+				<td>$2S_\infty^\phi$</td>
 				<td>$\cdots$</td>
 				<td>$\infty C'_2$</td>
 				<td>$\mathrm{Linear,Rotations}$</td>
@@ -203,7 +203,7 @@ cover: /assets/images/symmetry.jpg
 				</tr>
 			</tbody>
 		</table>
-		$^*D_\mathrm{\infty h}=D_\infty\timesC_\mathrm{i}$
+		$^*D_\mathrm{\infty h}=D_\infty\times C_\mathrm{i}$
 	</div>
 </body>
 <script>
