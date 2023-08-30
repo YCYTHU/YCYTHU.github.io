@@ -23,12 +23,16 @@ cover: /assets/images/symmetry.jpg
 			background: transparent;
 			border: none;
 		}
+		#Container {
+			overflow-x: auto;
+		}
 		#Table {
 			display: table;
 			text-align: center;
-			border: 1px solid #999999;
 			font-family: LMMath, Cambria Math;
 			background-color: #f2f2f2;
+			line-height: 1.5;
+			white-space: nowrap;
 		}
 		#Table td {
 			border: none;
