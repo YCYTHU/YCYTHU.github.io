@@ -22,10 +22,14 @@ cover: /assets/images/symmetry.jpg
 		#Table {
 			display: table;
 			text-align: center;
-			border: 1px solid #e6e6e6;
+			border: 1px solid #999999;
 			font-family: 'Cambria Math';
+			background-color: #f2f2f2;
 		}
 		#Table td {
+			border: none;
+		}
+		#Table th {
 			border: none;
 		}
 	</style>
@@ -142,9 +146,11 @@ cover: /assets/images/symmetry.jpg
 			console.log('I_h');
 			break;
 		case 4:
+			document.getElementById('Container').innerHTML = "<table id=\"Table\"><tr style=\"border-bottom: 1px solid #999999;\"><th><b>O<sub>h</sub></b></th><th>E</th><th>8C<sub>3</sub></th><th>6C<sub>2</sub></th><th>6C<sub>4</sub></th><th>3C<sub>2</sub> =(C<sub>4</sub>)<sup>2</sup></th><th>i</th><th>6S<sub>4</sub></th><th>8S<sub>6</sub></th><th>3&sigma;<sub>h</sub></th><th>6&sigma;<sub>d</sub></th><th>linear,<br>rotations</th><th>quadratic</th></tr><tr><td><b>A<sub>1g</sub></b></td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td></td><td>x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup></td></tr><tr><td><b>A<sub>2g</sub></b></td><td>1</td><td>1</td><td>-1</td><td>-1</td><td>1</td><td>1</td><td>-1</td><td>1</td><td>1</td><td>-1</td><td></td><td></td></tr><tr><td><b>E<sub>g</sub></b></td><td>2</td><td>-1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>-1</td><td>2</td><td>0</td><td></td><td>(2z<sup>2</sup>-x<sup>2</sup>-y<sup>2</sup>, x<sup>2</sup>-y<sup>2</sup>)</td></tr><tr><td><b>T<sub>1g</sub></b></td><td>3</td><td>0</td><td>-1</td><td>1</td><td>-1</td><td>3</td><td>1</td><td>0</td><td>-1</td><td>-1</td><td>(R<sub>x</sub>, R<sub>y</sub>, R<sub>z</sub>)</td><td></td></tr><tr><td><b>T<sub>2g</sub></b></td><td>3</td><td>0</td><td>1</td><td>-1</td><td>-1</td><td>3</td><td>-1</td><td>0</td><td>-1</td><td>1</td><td></td><td>(xz, yz, xy)</td></tr><tr><td><b>A<sub>1u</sub></b></td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>-1</td><td>-1</td><td>-1</td><td>-1</td><td>-1</td><td></td><td></td></tr><tr><td><b>A<sub>2u</sub></b></td><td>1</td><td>1</td><td>-1</td><td>-1</td><td>1</td><td>-1</td><td>1</td><td>-1</td><td>-1</td><td>1</td><td></td><td></td></tr><tr><td><b>E<sub>u</sub></b></td><td>2</td><td>-1</td><td>0</td><td>0</td><td>2</td><td>-2</td><td>0</td><td>1</td><td>-2</td><td>0</td><td></td><td></td></tr><tr><td><b>T<sub>1u</sub></b></td><td>3</td><td>0</td><td>-1</td><td>1</td><td>-1</td><td>-3</td><td>-1</td><td>0</td><td>1</td><td>1</td><td>(x, y, z)</td><td></td></tr><tr><td><b>T<sub>2u</sub></b></td><td>3</td><td>0</td><td>1</td><td>-1</td><td>-1</td><td>-3</td><td>1</td><td>0</td><td>1</td><td>-1</td><td></td><td></td></tr></table>";
 			console.log('O_h');
 			break;
 		case 5:
+			document.getElementById('Container').innerHTML = "<table id=\"Table\"><tr style=\"border-bottom: 1px solid #999999;\"><th><b>T<sub>d</sub></b></th><th>E</th><th>8C<sub>3</sub></th><th>3C<sub>2</sub></th><th>6S<sub>4</sub></th><th>6&sigma;<sub>d</sub></th><th>linear,<br>rotations</th><th>quadratic</th></tr><tr><td><b>A<sub>1</sub></b></td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td></td><td>x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup></td></tr><tr><td><b>A<sub>2</sub></b></td><td>1</td><td>1</td><td>1</td><td>-1</td><td>-1</td><td></td><td></td></tr><tr><td><b>E</b></td><td>2</td><td>-1</td><td>2</td><td>0</td><td>0</td><td></td><td>(2z<sup>2</sup>-x<sup>2</sup>-y<sup>2</sup>, x<sup>2</sup>-y<sup>2</sup>)</td></tr><tr><td><b>T<sub>1</sub></b></td><td>3</td><td>0</td><td>-1</td><td>1</td><td>-1</td><td>(R<sub>x</sub>, R<sub>y</sub>, R<sub>z</sub>)</td><td></td></tr><tr><td><b>T<sub>2</sub></b></td><td>3</td><td>0</td><td>-1</td><td>-1</td><td>1</td><td>(x, y, z)</td><td>(xy, xz, yz)</td></tr></table>";
 			console.log('T_d');
 			break;
 		case 6:
