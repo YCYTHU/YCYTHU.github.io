@@ -34,7 +34,7 @@ $$U(N)=\sum_{i<j}\frac{1}{\vert\vec{r}_i-\vec{r}_j\vert}$$
 		font-family: Times New Roman, serif;
 		font-size: 16px;
 		width: 100%;
-		display: table;
+		display: block;
 	}
 	#Thomson tbody tr td {
 		text-align: center;
