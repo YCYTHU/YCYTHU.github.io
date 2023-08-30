@@ -7,6 +7,10 @@ cover: /assets/images/symmetry.jpg
 
 <head>
 	<style>
+		@font-face {
+			font-family: LMMath;
+			src: url("/assets/fonts/latinmodern-math/latinmodern-math.otf")
+		}
 		#flowchart {
 			position: relative;
 			width: 100%;
@@ -23,7 +27,7 @@ cover: /assets/images/symmetry.jpg
 			display: table;
 			text-align: center;
 			border: 1px solid #999999;
-			font-family: 'Cambria Math';
+			font-family: LMMath, Cambria Math;
 			background-color: #f2f2f2;
 		}
 		#Table td {

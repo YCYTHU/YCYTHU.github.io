@@ -9,7 +9,7 @@ cover: /assets/images/default.jpg
 <style>
 	@font-face {
 		font-family: Alchemy;
-		src: url("/fonts/auldmagick-font/AuldmagickBold-ojeo.ttf")
+		src: url("/assets/fonts/auldmagick-font/AuldmagickBold-ojeo.ttf")
 	}
 	.table-container {
 		overflow-x: scroll;
