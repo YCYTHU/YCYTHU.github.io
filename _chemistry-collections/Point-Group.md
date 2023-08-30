@@ -8,26 +8,34 @@ cover: /assets/images/symmetry.jpg
 <head>
 	<style>
 		#flowchart {
-			margin: auto;
+			position: relative;
 			width: 100%;
 		}
+		#point_group_button {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			bottom: 8px;
+			background: transparent;
+			/*border: none;*/
+		}
 		#Table {
-			margin: auto;
+			display: table;
 			text-align: center;
 		}
 	</style>
 </head>
 <body>
-	<div id="flowchart">
+	<div id="flowchart"><center>		
 		<object data="/assets/images/point group.svg" type="image/svg+xml" width="100%"></object>
-		<button id="point_group_button" onclick="ShowTable(this,event)" style="width: 100%;background: transparent;border: none;"></button>
-	</div>
+		<button id="point_group_button" onclick="ShowTable(this,event)"></button>
+	</center></div>
 	<div>
 		<table id="Table">
 			<thead><tr>
 				<td>$D_{\infty h}$</td>
 				<td>$E$</td>
-				<td>$2C_\infty^\Phi$></td>
+				<td>$2C_\infty^\Phi$</td>
 			</tr></thead>
 			<tbody></tbody>
 		</table>
@@ -40,7 +48,7 @@ cover: /assets/images/symmetry.jpg
 		var width = document.getElementById('flowchart').clientWidth * (40 / 939);
 		var button = document.getElementById('point_group_button');
 		button.style.height = width + 'px';
-		button.style.margin = -width + 'px 0';
+		//button.style.margin = -width + 'px 0';
 	}
 	function ShowTable(obj,event) {
 		var index = Math.ceil(15 * event.offsetX / obj.clientWidth);
