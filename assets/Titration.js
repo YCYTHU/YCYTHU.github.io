@@ -835,7 +835,7 @@ window.onload = function() { // Initializations
 	document.getElementById("apparatus_area").style.transform = "scale("+scale+")";
 	document.getElementById("titrate_area").style.height = document.getElementById("liquids").clientHeight * scale + 'px';
 }
-window.onresize = function(){
+window.onresize = function() {
 	var scale = document.getElementById("refwidth").clientWidth / document.getElementById("graph_div").clientWidth;
 	if (scale > 1) scale = 1;
 	document.getElementById("graph_div").style.transform = "scale("+scale+")";

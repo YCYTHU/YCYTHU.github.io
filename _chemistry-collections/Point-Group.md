@@ -33,17 +33,21 @@ cover: /assets/images/symmetry.jpg
 	<div>
 		<table id="Table">
 			<thead><tr>
-				<td>$D_{\infty h}$</td>
+				<td>$D_\mathrm{\infty h}$</td>
 				<td>$E$</td>
 				<td>$2C_\infty^\Phi$</td>
+				<td>$\cdots$</td>
+				<td>$\infty \sigma_\mathrm{v}$</td>
+				<td>$i$</td>
+				<td>$2S_\infty^\Phi$</td>
+				<td>$\cdots$</td>
+				<td>$\infty C_2$</td>
 			</tr></thead>
 			<tbody></tbody>
 		</table>
 	</div>
 </body>
 <script>
-	window.onload = ResizeButton();
-	window.onresize = ResizeButton();
 	function ResizeButton() {
 		var width = document.getElementById('flowchart').clientWidth * (40 / 939);
 		var button = document.getElementById('point_group_button');
@@ -100,4 +104,6 @@ cover: /assets/images/symmetry.jpg
 			break;
 		}
 	}
+	window.onload = ResizeButton();
+	window.onresize = ResizeButton();
 </script>
