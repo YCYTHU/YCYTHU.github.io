@@ -30,18 +30,15 @@ cover: /assets/images/electron cloud.jpg
 		font-family: LMMath;
 		text-align: center;
 		white-space: nowrap;
-		border: 1px solid #999999;
 	}
 	#orbitals td {
 		border: none;
 	}
-	#orbitals td img {
-		max-width: 200px;
-	}
 	#orbitals th {
-		border: 1px solid #999999;
+		border: none;
 		background-color: #f2f2f2;
 	}
+	.orbital_img {}
 </style>
 
 <!--<div class="checkbox_container">
@@ -56,7 +53,7 @@ cover: /assets/images/electron cloud.jpg
 	<span><input type="checkbox" name="orbital" value="42" onclick="ShowOrbital()">4d</span>
 	<span><input type="checkbox" name="orbital" value="43" onclick="ShowOrbital()">4f</span>
 </div>-->
-
+<center><p>Small<input type="range" id="scale_img" min="50" max="300" value="200" step="5" oninput="Scale()" onchange="Scale()" style="width: 500px;">Large</p></center>
 <div class="orbitals_container">
 	<table id="orbitals">
 		<tbody>
@@ -81,7 +78,7 @@ cover: /assets/images/electron cloud.jpg
 			</tr>
 			<tr>
 				<th><i>n</i> = 1</th>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/100-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/100-preview.gif"></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -94,9 +91,9 @@ cover: /assets/images/electron cloud.jpg
 			</tr>
 			<tr>
 				<th><i>n</i> = 2</th>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/200-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/210-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/211-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/200-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/210-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/211-preview.gif"></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -107,12 +104,12 @@ cover: /assets/images/electron cloud.jpg
 			</tr>
 			<tr>
 				<th><i>n</i> = 3</th>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/300-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/310-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/311-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/320-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/321-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/322-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/300-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/310-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/311-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/320-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/321-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/322-preview.gif"></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -120,16 +117,16 @@ cover: /assets/images/electron cloud.jpg
 			</tr>
 			<tr>
 				<th><i>n</i> = 4</th>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/400-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/410-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/411-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/420-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/421-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/422-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/430-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/431-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/432-preview.gif"></td>
-				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/433-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/400-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/410-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/411-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/420-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/421-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/422-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/430-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/431-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/432-preview.gif"></td>
+				<td><img loading="lazy" class="orbital_img" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/433-preview.gif"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -142,6 +139,13 @@ cover: /assets/images/electron cloud.jpg
 			if (orbitals[orbital].checked) {
 				
 			}
+		}
+	}
+	function Scale() {
+		var width = document.getElementById('scale_img').value;
+		var images = document.getElementsByClassName('orbital_img');
+		for (img in images) {
+			images[img].width = width;
 		}
 	}
 </script>
