@@ -30,12 +30,16 @@ cover: /assets/images/electron cloud.jpg
 		font-family: LMMath;
 		text-align: center;
 		white-space: nowrap;
+		border: 1px solid #999999;
 	}
 	#orbitals td {
 		border: none;
 	}
+	#orbitals td img {
+		max-width: none;
+	}
 	#orbitals th {
-		border: none;
+		border: 1px solid #999999;
 		background-color: #f2f2f2;
 	}
 	.orbital_img {}
@@ -53,7 +57,7 @@ cover: /assets/images/electron cloud.jpg
 	<span><input type="checkbox" name="orbital" value="42" onclick="ShowOrbital()">4d</span>
 	<span><input type="checkbox" name="orbital" value="43" onclick="ShowOrbital()">4f</span>
 </div>-->
-<center><p class="button--outline-success">Small<input type="range" id="scale_img" min="50" max="300" value="200" step="5" oninput="Scale()" onchange="Scale()" style="width: 500px;">Large</p></center>
+<center><p class="info">Small<input type="range" id="scale_img" min="50" max="300" value="200" step="5" oninput="Scale()" onchange="Scale()" style="width: 30%;">Large</p></center>
 <div class="orbitals_container">
 	<table id="orbitals">
 		<tbody>
