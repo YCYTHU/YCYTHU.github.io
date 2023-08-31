@@ -5,4 +5,139 @@ cover: /assets/images/electron cloud.jpg
 ---
 <!--more-->
 
-<img src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/100-preview.gif">
+<style>
+	@font-face {
+		font-family: LMMath;
+		src: url("/assets/fonts/latinmodern-math/latinmodern-math.otf")
+	}
+	.checkbox_container {
+		overflow-x: auto;
+		font-family: LMMath;
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+	}
+	.checkbox_container span {
+		white-space: nowrap;
+	}
+	.orbitals_container {
+		font-family: LMMath;
+		width: 100%;
+		overflow-x: auto;
+	}
+	#orbitals {
+		display: table;
+		font-family: LMMath;
+		text-align: center;
+		white-space: nowrap;
+	}
+	#orbitals td {
+		border: 1px solid #999999;
+	}
+	#orbitals th {
+		border: 1px solid #999999;
+		background-color: #f2f2f2;
+	}
+</style>
+
+<!--<div class="checkbox_container">
+	<span><input type="checkbox" name="orbital" value="10" onclick="ShowOrbital()">1s</span>
+	<span><input type="checkbox" name="orbital" value="20" onclick="ShowOrbital()">2s</span>
+	<span><input type="checkbox" name="orbital" value="21" onclick="ShowOrbital()">2p</span>
+	<span><input type="checkbox" name="orbital" value="30" onclick="ShowOrbital()">3s</span>
+	<span><input type="checkbox" name="orbital" value="31" onclick="ShowOrbital()">3p</span>
+	<span><input type="checkbox" name="orbital" value="32" onclick="ShowOrbital()">3d</span>
+	<span><input type="checkbox" name="orbital" value="40" onclick="ShowOrbital()">4s</span>
+	<span><input type="checkbox" name="orbital" value="41" onclick="ShowOrbital()">4p</span>
+	<span><input type="checkbox" name="orbital" value="42" onclick="ShowOrbital()">4d</span>
+	<span><input type="checkbox" name="orbital" value="43" onclick="ShowOrbital()">4f</span>
+</div>-->
+
+<div class="orbitals_container">
+	<table id="orbitals">
+		<tbody>
+			<tr>
+				<th rowspan="2">|&phi;<sub><i>n,l,m</i></sub>|<sup>2</sup></th>
+				<th><i>l</i> = 0</th>
+				<th colspan="2"><i>l</i> = 1</th>
+				<th colspan="3"><i>l</i> = 2</th>
+				<th colspan="4"><i>l</i> = 3</th>
+			</tr>
+			<tr>
+				<th><i>m</i> = 0</th>
+				<th><i>m</i> = 0</th>
+				<th><i>m</i> = ±1</th>
+				<th><i>m</i> = 0</th>
+				<th><i>m</i> = ±1</th>
+				<th><i>m</i> = ±2</th>
+				<th><i>m</i> = 0</th>
+				<th><i>m</i> = ±1</th>
+				<th><i>m</i> = ±2</th>
+				<th><i>m</i> = ±3</th>
+			</tr>
+			<tr>
+				<th><i>n</i> = 1</th>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/100-preview.gif"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th><i>n</i> = 2</th>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/200-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/210-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/211-preview.gif"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th><i>n</i> = 3</th>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/300-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/310-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/311-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/320-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/321-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/322-preview.gif"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th><i>n</i> = 4</th>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/400-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/410-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/411-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/420-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/421-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/422-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/430-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/431-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/432-preview.gif"></td>
+				<td><img loading="lazy" src="https://raw.githubusercontent.com/YCYTHU/Chemistry-Collections/main/Electron%20cloud/433-preview.gif"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+<script>
+	function ShowOrbital() {
+		var orbitals = document.getElementsByName("orbital");
+		for (var orbital in orbitals) {
+			if (orbitals[orbital].checked) {
+				
+			}
+		}
+	}
+</script>
