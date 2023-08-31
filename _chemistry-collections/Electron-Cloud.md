@@ -30,9 +30,13 @@ cover: /assets/images/electron cloud.jpg
 		font-family: LMMath;
 		text-align: center;
 		white-space: nowrap;
+		border: 1px solid #999999;
 	}
 	#orbitals td {
-		border: 1px solid #999999;
+		border: none;
+	}
+	#orbitals td img {
+		max-width: 200px;
 	}
 	#orbitals th {
 		border: 1px solid #999999;
@@ -130,7 +134,7 @@ cover: /assets/images/electron cloud.jpg
 		</tbody>
 	</table>
 </div>
-</div>
+
 <script>
 	function ShowOrbital() {
 		var orbitals = document.getElementsByName("orbital");
