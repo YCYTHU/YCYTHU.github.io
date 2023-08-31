@@ -156,5 +156,6 @@ cover: /assets/images/electron cloud.jpg
 		var images = document.getElementsByClassName('orbital_img');
 		for (img in images) {
 			images[img].width = 50;
+		}
 	}
 </script>
