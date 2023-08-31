@@ -152,4 +152,9 @@ cover: /assets/images/electron cloud.jpg
 			images[img].width = width;
 		}
 	}
+	window.onload = function() {
+		var images = document.getElementsByClassName('orbital_img');
+		for (img in images) {
+			images[img].width = 50;
+	}
 </script>
