@@ -57,7 +57,7 @@ cover: /assets/images/electron cloud.jpg
 	<span><input type="checkbox" name="orbital" value="42" onclick="ShowOrbital()">4d</span>
 	<span><input type="checkbox" name="orbital" value="43" onclick="ShowOrbital()">4f</span>
 </div>-->
-<center><p class="info">Small<input type="range" id="scale_img" min="50" max="300" value="200" step="5" oninput="Scale()" onchange="Scale()" style="width: 30%;">Large</p></center>
+<center><p class="info">Drag to resize images<br>Small<input type="range" id="scale_img" min="50" max="300" value="50" step="5" oninput="Scale()" onchange="Scale()" style="width: 30%;">Large</p></center>
 <div class="orbitals_container">
 	<table id="orbitals">
 		<tbody>
