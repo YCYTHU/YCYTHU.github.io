@@ -1,7 +1,16 @@
+---
+layout: none
+title: 氢原子波函数
+cover: /assets/images/electron cloud.jpg
+---
+<!--more-->
+
 <!doctype html>
 <html>
 <head>
 	<title>Hydrogen Wave Function Viewer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
 		.red_light {
 			border: none;
