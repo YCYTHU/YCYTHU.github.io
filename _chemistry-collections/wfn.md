@@ -5,7 +5,6 @@ cover: /assets/images/electron cloud.jpg
 ---
 <!--more-->
 
-<!doctype html>
 <html>
 <head>
 	<title>Hydrogen Wave Function Viewer</title>
