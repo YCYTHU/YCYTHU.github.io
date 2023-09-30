@@ -95,7 +95,7 @@ cover: /assets/images/electron cloud.jpg
 				layout.grid.columns = 2;
 				layout.grid.pattern = 'independent';
 				var name = 'J-int_' + obj_list[index1].name + '_' + obj_list[index2].name;
-				obj_list.push(new Spectrum(name, overlap, true, default_color_list[obj_list.length % 10, undefined, 2));
+				obj_list.push(new Spectrum(name, overlap, true, default_color_list[obj_list.length % 10], undefined, 2));
 				controls.counts += 1;
 				counts_gui.setValue(controls.counts);
 				plotly();
