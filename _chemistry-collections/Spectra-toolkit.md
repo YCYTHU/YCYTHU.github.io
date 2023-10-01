@@ -5,7 +5,7 @@ cover: /assets/images/electron cloud.jpg
 ---
 <!--more-->
 
-<title>Spectrum toolkit</title>
+<title>Spectra toolkit</title>
 <head>
 	<script src="/assets/js/interp1.js" type="text/javascript"></script>
 	<script src="/assets/js/papaparse.js" type="text/javascript"></script>
@@ -19,19 +19,17 @@ cover: /assets/images/electron cloud.jpg
 	<div id='GraphArea'></div>
 </body>
 <script>
-	//console.log('300,500'.split(','));
+	//console.log(math.range(1,6)._data.toString());
 	var obj_list = [];
-	var obj_gui, obj1_gui, obj2_gui;
 	var index = -1;
 	var index1 = -1;
 	var index2 = -1;
+	var plot_num = 1;
 	var gui = new dat.GUI();
 	var layout = {
 		title: {text:'Spectrum', font: {family: 'Times New Roman', size: 24}},
   		xaxis: {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},  
   		yaxis: {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},
-  		xaxis2: {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},  
-  		yaxis2: {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},
   		grid: {}
 	};
 	var config = {
@@ -39,8 +37,8 @@ cover: /assets/images/electron cloud.jpg
   		toImageButtonOptions: {
     		format: 'svg', // one of png, svg, jpeg, webp
     		filename: 'Spectrum',
-    		height: 500,
-    		width: 500,
+    		height: 450,
+    		width: 150 + 300 * plot_num,
     		scale: 1
   		},
   		displaylogo: false,
@@ -51,6 +49,8 @@ cover: /assets/images/electron cloud.jpg
 		this.file = '';
 		this.counts = 0;
 		this.visible = true;
+		this.fill = false;
+		this.plotID = '1';
 		this.name = '';
 		this.object = 'None';
 		this.object1 = 'None';
@@ -66,6 +66,77 @@ cover: /assets/images/electron cloud.jpg
     	exportCSV: function() {
     		var csv = Papa.unparse(math.transpose(obj_list[index].data));
     		downloadCSV(obj_list[index].name + '_modified', csv);
+    	},
+    	addSubplot: function() {
+    		if (plot_num >= 6)
+    			return;
+    		plot_num++;
+    		layout['xaxis' + plot_num.toString()] = {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}};
+    		layout['yaxis' + plot_num.toString()] = {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}};
+    		switch (plot_num) {
+    			case 2: 
+    				layout.grid.rows = 1;
+					layout.grid.columns = 2;
+					layout.grid.pattern = 'independent';
+					break;
+				case 3:
+					layout.grid.rows = 1;
+					layout.grid.columns = 3;
+					layout.grid.pattern = 'independent';
+					break;
+				case 4:
+					layout.grid.rows = 2;
+					layout.grid.columns = 2;
+					layout.grid.pattern = 'independent';
+					break;
+				case 5:
+				case 6:
+					layout.grid.rows = 2;
+					layout.grid.columns = 3;
+					layout.grid.pattern = 'independent';
+					break;
+    		}
+    		updatePlotIDGui();
+    	},
+    	deleteSubplot: function() {
+    		if (plot_num == 1)
+    			return;
+    		plot_num--;
+    		switch (plot_num) {
+    			case 1:
+    				layout.grid.rows = 1;
+					layout.grid.columns = 1;
+					layout.grid.pattern = 'independent';
+					break;
+    			case 2: 
+    				layout.grid.rows = 1;
+					layout.grid.columns = 2;
+					layout.grid.pattern = 'independent';
+					break;
+				case 3:
+					layout.grid.rows = 1;
+					layout.grid.columns = 3;
+					layout.grid.pattern = 'independent';
+					break;
+				case 4:
+					layout.grid.rows = 2;
+					layout.grid.columns = 2;
+					layout.grid.pattern = 'independent';
+					break;
+				case 5:
+					layout.grid.rows = 2;
+					layout.grid.columns = 3;
+					layout.grid.pattern = 'independent';
+					break;
+    		}
+    		for (var i = 0; i < obj_list.length; i++)
+    			if (obj_list[i].axes > plot_num)
+    				obj_list[i].axes = plot_num;
+    		updatePlotIDGui();
+    		plotID_gui.setValue(obj_list[index].axes.toString());
+    		plotly();
+    		//layout['xaxis' + (plot_num + 1).toString()] = undefined;
+    		//layout['yaxis' + (plot_num + 1).toString()] = undefined;	
     	},
 		normalizePeak: function() {
 			if (index != -1) {
@@ -91,11 +162,8 @@ cover: /assets/images/electron cloud.jpg
 				if (overlap == 0)
 					return;
 				console.log('Overlap Integral between ' + obj_list[index1].name + '(emi) and ' + obj_list[index2].name + '(abs) is: ', trapz(overlap[0], overlap[1]));
-				layout.grid.rows = 1;
-				layout.grid.columns = 2;
-				layout.grid.pattern = 'independent';
 				var name = 'J-int_' + obj_list[index1].name + '_' + obj_list[index2].name;
-				obj_list.push(new Spectrum(name, overlap, true, default_color_list[obj_list.length % 10], undefined, 2));
+				obj_list.push(new Spectrum(name, overlap, true, default_color_list[obj_list.length % 10]));
 				controls.counts += 1;
 				counts_gui.setValue(controls.counts);
 				plotly();
@@ -104,34 +172,53 @@ cover: /assets/images/electron cloud.jpg
 		}
 	};
 
-	var file_gui = gui.addFolder('Files');
+	//Files & Figures operation
+	var file_gui = gui.addFolder('Files and Figures');
 	file_gui.open();
 	file_gui.add(control_functions, 'loadFile').name("Load CSV file");
-	var counts_gui = file_gui.add(controls, 'counts').name("Files Loaded:");
+	var counts_gui = file_gui.add(controls, 'counts').name("Data Stored:");
 	counts_gui.__input.disabled = true;
+	file_gui.add(control_functions, 'addSubplot').name("Add a Subplot");
+	file_gui.add(control_functions, 'deleteSubplot').name("Delete a Subplot");
 
+	//Unary operation
 	var unary_operation_gui = gui.addFolder('Unary Operation');
 	unary_operation_gui.open();
-	unary_operation_gui.add(control_functions, 'exportCSV').name("Export to .csv file");
-	var visible_gui = unary_operation_gui.add(controls, 'visible').name("Visible:");
-	var name_gui = unary_operation_gui.add(controls, 'name').name("Name:");
-	var color_gui = unary_operation_gui.addColor(controls, 'color').name("Color:")
-	unary_operation_gui.add(control_functions, 'normalizePeak').name("Normalize (Peak)");
-	unary_operation_gui.add(control_functions, 'normalizeArea').name("Normalize (Area)");
-	var clip_gui = unary_operation_gui.add(controls, 'clip_range').name("Clip Range:");
-	obj_gui = unary_operation_gui.add(controls, 'object', obj_list.map(item => item.name).concat(['None'])).name("Object:");
+	var obj_gui = unary_operation_gui.add(controls, 'object', obj_list.map(item => item.name).concat(['None'])).name("Object:");
+	var unary_display_gui = unary_operation_gui.addFolder('Display');
+	//unary_display_gui.open();
+	var unary_functions_gui = unary_operation_gui.addFolder('Functions');
+	unary_functions_gui.open();
 
+	var visible_gui = unary_display_gui.add(controls, 'visible').name("Visible:");
+	var fill_gui = unary_display_gui.add(controls, 'fill').name("Fill:");
+	var name_gui = unary_display_gui.add(controls, 'name').name("Name:");
+	var plotID_gui = unary_display_gui.add(controls, 'plotID', math.string(math.range(1, plot_num + 1)._data)).name("Plot ID:");
+	var color_gui = unary_display_gui.addColor(controls, 'color').name("Color:");
+
+	unary_functions_gui.add(control_functions, 'exportCSV').name("Export to .csv file");
+	unary_functions_gui.add(control_functions, 'normalizePeak').name("Normalize (Peak)");
+	unary_functions_gui.add(control_functions, 'normalizeArea').name("Normalize (Area)");
+	var clip_gui = unary_functions_gui.add(controls, 'clip_range').name("Clip Range:");
+
+	//Binary operation
 	var binary_operation_gui = gui.addFolder('Binary Operation');
 	binary_operation_gui.open();
-	binary_operation_gui.add(control_functions, 'overlap').name("J-overlap integral");
-	obj1_gui = binary_operation_gui.add(controls, 'object1', obj_list.map(item => item.name).concat(['None'])).name("Object1:");
-	obj2_gui = binary_operation_gui.add(controls, 'object2', obj_list.map(item => item.name).concat(['None'])).name("Object2:");
+	var obj1_gui = binary_operation_gui.add(controls, 'object1', obj_list.map(item => item.name).concat(['None'])).name("Object1:");
+	var obj2_gui = binary_operation_gui.add(controls, 'object2', obj_list.map(item => item.name).concat(['None'])).name("Object2:");
+	var binary_functions_gui = binary_operation_gui.addFolder('Functions');
+	binary_functions_gui.open();
+	binary_functions_gui.add(control_functions, 'overlap').name("J-overlap integral");
 
 	visible_gui.onFinishChange(function(value) {
 		if (index != -1) {
 			obj_list[index].visible = value;
 			plotly();
 		}
+	});
+
+	fill_gui.onFinishChange(function(value) {
+		plotly();
 	});
 
 	name_gui.onFinishChange(function(value) {
@@ -158,6 +245,31 @@ cover: /assets/images/electron cloud.jpg
 			obj_list[index].color = value;
 			plotly();
 		}
+	});
+
+	plotID_gui.onFinishChange(function(value) {
+		if (index != -1) {
+			obj_list[index].axes = Number(value);
+			plotly();			
+		}
+	});
+
+	obj_gui.onFinishChange(function(value) {
+		index = obj_list.map(item => item.name).indexOf(value);
+		if (index != -1) {
+			visible_gui.setValue(obj_list[index].visible);
+			name_gui.setValue(obj_list[index].name);
+			color_gui.setValue(obj_list[index].color);
+			plotID_gui.setValue(obj_list[index].axes.toString());
+		}
+	});
+
+	obj1_gui.onFinishChange(function(value) {
+		index1 = obj_list.map(item => item.name).indexOf(value);
+	});
+
+	obj2_gui.onFinishChange(function(value) {
+		index2 = obj_list.map(item => item.name).indexOf(value);
 	});
 
 	function calcOverlapIntegral(emission, absorption) {
@@ -202,7 +314,7 @@ cover: /assets/images/electron cloud.jpg
 		this.width = width;
 	}
 
-	function PlotData(x, y, type, name, color, width, xaxis, yaxis) {//color in hex format
+	function PlotData(x, y, type, name, color, width, xaxis, yaxis, fill) {//color in hex format
 		var rgb = hexToRgb(color);
 		this.x = x;
 		this.y = y;
@@ -214,14 +326,16 @@ cover: /assets/images/electron cloud.jpg
 		};
 		this.xaxis = xaxis;
 		this.yaxis = yaxis;
+		this.fill = fill ? 'tozeroy' : undefined
 	}
 
 	function plotly() {
 		var data_list = [];
 		for (var i = 0; i < obj_list.length; i++)
 			if (obj_list[i].visible)
-				data_list.push(new PlotData(obj_list[i].data[0], obj_list[i].data[1], 'lines', obj_list[i].name, obj_list[i].color, obj_list[i].width, 'x' + obj_list[i].axes, 'y' + obj_list[i].axes));
-		Plotly.newPlot('GraphArea', data_list ,layout, config);
+				data_list.push(new PlotData(obj_list[i].data[0], obj_list[i].data[1], 'lines', obj_list[i].name, obj_list[i].color, obj_list[i].width, 'x' + obj_list[i].axes, 'y' + obj_list[i].axes, fill_gui.getValue()));
+		config.toImageButtonOptions.width = 150 + 300 * plot_num;
+		Plotly.newPlot('GraphArea', data_list , layout, config);
 	}
 	
 	function newFile() {
@@ -243,29 +357,31 @@ cover: /assets/images/electron cloud.jpg
 	}
 
 	function updateObjGui() {
-		//Unary Part
-		unary_operation_gui.remove(obj_gui);
-		obj_gui = unary_operation_gui.add(controls, 'object', obj_list.map(item => item.name).concat(['None'])).name("Object:");
-		obj_gui.onFinishChange(function(value) {
-			index = obj_list.map(item => item.name).indexOf(value);
-			if (index != -1) {
-				visible_gui.setValue(obj_list[index].visible);
-				name_gui.setValue(obj_list[index].name);
-				color_gui.setValue(obj_list[index].color);
-			}
-		});
-		//Binary Part
-		binary_operation_gui.remove(obj1_gui);
-		binary_operation_gui.remove(obj2_gui);
-		obj1_gui = binary_operation_gui.add(controls, 'object1', obj_list.map(item => item.name).concat(['None'])).name("Object:");
-		obj2_gui = binary_operation_gui.add(controls, 'object2', obj_list.map(item => item.name).concat(['None'])).name("Object:");
+		var name_list = obj_list.map(item => item.name).concat(['None']);
+		var innerHTMLStr = "";
+		for (var i = 0; i < name_list.length; i++) {
+            var str = "<option value='" + name_list[i] + "'>" + name_list[i] + "</option>";
+            innerHTMLStr += str;        
+        }
+    	obj_gui.domElement.children[0].innerHTML = innerHTMLStr;
+    	obj1_gui.domElement.children[0].innerHTML = innerHTMLStr;
+    	obj2_gui.domElement.children[0].innerHTML = innerHTMLStr;
+    	obj_gui.setValue(obj_list[obj_list.length - 1].name);	
+    	obj1_gui.setValue(obj_list[obj_list.length - 1].name);
+    	if (obj_list.length >= 2)
+    		obj2_gui.setValue(obj_list[obj_list.length - 2].name);
+    	else
+    		obj2_gui.setValue(obj_list[obj_list.length - 1].name);
+	}
 
-		obj1_gui.onFinishChange(function(value) {
-			index1 = obj_list.map(item => item.name).indexOf(value);
-		});
-		obj2_gui.onFinishChange(function(value) {
-			index2 = obj_list.map(item => item.name).indexOf(value);
-		});
+	function updatePlotIDGui() {
+		var plotID_list = math.string(math.range(1, plot_num + 1)._data);
+		var innerHTMLStr = "";
+		for (var i = 0; i < plotID_list.length; i++) {
+            var str = "<option value='" + plotID_list[i] + "'>" + plotID_list[i] + "</option>";
+            innerHTMLStr += str;        
+        }
+    	plotID_gui.domElement.children[0].innerHTML = innerHTMLStr;
 	}
 
 	function trapz(x, y) {
