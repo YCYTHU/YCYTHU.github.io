@@ -1,13 +1,13 @@
 ---
 layout: none
 title: 氢原子波函数
-cover: /assets/images/electron cloud.jpg
+cover: /assets/images/nebula.jpg
 ---
 <!--more-->
 
 <html>
 <head>
-	<title>Hydrogen Wave Function Viewer</title>
+	<title>Hydrogen Wavefunction Viewer</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@ cover: /assets/images/electron cloud.jpg
 	<script src="/assets/js/WindowResize.js" type="text/javascript"></script>
 	<script src="/assets/js/MarchingCubes.js" type="text/javascript"></script>
 	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
-	<script src="/assets/js/KeyboardState.js" type="text/javascript"></script>
+	<!--<script src="/assets/js/KeyboardState.js" type="text/javascript"></script>-->
 	<!--<script src="https://cdn.jsdelivr.net/npm/three-trackballcontrols@0.9.0/index.min.js"></script>-->
 	<style>
 
@@ -45,9 +45,10 @@ cover: /assets/images/electron cloud.jpg
 			animation-timing-function: ease-in-out;
 			animation-iteration-count: infinite;
 		}
-		/*body {
-			overflow: hidden;
-		}*/
+		body {
+			margin: 0px;
+			/*overflow: hidden;*/
+		}
 		@keyframes breath {
 			from {
 				opacity: 0.2;
@@ -71,8 +72,6 @@ cover: /assets/images/electron cloud.jpg
 </body>
 <script>
 	var scene, camera, renderer, controls, stats;
-	var keyboard = new THREEx.KeyboardState();
-	var clock = new THREE.Clock();
 	var points = [];
 	var values = [];
 	var meshArray = [];
@@ -102,12 +101,11 @@ cover: /assets/images/electron cloud.jpg
 
 	var State_gui = gui.addFolder('Quantum Number');
 	State_gui.open();
-	var nState_gui = State_gui.add(controls, 'nState', 1).step(1);
-	nState_gui.name("Principal");
-	var lState_gui = State_gui.add(controls, 'lState', 0).step(1);
-	lState_gui.name("Azimuthal");
-	var mState_gui = State_gui.add(controls, 'mState', 0).step(1);
-	mState_gui.name("Magnetic");
+	var nState_gui = State_gui.add(controls, 'nState', 1).step(1).name("Principal");
+	var lState_gui = State_gui.add(controls, 'lState', 0).step(1).name("Azimuthal");
+	var mState_gui = State_gui.add(controls, 'mState', 0).step(1).name("Magnetic");
+	//nState_gui.domElement.innerHTML = "<input type=\"number\">";
+	console.log(nState_gui);
 
 	var Options_gui = gui.addFolder('Options');
 	Options_gui.open();
@@ -115,16 +113,12 @@ cover: /assets/images/electron cloud.jpg
 	var clipping_gui = Options_gui.add(controls, 'clippingPlane', {'None': 1, 'Half': 2, 'Quarter': 4, 'One eighth': 8}).name("Clipping")
 	var isovalue_gui = Options_gui.add(controls, 'Isovalue', -8.0, 0.0).step(0.1);
 	var resolution_gui = Options_gui.add(controls, 'Resolution', 20, 160).step(1);
-	var box_size_gui = Options_gui.add(controls, 'Box_Size', 5, 160).step(5);
-	box_size_gui.name("Box Size");
+	var box_size_gui = Options_gui.add(controls, 'Box_Size', 5, 160).step(5).name("Box Size");
 
 	var Camera_gui = gui.addFolder('Camera (developing)');
-	var camera_radius_gui = Camera_gui.add(controls, 'Camera_Radius', 5, 200).step(5);
-	camera_radius_gui.name("Radius");
-	var camera_azimuth_gui = Camera_gui.add(controls, 'Camera_Azimuth', 0, 2 * Math.PI).step(Math.PI / 25);
-	camera_azimuth_gui.name("Azimuth");
-	var camera_elevation_gui = Camera_gui.add(controls, 'Camera_Elevation', -Math.PI / 2, Math.PI / 2).step(Math.PI / 50);
-	camera_elevation_gui.name("Elevation");
+	var camera_radius_gui = Camera_gui.add(controls, 'Camera_Radius', 5, 200).step(5).name("Radius");
+	var camera_azimuth_gui = Camera_gui.add(controls, 'Camera_Azimuth', 0, 2 * Math.PI).step(Math.PI / 25).name("Azimuth");
+	var camera_elevation_gui = Camera_gui.add(controls, 'Camera_Elevation', -Math.PI / 2, Math.PI / 2).step(Math.PI / 50).name("Elevation");
 
 	init();
 
@@ -318,16 +312,16 @@ cover: /assets/images/electron cloud.jpg
 		camera.lookAt(scene.position);
 	
 		// RENDERER
-		if ( Detector.webgl )
+		if (Detector.webgl)
 			renderer = new THREE.WebGLRenderer( {antialias:true} );
 		else
 			renderer = new THREE.CanvasRenderer();
 	
 		renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 		renderer.localClippingEnabled = true;
-		renderer.setClearColor(0x999999, 1);
+		renderer.setClearColor(0xe6e6e6, 1);
 		//renderer.clippingPlanes = localPlane;
-		document.getElementById( 'ThreeJS' ).appendChild( renderer.domElement );
+		document.getElementById('ThreeJS' ).appendChild( renderer.domElement );
 	
 		// EVENTS
 		THREEx.WindowResize(renderer, camera);
@@ -335,6 +329,7 @@ cover: /assets/images/electron cloud.jpg
 
 		// CONTROLS
 		controls = new THREE.OrbitControls(camera, renderer.domElement);
+		controls.enablePan = false;
 	
 		// STATS
 		stats = new Stats();
@@ -344,14 +339,10 @@ cover: /assets/images/electron cloud.jpg
 		document.getElementById('Stats').appendChild( stats.domElement );
 	
 		// LIGHT
-		const ambientLight = new THREE.AmbientLight(0x202020); // Soft ambient light
+		const ambientLight = new THREE.AmbientLight(0x404040); // Soft ambient light
 		scene.add(ambientLight);
-	
-    	//const PointLight = new THREE.PointLight(0x606060);
-    	//PointLight.position.set(10,10,10);
-    	//scene.add(PointLight);
 
-		const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+		const directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
 		directionalLight.position.set(1, 1, 1);
 		scene.add(directionalLight);
 	}

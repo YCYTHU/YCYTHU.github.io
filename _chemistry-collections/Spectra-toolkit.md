@@ -1,7 +1,7 @@
 ---
 layout: none
 title: 光谱处理工具包
-cover: /assets/images/gallery icon.jpg
+cover: /assets/images/retro futurism.jpg
 ---
 <!--more-->
 
