@@ -198,7 +198,7 @@ cover: /assets/images/gallery icon.jpg
 					data2_clip[0] = data1_clip[0];
 				}
 				data1_clip[1] = math.subtract(data1_clip[1], data2_clip[1]);
-				var name = 'Diff' + obj_list[index1].name + '_' + obj_list[index2].name;
+				var name = 'Diff_' + obj_list[index1].name + '_' + obj_list[index2].name;
 				obj_list.push(new Spectrum(name, data1_clip, true, default_color_list[obj_list.length % 10]));
 				controls.counts += 1;
 				counts_gui.setValue(controls.counts);

@@ -10,7 +10,19 @@ cover: /assets/images/electron cloud.jpg
 	<title>Hydrogen Wave Function Viewer</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
+	<script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" type="text/javascript"></script>
+	<script src="/assets/js/Detector.js" type="text/javascript"></script>
+	<script src="/assets/js/FullScreen.js" type="text/javascript"></script>
+	<script src="/assets/js/wavefunction.js" type="text/javascript"></script>
+	<script src="/assets/js/WindowResize.js" type="text/javascript"></script>
+	<script src="/assets/js/MarchingCubes.js" type="text/javascript"></script>
+	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
+	<script src="/assets/js/KeyboardState.js" type="text/javascript"></script>
+	<!--<script src="https://cdn.jsdelivr.net/npm/three-trackballcontrols@0.9.0/index.min.js"></script>-->
 	<style>
+
 		.red_light {
 			border: none;
 			border-radius: 10px;
@@ -33,9 +45,9 @@ cover: /assets/images/electron cloud.jpg
 			animation-timing-function: ease-in-out;
 			animation-iteration-count: infinite;
 		}
-		body {
+		/*body {
 			overflow: hidden;
-		}
+		}*/
 		@keyframes breath {
 			from {
 				opacity: 0.2;
@@ -57,17 +69,6 @@ cover: /assets/images/electron cloud.jpg
 		<button style="position: absolute; top: 13px; left: 13px;" id="indicator" class="green_light"></button>
 	</div>-->
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" type="text/javascript"></script>
-<script src="/assets/js/Detector.js" type="text/javascript"></script>
-<script src="/assets/js/FullScreen.js" type="text/javascript"></script>
-<script src="/assets/js/wavefunction.js" type="text/javascript"></script>
-<script src="/assets/js/WindowResize.js" type="text/javascript"></script>
-<script src="/assets/js/MarchingCubes.js" type="text/javascript"></script>
-<script src="/assets/js/OrbitControls.js" type="text/javascript"></script>
-<script src="/assets/js/KeyboardState.js" type="text/javascript"></script>
 <script>
 	var scene, camera, renderer, controls, stats;
 	var keyboard = new THREEx.KeyboardState();
@@ -312,7 +313,8 @@ cover: /assets/images/electron cloud.jpg
 		var VIEW_ANGLE = 45, ASPECT = CANVAS_WIDTH / CANVAS_HEIGHT, NEAR = 0.1, FAR = 20000;
 		camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
 		scene.add(camera);
-		camera.position.set(10,10,10);
+		camera.position.set(30,0,10);
+		//camera.up.set([0,0,1]);
 		camera.lookAt(scene.position);
 	
 		// RENDERER
