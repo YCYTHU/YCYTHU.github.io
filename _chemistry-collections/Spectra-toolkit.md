@@ -1,14 +1,14 @@
 ---
 layout: none
 title: 光谱处理工具包
-cover: /assets/images/electron cloud.jpg
+cover: /assets/images/gallery icon.jpg
 ---
 <!--more-->
 
 <title>Spectra toolkit</title>
 <head>
 	<script src="/assets/js/interp1.js" type="text/javascript"></script>
-	<script src="/assets/js/papaparse.js" type="text/javascript"></script>
+	<script src="/assets/js/papaparse.min.js" type="text/javascript"></script>
 	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@ cover: /assets/images/electron cloud.jpg
 	<div id='GraphArea'></div>
 </body>
 <script>
-	//console.log(math.range(1,6)._data.toString());
+	//console.log(math.subtract([5,6,8],[1,2,7]));
 	var obj_list = [];
 	var index = -1;
 	var index1 = -1;
@@ -28,40 +28,40 @@ cover: /assets/images/electron cloud.jpg
 	var gui = new dat.GUI();
 	var layout = {
 		title: {text:'Spectrum', font: {family: 'Times New Roman', size: 24}},
-  		xaxis: {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},  
-  		yaxis: {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},
-  		grid: {}
+		xaxis: {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},  
+		yaxis: {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}},
+		grid: {}
 	};
 	var config = {
 		editable: true,
-  		toImageButtonOptions: {
+		toImageButtonOptions: {
     		format: 'svg', // one of png, svg, jpeg, webp
     		filename: 'Spectrum',
     		height: 450,
     		width: 150 + 300 * plot_num,
     		scale: 1
-  		},
-  		displaylogo: false,
-  		responsive: true
-	};
-	var default_color_list = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
-	var controls = new function () {
-		this.file = '';
-		this.counts = 0;
-		this.visible = true;
-		this.fill = false;
-		this.plotID = '1';
-		this.name = '';
-		this.object = 'None';
-		this.object1 = 'None';
-		this.object2 = 'None';
-		this.clip_range = '';
-		this.color = '#1f77b4';
-	};
+    	},
+    	displaylogo: false,
+    	responsive: true
+    };
+    var default_color_list = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
+    var controls = new function () {
+    	this.file = '';
+    	this.counts = 0;
+    	this.visible = true;
+    	this.fill = false;
+    	this.plotID = '1';
+    	this.name = '';
+    	this.object = 'None';
+    	this.object1 = 'None';
+    	this.object2 = 'None';
+    	this.clip_range = '';
+    	this.color = '#1f77b4';
+    };
 
-	var control_functions = {
-		loadFile: function() { 
-            document.getElementById('inputCSV').click();
+    var control_functions = {
+    	loadFile: function() { 
+    		document.getElementById('inputCSV').click();
     	},
     	exportCSV: function() {
     		var csv = Papa.unparse(math.transpose(obj_list[index].data));
@@ -74,27 +74,27 @@ cover: /assets/images/electron cloud.jpg
     		layout['xaxis' + plot_num.toString()] = {title: {text: 'Wavelength (nm)', font: {family: 'Times New Roman', size: 18, color: '#000000'}}};
     		layout['yaxis' + plot_num.toString()] = {title: {text: '', font: {family: 'Times New Roman', size: 18, color: '#000000'}}};
     		switch (plot_num) {
-    			case 2: 
-    				layout.grid.rows = 1;
-					layout.grid.columns = 2;
-					layout.grid.pattern = 'independent';
-					break;
-				case 3:
-					layout.grid.rows = 1;
-					layout.grid.columns = 3;
-					layout.grid.pattern = 'independent';
-					break;
-				case 4:
-					layout.grid.rows = 2;
-					layout.grid.columns = 2;
-					layout.grid.pattern = 'independent';
-					break;
-				case 5:
-				case 6:
-					layout.grid.rows = 2;
-					layout.grid.columns = 3;
-					layout.grid.pattern = 'independent';
-					break;
+    		case 2: 
+    			layout.grid.rows = 1;
+    			layout.grid.columns = 2;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 3:
+    			layout.grid.rows = 1;
+    			layout.grid.columns = 3;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 4:
+    			layout.grid.rows = 2;
+    			layout.grid.columns = 2;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 5:
+    		case 6:
+    			layout.grid.rows = 2;
+    			layout.grid.columns = 3;
+    			layout.grid.pattern = 'independent';
+    			break;
     		}
     		updatePlotIDGui();
     	},
@@ -103,60 +103,61 @@ cover: /assets/images/electron cloud.jpg
     			return;
     		plot_num--;
     		switch (plot_num) {
-    			case 1:
-    				layout.grid.rows = 1;
-					layout.grid.columns = 1;
-					layout.grid.pattern = 'independent';
-					break;
-    			case 2: 
-    				layout.grid.rows = 1;
-					layout.grid.columns = 2;
-					layout.grid.pattern = 'independent';
-					break;
-				case 3:
-					layout.grid.rows = 1;
-					layout.grid.columns = 3;
-					layout.grid.pattern = 'independent';
-					break;
-				case 4:
-					layout.grid.rows = 2;
-					layout.grid.columns = 2;
-					layout.grid.pattern = 'independent';
-					break;
-				case 5:
-					layout.grid.rows = 2;
-					layout.grid.columns = 3;
-					layout.grid.pattern = 'independent';
-					break;
+    		case 1:
+    			layout.grid.rows = 1;
+    			layout.grid.columns = 1;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 2: 
+    			layout.grid.rows = 1;
+    			layout.grid.columns = 2;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 3:
+    			layout.grid.rows = 1;
+    			layout.grid.columns = 3;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 4:
+    			layout.grid.rows = 2;
+    			layout.grid.columns = 2;
+    			layout.grid.pattern = 'independent';
+    			break;
+    		case 5:
+    			layout.grid.rows = 2;
+    			layout.grid.columns = 3;
+    			layout.grid.pattern = 'independent';
+    			break;
     		}
     		for (var i = 0; i < obj_list.length; i++)
     			if (obj_list[i].axes > plot_num)
     				obj_list[i].axes = plot_num;
-    		updatePlotIDGui();
-    		plotID_gui.setValue(obj_list[index].axes.toString());
-    		plotly();
+    			updatePlotIDGui();
+    			plotID_gui.setValue(obj_list[index].axes.toString());
+    			plotly();
     		//layout['xaxis' + (plot_num + 1).toString()] = undefined;
     		//layout['yaxis' + (plot_num + 1).toString()] = undefined;	
     	},
-		normalizePeak: function() {
-			if (index != -1) {
-				var peak = Math.max(...obj_list[index].data[1]);
-				if (peak != 1) {
-					obj_list[index].data[1] = math.multiply(obj_list[index].data[1], 1 / peak);
-					plotly();
-				}
-			}
-		},
-		normalizeArea: function() {
-			if (index != -1) {
-				var area = trapz(obj_list[index].data[0], obj_list[index].data[1]);
-				if (area != 1) {
-					obj_list[index].data[1] = math.multiply(obj_list[index].data[1], 1 / area);
-					plotly();
-				}
-			}
-		},
-		overlap: function() {
+    	normalizePeak: function() {
+    		if (index != -1) {
+    			var peak = Math.max(...obj_list[index].data[1]);
+    			if (peak != 1) {
+    				obj_list[index].data[1] = math.multiply(obj_list[index].data[1], 1 / peak);
+    				plotly();
+    			}
+    		}
+    	},
+    	normalizeArea: function() {
+    		if (index != -1) {
+    			var area = trapz(obj_list[index].data[0], obj_list[index].data[1]);
+    			if (area != 1) {
+    				obj_list[index].data[1] = math.multiply(obj_list[index].data[1], 1 / area);
+    				plotly();
+    			}
+    		}
+    	},
+		//Binary Functions
+    	overlap: function() {
 			if (index1 != -1 && index2 != -1) {//index1--emission; index2--absorption
 				var overlap = calcOverlapIntegral(obj_list[index1].data, obj_list[index2].data);
 				if (overlap == 0)
@@ -164,6 +165,41 @@ cover: /assets/images/electron cloud.jpg
 				console.log('Overlap Integral between ' + obj_list[index1].name + '(emi) and ' + obj_list[index2].name + '(abs) is: ', trapz(overlap[0], overlap[1]));
 				var name = 'J-int_' + obj_list[index1].name + '_' + obj_list[index2].name;
 				obj_list.push(new Spectrum(name, overlap, true, default_color_list[obj_list.length % 10]));
+				controls.counts += 1;
+				counts_gui.setValue(controls.counts);
+				plotly();
+				updateObjGui();
+			}
+		},
+		difference: function() {
+			if (index1 != -1 && index2 != -1) {
+				var data1 = obj_list[index1].data;
+				var data2 = obj_list[index2].data;
+				var axisMin = Math.max(Math.min(...data1[0]), Math.min(...data2[0]));
+				var axisMax = Math.min(Math.max(...data1[0]), Math.max(...data2[0]));
+				if (axisMax <= axisMin)
+					return 0;//no overlap
+				else {
+					let data1_left = math.subset(data1, math.index([0, 1], math.smallerEq(data1[0], axisMax)));
+					var data1_clip = math.subset(data1_left, math.index([0, 1], math.largerEq(data1_left[0], axisMin)));
+					let data2_left = math.subset(data2, math.index([0, 1], math.smallerEq(data2[0], axisMax)));
+					var data2_clip = math.subset(data2_left, math.index([0, 1], math.largerEq(data2_left[0], axisMin)));
+				}
+				var data1_range = data1_clip[0][data1_clip[0].length - 1] - data1_clip[0][0];
+				var data2_range = data2_clip[0][data2_clip[0].length - 1] - data2_clip[0][0];
+				var data1_longer = data1_range > data2_range;
+				
+				if (data1_longer) {
+					data1_clip[1] = interp1(data1_clip[0], data1_clip[1], data2_clip[0], 'linear');
+					data1_clip[0] = data2_clip[0];
+				}
+				else {
+					data2_clip[1] = interp1(data2_clip[0], data2_clip[1], data1_clip[0], 'linear');
+					data2_clip[0] = data1_clip[0];
+				}
+				data1_clip[1] = math.subtract(data1_clip[1], data2_clip[1]);
+				var name = 'Diff' + obj_list[index1].name + '_' + obj_list[index2].name;
+				obj_list.push(new Spectrum(name, data1_clip, true, default_color_list[obj_list.length % 10]));
 				controls.counts += 1;
 				counts_gui.setValue(controls.counts);
 				plotly();
@@ -208,6 +244,7 @@ cover: /assets/images/electron cloud.jpg
 	var obj2_gui = binary_operation_gui.add(controls, 'object2', obj_list.map(item => item.name).concat(['None'])).name("Object2:");
 	var binary_functions_gui = binary_operation_gui.addFolder('Functions');
 	binary_functions_gui.open();
+	binary_functions_gui.add(control_functions, 'difference').name("Difference");
 	binary_functions_gui.add(control_functions, 'overlap').name("J-overlap integral");
 
 	visible_gui.onFinishChange(function(value) {
@@ -297,12 +334,12 @@ cover: /assets/images/electron cloud.jpg
 	}
 
 	function hexToRgb(hex) {
-  		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  		return result ? {
-    		r: parseInt(result[1], 16),
-    		g: parseInt(result[2], 16),
-    		b: parseInt(result[3], 16)
-  		} : null;
+		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		return result ? {
+			r: parseInt(result[1], 16),
+			g: parseInt(result[2], 16),
+			b: parseInt(result[3], 16)
+		} : null;
 	}
 
 	function Spectrum(name, data, visible, color, width, axes = 1) {
@@ -334,69 +371,69 @@ cover: /assets/images/electron cloud.jpg
 		for (var i = 0; i < obj_list.length; i++)
 			if (obj_list[i].visible)
 				data_list.push(new PlotData(obj_list[i].data[0], obj_list[i].data[1], 'lines', obj_list[i].name, obj_list[i].color, obj_list[i].width, 'x' + obj_list[i].axes, 'y' + obj_list[i].axes, fill_gui.getValue()));
-		config.toImageButtonOptions.width = 150 + 300 * plot_num;
-		Plotly.newPlot('GraphArea', data_list , layout, config);
-	}
-	
-	function newFile() {
-		const inputCSV = document.getElementById('inputCSV');
-		const file = inputCSV.files[0];
-		Papa.parse(file, {
-			dynamicTyping: true,
-			skipEmptyLines: 'greedy',
-			complete: function(results, file) {
-				var data = math.transpose(results.data);
-				var name = file.name.replace('.csv', '');
-				obj_list.push(new Spectrum(name, data, true, default_color_list[obj_list.length % 10]));
-				controls.counts += 1;
-				counts_gui.setValue(controls.counts);
-				plotly();
-				updateObjGui();
+			config.toImageButtonOptions.width = 150 + 300 * plot_num;
+			Plotly.newPlot('GraphArea', data_list , layout, config);
+		}
+
+		function newFile() {
+			const inputCSV = document.getElementById('inputCSV');
+			const file = inputCSV.files[0];
+			Papa.parse(file, {
+				dynamicTyping: true,
+				skipEmptyLines: 'greedy',
+				complete: function(results, file) {
+					var data = math.transpose(results.data);
+					var name = file.name.replace('.csv', '');
+					obj_list.push(new Spectrum(name, data, true, default_color_list[obj_list.length % 10]));
+					controls.counts += 1;
+					counts_gui.setValue(controls.counts);
+					plotly();
+					updateObjGui();
+				}
+			});
+		}
+
+		function updateObjGui() {
+			var name_list = obj_list.map(item => item.name).concat(['None']);
+			var innerHTMLStr = "";
+			for (var i = 0; i < name_list.length; i++) {
+				var str = "<option value='" + name_list[i] + "'>" + name_list[i] + "</option>";
+				innerHTMLStr += str;        
 			}
-		});
-	}
+			obj_gui.domElement.children[0].innerHTML = innerHTMLStr;
+			obj1_gui.domElement.children[0].innerHTML = innerHTMLStr;
+			obj2_gui.domElement.children[0].innerHTML = innerHTMLStr;
+			obj_gui.setValue(obj_list[obj_list.length - 1].name);	
+			obj1_gui.setValue(obj_list[obj_list.length - 1].name);
+			if (obj_list.length >= 2)
+				obj2_gui.setValue(obj_list[obj_list.length - 2].name);
+			else
+				obj2_gui.setValue(obj_list[obj_list.length - 1].name);
+		}
 
-	function updateObjGui() {
-		var name_list = obj_list.map(item => item.name).concat(['None']);
-		var innerHTMLStr = "";
-		for (var i = 0; i < name_list.length; i++) {
-            var str = "<option value='" + name_list[i] + "'>" + name_list[i] + "</option>";
-            innerHTMLStr += str;        
-        }
-    	obj_gui.domElement.children[0].innerHTML = innerHTMLStr;
-    	obj1_gui.domElement.children[0].innerHTML = innerHTMLStr;
-    	obj2_gui.domElement.children[0].innerHTML = innerHTMLStr;
-    	obj_gui.setValue(obj_list[obj_list.length - 1].name);	
-    	obj1_gui.setValue(obj_list[obj_list.length - 1].name);
-    	if (obj_list.length >= 2)
-    		obj2_gui.setValue(obj_list[obj_list.length - 2].name);
-    	else
-    		obj2_gui.setValue(obj_list[obj_list.length - 1].name);
-	}
+		function updatePlotIDGui() {
+			var plotID_list = math.string(math.range(1, plot_num + 1)._data);
+			var innerHTMLStr = "";
+			for (var i = 0; i < plotID_list.length; i++) {
+				var str = "<option value='" + plotID_list[i] + "'>" + plotID_list[i] + "</option>";
+				innerHTMLStr += str;        
+			}
+			plotID_gui.domElement.children[0].innerHTML = innerHTMLStr;
+		}
 
-	function updatePlotIDGui() {
-		var plotID_list = math.string(math.range(1, plot_num + 1)._data);
-		var innerHTMLStr = "";
-		for (var i = 0; i < plotID_list.length; i++) {
-            var str = "<option value='" + plotID_list[i] + "'>" + plotID_list[i] + "</option>";
-            innerHTMLStr += str;        
-        }
-    	plotID_gui.domElement.children[0].innerHTML = innerHTMLStr;
-	}
+		function trapz(x, y) {
+			var y1 = math.subset(y, math.index(math.range(0,y.length-1)));
+			var y2 = math.subset(y, math.index(math.range(1,y.length)));
+			var y_av = math.multiply(math.add(y1, y2),0.5);
+			return math.multiply(math.diff(x),y_av);
+		}
 
-	function trapz(x, y) {
-		var y1 = math.subset(y, math.index(math.range(0,y.length-1)));
-		var y2 = math.subset(y, math.index(math.range(1,y.length)));
-		var y_av = math.multiply(math.add(y1, y2),0.5);
-		return math.multiply(math.diff(x),y_av);
-	}
-
-	function downloadCSV(fileName, content) {
-    	let a = document.createElement('a');
-    	a.href = 'data:text/plain;charset=utf-8,' + content
-    	a.download = fileName + '.csv';
-    	document.body.appendChild(a);
-    	a.click();
-    	document.body.removeChild(a);
-	}
-</script>
+		function downloadCSV(fileName, content) {
+			let a = document.createElement('a');
+			a.href = 'data:text/plain;charset=utf-8,' + content
+			a.download = fileName + '.csv';
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+		}
+	</script>
