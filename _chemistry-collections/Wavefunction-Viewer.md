@@ -93,10 +93,13 @@ cover: /assets/images/nebula.jpg
 		this.Resolution = 60;
 		this.Box_Size = 5;
 		this.mode = 'real';
-		this.Camera_Radius = 10;
-		this.Camera_Azimuth = Math.PI / 4;
-		this.Camera_Elevation = Math.asin(1/Math.sqrt(3));
+		//this.Camera_Radius = 10;
+		//this.Camera_Azimuth = Math.PI / 4;
+		//this.Camera_Elevation = Math.asin(1/Math.sqrt(3));
 		this.clippingPlane = 1;
+		this.R_x = false;
+		this.R_y = false;
+		this.R_z = false;
 	};
 
 	var State_gui = gui.addFolder('Quantum Number');
@@ -104,8 +107,6 @@ cover: /assets/images/nebula.jpg
 	var nState_gui = State_gui.add(controls, 'nState', 1).step(1).name("Principal");
 	var lState_gui = State_gui.add(controls, 'lState', 0).step(1).name("Azimuthal");
 	var mState_gui = State_gui.add(controls, 'mState', 0).step(1).name("Magnetic");
-	//nState_gui.domElement.innerHTML = "<input type=\"number\">";
-	console.log(nState_gui);
 
 	var Options_gui = gui.addFolder('Options');
 	Options_gui.open();
@@ -115,10 +116,16 @@ cover: /assets/images/nebula.jpg
 	var resolution_gui = Options_gui.add(controls, 'Resolution', 20, 160).step(1);
 	var box_size_gui = Options_gui.add(controls, 'Box_Size', 5, 160).step(5).name("Box Size");
 
-	var Camera_gui = gui.addFolder('Camera (developing)');
-	var camera_radius_gui = Camera_gui.add(controls, 'Camera_Radius', 5, 200).step(5).name("Radius");
-	var camera_azimuth_gui = Camera_gui.add(controls, 'Camera_Azimuth', 0, 2 * Math.PI).step(Math.PI / 25).name("Azimuth");
-	var camera_elevation_gui = Camera_gui.add(controls, 'Camera_Elevation', -Math.PI / 2, Math.PI / 2).step(Math.PI / 50).name("Elevation");
+	//var Camera_gui = gui.addFolder('Camera (developing)');
+	//var camera_radius_gui = Camera_gui.add(controls, 'Camera_Radius', 5, 200).step(5).name("Radius");
+	//var camera_azimuth_gui = Camera_gui.add(controls, 'Camera_Azimuth', 0, 2 * Math.PI).step(Math.PI / 25).name("Azimuth");
+	//var camera_elevation_gui = Camera_gui.add(controls, 'Camera_Elevation', -Math.PI / 2, Math.PI / 2).step(Math.PI / 50).name("Elevation");
+
+	var Rotate_gui = gui.addFolder('Rotate');
+	Rotate_gui.open();
+	var R_x_gui = Rotate_gui.add(controls, 'R_x').name("Enable X-axis");
+	var R_y_gui = Rotate_gui.add(controls, 'R_y').name("Enable Y-axis");
+	var R_z_gui = Rotate_gui.add(controls, 'R_z').name("Enable Z-axis");
 
 	init();
 
@@ -188,23 +195,23 @@ cover: /assets/images/nebula.jpg
 		updateWfn();
 	});
 
-	camera_radius_gui.onChange(function(value) {
-		phi = camera_azimuth_gui.getValue();
-		theta = camera_elevation_gui.getValue();
-		camera.position.set(value * Math.cos(theta) * Math.cos(phi), value * Math.cos(theta) * Math.sin(phi), value * Math.sin(theta));
-	});
+	//camera_radius_gui.onChange(function(value) {
+	//	phi = camera_azimuth_gui.getValue();
+	//	theta = camera_elevation_gui.getValue();
+	//	camera.position.set(value * Math.cos(theta) * Math.cos(phi), value * Math.cos(theta) * Math.sin(phi), value * Math.sin(theta));
+	//});
 
-	camera_azimuth_gui.onFinishChange(function(value) {
-		radius = camera_radius_gui.getValue();
-		theta = camera_elevation_gui.getValue();
-		camera.position.set(radius * Math.cos(theta) * Math.cos(value), radius * Math.cos(theta) * Math.sin(value), radius * Math.sin(theta));
-	});
+	//camera_azimuth_gui.onFinishChange(function(value) {
+	//	radius = camera_radius_gui.getValue();
+	//	theta = camera_elevation_gui.getValue();
+	//	camera.position.set(radius * Math.cos(theta) * Math.cos(value), radius * Math.cos(theta) * Math.sin(value), radius * Math.sin(theta));
+	//});
 
-	camera_elevation_gui.onFinishChange(function(value) {
-		radius = camera_radius_gui.getValue();
-		phi = camera_azimuth_gui.getValue();
-		camera.position.set(radius * Math.cos(value) * Math.cos(phi), radius * Math.cos(value) * Math.sin(phi), radius * Math.sin(value));
-	});
+	//camera_elevation_gui.onFinishChange(function(value) {
+	//	radius = camera_radius_gui.getValue();
+	//	phi = camera_azimuth_gui.getValue();
+	//	camera.position.set(radius * Math.cos(value) * Math.cos(phi), radius * Math.cos(value) * Math.sin(phi), radius * Math.sin(value));
+	//});
 
 	function setIndicator(color) {
 		var indicator = document.getElementById('indicator');
@@ -295,6 +302,15 @@ cover: /assets/images/nebula.jpg
 		renderer.render(scene, camera);
 		controls.update();
 		stats.update();
+		if (R_x_gui.getValue())
+			for (var mesh of meshArray)
+				mesh.rotation.x += 0.01;
+		else if (R_y_gui.getValue())
+			for (var mesh of meshArray)
+				mesh.rotation.y += 0.01;
+		else if (R_z_gui.getValue())
+			for (var mesh of meshArray)
+				mesh.rotation.z += 0.01;
 	}
 
 	function init() {
