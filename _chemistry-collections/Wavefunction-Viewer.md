@@ -249,10 +249,9 @@ cover: /assets/images/nebula.jpg
 						var value = calcWfn(x, y, z, NState, LState, MState, true);
 						break;
 					}
-
 					values.push(value);
 				}
-			}
+	}
 
 	function setNLM() {
 		var tmpNState = nState_gui.getValue();
@@ -305,10 +304,10 @@ cover: /assets/images/nebula.jpg
 		if (R_x_gui.getValue())
 			for (var mesh of meshArray)
 				mesh.rotation.x += 0.01;
-		else if (R_y_gui.getValue())
+		if (R_y_gui.getValue())
 			for (var mesh of meshArray)
 				mesh.rotation.y += 0.01;
-		else if (R_z_gui.getValue())
+		if (R_z_gui.getValue())
 			for (var mesh of meshArray)
 				mesh.rotation.z += 0.01;
 	}
