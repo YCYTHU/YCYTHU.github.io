@@ -9,7 +9,7 @@ cover: /assets/images/particles in cube/particles in cube.jpg
 aside:
   toc: true
 ---
-
+<!--more-->
 # 球坐标下的球面随机向量
 
 只需要极角 $\theta\in[0,\pi)$ 与方位角 $\varphi\in[0,2\pi)$ 两个参数即可表示球面向量，如果 $\theta,\varphi$ 均在定义域内均匀分布，那么向量是否在球面上均匀分布。
@@ -97,7 +97,7 @@ def rand_vec_components_normal():
     vec /= np.linalg.norm(vec)
     return vec
 ```
-使用 `rand_vec_components_normal` 方法采样10000次，统计其分布得到的结果如图4。
+使用 `rand_vec_components_normal()` 方法采样10000次，统计其分布得到的结果如图4。
 
 <div style="display:flex; justify-content:space-evenly;">
     <object data="/assets/images/random vectors and rotations\rand_vec_components_normal_1.svg" type="image/svg+xml" width="30%"></object>
@@ -120,7 +120,7 @@ def rand_rot_euler(old_vec):
     return new_vec
 ```
 
-使用 `rand_rot_euler()` 将一固定的随机向量随机旋转10000次并统计分布，结果如图5所示。可以发现新向量由于万向节锁定而集中于 $y$ 轴附近。
+使用 `rand_rot_euler()` 将一固定的随机向量随机旋转10000次并统计分布，结果如图5所示。可以发现新向量由于万向节锁定而集中于 $y$ 轴附近，因此该方法不能实现均匀随机旋转。
 
 <div style="display:flex; justify-content:space-evenly;">
     <object data="/assets/images/random vectors and rotations\rand_rot_euler_1.svg" type="image/svg+xml" width="30%"></object>
@@ -140,7 +140,7 @@ def rand_rot_axis_angle(old_vec):
     new_vec = r.apply(old_vec)
     return new_vec
 ```
-将 $x^+$ 方向的单位向量利用 `rand_rot_axis_angle()` 旋转10000次得到的结果如图6。当旋转轴与 $x$ 轴相近时无论旋转角度取值如何，新向量均不能远离旧向量，因此结果中新向量集中于旧向量周围。
+将 $x^+$ 方向的单位向量利用 `rand_rot_axis_angle()` 旋转10000次得到的结果如图6。当旋转轴与 $x$ 轴相近时无论旋转角度取值如何，新向量均不能远离旧向量，故结果中新向量集中于旧向量周围。因此该方法也不能实现均匀随机旋转。
 
 <div style="display:flex; justify-content:space-evenly;">
     <object data="/assets/images/random vectors and rotations\rand_rot_axis_angle_1.svg" type="image/svg+xml" width="30%"></object>

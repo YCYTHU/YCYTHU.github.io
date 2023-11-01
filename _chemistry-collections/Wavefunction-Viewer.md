@@ -5,11 +5,12 @@ cover: /assets/images/nebula.jpg
 ---
 <!--more-->
 
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Hydrogen Wavefunction Viewer</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Hydrogen Wavefunction Viewer</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" type="text/javascript"></script>

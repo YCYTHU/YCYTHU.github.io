@@ -5,8 +5,12 @@ cover: /assets/images/retro futurism.jpg
 ---
 <!--more-->
 
-<title>Spectra toolkit</title>
+<!DOCTYPE html>
+<html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Spectra toolkit</title>
 	<script src="/assets/js/interp1.js" type="text/javascript"></script>
 	<script src="/assets/js/papaparse.min.js" type="text/javascript"></script>
 	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" type="text/javascript"></script>
@@ -371,69 +375,70 @@ cover: /assets/images/retro futurism.jpg
 		for (var i = 0; i < obj_list.length; i++)
 			if (obj_list[i].visible)
 				data_list.push(new PlotData(obj_list[i].data[0], obj_list[i].data[1], 'lines', obj_list[i].name, obj_list[i].color, obj_list[i].width, 'x' + obj_list[i].axes, 'y' + obj_list[i].axes, fill_gui.getValue()));
-			config.toImageButtonOptions.width = 150 + 300 * plot_num;
-			Plotly.newPlot('GraphArea', data_list , layout, config);
-		}
+		config.toImageButtonOptions.width = 150 + 300 * plot_num;
+		Plotly.newPlot('GraphArea', data_list , layout, config);
+	}
 
-		function newFile() {
-			const inputCSV = document.getElementById('inputCSV');
-			const file = inputCSV.files[0];
-			Papa.parse(file, {
-				dynamicTyping: true,
-				skipEmptyLines: 'greedy',
-				complete: function(results, file) {
-					var data = math.transpose(results.data);
-					var name = file.name.replace('.csv', '');
-					obj_list.push(new Spectrum(name, data, true, default_color_list[obj_list.length % 10]));
-					controls.counts += 1;
-					counts_gui.setValue(controls.counts);
-					plotly();
-					updateObjGui();
-				}
-			});
-		}
-
-		function updateObjGui() {
-			var name_list = obj_list.map(item => item.name).concat(['None']);
-			var innerHTMLStr = "";
-			for (var i = 0; i < name_list.length; i++) {
-				var str = "<option value='" + name_list[i] + "'>" + name_list[i] + "</option>";
-				innerHTMLStr += str;        
+	function newFile() {
+		const inputCSV = document.getElementById('inputCSV');
+		const file = inputCSV.files[0];
+		Papa.parse(file, {
+			dynamicTyping: true,
+			skipEmptyLines: 'greedy',
+			complete: function(results, file) {
+				var data = math.transpose(results.data);
+				var name = file.name.replace('.csv', '');
+				obj_list.push(new Spectrum(name, data, true, default_color_list[obj_list.length % 10]));
+				controls.counts += 1;
+				counts_gui.setValue(controls.counts);
+				plotly();
+				updateObjGui();
 			}
-			obj_gui.domElement.children[0].innerHTML = innerHTMLStr;
-			obj1_gui.domElement.children[0].innerHTML = innerHTMLStr;
-			obj2_gui.domElement.children[0].innerHTML = innerHTMLStr;
-			obj_gui.setValue(obj_list[obj_list.length - 1].name);	
-			obj1_gui.setValue(obj_list[obj_list.length - 1].name);
-			if (obj_list.length >= 2)
-				obj2_gui.setValue(obj_list[obj_list.length - 2].name);
-			else
-				obj2_gui.setValue(obj_list[obj_list.length - 1].name);
-		}
+		});
+	}
 
-		function updatePlotIDGui() {
-			var plotID_list = math.string(math.range(1, plot_num + 1)._data);
-			var innerHTMLStr = "";
-			for (var i = 0; i < plotID_list.length; i++) {
-				var str = "<option value='" + plotID_list[i] + "'>" + plotID_list[i] + "</option>";
-				innerHTMLStr += str;        
-			}
-			plotID_gui.domElement.children[0].innerHTML = innerHTMLStr;
+	function updateObjGui() {
+		var name_list = obj_list.map(item => item.name).concat(['None']);
+		var innerHTMLStr = "";
+		for (var i = 0; i < name_list.length; i++) {
+			var str = "<option value='" + name_list[i] + "'>" + name_list[i] + "</option>";
+			innerHTMLStr += str;        
 		}
+		obj_gui.domElement.children[0].innerHTML = innerHTMLStr;
+		obj1_gui.domElement.children[0].innerHTML = innerHTMLStr;
+		obj2_gui.domElement.children[0].innerHTML = innerHTMLStr;
+		obj_gui.setValue(obj_list[obj_list.length - 1].name);	
+		obj1_gui.setValue(obj_list[obj_list.length - 1].name);
+		if (obj_list.length >= 2)
+			obj2_gui.setValue(obj_list[obj_list.length - 2].name);
+		else
+			obj2_gui.setValue(obj_list[obj_list.length - 1].name);
+	}
 
-		function trapz(x, y) {
-			var y1 = math.subset(y, math.index(math.range(0,y.length-1)));
-			var y2 = math.subset(y, math.index(math.range(1,y.length)));
-			var y_av = math.multiply(math.add(y1, y2),0.5);
-			return math.multiply(math.diff(x),y_av);
+	function updatePlotIDGui() {
+		var plotID_list = math.string(math.range(1, plot_num + 1)._data);
+		var innerHTMLStr = "";
+		for (var i = 0; i < plotID_list.length; i++) {
+			var str = "<option value='" + plotID_list[i] + "'>" + plotID_list[i] + "</option>";
+			innerHTMLStr += str;        
 		}
+		plotID_gui.domElement.children[0].innerHTML = innerHTMLStr;
+	}
 
-		function downloadCSV(fileName, content) {
-			let a = document.createElement('a');
-			a.href = 'data:text/plain;charset=utf-8,' + content
-			a.download = fileName + '.csv';
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
-		}
-	</script>
+	function trapz(x, y) {
+		var y1 = math.subset(y, math.index(math.range(0,y.length-1)));
+		var y2 = math.subset(y, math.index(math.range(1,y.length)));
+		var y_av = math.multiply(math.add(y1, y2),0.5);
+		return math.multiply(math.diff(x),y_av);
+	}
+
+	function downloadCSV(fileName, content) {
+		let a = document.createElement('a');
+		a.href = 'data:text/plain;charset=utf-8,' + content
+		a.download = fileName + '.csv';
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	}
+</script>
+</html>
