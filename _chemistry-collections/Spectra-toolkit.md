@@ -5,7 +5,6 @@ cover: /assets/images/retro futurism.jpg
 ---
 <!--more-->
 
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
