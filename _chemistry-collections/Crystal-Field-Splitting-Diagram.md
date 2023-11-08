@@ -1,5 +1,5 @@
 ---
-layout: none
+layout: page
 title: 晶体场分裂能计算器
 cover: /assets/images/symmetry.jpg
 ---
@@ -9,7 +9,7 @@ cover: /assets/images/symmetry.jpg
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CFSD</title>
+	<title>晶体场分裂能计算器</title>
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
 	<style>
@@ -33,7 +33,7 @@ cover: /assets/images/symmetry.jpg
 			font-family: LMMath, Cambria Math, Times New Roman;
 		}
 		canvas {
-			height: 200px;
+			/*height: 200px;*/
 		}
 		.nav {
 			width: 100%;
@@ -95,8 +95,11 @@ cover: /assets/images/symmetry.jpg
 		}
 		.axesDiv {
 			/*margin: 10px 10px 10px 5px;*/
-			width: 500px;
+			width: 450px;
+			height: 100%;
 			background-color: #00ff0022;
+			flex: 1 auto 0;
+			margin-left: 10px;
 		}
 		.resultsTableDiv{
 			/*margin: 10px 5px 5px 10px;*/
@@ -107,6 +110,7 @@ cover: /assets/images/symmetry.jpg
 			flex-wrap: wrap;
 			flex-direction: row;
 			justify-content: space-evenly;
+			flex-grow: 1;
 		}
 		#highlightInfo {
 			font-weight: bold;
@@ -166,7 +170,7 @@ cover: /assets/images/symmetry.jpg
     				</tbody>
     			</table>
   			</div>
-  			<div class="resultsEnergyDiv">
+  			<div class="resultsEnergyDiv" id="resultsEnergy">
   				<canvas id="canvas"></canvas>
   				<p id="highlightInfo"></p>
   			</div>
@@ -188,11 +192,13 @@ cover: /assets/images/symmetry.jpg
 <script type="text/javascript">
 	//var coordinatesArray;
 	var energyRational, energyFloat, orbital, coefficient, orbitalPosition;
+	var calculateComplete = false;
 	var canvas = document.getElementById('canvas');
-	canvas.width = "230";
-	canvas.height = "200";
 	var ctx = canvas.getContext("2d");
+	setCanvasSize();
 	ctx.font = "16px LMMath";
+	//canvas.width = "230";
+	//canvas.height = "200";
 	var coordinatesDialog = document.getElementById("coordinatesDialog");
 	var geometryDialog = document.getElementById("geometryDialog");
 	var tableMemory = document.getElementById("coordinatesTable").innerHTML;
@@ -222,6 +228,28 @@ cover: /assets/images/symmetry.jpg
   			document.getElementById("coordinatesNumber").value = table.getElementsByTagName("tr").length - 1;
   		}
 	});
+
+	window.onresize = function() {
+		setCanvasSize();
+		ctx.font = "16px LMMath";
+	}
+
+	function setCanvasSize() {
+		var div = document.getElementById("resultsEnergy");
+		var width = div.clientWidth;
+		var height = div.clientHeight;
+		if (width / height > 1.15) {
+			canvas.height = height.toString();
+			canvas.width = (1.15 * height).toString();
+			var scale = height / 200;
+		}
+		else {
+			canvas.width = width.toString();
+			canvas.height = (width / 1.15).toString();
+			var scale = width / 230;
+		}
+		ctx.scale(scale, scale);
+	}
 
 	function draworbital(energy) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
