@@ -12,6 +12,7 @@ cover: /assets/images/symmetry.jpg
 	<title>晶体场分裂能计算器</title>
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js"></script>
 	<style>
 		@font-face {
 			font-family: LMMath;
@@ -36,11 +37,20 @@ cover: /assets/images/symmetry.jpg
 			/*height: 200px;*/
 		}
 		.nav {
+			display: flex;
 			width: 100%;
+			background-color: #f2f2f2;
+			justify-content: space-between;
 	    	/*height: 50px;*/
 		}
 		.nav_left {
-			background-color: #f2f2f2;
+			padding-left: 40px;
+			line-height: 50px;
+			margin: 0;
+		}
+		.nav_right {
+			padding-left: 0;
+			padding-right: 40px;
 			line-height: 50px;
 			margin: 0;
 		}
@@ -65,21 +75,34 @@ cover: /assets/images/symmetry.jpg
 	  		/*padding-left: 5px;*/
 	  		border-radius: 10px;
 		}
+		.mol-container {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
 		.dataTable {
 			border: 1px solid #000;
 		}
 		.dataTable td {
 			border: 1px solid #999;
 		}
+		#resultsTable {
+			height: 100%;
+		}
 		#resultsTable thead {
 			user-select: none;
 			font-weight: bold;
+			line-height: 25px;
+			font-size: 1.1rem;
 		}
 		#resultsTable td {
-			line-height: 25px;
+			/*line-height: 25px;*/
+		}
+		.mathFont {
+			font-family: LMMath, Cambria Math, Times New Roman;
 		}
 		.container {
-			margin: 10px;
+			margin: .5rem;
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
@@ -90,27 +113,39 @@ cover: /assets/images/symmetry.jpg
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: column;
-			width: 600px;
 			justify-content: space-evenly;
+		}
+		@media (min-width: 0) {
+			.infoDiv {
+				width: 100%;
+			}
+			.axesDiv {
+				width: 100%;
+			}
+		}
+		@media (min-width: 800px) {
+			.infoDiv {
+				width: 45%;
+			}
+			.axesDiv {
+				width: 45%;
+			}
 		}
 		.axesDiv {
 			/*margin: 10px 10px 10px 5px;*/
-			width: 450px;
 			height: 100%;
 			background-color: #00ff0022;
 			flex: 1 auto 0;
-			margin-left: 10px;
 		}
 		.resultsTableDiv{
-			/*margin: 10px 5px 5px 10px;*/
+			flex-grow: 0.5;
 		}
 		.resultsEnergyDiv {
-			margin-top: 20px;
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
 			justify-content: space-evenly;
-			flex-grow: 1;
+			flex-grow: 0.5;
 		}
 		#highlightInfo {
 			font-weight: bold;
@@ -134,6 +169,9 @@ cover: /assets/images/symmetry.jpg
 				<option value="square antiprism">&nbsp;四方反棱柱&nbsp;</option>
 			</select></div>&emsp;</nobr></li>
 			<li onclick="calculate()" title="开始计算晶体场分离能"><nobr><i class="fa-solid fa-calculator"></i><b>&nbsp;开始计算</b></nobr></li>
+		</ul>
+		<ul class="nav_right">
+			<li onclick="openInstructionDialog()" title="点击查看使用说明"><nobr><i class="fa-solid fa-circle-info"></i><b>&nbsp;使用说明</b>&emsp;</nobr></li>
 		</ul>
 	</div>
 	<dialog id="coordinatesDialog"><form method="dialog"><center>
@@ -171,23 +209,28 @@ cover: /assets/images/symmetry.jpg
     			</table>
   			</div>
   			<div class="resultsEnergyDiv" id="resultsEnergy">
-  				<canvas id="canvas"></canvas>
   				<p id="highlightInfo"></p>
+  				<canvas id="canvas"></canvas>
   			</div>
   		</div>
-  		<div class="axesDiv"></div>
+  		<div class="axesDiv">
+  			<div id="molViewDiv" class="mol-container"></div>
+  		</div>
     </div>
-    <!--<dialog id="geometryDialog"><form method="dialog"><center>
-		<p>
-			<input type="radio" id="Custom" name="selectGeometry" value="Custom"/><label for="Custom">Custom</label>
-			<input type="radio" id="Linear" name="selectGeometry" value="Linear"/><label for="tLinearet">Linear</label>
-			<input type="radio" id="Triangle" name="selectGeometry" value="Triangle"/><label for="Triangle">Triangle</label>
-		</p>
-		<div>
-      		<button value="0">Cancel</button>
-      		<button value="1">Confirm</button>
-    	</div>
-    </center></form></dialog>-->
+    <dialog id="instructionDialog"><form method="dialog">
+		<h3 style="text-align: center;">使用说明</h3>
+		<p><b>功能介绍：</b>本页面可用于计算不同配位构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道的分裂情况，计算过程假设所有配体距离中心原子距离相同。</p>
+		<p><b>使用方法：</b></p><p style="padding-left: 2rem;"><table style="text-align: left;">
+			<tr><td>①点击【配体坐标】可查看并修改所有配体在球坐标系下的坐标，页面右侧会显示当前的分子配位构型。</td></tr>
+			<tr><td>②点击【预设构型】可在下拉菜单中选择网站预设的常见构型，包括直线型、正四面体、正八面体等。</td></tr>
+			<tr><td>③点击【开始计算】即可计算当前构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道分裂情况。</td></tr>
+			<tr><td>④计算结束后页面左上角的表格会显示（更新）每条轨道的详细信息，同时左下角会显示（更新）能量分裂情况。</td></tr>
+			<tr><td>⑤点击表格第一列的轨道名称会显示（更新）此轨道的能量与组成成分，同时在坐标轴中以红色高亮显示。</td></tr>
+		</table></p>
+		<div style="text-align: center;">
+      		<button><i class="fa-regular fa-circle-xmark"></i>&nbsp;关闭窗口</button>
+    	</div><!--①②③④⑤⑥⑦⑧⑨⑩-->
+    </form></dialog>
 </body>
 <script type="text/javascript">
 	//var coordinatesArray;
@@ -200,16 +243,20 @@ cover: /assets/images/symmetry.jpg
 	//canvas.width = "230";
 	//canvas.height = "200";
 	var coordinatesDialog = document.getElementById("coordinatesDialog");
-	var geometryDialog = document.getElementById("geometryDialog");
+	var instructionDialog = document.getElementById("instructionDialog");
 	var tableMemory = document.getElementById("coordinatesTable").innerHTML;
-	//var selectGeometry = document.getElementsByName("selectGeometry");
+
+	var element = document.querySelector('#molViewDiv');
+	var config = { backgroundColor: 'white' };
+	var viewer = $3Dmol.createViewer( element, config );
+	showMol();
 
 	if (typeof coordinatesDialog.showModal !== "function") {
   		coordinatesDialog.hidden = true;
   	}
-  	//if (typeof geometryDialog.showModal !== "function") {
-  	//	geometryDialog.hidden = true;
-  	//}
+  	if (typeof instructionDialog.showModal !== "function") {
+  		instructionDialog.hidden = true;
+  	}
 
   	//document.querySelectorAll('input[name="selectGeometry"]').forEach((element) => {
     //	element.addEventListener("change", function(event) {
@@ -220,7 +267,6 @@ cover: /assets/images/symmetry.jpg
 
   	coordinatesDialog.addEventListener("close", () => {
   		if (coordinatesDialog.returnValue == 1)
-  			//console.log('Confirm');
   			updateCoordinatesTable();
   		else {
   			var table = document.getElementById("coordinatesTable");
@@ -232,6 +278,53 @@ cover: /assets/images/symmetry.jpg
 	window.onresize = function() {
 		setCanvasSize();
 		ctx.font = "16px LMMath";
+	}
+
+	function showMol() {
+		viewer.clear();
+		var coordinatesArray = math.transpose(table2array());
+		var phi = coordinatesArray[0];
+		var theta = coordinatesArray[1];
+		var cartesianArray = math.multiply(7.5, math.transpose([math.dotMultiply(math.map(theta, math.sin), math.map(phi, math.cos)), math.dotMultiply(math.map(theta, math.sin), math.map(phi, math.sin)), math.map(theta, math.cos)]));
+		for (let index = 0; index < cartesianArray.length; index++) {
+			viewer.addSphere({
+				center: {x:cartesianArray[index][0], y:cartesianArray[index][1], z:cartesianArray[index][2]},
+				radius: 1.0,
+				color: '#CCCCCC'
+			});
+			viewer.addCylinder({
+				start:{x:0.0,y:0.0,z:0.0},
+    	    	end:{x:cartesianArray[index][0],y:cartesianArray[index][1],z:cartesianArray[index][2]},
+    	    	radius:0.3,
+    	    	color:'#EEE9E9',
+    		});
+		}
+		viewer.addSphere({
+			center: {x:0, y:0, z:0},
+			radius: 1.5,
+			color: '#FF7A60'
+		});
+		viewer.zoomTo();
+		viewer.render();
+	}
+
+	function openCoordinatesDialog() {
+		if (typeof coordinatesDialog.showModal === "function") {
+    		coordinatesDialog.showModal();
+    		tableMemory = document.getElementById("coordinatesTable").innerHTML;
+  		}
+  		else {
+    		alert("Sorry, the <dialog> API is not supported by this browser.");
+  		}
+	}
+
+	function openInstructionDialog() {
+		if (typeof instructionDialog.showModal === "function") {
+    		instructionDialog.showModal();
+  		}
+  		else {
+    		alert("Sorry, the <dialog> API is not supported by this browser.");
+  		}
 	}
 
 	function setCanvasSize() {
@@ -345,7 +438,7 @@ cover: /assets/images/symmetry.jpg
 		//coordinatesArray = math.transpose(table2array());
 		if (document.getElementById("coordinatesTable").innerHTML != tableMemory)
 			document.getElementById("selectGeometry").options[0].selected = true;
-        //showmol(CN_Table);
+        showMol();
         //orbital_Patch=cell(5,2);
         //set(DisOrb1,'Value',0);
         //set(DisOrb2,'Value',0);
@@ -368,6 +461,7 @@ cover: /assets/images/symmetry.jpg
 			for (let i = oldValue; i > newValue; i--)
 				table.deleteRow(i);
 		}
+		showMol();
 	}
 
 	function setGeometry(geometry) {
@@ -402,7 +496,7 @@ cover: /assets/images/symmetry.jpg
 				fillTable(8, ['0', 'asin(sqrt(2/3))', 'pi/2', 'asin(sqrt(2/3))', 'pi', 'asin(sqrt(2/3))', '3*pi/2', 'asin(sqrt(2/3))', 'pi/4', 'pi-asin(sqrt(2/3))', '3*pi/4', 'pi-asin(sqrt(2/3))', '5*pi/4', 'pi-asin(sqrt(2/3))', '7*pi/4', 'pi-asin(sqrt(2/3))']);
 				break;
 		}
-		//showmol(CN_Table);
+		showMol();
 	}
 
 	function fillTable(number, coordinates) {
@@ -414,25 +508,6 @@ cover: /assets/images/symmetry.jpg
 			table.rows[row_index].cells[1].innerHTML = coordinates[2 * row_index - 1];
 		}
 	}
-
-	function openCoordinatesDialog() {
-		if (typeof coordinatesDialog.showModal === "function") {
-    		coordinatesDialog.showModal();
-    		tableMemory = document.getElementById("coordinatesTable").innerHTML;
-  		}
-  		else {
-    		alert("Sorry, the <dialog> API is not supported by this browser.");
-  		}
-	}
-
-	//function openGeometryDialog() {
-	//	if (typeof geometryDialog.showModal === "function") {
-    //		geometryDialog.showModal();
-  	//	}
-  	//	else {
-    //		alert("Sorry, the <dialog> API is not supported by this browser.");
-  	//	}
-	//}
 
 	function table2array() {
 		var array = Array();
