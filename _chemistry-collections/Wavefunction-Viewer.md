@@ -19,10 +19,7 @@ cover: /assets/images/nebula.jpg
 	<script src="/assets/js/WindowResize.js" type="text/javascript"></script>
 	<script src="/assets/js/MarchingCubes.js" type="text/javascript"></script>
 	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
-	<!--<script src="/assets/js/KeyboardState.js" type="text/javascript"></script>-->
-	<!--<script src="https://cdn.jsdelivr.net/npm/three-trackballcontrols@0.9.0/index.min.js"></script>-->
 	<style>
-
 		.red_light {
 			border: none;
 			border-radius: 10px;
@@ -59,8 +56,7 @@ cover: /assets/images/nebula.jpg
 			to {
 				opacity: 0.2;
 			}
-}
-
+		}
 	</style>
 </head>
 <body>
@@ -294,6 +290,7 @@ cover: /assets/images/nebula.jpg
 	function delIso() {
 		for (var index = 0; index < meshArray.length; index++)
 			scene.remove(meshArray[index]);
+		meshArray = [];
 	}
 
 	function animate() {

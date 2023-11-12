@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: none
 title: 晶体场分裂能计算器
-cover: /assets/images/symmetry.jpg
+cover: /assets/images/crystal shards.jpg
 ---
 <!--more-->
 
@@ -12,7 +12,12 @@ cover: /assets/images/symmetry.jpg
 	<title>晶体场分裂能计算器</title>
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js"></script>-->
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
+	<script src="/assets/js/Detector.js" type="text/javascript"></script>
+	<!--<script src="/assets/js/WindowResize.js" type="text/javascript"></script>-->
+	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
 	<style>
 		@font-face {
 			font-family: LMMath;
@@ -32,9 +37,6 @@ cover: /assets/images/symmetry.jpg
 			text-align: center;
 			width: 100%;
 			font-family: LMMath, Cambria Math, Times New Roman;
-		}
-		canvas {
-			/*height: 200px;*/
 		}
 		.nav {
 			display: flex;
@@ -134,7 +136,6 @@ cover: /assets/images/symmetry.jpg
 		.axesDiv {
 			/*margin: 10px 10px 10px 5px;*/
 			height: 100%;
-			background-color: #00ff0022;
 			flex: 1 auto 0;
 		}
 		.resultsTableDiv{
@@ -213,19 +214,19 @@ cover: /assets/images/symmetry.jpg
   				<canvas id="canvas"></canvas>
   			</div>
   		</div>
-  		<div class="axesDiv">
-  			<div id="molViewDiv" class="mol-container"></div>
+  		<div class="axesDiv" id="axesDiv">
+  			<div id="molViewDiv"></div><!--class="mol-container"-->
   		</div>
     </div>
     <dialog id="instructionDialog"><form method="dialog">
 		<h3 style="text-align: center;">使用说明</h3>
-		<p><b>功能介绍：</b>本页面可用于计算不同配位构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道的分裂情况，计算过程假设所有配体距离中心原子距离相同。</p>
-		<p><b>使用方法：</b></p><p style="padding-left: 2rem;"><table style="text-align: left;">
+		<p><h4>功能介绍：</h4>本页面可用于计算不同配位构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道的分裂情况，计算过程假设所有配体距离中心原子距离相同。</p>
+		<p><h4>使用方法：</h4><table style="text-align: left;">
 			<tr><td>①点击【配体坐标】可查看并修改所有配体在球坐标系下的坐标，页面右侧会显示当前的分子配位构型。</td></tr>
 			<tr><td>②点击【预设构型】可在下拉菜单中选择网站预设的常见构型，包括直线型、正四面体、正八面体等。</td></tr>
 			<tr><td>③点击【开始计算】即可计算当前构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道分裂情况。</td></tr>
 			<tr><td>④计算结束后页面左上角的表格会显示（更新）每条轨道的详细信息，同时左下角会显示（更新）能量分裂情况。</td></tr>
-			<tr><td>⑤点击表格第一列的轨道名称会显示（更新）此轨道的能量与组成成分，同时在坐标轴中以红色高亮显示。</td></tr>
+			<tr><td>⑤点击表格第一列的轨道编号会显示（更新）此轨道的能量与组成成分，同时在坐标轴中以红色高亮显示。</td></tr>
 		</table></p>
 		<div style="text-align: center;">
       		<button><i class="fa-regular fa-circle-xmark"></i>&nbsp;关闭窗口</button>
@@ -233,9 +234,10 @@ cover: /assets/images/symmetry.jpg
     </form></dialog>
 </body>
 <script type="text/javascript">
-	//var coordinatesArray;
+	var scene, camera, renderer, controls;
 	var energyRational, energyFloat, orbital, coefficient, orbitalPosition;
 	var calculateComplete = false;
+	var objArray = [];
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext("2d");
 	setCanvasSize();
@@ -245,11 +247,9 @@ cover: /assets/images/symmetry.jpg
 	var coordinatesDialog = document.getElementById("coordinatesDialog");
 	var instructionDialog = document.getElementById("instructionDialog");
 	var tableMemory = document.getElementById("coordinatesTable").innerHTML;
-
-	var element = document.querySelector('#molViewDiv');
-	var config = { backgroundColor: 'white' };
-	var viewer = $3Dmol.createViewer( element, config );
+	initScene();
 	showMol();
+	animate();
 
 	if (typeof coordinatesDialog.showModal !== "function") {
   		coordinatesDialog.hidden = true;
@@ -278,34 +278,81 @@ cover: /assets/images/symmetry.jpg
 	window.onresize = function() {
 		setCanvasSize();
 		ctx.font = "16px LMMath";
+		var canvasWidth = document.getElementById("axesDiv").clientWidth, canvasHeight = document.getElementById("axesDiv").clientHeight;
+		renderer.setSize(canvasWidth, canvasHeight);
+		camera.aspect = canvasWidth / canvasHeight;
+		camera.updateProjectionMatrix();
+	}
+
+	function initScene() {
+		scene = new THREE.Scene();
+		var canvasWidth = document.getElementById("axesDiv").clientWidth, canvasHeight = document.getElementById("axesDiv").clientHeight;
+		var viewAngle = 45, aspect = canvasWidth / canvasHeight, near = 0.1, far = 20000;
+		camera = new THREE.PerspectiveCamera(viewAngle, aspect, near, far);
+		scene.add(camera);
+		camera.position.set(30,0,10);
+		camera.lookAt(scene.position);
+		if (Detector.webgl)
+			renderer = new THREE.WebGLRenderer({antialias:true});
+		else
+			renderer = new THREE.CanvasRenderer();
+		renderer.setSize(canvasWidth, canvasHeight);
+		renderer.localClippingEnabled = true;
+		renderer.setClearColor(0xffffff, 1);
+		document.getElementById('molViewDiv').appendChild(renderer.domElement);
+		controls = new THREE.OrbitControls(camera, renderer.domElement);
+		controls.enablePan = false;
+		const ambientLight = new THREE.AmbientLight(0x404040);
+		scene.add(ambientLight);
+		const directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
+		directionalLight.position.set(1, 1, 1);
+		scene.add(directionalLight);
+		var centerGeometry = new THREE.SphereGeometry(1.5, 32, 16);
+		var centerMaterial = new THREE.MeshPhongMaterial({color: 0xff7a60});
+		var centerSphere = new THREE.Mesh(centerGeometry, centerMaterial);
+		scene.add(centerSphere);
+	}
+
+	function animate() {
+		requestAnimationFrame(animate);
+		renderer.render(scene, camera);
+		controls.update();
+	}
+
+	function displayOrbital() {
+
 	}
 
 	function showMol() {
-		viewer.clear();
+		var simpleGeometry = new THREE.SphereGeometry(1, 32, 16);
+		var simpleMaterial = new THREE.MeshPhongMaterial({color: 0xcccccc});
+
+		for (let index = 0; index < objArray.length; index++)
+			scene.remove(objArray[index]);
+		objArray = [];
+
 		var coordinatesArray = math.transpose(table2array());
 		var phi = coordinatesArray[0];
 		var theta = coordinatesArray[1];
 		var cartesianArray = math.multiply(7.5, math.transpose([math.dotMultiply(math.map(theta, math.sin), math.map(phi, math.cos)), math.dotMultiply(math.map(theta, math.sin), math.map(phi, math.sin)), math.map(theta, math.cos)]));
+
 		for (let index = 0; index < cartesianArray.length; index++) {
-			viewer.addSphere({
-				center: {x:cartesianArray[index][0], y:cartesianArray[index][1], z:cartesianArray[index][2]},
-				radius: 1.0,
-				color: '#CCCCCC'
-			});
-			viewer.addCylinder({
-				start:{x:0.0,y:0.0,z:0.0},
-    	    	end:{x:cartesianArray[index][0],y:cartesianArray[index][1],z:cartesianArray[index][2]},
-    	    	radius:0.3,
-    	    	color:'#EEE9E9',
-    		});
+			objArray.push(new THREE.Mesh(simpleGeometry, simpleMaterial));
+			objArray[objArray.length - 1].position.set(cartesianArray[index][0], cartesianArray[index][1], cartesianArray[index][2]);
+			scene.add(objArray[objArray.length - 1]);
+			objArray.push(createCylinder([cartesianArray[index][0], cartesianArray[index][1], cartesianArray[index][2]]));
+			scene.add(objArray[objArray.length - 1]);
 		}
-		viewer.addSphere({
-			center: {x:0, y:0, z:0},
-			radius: 1.5,
-			color: '#FF7A60'
-		});
-		viewer.zoomTo();
-		viewer.render();
+	}
+
+	function createCylinder(directionArray) {
+		var cylinderGeometry = new THREE.CylinderGeometry(0.3, 0.3, 7.5, 32, 1);
+		var cylinder = new THREE.Mesh(cylinderGeometry, new THREE.MeshPhongMaterial({color: 0xeee9e9}));
+    	var normalizedDirectionArray = math.divide(directionArray, 7.5);
+    	var directionVector = new THREE.Vector3(normalizedDirectionArray[0], normalizedDirectionArray[1], normalizedDirectionArray[2]);
+    	cylinder.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), directionVector);
+    	cylinder.position.set(directionArray[0] / 2, directionArray[1] / 2, directionArray[2] / 2);
+    	return cylinder;
 	}
 
 	function openCoordinatesDialog() {
