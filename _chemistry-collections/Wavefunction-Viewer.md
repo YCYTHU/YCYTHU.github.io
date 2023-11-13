@@ -112,11 +112,6 @@ cover: /assets/images/nebula.jpg
 	var resolution_gui = Options_gui.add(controls, 'Resolution', 20, 160).step(1);
 	var box_size_gui = Options_gui.add(controls, 'Box_Size', 5, 160).step(5).name("Box Size");
 
-	//var Camera_gui = gui.addFolder('Camera (developing)');
-	//var camera_radius_gui = Camera_gui.add(controls, 'Camera_Radius', 5, 200).step(5).name("Radius");
-	//var camera_azimuth_gui = Camera_gui.add(controls, 'Camera_Azimuth', 0, 2 * Math.PI).step(Math.PI / 25).name("Azimuth");
-	//var camera_elevation_gui = Camera_gui.add(controls, 'Camera_Elevation', -Math.PI / 2, Math.PI / 2).step(Math.PI / 50).name("Elevation");
-
 	var Rotate_gui = gui.addFolder('Rotate');
 	Rotate_gui.open();
 	var R_x_gui = Rotate_gui.add(controls, 'R_x').name("Enable X-axis");
@@ -124,10 +119,11 @@ cover: /assets/images/nebula.jpg
 	var R_z_gui = Rotate_gui.add(controls, 'R_z').name("Enable Z-axis");
 
 	init();
-
 	setNLM();
-
 	animate();
+
+	var threeCanvas = document.getElementById("ThreeJS").querySelector("canvas");
+	threeCanvas.style.outline = "none";
 
 	nState_gui.onFinishChange(function(value) {
 		new_box_size = Math.round((2 * value**2 - value + 2) / 5) * 5;

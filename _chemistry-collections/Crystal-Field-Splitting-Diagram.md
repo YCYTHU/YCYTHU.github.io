@@ -12,11 +12,8 @@ cover: /assets/images/crystal shards.jpg
 	<title>晶体场分裂能计算器</title>
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js"></script>-->
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
 	<script src="/assets/js/Detector.js" type="text/javascript"></script>
-	<!--<script src="/assets/js/WindowResize.js" type="text/javascript"></script>-->
 	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
 	<style>
 		@font-face {
@@ -38,12 +35,18 @@ cover: /assets/images/crystal shards.jpg
 			width: 100%;
 			font-family: LMMath, Cambria Math, Times New Roman;
 		}
+		dialog {
+			max-width: 900px;
+		}
+		.greyDiv {
+			background-color: #f2f2f2;
+		}
 		.nav {
 			display: flex;
 			width: 100%;
-			background-color: #f2f2f2;
+			max-width: 950px;
 			justify-content: space-between;
-	    	/*height: 50px;*/
+			margin: 0 auto;
 		}
 		.nav_left {
 			padding-left: 40px;
@@ -58,9 +61,6 @@ cover: /assets/images/crystal shards.jpg
 		}
 		.selectDiv {
 			display: inline-flex;
-			/*display: inline-block;
-			align-items: center;
-			line-height: 50px;*/
 		}
 		.selectDiv select {
 			font-weight: bold;
@@ -71,10 +71,8 @@ cover: /assets/images/crystal shards.jpg
 	    	outline: 1px solid #000;
 	  		vertical-align: middle;
 	  		background: transparent;
-	  		/*width: 75px;*/
 	  		-webkit-appearance: none;
 	  		appearance: none;
-	  		/*padding-left: 5px;*/
 	  		border-radius: 10px;
 		}
 		.mol-container {
@@ -90,26 +88,25 @@ cover: /assets/images/crystal shards.jpg
 		}
 		#resultsTable {
 			height: 100%;
+			line-height: 1.5rem;
 		}
 		#resultsTable thead {
 			user-select: none;
 			font-weight: bold;
-			line-height: 25px;
+			line-height: 1.8rem;
 			font-size: 1.1rem;
-		}
-		#resultsTable td {
-			/*line-height: 25px;*/
 		}
 		.mathFont {
 			font-family: LMMath, Cambria Math, Times New Roman;
 		}
 		.container {
-			margin: .5rem;
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
 			justify-content: space-evenly;
 			height: 480px;
+			max-width: 950px;
+			margin: .5rem auto 0;
 		}
 		.infoDiv {
 			display: flex;
@@ -137,24 +134,41 @@ cover: /assets/images/crystal shards.jpg
 			/*margin: 10px 10px 10px 5px;*/
 			height: 100%;
 			flex: 1 auto 0;
+			border: 2px solid #e6e6e6;
+			box-shadow: 5px 10px #e6e6e6;
+			border-radius: 5px;
 		}
 		.resultsTableDiv{
-			flex-grow: 0.5;
+			/*flex-grow: 0.5;*/
 		}
 		.resultsEnergyDiv {
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
-			justify-content: space-evenly;
-			flex-grow: 0.5;
+			justify-content: space-between;
+			flex-grow: 1;
+			margin-top: .5rem;
+			align-items: center;
 		}
 		#highlightInfo {
 			font-weight: bold;
+			border: 2px solid #e6e6e6;
+			border-radius: 5px;
+    		box-shadow: 3px 5px #e6e6e6;
+    		height: 250px;
+    		min-width: 10px;
+    		padding: 0.5rem;
+		}
+		#svg {
+			border: 2px solid #e6e6e6;
+			border-radius: 5px;
+    		box-shadow: 3px 5px #e6e6e6;
+			padding: 0.5rem;
 		}
 	</style>
 </head>
 <body>
-	<div class="nav">
+	<div class="greyDiv"><div class="nav">
 		<ul class="nav_left">
 			<li onclick="openCoordinatesDialog()" title="手动修改配体坐标"><nobr><i class="fas fa-table"></i><b>&nbsp;配体坐标</b>&emsp;</nobr></li>
 			<li title="选择预设几何构型"><nobr><i class="fa-solid fa-cubes"></i><b>&nbsp;预设构型：</b><div class="selectDiv"><select id="selectGeometry" onchange="setGeometry(this.value)">
@@ -174,7 +188,7 @@ cover: /assets/images/crystal shards.jpg
 		<ul class="nav_right">
 			<li onclick="openInstructionDialog()" title="点击查看使用说明"><nobr><i class="fa-solid fa-circle-info"></i><b>&nbsp;使用说明</b>&emsp;</nobr></li>
 		</ul>
-	</div>
+	</div></div>
 	<dialog id="coordinatesDialog"><form method="dialog"><center>
 		<p><span>配体数量：</span><input id="coordinatesNumber" type="number" min="0" step="1" value="6" onchange="setCoordinatesNumber(this.value)" /></p>
 		<p>
@@ -210,27 +224,30 @@ cover: /assets/images/crystal shards.jpg
     			</table>
   			</div>
   			<div class="resultsEnergyDiv" id="resultsEnergy">
+  				
+  				<!--<canvas id="canvas"></canvas>-->
+  				<svg id="svg" version="1.0" xmlns="http://www.w3.org/2000/svg" width="300px" height="250px" viewBox="0 0 240 200"></svg>
   				<p id="highlightInfo"></p>
-  				<canvas id="canvas"></canvas>
+  				<!--<path fill="#f70" d="M0 0 h 3.375 V 14.5 h 0.75 V 0 h 3.375 V 18 h -2 V 24 h -3.5 v -6 h -2 L 0 0 M8.25 0 h 7.5 v 9 h -3.375 v -5 h -0.75 V 20 h 0.75 V 9.5 h 3.375 V 24 h -7.5 L 8.25 0 M16.5 0 h 3.375 V 14.5 h 0.75 V 0 h 3.375 V 18 h -2 V 24 h -3.5 v -6 h -2 L 16.5 0"/>-->
   			</div>
   		</div>
   		<div class="axesDiv" id="axesDiv">
-  			<div id="molViewDiv"></div><!--class="mol-container"-->
+  			<div id="molViewDiv"></div>
   		</div>
     </div>
     <dialog id="instructionDialog"><form method="dialog">
 		<h3 style="text-align: center;">使用说明</h3>
-		<p><h4>功能介绍：</h4>本页面可用于计算不同配位构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道的分裂情况，计算过程假设所有配体距离中心原子距离相同。</p>
+		<p><h4>功能介绍：</h4>本页面可用于计算不同配位构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道的分裂情况，计算过程假设配体完全相同且距离中心原子距离相同。</p>
 		<p><h4>使用方法：</h4><table style="text-align: left;">
-			<tr><td>①点击【配体坐标】可查看并修改所有配体在球坐标系下的坐标，页面右侧会显示当前的分子配位构型。</td></tr>
-			<tr><td>②点击【预设构型】可在下拉菜单中选择网站预设的常见构型，包括直线型、正四面体、正八面体等。</td></tr>
+			<tr><td>①点击【配体坐标】可查看并修改所有配体在球坐标系下的坐标，页面右侧（或下方）的可视化区会显示当前配位构型。</td></tr>
+			<tr><td>②点击【预设构型】可在下拉菜单中选择页面预先配置完成的常见构型，包括直线型、正四面体、正八面体等。</td></tr>
 			<tr><td>③点击【开始计算】即可计算当前构型下晶体场理论所描述的 <span class="mathFont">d</span> 轨道分裂情况。</td></tr>
-			<tr><td>④计算结束后页面左上角的表格会显示（更新）每条轨道的详细信息，同时左下角会显示（更新）能量分裂情况。</td></tr>
-			<tr><td>⑤点击表格第一列的轨道编号会显示（更新）此轨道的能量与组成成分，同时在坐标轴中以红色高亮显示。</td></tr>
-		</table></p>
+			<tr><td>④计算结束后页面左上角的表格会显示（更新）每条轨道的详细信息，同时表格下方会显示（更新）能量分裂情况。</td></tr>
+			<tr><td>⑤点击表格第一列的轨道编号会在表格下方坐标区中以红色高亮显示对应轨道，并且显示（更新）此轨道的详细信息（包括能量与轨道组成成分等），而且在可视化区域也会显示此轨道的等值面。</td></tr>
+		</table></p><!--①②③④⑤⑥⑦⑧⑨⑩-->
 		<div style="text-align: center;">
       		<button><i class="fa-regular fa-circle-xmark"></i>&nbsp;关闭窗口</button>
-    	</div><!--①②③④⑤⑥⑦⑧⑨⑩-->
+    	</div>
     </form></dialog>
 </body>
 <script type="text/javascript">
@@ -238,18 +255,15 @@ cover: /assets/images/crystal shards.jpg
 	var energyRational, energyFloat, orbital, coefficient, orbitalPosition;
 	var calculateComplete = false;
 	var objArray = [];
-	var canvas = document.getElementById('canvas');
-	var ctx = canvas.getContext("2d");
-	setCanvasSize();
-	ctx.font = "16px LMMath";
-	//canvas.width = "230";
-	//canvas.height = "200";
+	//setCanvasSize();
 	var coordinatesDialog = document.getElementById("coordinatesDialog");
 	var instructionDialog = document.getElementById("instructionDialog");
 	var tableMemory = document.getElementById("coordinatesTable").innerHTML;
 	initScene();
 	showMol();
 	animate();
+	var threeCanvas = document.getElementById("axesDiv").querySelector("canvas");
+	threeCanvas.style.outline = "none";
 
 	if (typeof coordinatesDialog.showModal !== "function") {
   		coordinatesDialog.hidden = true;
@@ -257,13 +271,6 @@ cover: /assets/images/crystal shards.jpg
   	if (typeof instructionDialog.showModal !== "function") {
   		instructionDialog.hidden = true;
   	}
-
-  	//document.querySelectorAll('input[name="selectGeometry"]').forEach((element) => {
-    //	element.addEventListener("change", function(event) {
-    //  		var geometry = event.target.value;
-    //  		console.log(geometry);
-    //	});
-  	//});
 
   	coordinatesDialog.addEventListener("close", () => {
   		if (coordinatesDialog.returnValue == 1)
@@ -276,8 +283,8 @@ cover: /assets/images/crystal shards.jpg
 	});
 
 	window.onresize = function() {
-		setCanvasSize();
-		ctx.font = "16px LMMath";
+		//setCanvasSize();
+		//ctx.font = "1rem LMMath";
 		var canvasWidth = document.getElementById("axesDiv").clientWidth, canvasHeight = document.getElementById("axesDiv").clientHeight;
 		renderer.setSize(canvasWidth, canvasHeight);
 		camera.aspect = canvasWidth / canvasHeight;
@@ -374,67 +381,68 @@ cover: /assets/images/crystal shards.jpg
   		}
 	}
 
-	function setCanvasSize() {
-		var div = document.getElementById("resultsEnergy");
-		var width = div.clientWidth;
-		var height = div.clientHeight;
-		if (width / height > 1.15) {
-			canvas.height = height.toString();
-			canvas.width = (1.15 * height).toString();
-			var scale = height / 200;
-		}
-		else {
-			canvas.width = width.toString();
-			canvas.height = (width / 1.15).toString();
-			var scale = width / 230;
-		}
-		ctx.scale(scale, scale);
-	}
+	//function setCanvasSize() {
+	//	var div = document.getElementById("resultsEnergy");
+	//	var width = 0.9 * div.clientWidth;
+	//	var height = 0.9 * div.clientHeight;
+	//	if (width / height > 1.15) {
+	//		canvas.height = height.toString();
+	//		canvas.width = (1.15 * height).toString();
+	//		var scale = height / 200;
+	//	}
+	//	else {
+	//		canvas.width = width.toString();
+	//		canvas.height = (width / 1.15).toString();
+	//		var scale = width / 230;
+	//	}
+	//	ctx.scale(scale, scale);
+	//}
 
 	function draworbital(energy) {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		orbitalPosition = [];
-		ctx.fillStyle = '#000';
-		ctx.shadowBlur = 0;
-		ctx.beginPath();
-		ctx.moveTo(20, 200);
-		ctx.lineTo(20, 0);
-		ctx.lineTo(15, 10);
-		ctx.moveTo(20, 0);
-		ctx.lineTo(25, 10);
-		ctx.fillText('Energy (Dq)', 30, 20);
-		ctx.stroke();
+		var allOrbitalEnergy = energy;
 		var energy_class = energy.reduce((obj, num) => [obj[num] = obj[num] || [], obj[num].push(num), obj][2], {});
 		energy = Object.keys(energy_class);
 		var range = Math.max(...energy) - Math.min(...energy);
+		var svg = document.getElementById("svg");
+		var text = '';
+		orbitalPosition = Array(5);
+
+		text += '<path id=\"axis\" stroke=\"black\" stroke-width=\"2\" d=\"M20 12 L20 200\"/>';
+		text += '<polygon id=\"arrow\" points=\"16,12 24,12 20,0\" fill=\"black\" stroke=\"none\"/>'
+		var yZero = 40 + 140 * Math.max(...energy) / range;
+		text += '<path id=\"zero\" stroke=\"black\" stroke-width=\"2\" stroke-dasharray=\"5, 5\" d=\"M5 ' + yZero.toString() + ' l220 0\" />';
 		for (let index = 0; index < energy.length; index ++) {
-			var orbitalenergy = Number(energy[index]);
-			var energy_num = energy_class[orbitalenergy].length;
-			var y = 40 + 140 * (Math.max(...energy) - orbitalenergy) / range;
+			var orbitalEnergy = Number(energy[index]);
+			var energy_num = energy_class[orbitalEnergy].length;
+			var y = 40 + 140 * (Math.max(...energy) - orbitalEnergy) / range;
 			switch (energy_num) {
 			case 1:
-				ctx.fillRect(100, y, 30, 2);
-				ctx.fillText(orbitalenergy.toFixed(2), 140, y);
-				orbitalPosition.push([100, y]);
+				let orbitalIndex11 = allOrbitalEnergy.indexOf(orbitalEnergy);
+				text += '<path id=\"Orbital' + (orbitalIndex11 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M100 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex11] = [100, y];
 				break;
 			case 2:
-				ctx.fillRect(75, y, 30, 2);
-				ctx.fillRect(125, y, 30, 2);
-				ctx.fillText(orbitalenergy.toFixed(2), 165, y);
-				orbitalPosition.push([75, y]);
-				orbitalPosition.push([125, y]);
+				let orbitalIndex21 = allOrbitalEnergy.indexOf(orbitalEnergy);
+				text += '<path id=\"Orbital' + (orbitalIndex21 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M75 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex21] = [75, y];
+				let orbitalIndex22 = allOrbitalEnergy.indexOf(orbitalEnergy, orbitalIndex21 + 1);
+				text += '<path id=\"Orbital' + (orbitalIndex22 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M125 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex22] = [125, y];
 				break;
 			case 3:
-				ctx.fillRect(50, y, 30, 2);
-				ctx.fillRect(100, y, 30, 2);
-				ctx.fillRect(150, y, 30, 2);
-				ctx.fillText(orbitalenergy.toFixed(2), 190, y);
-				orbitalPosition.push([50, y]);
-				orbitalPosition.push([100, y]);
-				orbitalPosition.push([150, y]);
+				let orbitalIndex31 = allOrbitalEnergy.indexOf(orbitalEnergy);
+				text += '<path id=\"Orbital' + (orbitalIndex31 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M50 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex31] = [50, y];
+				let orbitalIndex32 = allOrbitalEnergy.indexOf(orbitalEnergy, orbitalIndex31 + 1);
+				text += '<path id=\"Orbital' + (orbitalIndex32 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M100 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex32] = [100, y];
+				let orbitalIndex33 = allOrbitalEnergy.indexOf(orbitalEnergy, orbitalIndex32 + 1);
+				text += '<path id=\"Orbital' + (orbitalIndex33 + 1).toString() + '\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M150 ' + y.toString() + ' l30 0\" />';
+				orbitalPosition[orbitalIndex33] = [150, y];
 				break;
 			}
 		}
+		svg.innerHTML = text;
 	}
 
 	function draworbitalInfo(index) {
@@ -456,28 +464,35 @@ cover: /assets/images/crystal shards.jpg
 	}
 
   	function highlightorbital(index) {
-  		draworbital(energyFloat);
   		var tr = document.getElementById('orbitalTr' + index);
+  		var svg = document.getElementById("svg");
+  		var orbital = svg.querySelector('#Orbital' + index);
   		if (tr.style.backgroundColor == '') {
   			tr.style.backgroundColor = '#e6e6e6';
   			tr.style.fontWeight = 'bold';
   			draworbitalInfo(index - 1);
-  			ctx.fillStyle = '#f00';
-  			ctx.shadowColor = '#f00';
-  			ctx.shadowBlur = 10;
-  			ctx.fillRect(orbitalPosition[index - 1][0], orbitalPosition[index - 1][1], 30, 2);
+  			newText = orbital.outerHTML.replace('black', 'red');
+  			newText = newText.replace('stroke-width=\"2\"', 'stroke-width=\"4\"');
+  			orbital.outerHTML = newText;
   		}
   		else {
   			tr.style.backgroundColor = '';
   			tr.style.fontWeight = '';
   			document.getElementById("highlightInfo").innerHTML = '';
+  			newText = orbital.outerHTML.replace('red', 'black');
+  			newText = newText.replace('stroke-width=\"4\"', 'stroke-width=\"2\"');
+  			orbital.outerHTML = newText;
   		}
-  		for (var nIndex = 1; nIndex <= 5; nIndex ++) {
+  		for (var nIndex = 1; nIndex <= 5; nIndex++) {
   			if (nIndex == index)
   				continue;
-  			var tr = document.getElementById('orbitalTr' + nIndex);
+  			tr = document.getElementById('orbitalTr' + nIndex);
   			tr.style.backgroundColor = '';
   			tr.style.fontWeight = '';
+  			orbital = svg.querySelector('#Orbital' + nIndex);
+  			newText = orbital.outerHTML.replace('red', 'black');
+  			newText = newText.replace('stroke-width=\"4\"', 'stroke-width=\"2\"');
+  			orbital.outerHTML = newText;
   		}
   	}
 
@@ -562,7 +577,6 @@ cover: /assets/images/crystal shards.jpg
 		var row_number = table.rows.length - 1;
 		for (let row_index = 1; row_index <= row_number; row_index++)
 				array[row_index - 1] = [math.evaluate(table.rows[row_index].cells[0].innerHTML), math.evaluate(table.rows[row_index].cells[1].innerHTML)];
-		//console.log(array);
   		return array;
 	}
 
@@ -577,7 +591,7 @@ cover: /assets/images/crystal shards.jpg
 	}
 
 	function calculate() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		//ctx.clearRect(0, 0, canvas.width, canvas.height);
 		var coordinatesArray = math.transpose(table2array());
 		//console.log(coordinatesArray);
 		var phi = coordinatesArray[0];
@@ -644,7 +658,6 @@ cover: /assets/images/crystal shards.jpg
         var Hamilton = Array(Array(), Array());
         Hamilton[0] = [[H_11[0], H_12[0], H_13[0], H_14[0], H_15[0]], [H_12[0], H_22[0], H_23[0], H_24[0], H_25[0]], [H_13[0], H_23[0], H_33[0], H_34[0], H_35[0]], [H_14[0], H_24[0], H_34[0], H_44[0], H_45[0]], [H_15[0], H_25[0], H_35[0], H_45[0], H_55[0]]];
         Hamilton[1] = [[H_11[1], H_12[1], H_13[1], H_14[1], H_15[1]], [H_12[1], H_22[1], H_23[1], H_24[1], H_25[1]], [H_13[1], H_23[1], H_33[1], H_34[1], H_35[1]], [H_14[1], H_24[1], H_34[1], H_44[1], H_45[1]], [H_15[1], H_25[1], H_35[1], H_45[1], H_55[1]]];
-        //console.log(Hamilton);
 
         var energy = [math.eigs(Hamilton[0]), math.eigs(Hamilton[1]).values];
         orbital = energy[0].vectors;
@@ -667,7 +680,6 @@ cover: /assets/images/crystal shards.jpg
 				array[index] = rn[0].toString() + '/' + rn[1].toString();
 			}
 		})
-		//console.log(array);
 		return array;
 	}
 
@@ -683,7 +695,6 @@ cover: /assets/images/crystal shards.jpg
 				}
 			})
 		})
-		//console.log(array);
 		return array;
 	}
 
@@ -707,7 +718,6 @@ cover: /assets/images/crystal shards.jpg
     	}
     	var N = C[0][0] / Math.sign(C[1][0]);
     	var D = Math.abs(C[1][0]);
-    	//console.log([N, D]);
     	return [N, D];
 	}
 </script>
