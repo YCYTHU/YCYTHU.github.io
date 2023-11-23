@@ -14,6 +14,7 @@ cover: /assets/images/crystal shards.jpg
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
 	<script src="/assets/js/Detector.js" type="text/javascript"></script>
+	<script src="/assets/js/MarchingCubes.js" type="text/javascript"></script>
 	<script src="/assets/js/OrbitControls@2.110.3.js" type="text/javascript"></script>
 	<style>
 		@font-face {
@@ -224,7 +225,6 @@ cover: /assets/images/crystal shards.jpg
     			</table>
   			</div>
   			<div class="resultsEnergyDiv" id="resultsEnergy">
-  				
   				<!--<canvas id="canvas"></canvas>-->
   				<svg id="svg" version="1.0" xmlns="http://www.w3.org/2000/svg" width="300px" height="250px" viewBox="0 0 240 200"></svg>
   				<p id="highlightInfo"></p>
@@ -253,15 +253,19 @@ cover: /assets/images/crystal shards.jpg
 <script type="text/javascript">
 	var scene, camera, renderer, controls;
 	var energyRational, energyFloat, orbital, coefficient, orbitalPosition;
+	var points = [];
+	var isovalue = 0.01, pos_color = 0x9370DB, neg_color = 0xEEE9E9;
 	var calculateComplete = false;
-	var objArray = [];
-	//setCanvasSize();
+	var objArray = [],  meshArray = [];
+	var dOrbitalData = [], eigenOrbitalData = [];
+	var resolution = 32, axisMin = -15, axisRange = 30;
 	var coordinatesDialog = document.getElementById("coordinatesDialog");
 	var instructionDialog = document.getElementById("instructionDialog");
 	var tableMemory = document.getElementById("coordinatesTable").innerHTML;
 	initScene();
 	showMol();
 	animate();
+	genGrid();
 	var threeCanvas = document.getElementById("axesDiv").querySelector("canvas");
 	threeCanvas.style.outline = "none";
 
@@ -326,8 +330,65 @@ cover: /assets/images/crystal shards.jpg
 		controls.update();
 	}
 
-	function displayOrbital() {
+	function displayOrbital(orbitalIndex) {
+		if (dOrbitalData.length == 0)
+			for (let index = 0; index < 5; index++)
+				calcOrbitalWFN(index);
+		if (eigenOrbitalData.length == 0)
+			eigenOrbitalData = math.multiply(math.transpose(orbital), dOrbitalData);
+		meshArray.push(Isosurface(points, eigenOrbitalData[orbitalIndex], isovalue, pos_color));
+		meshArray.push(Isosurface(points, eigenOrbitalData[orbitalIndex],-isovalue, neg_color));
+	}
 
+	function calcOrbitalWFN(index) {
+		dOrbitalData[index] = [];
+		var angular;
+		for (var k = 0; k < resolution; k++)
+			for (var j = 0; j < resolution; j++)
+				for (var i = 0; i < resolution; i++) {
+					var x = axisMin + axisRange * i / (resolution - 1);
+					var y = axisMin + axisRange * j / (resolution - 1);
+					var z = axisMin + axisRange * k / (resolution - 1);
+					var r = math.sqrt(x * x + y * y + z * z);
+					var radial = 2 * math.sqrt(2) / (27 * math.sqrt(5) * math.sqrt(27)) * math.exp(-r / 3);
+					switch (index) {
+						case 0:
+							angular = math.sqrt(15 / Math.PI) / 4 * (x * x - y * y);
+							break;
+						case 1:
+							angular = math.sqrt(15 / Math.PI) / 2 * (x * z);
+							break;
+						case 2:
+							angular = math.sqrt(5 / Math.PI) / 4 * (2 * z * z - x * x - y * y);
+							break;
+						case 3:
+							angular = math.sqrt(15 / Math.PI) / 2 * (y * z);
+							break;
+						case 4:
+							angular = math.sqrt(15 / Math.PI) / 2 * (x * y);
+							break;
+					}
+					dOrbitalData[index].push(radial * angular);
+				}
+	}
+
+	function genGrid() {
+		for (var k = 0; k < resolution; k++)
+			for (var j = 0; j < resolution; j++)
+				for (var i = 0; i < resolution; i++) {
+					var x = axisMin + axisRange * i / (resolution - 1);
+					var y = axisMin + axisRange * j / (resolution - 1);
+					var z = axisMin + axisRange * k / (resolution - 1);
+					points.push(new THREE.Vector3(x / 2, y / 2, z / 2));
+				}
+	}
+
+	function Isosurface(points, values, isovalue, isocolor) {
+		var geometry = MarchingCubes(points, values, isovalue);
+		var colorMaterial =  new THREE.MeshPhongMaterial({color: isocolor, side: THREE.DoubleSide, transparent: true, opacity: 0.5});
+		var mesh = new THREE.Mesh(geometry, colorMaterial);
+		scene.add(mesh);
+		return mesh
 	}
 
 	function showMol() {
@@ -337,6 +398,9 @@ cover: /assets/images/crystal shards.jpg
 		for (let index = 0; index < objArray.length; index++)
 			scene.remove(objArray[index]);
 		objArray = [];
+		scene.remove(meshArray[0]);
+		scene.remove(meshArray[1]);
+		meshArray = [];
 
 		var coordinatesArray = math.transpose(table2array());
 		var phi = coordinatesArray[0];
@@ -380,23 +444,6 @@ cover: /assets/images/crystal shards.jpg
     		alert("Sorry, the <dialog> API is not supported by this browser.");
   		}
 	}
-
-	//function setCanvasSize() {
-	//	var div = document.getElementById("resultsEnergy");
-	//	var width = 0.9 * div.clientWidth;
-	//	var height = 0.9 * div.clientHeight;
-	//	if (width / height > 1.15) {
-	//		canvas.height = height.toString();
-	//		canvas.width = (1.15 * height).toString();
-	//		var scale = height / 200;
-	//	}
-	//	else {
-	//		canvas.width = width.toString();
-	//		canvas.height = (width / 1.15).toString();
-	//		var scale = width / 230;
-	//	}
-	//	ctx.scale(scale, scale);
-	//}
 
 	function draworbital(energy) {
 		var allOrbitalEnergy = energy;
@@ -464,28 +511,13 @@ cover: /assets/images/crystal shards.jpg
 	}
 
   	function highlightorbital(index) {
+  		if (!calculateComplete)
+			return;
   		var tr = document.getElementById('orbitalTr' + index);
+  		var flg = tr.style.backgroundColor == '';
+  		var orbital;
   		var svg = document.getElementById("svg");
-  		var orbital = svg.querySelector('#Orbital' + index);
-  		if (tr.style.backgroundColor == '') {
-  			tr.style.backgroundColor = '#e6e6e6';
-  			tr.style.fontWeight = 'bold';
-  			draworbitalInfo(index - 1);
-  			newText = orbital.outerHTML.replace('black', 'red');
-  			newText = newText.replace('stroke-width=\"2\"', 'stroke-width=\"4\"');
-  			orbital.outerHTML = newText;
-  		}
-  		else {
-  			tr.style.backgroundColor = '';
-  			tr.style.fontWeight = '';
-  			document.getElementById("highlightInfo").innerHTML = '';
-  			newText = orbital.outerHTML.replace('red', 'black');
-  			newText = newText.replace('stroke-width=\"4\"', 'stroke-width=\"2\"');
-  			orbital.outerHTML = newText;
-  		}
   		for (var nIndex = 1; nIndex <= 5; nIndex++) {
-  			if (nIndex == index)
-  				continue;
   			tr = document.getElementById('orbitalTr' + nIndex);
   			tr.style.backgroundColor = '';
   			tr.style.fontWeight = '';
@@ -493,21 +525,31 @@ cover: /assets/images/crystal shards.jpg
   			newText = orbital.outerHTML.replace('red', 'black');
   			newText = newText.replace('stroke-width=\"4\"', 'stroke-width=\"2\"');
   			orbital.outerHTML = newText;
+  			scene.remove(meshArray[0]);
+  			scene.remove(meshArray[1]);
+  			meshArray = [];
+  		}
+  		tr = document.getElementById('orbitalTr' + index);
+  		svg = document.getElementById("svg");
+  		orbital = svg.querySelector('#Orbital' + index);
+  		if (flg) {
+  			tr.style.backgroundColor = '#e6e6e6';
+  			tr.style.fontWeight = 'bold';
+  			draworbitalInfo(index - 1);
+  			newText = orbital.outerHTML.replace('black', 'red');
+  			newText = newText.replace('stroke-width=\"2\"', 'stroke-width=\"4\"');
+  			orbital.outerHTML = newText;
+  			displayOrbital(index - 1);
   		}
   	}
 
 	function updateCoordinatesTable() {
 		//coordinatesArray = math.transpose(table2array());
-		if (document.getElementById("coordinatesTable").innerHTML != tableMemory)
-			document.getElementById("selectGeometry").options[0].selected = true;
+		if (document.getElementById("coordinatesTable").innerHTML == tableMemory)
+			return;
+		document.getElementById("selectGeometry").options[0].selected = true;
+		calculateComplete = false;
         showMol();
-        //orbital_Patch=cell(5,2);
-        //set(DisOrb1,'Value',0);
-        //set(DisOrb2,'Value',0);
-        //set(DisOrb3,'Value',0);
-        //set(DisOrb4,'Value',0);
-        //set(DisOrb5,'Value',0);
-        //cla(Result_Axes);
 	}
 
 	function setCoordinatesNumber(newValue) {
@@ -559,6 +601,7 @@ cover: /assets/images/crystal shards.jpg
 				break;
 		}
 		showMol();
+		calculateComplete = false;
 	}
 
 	function fillTable(number, coordinates) {
@@ -591,9 +634,8 @@ cover: /assets/images/crystal shards.jpg
 	}
 
 	function calculate() {
-		//ctx.clearRect(0, 0, canvas.width, canvas.height);
+		eigenOrbitalData = [];
 		var coordinatesArray = math.transpose(table2array());
-		//console.log(coordinatesArray);
 		var phi = coordinatesArray[0];
 		var theta = coordinatesArray[1];
 		var cos_phi = math.map(phi, math.cos);
@@ -658,7 +700,7 @@ cover: /assets/images/crystal shards.jpg
         var Hamilton = Array(Array(), Array());
         Hamilton[0] = [[H_11[0], H_12[0], H_13[0], H_14[0], H_15[0]], [H_12[0], H_22[0], H_23[0], H_24[0], H_25[0]], [H_13[0], H_23[0], H_33[0], H_34[0], H_35[0]], [H_14[0], H_24[0], H_34[0], H_44[0], H_45[0]], [H_15[0], H_25[0], H_35[0], H_45[0], H_55[0]]];
         Hamilton[1] = [[H_11[1], H_12[1], H_13[1], H_14[1], H_15[1]], [H_12[1], H_22[1], H_23[1], H_24[1], H_25[1]], [H_13[1], H_23[1], H_33[1], H_34[1], H_35[1]], [H_14[1], H_24[1], H_34[1], H_44[1], H_45[1]], [H_15[1], H_25[1], H_35[1], H_45[1], H_55[1]]];
-
+        console.log(Hamilton[0]);
         var energy = [math.eigs(Hamilton[0]), math.eigs(Hamilton[1]).values];
         orbital = energy[0].vectors;
         energy[0] = energy[0].values;
@@ -668,6 +710,8 @@ cover: /assets/images/crystal shards.jpg
         coefficient = rats2(math.round(coefficient, 15));
         energyRational = rats1(math.re(energy[0]));
         showResult(energyRational, coefficient, number);
+        calculateComplete = true;
+        console.log(orbital, energy[0]);
 	}
 
 	function rats1(array) {
