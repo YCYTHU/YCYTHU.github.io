@@ -13,12 +13,10 @@ cover: /assets/images/excited state.jpg
 
 ## 使用方法
 
-在调用Gaussian对分子基态进行结构优化之后，运行此脚本：
+在调用Gaussian对分子基态进行结构优化之后，运行此脚本（将`fileName`替换为不含后缀的文件名）：
 
 ```bash
-g16 molecule.gjf
-formchk molecule.chk # Gaussian作业完成
-AutoExSts.sh molecule -S opt -T opt -n 24 -m 72 # 运行脚本自动续算激发态
+AutoExSts.sh fileName [-S <单重态任务类型>] [-T <三重态任务类型>] [-N <激发态数量>] [-R <感兴趣的激发态>] [-s <单重态模板文件>] [-t <三重态模板文件>] [-e] [-c] [-n <核心数>] [-m <内存>] 
 ```
 
 ## 可用选项
@@ -62,7 +60,7 @@ AutoExSts.sh molecule -S optfreq -T opt -N 6 -R 1
 AutoExSts.sh molecule -S sp -N 10 -R 1 -n 24 -m 72
 ```
 
-- 示例4：对第一单重激发态与第一三重激发态进行几何优化，单重激发态的计算方法使用template_for_singlet.gjf（文件内容见下方代码块）中的，三重激发态的计算方法与基态相同
+- 示例4：对第一单重激发态与第一三重激发态进行几何优化，单重激发态的计算方法（泛函、基组、溶剂模型等）使用template_for_singlet.gjf（文件内容见下方代码块）中的，三重激发态的计算方法与基态相同
 
 ```bash
 AutoExSts.sh molecule -S opt -T opt -s template_for_singlet.gjf
