@@ -1,28 +1,38 @@
 #!/bin/bash
-SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
+SCRIPT_DIR=/WORK/qiaoj_work/YCY
+#$(cd $(dirname ${BASH_SOURCE[0]}); pwd)
 if [ $# -lt 1 ]; then
-    echo "Help AutoExSts.sh at "`date +"%Y-%m-%d %H:%M:%S"` >> $SCRIPT_DIR/STAT
+    echo `date +"%Y-%m-%d %H:%M:%S"`" Help AutoExSts.sh" >> $SCRIPT_DIR/STAT
     echo 'usage: AutoExSts.sh MoleculeName -S opt -T sp -n 24 -m 72 -t template.gjf'
-    echo 'option:-[S task type for singlet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
-    echo '       -[T task type for triplet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
-    echo '       -[N number of states, default: 4]'
-    echo '       -[R index of root, default: 1]'
-    echo '       -[n number of cores, default: 16]'
-    echo '       -[m memory in GB, default: three times of number of cores]'
-    echo '       -[s template gjf file for singlet excited states, profiles from ground state will be used if not defined]' 
-    echo '       -[t template gjf file for triplet excited states, profiles from ground state will be used if not defined]' 
-    echo '       -[e print FMO energys and excitation energys to a text file]' 
-    echo '       -[c export FMO cube files of ground state and hole-electron cube files of excited state root]' 
+    echo 'option:-S [task type for singlet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
+    echo '       -T [task type for triplet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
+    echo '       -N [number of states, default: 4]'
+    echo '       -R [index of root, default: 1]'
+    echo '       -n [number of cores, default: 16]'
+    echo '       -m [memory in GB, default: three times of number of cores]'
+    echo '       -s [template gjf file for singlet excited states, profiles from ground state will be used if not defined]' 
+    echo '       -t [template gjf file for triplet excited states, profiles from ground state will be used if not defined]' 
+    echo '       -x [customize additional suffix for filenames]' 
+    echo '       -c [export FMO cube files of ground state and hole-electron cube files of excited state root]' 
+    echo '       -e [print FMO energys and excitation energys to a text file]' 
+    echo '       -p [generate input file(s) without submitting task(s)]' 
     exit 1
 fi
-echo "Exec AutoExSts.sh at "`date +"%Y-%m-%d %H:%M:%S"` >> $SCRIPT_DIR/STAT
+echo `date +"%Y-%m-%d %H:%M:%S"`" Exec AutoExSts.sh" >> $SCRIPT_DIR/STAT
+
+MULTIWFN_CMD=Multiwfn_noGUI
+GAUSSIAN_CMD=g16
+FORMCHK_CMD=formchk
+SCHEDULER=SLURM
 
 NPROC_DEFAULT=16
 MEM_DEFAULT=$((3*$NPROC_DEFAULT))
 NSTATES_DEFAULT=4
 ROOT_DEFAULT=1
+
 EXPORT_CUBE=false
 PRINT_ENERGY=false
+POSTPONE=false
 
 FILENAME=$1
 if [ -f $FILENAME".gjf" ] && [ -f $FILENAME".fchk" ] && [ -f $FILENAME".log" ];then
@@ -37,16 +47,19 @@ if [ -f $FILENAME".gjf" ] && [ -f $FILENAME".fchk" ] && [ -f $FILENAME".log" ];t
 else
     echo "Error!!! one or more of $FILENAME.gjf/.fchk/.log does NOT exist"
     echo "    <ERROR> Missing Gaussian files" >> $SCRIPT_DIR/STAT
+    exit 1
 fi
-while getopts ":cen:m:s:t:N:R:S:T:" opt
+while getopts ":cepn:m:s:t:x:N:R:S:T:" opt
 do
     case $opt in
         c) EXPORT_CUBE=true;;
         e) PRINT_ENERGY=true;;
+        p) POSTPONE=true;;
         n) NPROC=$OPTARG;;
         m) MEM=$OPTARG;;
         s) TEMPLATE_SINGLET=$OPTARG;;
         t) TEMPLATE_TRIPLET=$OPTARG;;
+        x) SUFFIX=$OPTARG;;
         N) NSTATES=$OPTARG;;
         R) ROOT=$OPTARG;;
         S) SINGLET=$OPTARG;;
@@ -55,36 +68,40 @@ do
            echo "    <ERROR> Missing argument" >> $SCRIPT_DIR/STAT
            exit 1;;
         ?) echo 'usage: AutoExSts.sh MoleculeName -S opt -T sp -n 24 -m 72 -t template.gjf'
-           echo 'option:-[S task type for singlet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
-           echo '       -[T task type for triplet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
-           echo '       -[N number of states, default: 4]'
-           echo '       -[R index of root, default: 1]'
-           echo '       -[n number of cores, default: 16]'
-           echo '       -[m memory in GB, default: three times of number of cores]'
-           echo '       -[s template gjf file for singlet excited states, profiles from ground state will be used if not defined]' 
-           echo '       -[t template gjf file for triplet excited states, profiles from ground state will be used if not defined]' 
-           echo '       -[e print FMO energys and excitation energys to a text file]' 
-           echo '       -[c export FMO cube files of ground state and hole-electron cube files of excited state root]' 
+           echo 'option:-S [task type for singlet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
+           echo '       -T [task type for triplet excited states, enumeration of {none, sp, opt, optfreq}, default: none]'
+           echo '       -N [number of states, default: 4]'
+           echo '       -R [index of root, default: 1]'
+           echo '       -n [number of cores, default: 16]'
+           echo '       -m [memory in GB, default: three times of number of cores]'
+           echo '       -s [template gjf file for singlet excited states, profiles from ground state will be used if not defined]' 
+           echo '       -t [template gjf file for triplet excited states, profiles from ground state will be used if not defined]' 
+           echo '       -x [customize additional suffix for filenames]' 
+           echo '       -c [export FMO cube files of ground state and hole-electron cube files of excited state root]' 
+           echo '       -e [print FMO energys and excitation energys to a text file]' 
+           echo '       -p [generate input file(s) without submitting task(s)]' 
            echo "    <ERROR> Unknown option" >> $SCRIPT_DIR/STAT
            exit 1;;
     esac
 done
 shift $(($OPTIND - 1))
 
-print_FMO_energy() {
-cat > script.txt << EOF 
+PRINT_FMO_ENERGY() {
+rand_name=`date +%s%N | md5sum | cut -c 1-8`
+cat > $rand_name".txt" << EOF 
 0
 q
 EOF
-Multiwfn_noGUI $1".fchk" < script.txt > $1"_Multiwfn.txt"
+$MULTIWFN_CMD $1".fchk" < $rand_name".txt" > $1"_$rand_name.txt"
 echo "当前数据来自：$1" >> $1"_Energy.txt"
-grep -E 'HOMO|LUMO' $1"_Multiwfn.txt"  >> $1"_Energy.txt"
-rm -f $1"_Multiwfn.txt"
-rm -f script.txt
+grep -E 'HOMO|LUMO' $1"_$rand_name.txt"  >> $1"_Energy.txt"
+rm -f $1"_$rand_name.txt"
+rm -f $rand_name".txt"
 }
 
-export_FMO_cube() {
-cat > script.txt << EOF 
+EXPORT_FMO_CUBE() {
+rand_name=`date +%s%N | md5sum | cut -c 1-8`
+cat > $rand_name".txt" << EOF 
 200
 3
 h
@@ -95,15 +112,15 @@ l
 0
 q
 EOF
-Multiwfn_noGUI $1".fchk" < script.txt > Multiwfn_out.txt
+$MULTIWFN_CMD $1".fchk" < $rand_name".txt" > /dev/null
 mv h.cub $1"_HOMO.cub"
 mv l.cub $1"_LUMO.cub"
-rm -f script.txt
-rm -f Multiwfn_out.txt
+rm -f $rand_name".txt"
 }
 
-gen_gjf_from_tmpl() {
-cat > script.txt << EOF 
+GEN_GJF_FROM_TMPL() {
+rand_name=`date +%s%N | md5sum | cut -c 1-8`
+cat > $rand_name".txt" << EOF 
 100
 2
 10
@@ -112,43 +129,43 @@ n
 0
 q
 EOF
-Multiwfn_noGUI $1 < script.txt > Multiwfn_out.txt
-rm -f script.txt
-rm -f Multiwfn_out.txt
+$MULTIWFN_CMD $1 < $rand_name".txt" > /dev/null
+rm -f $rand_name".txt"
 }
 
-gen_sub() {
-cat > $1".txt" << EOF 
+GEN_SLURM_SUB() {
+cat > $2".txt" << EOF 
 #!/bin/bash
-#SBATCH -J $1
+#SBATCH -J $2
 #SBATCH -p cnall
 #SBATCH -N 1
 #SBATCH -o stdout.%j
 #SBATCH -e stderr.%j
 #SBATCH --no-requeue
-#SBATCH --ntasks-per-node=$2
+#SBATCH --ntasks-per-node=$3
 
-g16 $1.gjf
-formchk $1.chk
+$GAUSSIAN_CMD $2.gjf
+$FORMCHK_CMD $2.chk
 EOF
-if [ "$3" = true ];then
-cat >> $1".txt" << EOF 
-echo "当前数据来自：$1" >> ${1//${1:(-3)}/_Energy.txt}
-logTail=\`tail -n 1 $1.log\`
-    if ! [[ \$logTail =~ "Normal termination of Gaussian" ]];then
-        echo "Error!!! Gaussian did NOT terminate normally" >> ${1//${1:(-3)}/_Energy.txt}
-        exit 1
-    fi
-grep 'Excited State\ ' $1.log | tail -$4 >> ${1//${1:(-3)}/_Energy.txt}
+if [ "$4" = true ];then
+cat >> $2".txt" << EOF 
+echo "当前数据来自：$2" >> $1_Energy.txt
+logTail=\`tail -n 1 $2.log\`
+if ! [[ \$logTail =~ "Normal termination of Gaussian" ]];then
+    echo "Error!!! Gaussian did NOT terminate normally" >> $1_Energy.txt
+    exit 1
+fi
+grep 'Excited State\ ' $2.log | tail -$5 >> $1_Energy.txt
 EOF
 fi
-if [ "$5" = true ];then
-cat >> $1".txt" << eof 
-cat > script.txt << EOF 
+if [ "$6" = true ];then
+cat >> $2".txt" << eof 
+rand_name=\`date +%s%N | md5sum | cut -c 1-8\`
+cat > \$rand_name".txt" << EOF 
 18
 1
-$1.log
-$6
+$2.log
+$7
 1
 2
 10
@@ -160,20 +177,74 @@ $6
 0
 q
 EOF
-Multiwfn_noGUI $1.fchk < script.txt > Multiwfn_out.txt
-mv hole.cub $1_hole.cub
-mv electron.cub $1_electron.cub
-rm -f script.txt
-rm -f Multiwfn_out.txt
+$MULTIWFN_CMD $2.fchk < \$rand_name".txt" > /dev/null
+mv hole.cub $2_hole.cub
+mv electron.cub $2_electron.cub
+rm -f \$rand_name".txt"
+eof
+fi
+}
+
+GEN_PBS_SUB() {
+cat > $2".txt" << EOF 
+#!/bin/bash
+#PBS -N $2
+#PBS -q medium
+#PBS -l nodes=1:ppn=$3
+#PBS -l walltime=320:00:00
+
+source /home/scicons/profiles/profile.g16
+export GAUSS_SCRDIR=\`mktemp -d\`
+cd \$PBS_O_WORKDIR
+cat \$PBS_NODEFILE
+env > env
+$GAUSSIAN_CMD $2.gjf
+$FORMCHK_CMD $2.chk
+rm -f \$GAUSS_SCRDIR
+EOF
+if [ "$4" = true ];then
+cat >> $2".txt" << EOF 
+echo "当前数据来自：$2" >> $1_Energy.txt
+logTail=\`tail -n 1 $2.log\`
+if ! [[ \$logTail =~ "Normal termination of Gaussian" ]];then
+    echo "Error!!! Gaussian did NOT terminate normally" >> $1_Energy.txt
+    exit 1
+fi
+grep 'Excited State\ ' $2.log | tail -$5 >> $1_Energy.txt
+EOF
+fi
+if [ "$6" = true ];then
+cat >> $2".txt" << eof 
+rand_name=\`date +%s%N | md5sum | cut -c 1-8\`
+cat > \$rand_name".txt" << EOF 
+18
+1
+$2.log
+$7
+1
+2
+10
+1
+11
+1
+0
+0
+0
+q
+EOF
+$MULTIWFN_CMD $2.fchk < \$rand_name".txt" > /dev/null
+mv hole.cub $2_hole.cub
+mv electron.cub $2_electron.cub
+rm -f \$rand_name".txt"
 eof
 fi
 }
 
 if [ "$PRINT_ENERGY" = true ]; then
-    print_FMO_energy $FILENAME
+    PRINT_FMO_ENERGY $FILENAME
 fi
 if [ "$EXPORT_CUBE" = true ]; then
-    export_FMO_cube $FILENAME
+    EXPORT_FMO_CUBE $FILENAME
 fi
 
 if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
@@ -280,10 +351,18 @@ if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
     fi
     echo "setting root=$SINGLET_ROOT for singlet excited states"
 
-    gen_gjf_from_tmpl $FILENAME".fchk" $FILENAME"_S"$SINGLET_ROOT".gjf"
+    SINGLET_FILENAME=$FILENAME"_S"$SINGLET_ROOT"_"$SINGLET"_"$SUFFIX
+    GEN_GJF_FROM_TMPL $FILENAME".fchk" $SINGLET_FILENAME".gjf"
     rm -f template.gjf
-    gen_sub $FILENAME"_S"$SINGLET_ROOT $SINGLET_NPROC $PRINT_ENERGY $SINGLET_NSTATES $EXPORT_CUBE $SINGLET_ROOT
-    sbatch $FILENAME"_S"$SINGLET_ROOT".txt"
+    if [ "$SCHEDULER" = SLURM ]; then
+        GEN_SLURM_SUB $FILENAME $SINGLET_FILENAME $SINGLET_NPROC $PRINT_ENERGY $SINGLET_NSTATES $EXPORT_CUBE $SINGLET_ROOT
+        [ "$POSTPONE" = false ] && sbatch $SINGLET_FILENAME".txt"
+    elif [ "$SCHEDULER" = PBS ]; then
+        GEN_PBS_SUB $FILENAME $SINGLET_FILENAME $SINGLET_NPROC $PRINT_ENERGY $SINGLET_NSTATES $EXPORT_CUBE $SINGLET_ROOT
+        [ "$POSTPONE" = false ] && qsub $SINGLET_FILENAME".txt"
+    else
+        echo "Error!!! unknown scheduler"
+    fi
 fi
 
 if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
@@ -390,9 +469,16 @@ if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
     fi
     echo "setting root=$TRIPLET_ROOT for triplet excited states"
 
-    gen_gjf_from_tmpl $FILENAME".fchk" $FILENAME"_T"$TRIPLET_ROOT".gjf"
+    TRIPLET_FILENAME=$FILENAME"_T"$TRIPLET_ROOT"_"$TRIPLET"_"$SUFFIX
+    GEN_GJF_FROM_TMPL $FILENAME".fchk" $TRIPLET_FILENAME".gjf"
     rm -f template.gjf
-    gen_sub $FILENAME"_T"$TRIPLET_ROOT $TRIPLET_NPROC $PRINT_ENERGY $TRIPLET_NSTATES $EXPORT_CUBE $TRIPLET_ROOT
-    sbatch $FILENAME"_T"$TRIPLET_ROOT".txt"
+    if [ "$SCHEDULER" = SLURM ]; then
+        GEN_SLURM_SUB $FILENAME $TRIPLET_FILENAME $TRIPLET_NPROC $PRINT_ENERGY $TRIPLET_NSTATES $EXPORT_CUBE $TRIPLET_ROOT
+        [ "$POSTPONE" = false ] && sbatch $TRIPLET_FILENAME".txt"
+    elif [ "$SCHEDULER" = PBS ]; then
+        GEN_PBS_SUB $FILENAME $TRIPLET_FILENAME $TRIPLET_NPROC $PRINT_ENERGY $TRIPLET_NSTATES $EXPORT_CUBE $TRIPLET_ROOT
+        [ "$POSTPONE" = false ] && qsub $TRIPLET_FILENAME".txt"
+    else
+        echo "Error!!! unknown scheduler"
+    fi
 fi
-
