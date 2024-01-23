@@ -16,20 +16,13 @@ cover: /assets/images/dots image/cover.jpg
 </table>
 <div align=center><font color="#999999">图1：输入图像（左，位图）与输出图像（右，矢量图）</font></div>
 
-在输出图片中，圆点的半径取决于此点的灰度值，深色位置的圆点半径大而浅色位置的圆点半径小。因此当采样足够密集时灰度接近与连续图像。本程序中所使用的灰度计算公式如下。
+在输出图片中，圆点的半径取决于此点的灰度值，深色位置的圆点半径大而浅色位置的圆点半径小。因此当采样足够密集时灰度接近于连续图像。本程序中所使用的灰度计算公式如下。
 
 $$GRAY=0.299*R+0.587*G+0.114*B$$
 
-# 实现
+## 使用说明
 
-程序需要的库如下：
-
-```python
-from PIL import Image
-import numpy as np
-```
-
-程序主函数代码如下，`DotsImg`函数接受4个参数：
+程序主函数`DotsImg`接受4个参数：
 
 - 第一个参数`path`为原图片的路径
 - 第二个参数`width`为新生成图片中x方向圆点的数量（默认为256，y方向数量依据原图片宽高比与格点样式自动设置）
@@ -41,6 +34,46 @@ import numpy as np
     <object data="/assets/images/dots image/hexagonal.svg" type="image/svg+xml" width="30%"></object>
 </div>
 <div align=center><font color="#999999">图2：正方形格点样式（左）与六边形格点样式（右）</font></div>
+
+## 示例
+
+图3展示了`color`设置为`'rgb'`（左）与单一颜色值（右，本例中为`'#222222'`）的区别，其中图片宽度被设置为`256`。
+
+<div align="center">
+    <object data="/assets/images/dots image/Img_rgb.svg" type="image/svg+xml" width="45%"></object>
+    <object data="/assets/images/dots image/Img_gray.svg" type="image/svg+xml" width="45%"></object>
+</div>
+<div align=center><font color="#999999">图3：彩色图（左）与单色图（右）</font></div>
+
+图4展示了`grid`设置为`square`（左）与`hexagonal`（右）的区别，其中图片宽度被设置为`128`。
+
+<div align="center">
+    <object data="/assets/images/dots image/Img_square.svg" type="image/svg+xml" width="45%"></object>
+    <object data="/assets/images/dots image/Img_hexagonal.svg" type="image/svg+xml" width="45%"></object>
+</div>
+<div align=center><font color="#999999">图4：正方形格点图片（左）与六边形采样格点图片（右）</font></div>
+
+## 实现
+
+**程序设计思路如下：**
+
+- 主函数`DotsImg`首先调用`openimg`函数，接受文件路径与图片宽度为参数，返回`Array of uint8`矩阵，矩阵的列数为指定宽度，行数依据输入图片的宽高比自动设置。随后将RGB矩阵归一化到 $[0\sim1]$ 范围内
+- 利用`gengrid`函数依据格点样式产生格点坐标并调用`grid2color`函数根据图片与格点坐标确定每个格点的RGB颜色。
+- 随后调用`rgb2gray`和`gray2radius`函数决定每个格点处圆点的半径，圆点的半径取决于此点的灰度值。若原图片还包含透明度数据，则将其存储在向量`alpha`中。
+如果`color`被设置为`'rgb'`，则调用`rgb2hex`函数将每个格点处的RGB颜色转换为HEX格式颜色，若`color`被设置为单一颜色，则为每个格点使用相同的颜色进行填充。
+- 最后依据圆心位置、半径与颜色为svg添加circle元素并写入文件。如果原图片包含透明度数据，则alpha通道的值以`fill-opacity`属性写入输出文件中。
+
+⚠ png图片中完全透明的部分不会写入到输出文件中；完全不透明的部分不会添加`fill-opacity`属性。
+{:.warning}
+
+**程序的Python实现如下：**
+
+```python
+from PIL import Image
+import numpy as np
+```
+
+### DotsImg
 
 ```python
 def DotsImg(path,width=256,color='rgb',grid='square'):
@@ -82,7 +115,7 @@ def DotsImg(path,width=256,color='rgb',grid='square'):
     svg_file.close()
 ```
 
-程序思路与流程如下：函数`DotsImg`首先调用`openimg`函数（函数实现见下），`openimg`接受文件路径与图片宽度为参数，返回`Array of uint8`矩阵，矩阵的列数为指定宽度，行数依据输入图片的宽高比自动设置。随后将RGB矩阵归一化到 $[0\sim1]$ 的范围内。
+### openimg
 
 ```python
 def openimg(path,width):
@@ -93,7 +126,7 @@ def openimg(path,width):
     return img
 ```
 
-第二步利用`gengrid`函数依据格点样式产生格点坐标。
+### gengrid / grid2color
 
 ```python
 def gengrid(style,width,height):
@@ -111,18 +144,18 @@ def gengrid(style,width,height):
     x=x.flatten()
     y=y.flatten()
     return x,y
-```
 
-第三步先利用`grid2color`函数确定格点坐标位置的RGB颜色，随后调用`rgb2gray`和`gray2radius`函数决定每个格点处圆点的半径，圆点的半径取决于此点的灰度值。若原图片还包含透明度数据，则将其存储在向量`alpha`中。
-
-```python
 def grid2color(img,x,y):
     img_height=img.shape[0]-1
     img_width=img.shape[1]-1
     rela_x=np.floor((x-min(x))/(max(x)-min(x))*img_width)
     rela_y=np.floor((y-min(y))/(max(y)-min(y))*img_height)
     return img[rela_y.astype('int'),rela_x.astype('int'),:]
+```
 
+### rgb2gray / gray2radius / rgb2hex
+
+```python
 def rgb2gray(rgb):
     gray=0.299*rgb[:,0]+0.587*rgb[:,1]+0.114*rgb[:,2]
     return gray
@@ -130,11 +163,7 @@ def rgb2gray(rgb):
 def gray2radius(gray):
     radius=np.power(1-gray,0.3)
     return radius
-```
 
-如果`color`被设置为`'rgb'`，则调用`rgb2hex`函数将每个格点处的RGB颜色转换为HEX格式颜色，若`color`被设置为单一颜色，则为每个格点使用相同的颜色进行填充。
-
-```python
 def rgb2hex(rgb):
     exchange_list=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
     hex_list=[]
@@ -147,26 +176,3 @@ def rgb2hex(rgb):
         hex_list.append(''.join(hex_string))
     return hex_list
 ```
-
-最后依据圆心位置、半径与颜色为svg添加circle元素并写入文件。如果原图片包含透明度数据，则alpha通道的值以`fill-opacity`属性写入输出文件中。
-
-⚠ png图片中完全透明的部分不会写入到输出文件中；完全不透明的部分不会添加`fill-opacity`属性。
-{:.warning}
-
-# 示例
-
-图3展示了`color`设置为`'rgb'`（左）与单一颜色值（右，本例中为`'#222222'`）的区别，其中图片宽度被设置为`256`。
-
-<div align="center">
-	<object data="/assets/images/dots image/Img_rgb.svg" type="image/svg+xml" width="45%"></object>
-	<object data="/assets/images/dots image/Img_gray.svg" type="image/svg+xml" width="45%"></object>
-</div>
-<div align=center><font color="#999999">图3：彩色图（左）与单色图（右）</font></div>
-
-图4展示了`grid`设置为`square`（左）与`hexagonal`（右）的区别，其中图片宽度被设置为`128`。
-
-<div align="center">
-    <object data="/assets/images/dots image/Img_square.svg" type="image/svg+xml" width="45%"></object>
-    <object data="/assets/images/dots image/Img_hexagonal.svg" type="image/svg+xml" width="45%"></object>
-</div>
-<div align=center><font color="#999999">图4：正方形格点图片（左）与六边形采样格点图片（右）</font></div>
