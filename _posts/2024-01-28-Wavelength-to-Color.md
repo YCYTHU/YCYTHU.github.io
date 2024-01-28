@@ -9,6 +9,9 @@ cover: /assets/images/hückel method/cover.jpg
 <!--more-->
 
 <style>
+	.container {
+		height: 300px;
+	}
 	.color {
 		float: right;
 		width: calc(100% - 220px);
@@ -50,30 +53,35 @@ cover: /assets/images/hückel method/cover.jpg
 
 ## 波长 ⇨ 颜色
 
-<div class="ui">
-	<p><b>Wavelength:</b></p>
-	<div style="display: table; border-collapse: separate; position: relative;">
-		<input class="wavelengthInput" id="wavelengthInput" value="580" onchange="setWavelengthInput(this.value)" /><span class="unit">nm</span>
+<div class="container">
+	<div class="ui">
+		<p><b>Wavelength:</b></p>
+		<div style="display: table; border-collapse: separate; position: relative;">
+			<input class="wavelengthInput" id="wavelengthInput" value="580" onchange="setWavelengthInput(this.value)" /><span class="unit">nm</span>
+		</div>
+		<span>Coarse Adjustment:</span>
+		<input type='range' class='slide' id="wavelengthCoarseSlide" value="580" min="390" max="830" step="1" oninput="setWavelengthCoarse(this.value)"/>
+		<span>Fine Adjustment:</span>
+		<input type='range' class='slide' id="wavelengthFineSlide" value="0" min="-2" max="2" step="0.1" oninput="setWavelengthFine(this.value)"/>
+		<p style="line-height: 1.8;">
+			<b>Color:</b><br>
+			<i class="far fa-copy"></i><span onclick="copyRGB()" id="colorRGB">&nbsp;RGB(255,182,0)</span><br>
+			<i class="far fa-copy"></i><span onclick="copyHEX()" id="colorHEX">&nbsp;HEX: #ffb600</span>
+		</p>
 	</div>
-	<span>Coarse Adjustment:</span>
-	<input type='range' class='slide' id="wavelengthCoarseSlide" value="580" min="390" max="830" step="1" oninput="setWavelengthCoarse(this.value)"/>
-	<span>Fine Adjustment:</span>
-	<input type='range' class='slide' id="wavelengthFineSlide" value="0" min="-2" max="2" step="0.1" oninput="setWavelengthFine(this.value)"/>
-	<p style="line-height: 1.8;"><b>Color:</b><br>
-		<i class="far fa-copy"></i><span onclick="copyRGB()" id="colorRGB">&nbsp;RGB(255,182,0)</span><br>
-		<i class="far fa-copy"></i><span onclick="copyHEX()" id="colorHEX">&nbsp;HEX: #ffb600</span>
-	</p>
+	<div class="color" id="colorResult"></div>
 </div>
-<div class="color" id="colorResult"></div>
+
 
 ## 高斯峰 ⇨ 颜色
 
 
 ## 计算原理
 
-1931年，根据 Wright 和 Guild 的数据，国际照明委员会（CIE）发布了三刺激函数 $\bar{x}$（图1）用于从给定的光谱计算其对应的颜色。
+1931年，根据 Wright 和 Guild 的数据，国际照明委员会（CIE）发布了三刺激函数 $\bar{x},\bar{y},\bar{z}$（图1）用于从给定的光谱计算其对应的颜色。
 
-
+<div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/CIE_1931_XYZ_Color_Matching_Functions.svg" width="75%"/></div>
+<div align=center><font color="#999999">图1：三刺激函数</font></div>
 
 三刺激函数的使用方法如下。对于一个给定的光谱 $\Lambda(\lambda)$，首先计算积分
 
