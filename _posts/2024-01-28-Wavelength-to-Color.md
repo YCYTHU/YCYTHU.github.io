@@ -7,19 +7,16 @@ cover: /assets/images/hückel method/cover.jpg
 ---
 
 <!--more-->
-
 <style>
 	.container {
-		height: 300px;
+		display: table;
+    	width: 100%;
 	}
 	.color {
-		float: right;
-		width: calc(100% - 220px);
-		height: 288px;
-		background-color: #ffb600;
+		display: table-cell;
 	}
 	.ui {
-		float: left;
+		display: table-cell;
 		padding: 5px 20px;
 		background-color: #efefef;
 		box-sizing: border-box;
@@ -28,7 +25,7 @@ cover: /assets/images/hückel method/cover.jpg
 	.wavelengthInput {
 		display: table-cell;
 		width: 100%;
-		height: 32px;
+		height: 35px;
 		text-align: right;
 		color: #555555;
 		border: 1px solid #cccccc;
@@ -65,11 +62,14 @@ cover: /assets/images/hückel method/cover.jpg
 		<input type='range' class='slide' id="wavelengthFineSlide" value="0" min="-2" max="2" step="0.1" oninput="setWavelengthFine(this.value)"/>
 		<p style="line-height: 1.8;">
 			<b>Color:</b><br>
-			<i class="far fa-copy"></i><span onclick="copyRGB()" id="colorRGB">&nbsp;RGB(255,182,0)</span><br>
-			<i class="far fa-copy"></i><span onclick="copyHEX()" id="colorHEX">&nbsp;HEX: #ffb600</span>
+			<i class="far fa-copy" onclick="copyRGB()" ></i><span>&nbsp;RGB(</span><span id="colorRGB">255,182,0</span><span>)</span><br>
+			<i class="far fa-copy" onclick="copyHEX()"></i><span>&nbsp;HEX:&nbsp;</span><span id="colorHEX">#ffb600</span>
 		</p>
 	</div>
-	<div class="color" id="colorResult"></div>
+	<div class="color" style="background-color: #ffc600;" id="color" onclick="copyHEX()"></div>
+	<div class="color" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(this.style.backgroundColor)"></div>
+	<!--<div class="color" style="background-color: #34b6d0;" id="complementaryColorLight"></div>-->
 </div>
 
 
@@ -97,6 +97,8 @@ $$\begin{bmatrix}R\\G\\B\end{bmatrix}=\begin{bmatrix}3.2404542&-1.5371385&-0.498
 
 $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\mathrm{d}\lambda=\bar{x}(\lambda_0)K_m\\&Y=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{y}(\lambda)\mathrm{d}\lambda=\bar{y}(\lambda_0)K_m\\&Z=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{z}(\lambda)\mathrm{d}\lambda=\bar{z}(\lambda_0)K_m\end{align}$$
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
+<script src="/assets/js/tristimulus.js" type="text/javascript"></script>
 <script>
 	var wavelength = 580, coarseWavelength = 580;
 	const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
@@ -128,29 +130,71 @@ $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\m
 		wl2c(wavelength);
 	}
 	function wl2c(wl) {
-		index = Math.round((wl - 390) / 0.1);
-		XYZ = math.transpose(normalize(xyz[index].slice(-3)));
-		RGB = math.multiply(XYZ2RGB, XYZ);
-		RGB.forEach(scale);
-		colorResult = document.getElementById("colorResult");
-		colorResult.style.backgroundColor = 'rgb(' + RGB + ')';
-		RGB = math.round(RGB);
+		var index = Math.round((wl - 390) / 0.1);
+		var XYZ = normalize(xyz[index].slice(-3));
+		var RGB = math.multiply(XYZ2RGB, XYZ);
+
+		RGB = math.round(scale(RGB));
+		var colorDiv = document.getElementById("color");
+		colorDiv.style.backgroundColor = 'rgb(' + RGB + ')';
 		colorRGB = document.getElementById("colorRGB");
-		colorRGB.innerHTML = '&nbsp;RGB(' + RGB + ')';
+		colorRGB.innerHTML = RGB;
 		colorHEX = document.getElementById("colorHEX");
-		colorHEX.innerHTML = '&nbsp;HEX: #' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
+		colorHEX.innerHTML = '#' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
+
+		var RGBLight = math.multiply(255, normalize(RGB));
+		var colorLightDiv = document.getElementById("colorLight");
+		colorLightDiv.style.backgroundColor = 'rgb(' + RGBLight + ')';
+
+		var cplyRGB = math.subtract([255,255,255], RGB);
+		var complementaryColorDiv = document.getElementById("complementaryColor");
+		complementaryColorDiv.style.backgroundColor = 'rgb(' + cplyRGB + ')';
+
+		//var cplyRGBLight = math.multiply(255, normalize(cplyRGB));
+		//var complementaryColorLightDiv = document.getElementById("complementaryColorLight");
+		//complementaryColorLightDiv.style.backgroundColor = 'rgb(' + cplyRGBLight + ')';
 	}
-	function scale(item, index, array) {
-		if (item < 0)
-			array[index] = 0;
-		else if (item > 1)
-			array[index] = 1;
-		array[index] *= 255;
+	function scale(array) {
+		var ans = [];
+		array.forEach(function (element, index, arr) {
+			if (element < 0)
+				ans[index] = 0;
+			else if (element > 1)
+				ans[index] = 255;
+			else
+				ans[index] = 255 * element;
+		})
+		return ans;
 	}
 	function normalize(array) {
-		for(arrayIndex = 0; arrayIndex < array.length; arrayIndex++) {
-			array[arrayIndex] /= Math.max(...array);
-		}
-		return array;
+		var ans = [];
+		var max = Math.max(...array);
+		array.forEach(function (element, index) {
+			ans[index] = element / max;
+		});
+		return ans;
+	}
+	function copy(text) {
+		var copyipt = document.createElement("input");
+		copyipt.setAttribute("value", text);
+		document.body.appendChild(copyipt);
+		copyipt.select();
+		document.execCommand("copy");
+		document.body.removeChild(copyipt);
+	}
+	function copyRGB() {
+		var text = document.getElementById("colorRGB").innerHTML;
+		copy(text);
+	}
+	function copyHEX() {
+		var text = document.getElementById("colorHEX").innerHTML;
+		copy(text);
+	}
+	function copyColor(rgb) {
+		rgb = rgb.substring(4, rgb.length - 1);
+		RGB = rgb.split(',');
+		RGB = RGB.map(Number);
+		var text = '#' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
+		copy(text);
 	}
 </script>
