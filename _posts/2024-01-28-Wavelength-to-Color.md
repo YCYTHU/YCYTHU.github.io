@@ -1,0 +1,148 @@
+---
+title: 将波长或光谱转换为sRGB颜色
+tags: 
+- Code
+- JavaScript
+cover: /assets/images/hückel method/cover.jpg
+---
+
+<!--more-->
+
+<style>
+	.color {
+		float: right;
+		width: calc(100% - 220px);
+		height: 288px;
+		background-color: #ffb600;
+	}
+	.ui {
+		float: left;
+		padding: 5px 20px;
+		background-color: #efefef;
+		box-sizing: border-box;
+		width: 200px;
+	}
+	.wavelengthInput {
+		display: table-cell;
+		width: 100%;
+		height: 32px;
+		text-align: right;
+		color: #555555;
+		border: 1px solid #cccccc;
+		padding: 6px 12px;
+		vertical-align: middle;
+	}
+	.unit {
+		display: table-cell;
+		padding: 2px 12px;
+		line-height: 1;
+		color: #555555;
+		text-align: center;
+		background-color: #eeeeee;
+		border: 1px solid #cccccc;
+		border-left: 0;
+	}
+	.slide {
+		margin: 0;
+		width: 160px;
+	}
+</style>
+
+## 波长 ⇨ 颜色
+
+<div class="ui">
+	<p><b>Wavelength:</b></p>
+	<div style="display: table; border-collapse: separate; position: relative;">
+		<input class="wavelengthInput" id="wavelengthInput" value="580" onchange="setWavelengthInput(this.value)" /><span class="unit">nm</span>
+	</div>
+	<span>Coarse Adjustment:</span>
+	<input type='range' class='slide' id="wavelengthCoarseSlide" value="580" min="390" max="830" step="1" oninput="setWavelengthCoarse(this.value)"/>
+	<span>Fine Adjustment:</span>
+	<input type='range' class='slide' id="wavelengthFineSlide" value="0" min="-2" max="2" step="0.1" oninput="setWavelengthFine(this.value)"/>
+	<p style="line-height: 1.8;"><b>Color:</b><br>
+		<i class="far fa-copy"></i><span onclick="copyRGB()" id="colorRGB">&nbsp;RGB(255,182,0)</span><br>
+		<i class="far fa-copy"></i><span onclick="copyHEX()" id="colorHEX">&nbsp;HEX: #ffb600</span>
+	</p>
+</div>
+<div class="color" id="colorResult"></div>
+
+## 高斯峰 ⇨ 颜色
+
+
+## 计算原理
+
+1931年，根据 Wright 和 Guild 的数据，国际照明委员会（CIE）发布了三刺激函数 $\bar{x}$（图1）用于从给定的光谱计算其对应的颜色。
+
+
+
+三刺激函数的使用方法如下。对于一个给定的光谱 $\Lambda(\lambda)$，首先计算积分
+
+$$\begin{align}&X=K_m\int_0^{+\infty}\Lambda(\lambda)\bar{x}(\lambda)\mathrm{d}\lambda\\&Y=K_m\int_0^{+\infty}\Lambda(\lambda)\bar{y}(\lambda)\mathrm{d}\lambda\\&Z=K_m\int_0^{+\infty}\Lambda(\lambda)\bar{z}(\lambda)\mathrm{d}\lambda\end{align}$$
+
+其中 $K_m=683\ \mathrm{lm\cdot W^{-1}}$ 为发光效率。随后将三刺激值归一化并进行线性变换即可得到sRGB空间下的坐标。其他色域颜色间的变换关系可参考[此网站](http://brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html)。
+
+$$\begin{bmatrix}R\\G\\B\end{bmatrix}=\begin{bmatrix}3.2404542&-1.5371385&-0.4985314\\-0.9692660&1.8760108&0.0415560\\0.0556434&-0.2040259&1.0572252\end{bmatrix}\begin{bmatrix}X\\Y\\Z\end{bmatrix}$$
+
+转换后若RGB的一个或多个分量小于0或大于1，也即超过了sRGB的色域范围，需要做近似处理得到sRGB色域能表达的颜色。即将负值近似为0，超过1的值近似为1。
+
+若光谱具有 $\Lambda(\lambda)=\delta(\lambda-\lambda_0)$ 的形式，其中 $\delta$ 为 [Dirac delta function](https://en.wikipedia.org/wiki/Dirac_delta_function)，也即 $\Lambda(\lambda)$ 仅在 $\lambda=\lambda_0$ 处具有一条谱线，则：
+
+$$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\mathrm{d}\lambda=\bar{x}(\lambda_0)K_m\\&Y=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{y}(\lambda)\mathrm{d}\lambda=\bar{y}(\lambda_0)K_m\\&Z=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{z}(\lambda)\mathrm{d}\lambda=\bar{z}(\lambda_0)K_m\end{align}$$
+
+<script>
+	var wavelength = 580, coarseWavelength = 580;
+	const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
+	function setWavelengthInput(wl) {
+		wavelength = Number(wl);
+		coarseWavelength = wavelength;
+		var wavelengthCoarseSlide = document.getElementById("wavelengthCoarseSlide");
+		var wavelengthFineSlide = document.getElementById("wavelengthFineSlide");
+		wavelengthCoarseSlide.value = wavelength;
+		wavelengthFineSlide.value = 0;
+		wl2c(wavelength);
+	}
+	function setWavelengthCoarse(wl) {
+		wavelength = Number(wl);
+		coarseWavelength = wavelength;
+		var wavelengthInput = document.getElementById("wavelengthInput");
+		var wavelengthFineSlide = document.getElementById("wavelengthFineSlide");
+		wavelengthInput.value = wavelength;
+		wavelengthFineSlide.value = 0;
+		wl2c(wavelength);
+	}
+	function setWavelengthFine(offset) {
+		wavelength = coarseWavelength
+		wavelength += Number(offset);
+		var wavelengthInput = document.getElementById("wavelengthInput");
+		var wavelengthCoarseSlide = document.getElementById("wavelengthCoarseSlide");
+		wavelengthInput.value = wavelength;
+		wavelengthCoarseSlide.value = wavelength;
+		wl2c(wavelength);
+	}
+	function wl2c(wl) {
+		index = Math.round((wl - 390) / 0.1);
+		XYZ = math.transpose(normalize(xyz[index].slice(-3)));
+		RGB = math.multiply(XYZ2RGB, XYZ);
+		RGB.forEach(scale);
+		colorResult = document.getElementById("colorResult");
+		colorResult.style.backgroundColor = 'rgb(' + RGB + ')';
+		RGB = math.round(RGB);
+		colorRGB = document.getElementById("colorRGB");
+		colorRGB.innerHTML = '&nbsp;RGB(' + RGB + ')';
+		colorHEX = document.getElementById("colorHEX");
+		colorHEX.innerHTML = '&nbsp;HEX: #' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
+	}
+	function scale(item, index, array) {
+		if (item < 0)
+			array[index] = 0;
+		else if (item > 1)
+			array[index] = 1;
+		array[index] *= 255;
+	}
+	function normalize(array) {
+		for(arrayIndex = 0; arrayIndex < array.length; arrayIndex++) {
+			array[arrayIndex] /= Math.max(...array);
+		}
+		return array;
+	}
+</script>

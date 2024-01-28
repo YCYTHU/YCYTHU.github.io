@@ -4,6 +4,7 @@ tags:
 - Chemistry
 - Code
 - Python
+- JavaScript
 cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---
 <!--more-->

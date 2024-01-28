@@ -132,15 +132,15 @@ AutoExSts.sh fileName -S opt -T opt -e -c
 用户可以通过修改下面的参数使脚本适应不同的使用环境。
 
 ```bash
-MULTIWFN_CMD=Multiwfn_noGUI # 调用Multiwfn的命令
-GAUSSIAN_CMD=g16            # 调用Gaussian的命令
-FORMCHK_CMD=formchk         # 调用formchk的命令
-SCHEDULER=SLURM             # 作业调度系统，可指定为SLURM或PBS
+MULTIWFN_CMD=Multiwfn_noGUI  # 调用Multiwfn的命令
+GAUSSIAN_CMD=g16             # 调用Gaussian的命令
+FORMCHK_CMD=formchk          # 调用formchk的命令
+SCHEDULER=SLURM              # 作业调度系统，可指定为SLURM或PBS
 
-NPROC_DEFAULT=16                    # 核心数默认值
-MEM_DEFAULT=$((3*$NPROC_DEFAULT))   # 内存默认值（以GB为单位）
-NSTATES_DEFAULT=24                  # 激发态数量默认值
-ROOT_DEFAULT=1                      # 感兴趣的激发态默认值	
+NPROC_DEFAULT=16                   # 核心数默认值
+MEM_DEFAULT=$((3*$NPROC_DEFAULT))  # 内存默认值（以GB为单位）
+NSTATES_DEFAULT=24                 # 激发态数量默认值
+ROOT_DEFAULT=1                     # 感兴趣的激发态默认值
 ```
 
 此外，用户还可以修改`GEN_SLURM_SUB()`与`GEN_PBS_SUB()`函数中的内容来修改任务提交脚本，以导入必需的运行环境或修改其他设置。
