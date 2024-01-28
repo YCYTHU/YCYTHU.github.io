@@ -1,11 +1,11 @@
 ---
-title: 将波长或光谱转换为sRGB颜色
+title: 使用三刺激值函数将光谱转换为sRGB颜色
 tags: 
 - Code
 - JavaScript
-cover: /assets/images/hückel method/cover.jpg
+cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/723px-CIE1931xy_blank.svg.png
 ---
-
+使用三刺激值函数在线将波长（线光谱）或高斯峰转换为对应的sRGB颜色。
 <!--more-->
 <style>
 	.container {
@@ -48,6 +48,8 @@ cover: /assets/images/hückel method/cover.jpg
 	}
 </style>
 
+通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。右侧的四个色块从左至右依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。
+
 ## 波长 ⇨ 颜色
 
 <div class="container">
@@ -69,12 +71,34 @@ cover: /assets/images/hückel method/cover.jpg
 	<div class="color" style="background-color: #ffc600;" id="color" onclick="copyHEX()"></div>
 	<div class="color" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(this.style.backgroundColor)"></div>
 	<div class="color" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(this.style.backgroundColor)"></div>
-	<!--<div class="color" style="background-color: #34b6d0;" id="complementaryColorLight"></div>-->
+	<div class="color" style="background-color: #0039ff;" id="complementaryColorLight"></div>
 </div>
-
 
 ## 高斯峰 ⇨ 颜色
 
+<div class="container">
+	<div class="ui">
+		<p><b>Wavelength:</b></p>
+		<div style="display: table; border-collapse: separate; position: relative;">
+			<input class="wavelengthInput" id="gauWavelengthInput" value="580" onchange="setGauWavelengthInput(this.value)" /><span class="unit">nm</span>
+		</div>
+		<input type='range' class='slide' id="gauWavelengthSlide" value="580" min="390" max="830" step="0.1" oninput="setGauWavelengthSlide(this.value)"/>
+		<p><b>FWHM:</b></p>
+		<div style="display: table; border-collapse: separate; position: relative;">
+			<input class="wavelengthInput" id="FWHMInput" value="80" onchange="setFWHMInput(this.value)" /><span class="unit">nm</span>
+		</div>
+		<input type='range' class='slide' id="FWHMSlide" value="80" min="1" max="200" step="1" oninput="setFWHMSlide(this.value)"/>
+		<p style="line-height: 1.8;">
+			<b>Color:</b><br>
+			<i class="far fa-copy" onclick="copyRGB()" ></i><span>&nbsp;RGB(</span><span id="gauColorRGB">255,234,0</span><span>)</span><br>
+			<i class="far fa-copy" onclick="copyHEX()"></i><span>&nbsp;HEX:&nbsp;</span><span id="gauColorHEX">#ffea00</span>
+		</p>
+	</div>
+	<div class="color" style="background-color: #ffea00;" id="gauColor" onclick="copyHEX()"></div>
+	<div class="color" style="background-color: #ffea00;" id="gauColorLight" onclick="copyColor(this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColor" onclick="copyColor(this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColorLight"></div>
+</div>
 
 ## 计算原理
 
@@ -98,9 +122,9 @@ $$\begin{bmatrix}R\\G\\B\end{bmatrix}=\begin{bmatrix}3.2404542&-1.5371385&-0.498
 $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\mathrm{d}\lambda=\bar{x}(\lambda_0)K_m\\&Y=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{y}(\lambda)\mathrm{d}\lambda=\bar{y}(\lambda_0)K_m\\&Z=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{z}(\lambda)\mathrm{d}\lambda=\bar{z}(\lambda_0)K_m\end{align}$$
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
-<script src="/assets/js/tristimulus.js" type="text/javascript"></script>
+<script src="https://ycythu.github.io/assets/js/tristimulus.js" type="text/javascript"></script>
 <script>
-	var wavelength = 580, coarseWavelength = 580;
+	var wavelength = 580, coarseWavelength = 580, gauWavelength = 580, FWHM = 80;
 	const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
 	function setWavelengthInput(wl) {
 		wavelength = Number(wl);
@@ -150,9 +174,64 @@ $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\m
 		var complementaryColorDiv = document.getElementById("complementaryColor");
 		complementaryColorDiv.style.backgroundColor = 'rgb(' + cplyRGB + ')';
 
-		//var cplyRGBLight = math.multiply(255, normalize(cplyRGB));
-		//var complementaryColorLightDiv = document.getElementById("complementaryColorLight");
-		//complementaryColorLightDiv.style.backgroundColor = 'rgb(' + cplyRGBLight + ')';
+		var cplyRGBLight = math.multiply(255, normalize(cplyRGB));
+		var complementaryColorLightDiv = document.getElementById("complementaryColorLight");
+		complementaryColorLightDiv.style.backgroundColor = 'rgb(' + cplyRGBLight + ')';
+	}
+	function setGauWavelengthInput(wl) {
+		gauWavelength = Number(wl);
+		var gauWavelengthSlide = document.getElementById("gauWavelengthSlide");
+		gauWavelengthSlide.value = gauWavelength;
+		gauWl2c(gauWavelength, FWHM);
+	}
+	function setGauWavelengthSlide(wl) {
+		gauWavelength = Number(wl);
+		var gauWavelengthInput = document.getElementById("gauWavelengthInput");
+		gauWavelengthInput.value = gauWavelength;
+		gauWl2c(gauWavelength, FWHM);
+	}
+	function setFWHMInput(fwhm) {
+		FWHM = Number(fwhm);
+		var FWHMSlide = document.getElementById("FWHMSlide");
+		FWHMSlide.value = FWHM;
+		gauWl2c(gauWavelength, FWHM);
+	}
+	function setFWHMSlide(fwhm) {
+		FWHM = Number(fwhm);
+		var FWHMInput = document.getElementById("FWHMInput");
+		FWHMInput.value = FWHM;
+		gauWl2c(gauWavelength, FWHM);
+	}
+	function gauWl2c(wl, fwhm) {
+		var sigma = fwhm / (2 * Math.sqrt(2 * Math.log(2)));
+		var x = math.range(390.0, 830.1, 0.1);
+		var coef = 1 / (sigma * Math.sqrt(2 * Math.PI));
+		var y = math.multiply(coef, math.map(math.multiply(-0.5, math.divide(math.map(math.subtract(x, wl), math.square), sigma**2)), math.exp));
+		y = y._data;
+		var XYZ = [];
+		XYZ[0] = math.multiply(0.1, math.dot(y, math.column(xyz, 1)));
+		XYZ[1] = math.multiply(0.1, math.dot(y, math.column(xyz, 2)));
+		XYZ[2] = math.multiply(0.1, math.dot(y, math.column(xyz, 3)));
+		var RGB = math.multiply(XYZ2RGB, normalize(XYZ));
+		RGB = math.round(scale(RGB));
+		var gauColorDiv = document.getElementById("gauColor");
+		gauColorDiv.style.backgroundColor = 'rgb(' + RGB + ')';
+		gauColorRGB = document.getElementById("gauColorRGB");
+		gauColorRGB.innerHTML = RGB;
+		gauColorHEX = document.getElementById("gauColorHEX");
+		gauColorHEX.innerHTML = '#' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
+
+		var RGBLight = math.multiply(255, normalize(RGB));
+		var gauColorLightDiv = document.getElementById("gauColorLight");
+		gauColorLightDiv.style.backgroundColor = 'rgb(' + RGBLight + ')';
+
+		var cplyRGB = math.subtract([255,255,255], RGB);
+		var gauComplementaryColorDiv = document.getElementById("gauComplementaryColor");
+		gauComplementaryColorDiv.style.backgroundColor = 'rgb(' + cplyRGB + ')';
+
+		var cplyRGBLight = math.multiply(255, normalize(cplyRGB));
+		var gauComplementaryColorLightDiv = document.getElementById("gauComplementaryColorLight");
+		gauComplementaryColorLightDiv.style.backgroundColor = 'rgb(' + cplyRGBLight + ')';
 	}
 	function scale(array) {
 		var ans = [];
