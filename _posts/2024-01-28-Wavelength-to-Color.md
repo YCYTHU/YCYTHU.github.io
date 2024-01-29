@@ -14,6 +14,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 	}
 	.color {
 		display: table-cell;
+		border-left: 5px solid #fff;
 	}
 	.ui {
 		display: table-cell;
@@ -46,12 +47,28 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 		margin: 0;
 		width: 160px;
 	}
+	.text {
+		position: absolute;
+		font-size: 10px;
+		font-family: Times New Roman;
+		color: #fff;
+		z-index: 99;
+		font-weight: bold;
+		user-select: none;
+		background-color: #52c41a;
+		border-radius: 5px;
+		padding: 2px 4px;
+	}
+	@keyframes remove {
+        100% {
+            opacity: 0;
+        }
+    }
 </style>
 
-通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。右侧的四个色块从左至右依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。
+通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。右侧的四个色块从左至右依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。点击 <i class="far fa-copy"></i> 或右侧色块可拷贝对应颜色至剪贴板。
 
 ## 波长 ⇨ 颜色
-
 <div class="container">
 	<div class="ui">
 		<p><b>Wavelength:</b></p>
@@ -64,14 +81,14 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 		<input type='range' class='slide' id="wavelengthFineSlide" value="0" min="-2" max="2" step="0.1" oninput="setWavelengthFine(this.value)"/>
 		<p style="line-height: 1.8;">
 			<b>Color:</b><br>
-			<i class="far fa-copy" onclick="copyRGB()" ></i><span>&nbsp;RGB(</span><span id="colorRGB">255,182,0</span><span>)</span><br>
-			<i class="far fa-copy" onclick="copyHEX()"></i><span>&nbsp;HEX:&nbsp;</span><span id="colorHEX">#ffb600</span>
+			<i class="far fa-copy" onclick="copyRGB(event)"></i><span>&nbsp;RGB(</span><span id="colorRGB">255,182,0</span><span>)</span><br>
+			<i class="far fa-copy" onclick="copyHEX(event)"></i><span>&nbsp;HEX:&nbsp;</span><span id="colorHEX">#ffb600</span>
 		</p>
 	</div>
-	<div class="color" style="background-color: #ffc600;" id="color" onclick="copyHEX()"></div>
-	<div class="color" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0039ff;" id="complementaryColorLight"></div>
+	<div class="color" style="background-color: #ffc600;" id="color" onclick="copyHEX(event)"></div>
+	<div class="color" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0039ff;" id="complementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
 </div>
 
 ## 高斯峰 ⇨ 颜色
@@ -90,14 +107,14 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 		<input type='range' class='slide' id="FWHMSlide" value="80" min="1" max="200" step="1" oninput="setFWHMSlide(this.value)"/>
 		<p style="line-height: 1.8;">
 			<b>Color:</b><br>
-			<i class="far fa-copy" onclick="copyRGB()" ></i><span>&nbsp;RGB(</span><span id="gauColorRGB">255,234,0</span><span>)</span><br>
-			<i class="far fa-copy" onclick="copyHEX()"></i><span>&nbsp;HEX:&nbsp;</span><span id="gauColorHEX">#ffea00</span>
+			<i class="far fa-copy" onclick="copyGauRGB(event)" ></i><span>&nbsp;RGB(</span><span id="gauColorRGB">255,234,0</span><span>)</span><br>
+			<i class="far fa-copy" onclick="copyGauHEX(event)"></i><span>&nbsp;HEX:&nbsp;</span><span id="gauColorHEX">#ffea00</span>
 		</p>
 	</div>
-	<div class="color" style="background-color: #ffea00;" id="gauColor" onclick="copyHEX()"></div>
-	<div class="color" style="background-color: #ffea00;" id="gauColorLight" onclick="copyColor(this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColor" onclick="copyColor(this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColorLight"></div>
+	<div class="color" style="background-color: #ffea00;" id="gauColor" onclick="copyGauHEX(event)"></div>
+	<div class="color" style="background-color: #ffea00;" id="gauColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
 </div>
 
 ## 计算原理
@@ -122,7 +139,7 @@ $$\begin{bmatrix}R\\G\\B\end{bmatrix}=\begin{bmatrix}3.2404542&-1.5371385&-0.498
 $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\mathrm{d}\lambda=\bar{x}(\lambda_0)K_m\\&Y=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{y}(\lambda)\mathrm{d}\lambda=\bar{y}(\lambda_0)K_m\\&Z=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{z}(\lambda)\mathrm{d}\lambda=\bar{z}(\lambda_0)K_m\end{align}$$
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
-<script src="https://ycythu.github.io/assets/js/tristimulus.js" type="text/javascript"></script>
+<script src="/assets/js/tristimulus.js" type="text/javascript"></script>
 <script>
 	var wavelength = 580, coarseWavelength = 580, gauWavelength = 580, FWHM = 80;
 	const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
@@ -261,19 +278,45 @@ $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\m
 		document.execCommand("copy");
 		document.body.removeChild(copyipt);
 	}
-	function copyRGB() {
+	function copyRGB(event) {
 		var text = document.getElementById("colorRGB").innerHTML;
 		copy(text);
+		copySucc(event.pageX, event.pageY, text);
 	}
-	function copyHEX() {
+	function copyHEX(event) {
 		var text = document.getElementById("colorHEX").innerHTML;
 		copy(text);
+		copySucc(event.pageX, event.pageY, text);
 	}
-	function copyColor(rgb) {
+	function copyGauRGB(event) {
+		var text = document.getElementById("gauColorRGB").innerHTML;
+		copy(text);
+		copySucc(event.pageX, event.pageY, text);
+	}
+	function copyGauHEX(event) {
+		var text = document.getElementById("gauColorHEX").innerHTML;
+		copy(text);
+		copySucc(event.pageX, event.pageY, text);
+	}
+	function copyColor(event, rgb) {
+		console.log(event.pageX, event.pageY)
 		rgb = rgb.substring(4, rgb.length - 1);
 		RGB = rgb.split(',');
 		RGB = RGB.map(Number);
 		var text = '#' + RGB2HEX(RGB[0], RGB[1], RGB[2]);
 		copy(text);
+		copySucc(event.pageX, event.pageY, text);
+	}
+	function copySucc(x, y, text) {
+		var span = document.createElement('span');
+		span.innerHTML = '<i class="fas fa-clipboard-check"></i>&nbsp;copied';
+		span.className = 'text';
+		span.style.top = y - 20 + 'px';
+		span.style.left = x - 30 + 'px';
+		span.style.animation = 'remove 2.5s';
+		document.body.appendChild(span);
+		setTimeout(function () {
+        	span.remove();
+    	}, 2000);
 	}
 </script>
