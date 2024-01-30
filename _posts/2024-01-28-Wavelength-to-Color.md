@@ -23,6 +23,15 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 		box-sizing: border-box;
 		width: 200px;
 	}
+	.colorSpace {
+		display: table;
+		background-color: #efefef;
+		border-radius: 10px;
+		width: 100%;
+	}
+	.colorSpaceInput {
+		display: table-cell;
+	}
 	.wavelengthInput {
 		display: table-cell;
 		width: 100%;
@@ -67,6 +76,15 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 </style>
 
 通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。右侧的四个色块从左至右依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。点击 <i class="far fa-copy"></i> 或右侧色块可拷贝对应颜色至剪贴板。
+
+转换过程默认使用sRGB色彩空间，如需其他色彩空间（如Adobe RGB，ProPhoto RGB或CIE RGB）可在下方进行选择。
+
+<div class="colorSpace">
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(1)"><span style="white-space: nowrap;">sRGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(2)"><span style="white-space: nowrap;">Adobe RGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(3)"><span style="white-space: nowrap;">ProPhoto RGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(4)"><span style="white-space: nowrap;">CIE RGB</span></div>
+</div>
 
 ## 波长 ⇨ 颜色
 <div class="container">
@@ -141,8 +159,26 @@ $$\begin{align}&X=K_m\int_0^{+\infty}\delta(\lambda-\lambda_0)\bar{x}(\lambda)\m
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
 <script src="/assets/js/tristimulus.js" type="text/javascript"></script>
 <script>
-	var wavelength = 580, coarseWavelength = 580, gauWavelength = 580, FWHM = 80;
+	var wavelength = 580, coarseWavelength = 580, gauWavelength = 580, FWHM = 80, XYZ2RGB = s_XYZ2RGB;
 	const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
+	function setColorSpace(index) {
+		switch (index) {
+		case 1:
+			XYZ2RGB = s_XYZ2RGB;
+			break;
+		case 2:
+			XYZ2RGB = Adobe_XYZ2RGB;
+			break;
+		case 3:
+			XYZ2RGB = ProPhoto_XYZ2RGB;
+			break;
+		case 4:
+			XYZ2RGB = CIE_XYZ2RGB;
+			break;
+		}
+		wl2c(wavelength);
+		gauWl2c(gauWavelength, FWHM);
+	}
 	function setWavelengthInput(wl) {
 		wavelength = Number(wl);
 		coarseWavelength = wavelength;
