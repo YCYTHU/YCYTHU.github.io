@@ -5,32 +5,38 @@ tags:
 - JavaScript
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/723px-CIE1931xy_blank.svg.png
 ---
-使用三刺激值函数在线将波长（线光谱）或高斯峰转换为对应的sRGB颜色。
+使用三刺激值函数依据光的波长或光谱的高斯峰在线生成不同色彩空间中的颜色。
 <!--more-->
 <style>
 	.container {
-		display: table;
     	width: 100%;
-	}
-	.color {
-		display: table-cell;
-		border-left: 5px solid #fff;
+    	display: grid;
+		grid-template-columns: 200px repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-column-gap: 5px;
+		grid-row-gap: 5px;
 	}
 	.ui {
-		display: table-cell;
+		grid-area: 1 / 1 / 3 / 2;
 		padding: 5px 20px;
 		background-color: #efefef;
 		box-sizing: border-box;
 		width: 200px;
 	}
+	.color1 { grid-area: 1 / 2 / 2 / 3; }
+	.color2 { grid-area: 1 / 3 / 2 / 4; }
+	.color3 { grid-area: 2 / 2 / 3 / 3; }
+	.color4 { grid-area: 2 / 3 / 3 / 4; }
 	.colorSpace {
 		display: table;
+		padding: 4px;
 		background-color: #efefef;
 		border-radius: 10px;
 		width: 100%;
 	}
 	.colorSpaceInput {
 		display: table-cell;
+		text-align: center;
 	}
 	.wavelengthInput {
 		display: table-cell;
@@ -80,10 +86,10 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 转换过程默认使用sRGB色彩空间，如需其他色彩空间（如Adobe RGB，ProPhoto RGB或CIE RGB）可在下方进行选择。
 
 <div class="colorSpace">
-	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(1)"><span style="white-space: nowrap;">sRGB</span></div>
-	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(2)"><span style="white-space: nowrap;">Adobe RGB</span></div>
-	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(3)"><span style="white-space: nowrap;">ProPhoto RGB</span></div>
-	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onclick="setColorSpace(4)"><span style="white-space: nowrap;">CIE RGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" checked="true" onchange="setColorSpace(1)"><span style="white-space: nowrap;">sRGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onchange="setColorSpace(2)"><span style="white-space: nowrap;">Adobe RGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onchange="setColorSpace(3)"><span style="white-space: nowrap;">ProPhoto RGB</span></div>
+	<div class="colorSpaceInput"><input type="radio" name="colorSpace" onchange="setColorSpace(4)"><span style="white-space: nowrap;">CIE RGB</span></div>
 </div>
 
 ## 波长 ⇨ 颜色
@@ -103,10 +109,11 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 			<i class="far fa-copy" onclick="copyHEX(event)"></i><span>&nbsp;HEX:&nbsp;</span><span id="colorHEX">#ffb600</span>
 		</p>
 	</div>
-	<div class="color" style="background-color: #ffc600;" id="color" onclick="copyHEX(event)"></div>
-	<div class="color" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0039ff;" id="complementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color1" style="background-color: #ffc600;" id="color" onclick="copyHEX(event)"></div>
+	<div class="color2" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color3" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color4" style="background-color: #0039ff;" id="complementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	</div>
 </div>
 
 ## 高斯峰 ⇨ 颜色
@@ -129,10 +136,10 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 			<i class="far fa-copy" onclick="copyGauHEX(event)"></i><span>&nbsp;HEX:&nbsp;</span><span id="gauColorHEX">#ffea00</span>
 		</p>
 	</div>
-	<div class="color" style="background-color: #ffea00;" id="gauColor" onclick="copyGauHEX(event)"></div>
-	<div class="color" style="background-color: #ffea00;" id="gauColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
-	<div class="color" style="background-color: #0015ff;" id="gauComplementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color1" style="background-color: #ffea00;" id="gauColor" onclick="copyGauHEX(event)"></div>
+	<div class="color2" style="background-color: #ffea00;" id="gauColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color3" style="background-color: #0015ff;" id="gauComplementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
+	<div class="color4" style="background-color: #0015ff;" id="gauComplementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
 </div>
 
 ## 计算原理
