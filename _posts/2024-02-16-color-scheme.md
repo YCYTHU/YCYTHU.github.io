@@ -28,6 +28,13 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
     .barDiv { grid-area: 1 / 2 / 2 / 3; }
     .stackBarDiv { grid-area: 2 / 1 / 3 / 2; }
     .contourDiv { grid-area: 2 / 2 / 3 / 3; }
+    table {
+    	display: table;
+    	width: unset;
+    }
+    table td {
+    	border: none;
+    }
     .colorTable {
         border-collapse: collapse;
         border-spacing: 0px;
@@ -39,6 +46,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
         padding: 0px;
     }
     .optionTable {
+    	border-collapse: separate;
         border-spacing: 24px 8px;
         background-color: #efefef;
         border-radius: 10px;
@@ -57,22 +65,23 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
         opacity: 0;
     }
 </style>
-<div class="optionDiv" style="margin: 12px;">
-    <table class="optionTable"><tbody><tr>
-        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
-        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 2px; top: 3px;"><i class="fas fa-edit"></i></span></td>
-        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
-        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
-    </tr></tbody></table>
-</div>
-<!--<input type="text" data-coloris >-->
-<div class="colorDiv" style="margin: 12px;">
-    <table class="colorTable"><tbody><tr id="colorRow">
-        <td style="background-color: #042940; border: 2px solid #000;" onclick="selectTd(this)"></td>
-        <td style="background-color: #005c53;" onclick="selectTd(this)"></td>
-        <td style="background-color: #9fc131;" onclick="selectTd(this)"></td>
-        <td style="background-color: #dbf227;" onclick="selectTd(this)"></td>
-    </tr></tbody></table>
+<div style="text-align: center;">
+	<div class="optionDiv" style="display: inline-block;">
+	    <table class="optionTable"><tbody><tr>
+	        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
+	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 9px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
+	        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
+	        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
+	    </tr></tbody></table>
+	</div>
+	<div class="colorDiv" style="display: inline-block;">
+	    <table class="colorTable"><tbody><tr id="colorRow">
+	        <td style="background-color: #042940; border: 2px solid #000;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #005c53;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #9fc131;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #dbf227;" onclick="selectTd(this)"></td>
+	    </tr></tbody></table>
+	</div>
 </div>
 <div class="plotDiv">
     <div class="lineDiv" id="lineDiv"></div>
@@ -112,16 +121,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
         displaylogo: false,
         responsive: false
     };
-    var contourData = [{
-        z: matlabPeaks,
-        type: 'contour',
-        colorscale: [
-            [0, '#042940'],
-            [0.33, '#005c53'],
-            [0.67, '#9fc131'],
-            [1, '#dbf227']
-        ],
-    }];
     const year = [2022,2021,2020,2019,2018,2017,2016,2015,2014];
     const statData = [[
         [5.85597, 5.81084, 5.74225, 5.63040, 5.41661, 5.48413 ,5.39972, 5.39568, 5.24636],
@@ -196,6 +195,16 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 [7.94276357513287e-05,0.000168536764222243,0.000345438229899749,0.000684457080452551,0.00131186423505589,0.00243336337578076,0.00436984703344033,0.00759977349820054,0.0128032489864115,0.0208985721699655,0.033057324270026,0.0506804459213639,0.0753170700888568,0.108512246074243,0.151580529534452,0.205319602105972,0.269699172951318,0.343580474685925,0.424534092300176,0.508822188798133,0.59159151037339,0.667286725182151,0.730246275227779,0.775396374657719,0.798926240970943,0.798819897268885,0.775141458888413,0.730017887080517,0.667324278943431,0.592136140136447,0.510055686290916,0.426535251562224,0.346308519048523,0.273005554185795,0.208981781334376,0.155346635733272,0.112144688974802,0.0786257648833709,0.0535408175453003,0.0354129612310515,0.0227519267785726,0.0141994840301358,0.0086088108058821,0.00507043963034947,0.00290130429274805,0.00161286167584492,0.000871095210268839,0.000457093169084638,0.000233033204325509,0.000115426533302097],
 [5.19094479220219e-05,0.000109325338479407,0.000222677697028685,0.000438889694305191,0.00083742344707809,0.00154737349713233,0.00276965435697205,0.00480324198433677,0.00807240959439023,0.0131492284134312,0.0207627237469639,0.0317838344320911,0.0471749120851522,0.0678951894827669,0.094760333801789,0.128264811769908,0.168388832654161,0.214424072338301,0.264860142390804,0.317372841836262,0.368943164794018,0.416113309766201,0.455356576124636,0.483509051550484,0.498190565518166,0.498137270701372,0.483381329746867,0.455242263223499,0.416132501913381,0.369216816458422,0.317992133189701,0.265864579805699,0.215793175873251,0.170048057387935,0.130102496738154,0.0966501075095837,0.0697178501785263,0.0488350957682777,0.0332190464721131,0.0219446690949977,0.0140791447922691,0.00877296248266906,0.00530951776846959,0.00312116899413202,0.00178215676721465,0.00098844448008115,0.000532532349530704,0.000278698607553512,0.000141685224513414,6.99711871894868e-05],
 [3.22353596126927e-05,6.7526427150534e-05,0.000136915614243682,0.000268809978442396,0.000511198183497433,0.000941879690692516,0.00168171985103911,0.0029103014396191,0.00488214042760686,0.00794004600735532,0.012520493559258,0.0191445479104783,0.0283876307772234,0.0408230275418193,0.056938004359504,0.0770277203991483,0.101079887559703,0.128670555294826,0.158896057760216,0.190365659965761,0.221272301153764,0.249545314733236,0.273071481175495,0.28995341017427,0.2987619355454,0.298736009249567,0.289891289197232,0.273015926876483,0.249554793007275,0.221405694081987,0.19066735218312,0.159385274867508,0.129337317464746,0.101887893181394,0.0779225986268534,0.0578582241029235,0.0417105504754269,0.0291960263923393,0.0198433904254973,0.0130960091139038,0.00839284004765201,0.00522325117239543,0.00315681436694817,0.0018528767245067,0.00105619824204729,0.000584731784454345,0.000314405386713507,0.000164192618694939,8.32826721029713e-05,4.10297274582676e-05]];
+	var contourData = [{
+        z: matlabPeaks,
+        type: 'contour',
+        colorscale: [
+            [0, '#042940'],
+            [0.33, '#005c53'],
+            [0.67, '#9fc131'],
+            [1, '#dbf227']
+        ],
+    }];
     const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
     init();
     function editColor(newColor) {
@@ -313,7 +322,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
     function init() {
         Coloris({
             el: '#colorSelector',
-            theme: 'polaroid',
             themeMode: 'dark',
             alpha: false,
             swatches: colorArray
