@@ -6,8 +6,9 @@ tags:
 - Color
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/768px-Farbkreis_Itten_1961.svg.png
 ---
-通过编辑、新增和删除操作修改配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览折线图、柱状图[^STAT]与填充等高线图[^MATLAB]。更简便省时地挑选、比较配色方案。
+通过编辑、新增和删除操作修改配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览。
 <!--more-->
+更简便省时地展示、对比配色方案在折线图、柱状图[^STAT]与填充等高线图[^MATLAB]中的显示效果。
 
 [^STAT]:[数据来源：国家统计局](https://data.stats.gov.cn/easyquery.htm)
 [^MATLAB]:[数据来源：MATLAB函数 `peaks(50)` ](https://www.mathworks.com/help/matlab/ref/peaks.html)
@@ -61,9 +62,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     }
     .clr-field button {
         width: 0;
-        /*width: 16px;
-        left: 20px;
-        border-radius: 4px;*/
     }
     #colorSelector {
         width: 18px;
@@ -82,7 +80,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
 	<div class="optionDiv" style="display: inline-block;">
 	    <table id="optionTable"><tbody><tr>
 	        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
-	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 2px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
+	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" readonly/><span style="position: absolute; left: 2px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
 	        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
 	        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
 	    </tr></tbody></table>
@@ -309,7 +307,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         this.line = {color: color};
         this.mode = 'lines+markers';
         this.type = 'scatter';
-        //this.showlegend = false;
     }
     function Bar(x, y, name, color) {
         this.x = x;
@@ -323,7 +320,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
             }
         };
         this.type = 'bar';
-        //this.showlegend = false;
     }
     function init() {
         Coloris({
