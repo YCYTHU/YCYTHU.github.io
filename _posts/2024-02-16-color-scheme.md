@@ -1,9 +1,10 @@
 ---
-title: 在线预览科研绘图配色
+title: 科研绘图配色方案在线预览
 tags: 
 - Code
 - JavaScript
-cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/723px-CIE1931xy_blank.svg.png
+- Color
+cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/768px-Farbkreis_Itten_1961.svg.png
 ---
 在线自定义配色方案并应用于折线图、柱状图与填充等高线图。
 <!--more-->
@@ -28,28 +29,30 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
     .barDiv { grid-area: 1 / 2 / 2 / 3; }
     .stackBarDiv { grid-area: 2 / 1 / 3 / 2; }
     .contourDiv { grid-area: 2 / 2 / 3 / 3; }
-    table {
+    #colorTable {
     	display: table;
     	width: unset;
-    }
-    table td {
-    	border: none;
-    }
-    .colorTable {
         border-collapse: collapse;
         border-spacing: 0px;
         height: 100px;
     }
-    .colorTable tbody tr td {
+    #colorTable tbody tr td {
+    	border: none;
         width: 50px;
         text-align: center;
         padding: 0px;
     }
-    .optionTable {
+    #optionTable {
+    	display: table;
+    	width: unset;
     	border-collapse: separate;
         border-spacing: 24px 8px;
         background-color: #efefef;
         border-radius: 10px;
+    }
+    #optionTable td {
+    	border: none;
+    	padding: 0;
     }
     .clr-field {
         z-index: 9;
@@ -67,15 +70,15 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 </style>
 <div style="text-align: center;">
 	<div class="optionDiv" style="display: inline-block;">
-	    <table class="optionTable"><tbody><tr>
+	    <table id="optionTable"><tbody><tr>
 	        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
-	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 9px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
+	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 2px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
 	        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
 	        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
 	    </tr></tbody></table>
 	</div>
 	<div class="colorDiv" style="display: inline-block;">
-	    <table class="colorTable"><tbody><tr id="colorRow">
+	    <table id="colorTable"><tbody><tr id="colorRow">
 	        <td style="background-color: #042940; border: 2px solid #000;" onclick="selectTd(this)"></td>
 	        <td style="background-color: #005c53;" onclick="selectTd(this)"></td>
 	        <td style="background-color: #9fc131;" onclick="selectTd(this)"></td>
