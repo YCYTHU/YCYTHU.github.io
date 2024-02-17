@@ -81,7 +81,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
     }
 </style>
 
-通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。右侧的四个色块从左至右依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。点击 <i class="far fa-copy"></i> 或右侧色块可拷贝对应颜色至剪贴板。
+通过输入框或滑块输入波长与半峰宽（FWHM），底部会同步显示光谱所对应的颜色。左上方、右上方、左下方与右下方的四个色块依次展示了光谱所对应的颜色、HSB亮度100%的颜色、光谱颜色对应的补色以及HSB亮度100%的补色。点击 <i class="far fa-copy"></i> 或右侧色块可拷贝对应颜色至剪贴板。
 
 转换过程默认使用sRGB色彩空间，如需其他色彩空间（如Adobe RGB，ProPhoto RGB或CIE RGB）可在下方进行选择。
 
@@ -113,7 +113,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 	<div class="color2" style="background-color: #ffc600;" id="colorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
 	<div class="color3" style="background-color: #0039ff;" id="complementaryColor" onclick="copyColor(event, this.style.backgroundColor)"></div>
 	<div class="color4" style="background-color: #0039ff;" id="complementaryColorLight" onclick="copyColor(event, this.style.backgroundColor)"></div>
-	</div>
 </div>
 
 ## 高斯峰 ⇨ 颜色
