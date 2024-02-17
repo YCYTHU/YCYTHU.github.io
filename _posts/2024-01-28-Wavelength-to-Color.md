@@ -3,6 +3,7 @@ title: 使用三刺激值函数将光谱转换为sRGB颜色
 tags: 
 - Code
 - JavaScript
+- Color
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/723px-CIE1931xy_blank.svg.png
 ---
 使用三刺激值函数依据光的波长或光谱的高斯峰在线生成不同色彩空间中的颜色。

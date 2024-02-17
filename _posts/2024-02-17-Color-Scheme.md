@@ -6,9 +6,11 @@ tags:
 - Color
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/768px-Farbkreis_Itten_1961.svg.png
 ---
-在线自定义配色方案并应用于折线图、柱状图与填充等高线图。
+通过编辑、新增和删除操作修改配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览折线图、柱状图[^STAT]与填充等高线图[^MATLAB]。更简便省时地挑选、比较配色方案。
 <!--more-->
-通过工具栏在线修改、新增或删除配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览。
+
+[^STAT]:[数据来源：国家统计局](https://data.stats.gov.cn/easyquery.htm)
+[^MATLAB]:[数据来源：MATLAB函数 `peaks(50)` ](https://www.mathworks.com/help/matlab/ref/peaks.html)
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
 <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
@@ -69,20 +71,20 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     }
 </style>
 <div style="text-align: center;">
-	<div class="optionDiv" style="display: inline-block;">
-	    <table id="optionTable"><tbody><tr>
-	        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
-	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 2px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
-	        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
-	        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
-	    </tr></tbody></table>
-	</div>
 	<div class="colorDiv" style="display: inline-block;">
 	    <table id="colorTable"><tbody><tr id="colorRow">
 	        <td style="background-color: #042940; border: 2px solid #000;" onclick="selectTd(this)"></td>
 	        <td style="background-color: #005c53;" onclick="selectTd(this)"></td>
 	        <td style="background-color: #9fc131;" onclick="selectTd(this)"></td>
 	        <td style="background-color: #dbf227;" onclick="selectTd(this)"></td>
+	    </tr></tbody></table>
+	</div><br>
+	<div class="optionDiv" style="display: inline-block;">
+	    <table id="optionTable"><tbody><tr>
+	        <td><span onclick="copyColor(this)"><i class="fas fa-copy"></i></span></td>
+	        <td style="position: relative;"><input id="colorSelector" oninput="editColor(this.value)" /><span style="position: absolute; left: 2px; /*top: 3px;*/"><i class="fas fa-edit"></i></span></td>
+	        <td><span onclick="insertColor()"><i class="fas fa-plus"></i></span></td>
+	        <td><span onclick="deleteColor()"><i class="fas fa-trash-alt"></i></span></td>
 	    </tr></tbody></table>
 	</div>
 </div>
@@ -122,7 +124,8 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
             scale: 1
         },
         displaylogo: false,
-        responsive: false
+        responsive: true,
+        modeBarButtonsToRemove: ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d']
     };
     const year = [2022,2021,2020,2019,2018,2017,2016,2015,2014];
     const statData = [[
@@ -135,14 +138,14 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         [3.91337, 3.80993, 3.80328, 3.78109, 3.75180, 3.70946 ,3.67787, 3.63955, 3.63887],
         [1.61956, 1.59558, 1.56435, 1.65114, 1.64526, 1.60967 ,1.52927, 1.49503, 1.44293]
         ],[
-        [1.17768, 1.17242, 1.15133, 1.16557, 1.12217, 1.11698, 1.09403, 1.06270, 1.06215],
-        [4.75718, 4.59734, 4.40661, 4.24254, 3.92334, 4.13900, 4.03933, 3.88990, 3.73539],
-        [6.00389, 5.59561, 5.12187, 4.58454, 4.13814, 3.81678, 3.59152, 3.61753, 3.36218],
-        [1.92653, 1.88759, 1.78153, 1.73135, 1.60780, 1.64097, 1.59630, 1.65274, 1.58191],
-        [1.53779, 1.49980, 1.43141, 1.41954, 1.36668, 1.30829, 1.26294, 1.31641, 1.17310],
-        [0.74724, 0.74017, 0.77314, 0.74636, 0.73576, 0.72126, 0.68508, 0.71345, 0.64369],
-        [6.30231, 6.16340, 6.23436, 6.32406, 6.15369, 6.31472, 6.22065, 6.59942, 6.47304],
-        [1.38679, 1.37708, 1.38081, 1.35575, 1.31593, 1.23265, 1.18764, 1.11796, 1.10586]
+        [11.7768, 11.7242, 11.5133, 11.6557, 11.2217, 11.1698, 10.9403, 10.6270, 10.6215],
+        [47.5718, 45.9734, 44.0661, 42.4254, 39.2334, 41.3900, 40.3933, 38.8990, 37.3539],
+        [60.0389, 55.9561, 51.2187, 45.8454, 41.3814, 38.1678, 35.9152, 36.1753, 33.6218],
+        [19.2653, 18.8759, 17.8153, 17.3135, 16.0780, 16.4097, 15.9630, 16.5274, 15.8191],
+        [15.3779, 14.9980, 14.3141, 14.1954, 13.6668, 13.0829, 12.6294, 13.1641, 11.7310],
+        [ 7.4724,  7.4017,  7.7314,  7.4636,  7.3576,  7.2126,  6.8508,  7.1345,  6.4369],
+        [63.0231, 61.6340, 62.3436, 63.2406, 61.5369, 63.1472, 62.2065, 65.9942, 64.7304],
+        [13.8679, 13.7708, 13.8081, 13.5575, 13.1593, 12.3265, 11.8764, 11.1796, 11.0586]
         ]];
     const statName = [
         ['wheat', 'corn', 'sorghum', 'soybeans', 'greenBeans', 'cotton', 'peanut', 'sesame'],
@@ -257,7 +260,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         for (let i = 0; i < colorNum; i++) {
             lineData.push(new Line(year, statData[0][i], statName[0][i], colorArray[i]));
             stackBarData.push(new Bar(year, statData[1][i], statName[1][i], colorArray[i]));
-            barData.push(new Bar(statName[1].slice(1,3), math.reshape(math.column(statData[1],i).slice(1,3),[2]), year[i], colorArray[i]));
+            barData.push(new Bar(statName[1].slice(1,3), math.reshape(math.column(statData[1],7 - i).slice(1,3),[2]), year[7 - i], colorArray[i]));
             contourData[0].colorscale.push([i / (colorNum - 1), colorArray[i]]);
         }
     }
@@ -272,7 +275,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         setTimeout(() => {
             span.innerHTML = '<i class="fas fa-copy"></i>'; 
         }, 1000);
-        var copyTxt = document.getElementById('colorRow').cells[currentTd].style.backgroundColor;
+        var copyTxt = colorStr2Hex(document.getElementById('colorRow').cells[currentTd].style.backgroundColor);
         var copyIpt = document.createElement("input");
         copyIpt.setAttribute("value", copyTxt);
         document.body.appendChild(copyIpt);
@@ -334,25 +337,22 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
             xaxis: Object.assign({}, baseXaxis),
             yaxis: Object.assign({}, baseYaxis)
         };
-        //lineLayout.title = '主要农作物单位面积产量';
         lineLayout.xaxis.title = 'Year';
-        lineLayout.yaxis.title = '(ton / hectare)';
+        lineLayout.yaxis.title = 'Crop Yields (ton / hectare)';
         barLayout = {
             margin: Object.assign({}, baseMargin),
             xaxis: Object.assign({}, baseXaxis),
             yaxis: Object.assign({}, baseYaxis)
         };
-        //barLayout.title = '水果产量';
         barLayout.xaxis.title = 'Category';
-        barLayout.yaxis.title = '(千万吨)';
+        barLayout.yaxis.title = 'Fruit Yields (million tons)';
         stackBarLayout = {
             margin: Object.assign({}, baseMargin),
             xaxis: Object.assign({}, baseXaxis),
             yaxis: Object.assign({}, baseYaxis)
         };
-        //stackBarLayout.title = '水果产量';
         stackBarLayout.xaxis.title = 'Year';
-        stackBarLayout.yaxis.title = '(千万吨)';
+        stackBarLayout.yaxis.title = 'Yields (million tons)';
         stackBarLayout.barmode = 'relative';
 
         contourLayout = {
