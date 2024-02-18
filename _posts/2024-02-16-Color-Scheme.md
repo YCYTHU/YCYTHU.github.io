@@ -5,6 +5,7 @@ tags:
 - JavaScript
 - Color
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/768px-Farbkreis_Itten_1961.svg.png
+modify_date: 2024-02-18
 ---
 通过编辑、新增和删除操作修改配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览。
 <!--more-->
@@ -34,14 +35,48 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     .contourDiv { grid-area: 2 / 2 / 3 / 3; }
     #colorTable {
     	display: table;
+        border-collapse: separate;
+        border-spacing: 8px;
     	width: unset;
-        border-collapse: collapse;
-        border-spacing: 0px;
         height: 100px;
+    }
+    /*#cnd8Table {
+        display: table;
+        border-collapse: separate;
+        border-spacing: 6px 24px;
+        width: unset;
+    }*/
+    .cnd8Div {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .cnd8Div table {
+        display: inline-table;
+        margin: 1.5rem;
+        border-collapse: separate;
+        border-spacing: 6px;
+    }
+    .cnd8Div td {
+        border: none;
+        border-radius: .75rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0px;
     }
     #colorTable tbody tr td {
     	border: none;
+        border-radius: 12px;
         width: 50px;
+        text-align: center;
+        padding: 0px;
+    }
+    #cnd8Table tbody tr td {
+        border: none;
+        border-radius: 14px;
+        width: 50px;
+        height: 50px;
         text-align: center;
         padding: 0px;
     }
@@ -63,18 +98,27 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     .clr-field button {
         width: 0;
     }
+    .mask {
+        background-color: #fff0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     #colorSelector {
         width: 18px;
         opacity: 0;
     }
 </style>
+<div class="main">
 <div style="text-align: center;">
 	<div class="colorDiv" style="display: inline-block;">
 	    <table id="colorTable"><tbody><tr id="colorRow">
-	        <td style="background-color: #042940; border: 2px solid #000;" onclick="selectTd(this)"></td>
-	        <td style="background-color: #005c53;" onclick="selectTd(this)"></td>
-	        <td style="background-color: #9fc131;" onclick="selectTd(this)"></td>
-	        <td style="background-color: #dbf227;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #44045a; border: 2px solid #000;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #30688d;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #35b777;" onclick="selectTd(this)"></td>
+	        <td style="background-color: #f8e620;" onclick="selectTd(this)"></td>
 	    </tr></tbody></table>
 	</div><br>
 	<div class="optionDiv" style="display: inline-block;">
@@ -92,8 +136,97 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     <div class="stackBarDiv" id="stackBarDiv"></div>
     <div class="contourDiv" id="contourDiv"></div>
 </div>
+
+<h2>经典配色方案</h2>
+
+<div style="text-align: center;">
+    <div class="cnd8Div">
+        <table>
+            <td class="cdn8Color-scheme1" style="background-color: #44045a;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme1')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme1" style="background-color: #30688d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme1')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme1" style="background-color: #35b777;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme1')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme1" style="background-color: #f8e620;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme1')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme2" style="background-color: #12264F;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme2')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme2" style="background-color: #354E6B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme2')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme2" style="background-color: #108B96;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme2')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme2" style="background-color: #D4DDE1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme2')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme3" style="background-color: #042940;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme3" style="background-color: #005c53;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme3" style="background-color: #9fc131;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme3" style="background-color: #dbf227;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme4" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #F0C2A2;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #4182A4;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #354E6B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme5" style="background-color: #b8b8d1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme5" style="background-color: #5b5f97;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme5" style="background-color: #ffc145;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme5" style="background-color: #ff6b6c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme6" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme6" style="background-color: #ECD452;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme6" style="background-color: #354E6B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme6" style="background-color: #B2B6B6;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme7" style="background-color: #DF7A5E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme7" style="background-color: #3C405B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme7" style="background-color: #82B29A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme7" style="background-color: #F2CC8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme8" style="background-color: #264653;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme8" style="background-color: #E66F51;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme8" style="background-color: #2A9D8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme8" style="background-color: #F3A261;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme9" style="background-color: #02304A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme9" style="background-color: #136783;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme9" style="background-color: #219EBC;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme9" style="background-color: #90C9E7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme10" style="background-color: #e6550d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #fd8d3c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #fdae6b;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #fdd0a2;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme11" style="background-color: #3182bd;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #e6550d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #31a354;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #756bb1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme12" style="background-color: #DB3124;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #FFDF92;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #90BEE0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #4B74B0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme13" style="background-color: #0072BD;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #D95319;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #EDB120;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #7E2F8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #77AC30;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #4DBEEE;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme14" style="background-color: #B7B5A0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #44757A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #452A3D;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #D44C3C;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #DD6C4C;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #E5855D;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #EED5B7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme15" style="background-color: #219EBC;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #023047;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #FFB703;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #FB8402;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+        </table><table>
+    </div>
+</div>
+</div>
 <script type="text/javascript">
-    var colorNum = 4, colorArray = ['#042940', '#005c53', '#9fc131', '#dbf227'], lineData = [], barData = [], stackBarData = [], lineLayout, barLayout, stackBarLayout, contourLayout, currentTd = 0;
+    var colorNum = 4, colorArray = ['#44045a', '#30688d', '#35b777', '#f8e620'], lineData = [], barData = [], stackBarData = [], lineLayout, barLayout, stackBarLayout, contourLayout, currentIndex = 0, timer = false;
     var baseMargin = {
         l: 36,
         r: 24,
@@ -212,11 +345,11 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     const RGB2HEX = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
     init();
     function editColor(newColor) {
-        colorArray[currentTd] = newColor;
-        document.getElementById('colorRow').cells[currentTd].style.backgroundColor = newColor;
-        lineData[currentTd].line.color = newColor;
-        barData[currentTd].marker.color = newColor;
-        stackBarData[currentTd].marker.color = newColor;
+        colorArray[currentIndex] = newColor;
+        document.getElementById('colorRow').cells[currentIndex].style.backgroundColor = newColor;
+        lineData[currentIndex].line.color = newColor;
+        barData[currentIndex].marker.color = newColor;
+        stackBarData[currentIndex].marker.color = newColor;
         contourData[0].colorscale = [];
         for (let i = 0; i < colorNum; i++) {
             contourData[0].colorscale.push([i / (colorNum - 1), colorArray[i]]);
@@ -227,14 +360,14 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         if (colorNum >= 8)
             return;
         colorNum++;
-        currentTd++;
+        currentIndex++;
         var tr = document.getElementById('colorRow');
         var newColor = getRandomColor();
-        tr.insertCell(currentTd);
-        tr.cells[currentTd].outerHTML = '<td style="background-color: ' + newColor + ';" onclick="selectTd(this)"></td>'
-        tr.cells[currentTd - 1].style.border = '';
-        colorArray.splice(currentTd, 0, newColor);
-        selectTd(tr.cells[currentTd]);
+        tr.insertCell(currentIndex);
+        tr.cells[currentIndex].outerHTML = '<td style="background-color: ' + newColor + ';" onclick="selectTd(this)"></td>'
+        tr.cells[currentIndex - 1].style.border = '';
+        colorArray.splice(currentIndex, 0, newColor);
+        selectTd(tr.cells[currentIndex]);
         constructData();
         updatePlot();
     }
@@ -242,13 +375,13 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         if (colorNum <= 2)
             return;
         colorNum--;
-        colorArray.splice(currentTd, 1);
+        colorArray.splice(currentIndex, 1);
         constructData();
         var tr = document.getElementById('colorRow');
-        tr.deleteCell(currentTd);        
+        tr.deleteCell(currentIndex);        
         updatePlot();
-        currentTd = 0;
-        selectTd(tr.cells[currentTd]);
+        currentIndex = 0;
+        selectTd(tr.cells[currentIndex]);
     }
     function constructData() {
         lineData = [];
@@ -268,14 +401,59 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
         Plotly.react("barDiv", barData, barLayout, config);
         Plotly.react("contourDiv", contourData, contourLayout, config);
     }
+    function applyCnd8(scheme) {
+        var cnd8Scheme = document.querySelectorAll('.' + scheme);
+        var cnd8ColorNum = cnd8Scheme.length;
+        var cnd8Color = [];
+        var tr = document.getElementById('colorRow');
+        colorArray = [];
+        if (cnd8ColorNum > colorNum)
+            for (let i = colorNum; i < cnd8ColorNum; i++) {
+                tr.insertCell(0);
+                tr.cells[0].outerHTML = '<td onclick="selectTd(this)"></td>'
+            }
+        if (cnd8ColorNum < colorNum)
+            for (let i = cnd8ColorNum; i < colorNum; i++)
+                tr.deleteCell(0);
+        for (let i = 0; i < cnd8ColorNum; i++) {
+            colorArray.push(colorStr2Hex(cnd8Scheme[i].style.backgroundColor));
+            tr.cells[i].style.border = '';
+            tr.cells[i].style.backgroundColor = cnd8Scheme[i].style.backgroundColor;
+        }
+        currentIndex = 0;
+        selectTd(tr.cells[0]);
+        colorNum = cnd8ColorNum;
+        constructData();
+        updatePlot();
+    }
     function copyColor(span) {
         span.innerHTML = '<i class="fas fa-clipboard-check"></i>';
         setTimeout(() => {
             span.innerHTML = '<i class="fas fa-copy"></i>'; 
         }, 1000);
-        var copyTxt = colorStr2Hex(document.getElementById('colorRow').cells[currentTd].style.backgroundColor);
+        var copyTxt = colorStr2Hex(document.getElementById('colorRow').cells[currentIndex].style.backgroundColor);
+        copy(copyTxt);
+    }
+    function copyCnd8(td) {
+        if (timer)
+            return;
+        timer = true;
+        var copyTxt = colorStr2Hex(td.style.backgroundColor);
+        copy(copyTxt);
+        var div = td.children[0];
+        div.innerHTML = '<i class="fas fa-clipboard-check"></i>';
+        div.style.backgroundColor = '#fff9';
+        setTimeout(() => {
+            timer = false;           
+        }, 1100);
+        setTimeout(() => {
+            div.innerHTML = '';
+            div.style.backgroundColor = '#fff0';
+        }, 1000);
+    }
+    function copy(text) {
         var copyIpt = document.createElement("input");
-        copyIpt.setAttribute("value", copyTxt);
+        copyIpt.setAttribute("value", text);
         document.body.appendChild(copyIpt);
         copyIpt.select();
         document.execCommand("copy");
@@ -287,12 +465,12 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten
     }
     function selectTd(td) {
         index = colorArray.indexOf(colorStr2Hex(td.style.backgroundColor));
-        //if (index == currentTd)
+        //if (index == currentIndex)
         //    return;
         var tr = document.getElementById('colorRow');
-        tr.cells[currentTd].style.border = '';
+        tr.cells[currentIndex].style.border = '';
         tr.cells[index].style.border = '2px solid #000';
-        currentTd = index;
+        currentIndex = index;
     }
     function getRandomColor() {
         let red = Math.floor(Math.random() * 256).toString(16);
