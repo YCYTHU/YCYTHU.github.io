@@ -51,7 +51,7 @@ modify_date: 2024-02-18
         border-collapse: separate;
         border-spacing: 6px;
     }
-    .cnd8Div td {
+    .cnd8Div table tbody tr td {
         border: none;
         border-radius: .75rem;
         width: 3rem;
@@ -93,6 +93,7 @@ modify_date: 2024-02-18
         width: 0;
     }
     .mask {
+        pointer-events: none;
         background-color: #fff0;
         width: 100%;
         height: 100%;
@@ -100,9 +101,15 @@ modify_date: 2024-02-18
         align-items: center;
         justify-content: center;
     }
+    .mask > i {
+        pointer-events: none;
+    }
     #colorSelector {
         width: 18px;
+        height: 16px;
         opacity: 0;
+        border: none;
+        padding: 0;
     }
 </style>
 
