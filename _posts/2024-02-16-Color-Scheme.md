@@ -18,7 +18,6 @@ modify_date: 2024-02-18
 <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
-
 <style type="text/css">
     .plotDiv {
         max-width: 950px;
@@ -40,12 +39,6 @@ modify_date: 2024-02-18
     	width: unset;
         height: 100px;
     }
-    /*#cnd8Table {
-        display: table;
-        border-collapse: separate;
-        border-spacing: 6px 24px;
-        width: unset;
-    }*/
     .cnd8Div {
         display: flex;
         justify-content: space-between;
@@ -53,7 +46,8 @@ modify_date: 2024-02-18
     }
     .cnd8Div table {
         display: inline-table;
-        margin: 1.5rem;
+        width: unset;
+        margin: 1.2rem 0;
         border-collapse: separate;
         border-spacing: 6px;
     }
@@ -111,7 +105,7 @@ modify_date: 2024-02-18
         opacity: 0;
     }
 </style>
-<div class="main">
+
 <div style="text-align: center;">
 	<div class="colorDiv" style="display: inline-block;">
 	    <table id="colorTable"><tbody><tr id="colorRow">
@@ -137,7 +131,9 @@ modify_date: 2024-02-18
     <div class="contourDiv" id="contourDiv"></div>
 </div>
 
-<h2>经典配色方案</h2>
+## 经典配色方案
+
+下方列出了一些经典的配色方案。鼠标左键单击色块可复制对应颜色，双击可将配色方案应用于绘图中。
 
 <div style="text-align: center;">
     <div class="cnd8Div">
@@ -157,76 +153,101 @@ modify_date: 2024-02-18
             <td class="cdn8Color-scheme3" style="background-color: #9fc131;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme3" style="background-color: #dbf227;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme3')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme4" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme4" style="background-color: #F0C2A2;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme4" style="background-color: #4182A4;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme4" style="background-color: #354E6B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #4182A4;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #F0C2A2;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme4" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme4')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme5" style="background-color: #b8b8d1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme5" style="background-color: #5b5f97;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme5" style="background-color: #b8b8d1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme5" style="background-color: #ffc145;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme5" style="background-color: #ff6b6c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme5')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme6" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme6" style="background-color: #ECD452;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme6" style="background-color: #354E6B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme6" style="background-color: #B2B6B6;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme6" style="background-color: #ECD452;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme6" style="background-color: #A64036;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme6')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme7" style="background-color: #DF7A5E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme7" style="background-color: #3C405B;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme7" style="background-color: #82B29A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme7" style="background-color: #F2CC8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme7" style="background-color: #DF7A5E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme7')"><div class="mask"></div></td>
         </table><table>
             <td class="cdn8Color-scheme8" style="background-color: #264653;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme8" style="background-color: #E66F51;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme8" style="background-color: #2A9D8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme8" style="background-color: #F3A261;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme8" style="background-color: #E66F51;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme8')"><div class="mask"></div></td>
         </table><table>
             <td class="cdn8Color-scheme9" style="background-color: #02304A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme9" style="background-color: #136783;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme9" style="background-color: #219EBC;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
             <td class="cdn8Color-scheme9" style="background-color: #90C9E7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme9')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme10" style="background-color: #e6550d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme10" style="background-color: #fd8d3c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme10" style="background-color: #fdae6b;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme10" style="background-color: #fdd0a2;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #4B74B0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #90BEE0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #FFDF92;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme10" style="background-color: #DB3124;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme10')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme11" style="background-color: #3182bd;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme11" style="background-color: #e6550d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme11" style="background-color: #31a354;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme11" style="background-color: #756bb1;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #44757A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #B7B5A0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #EED5B7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme11" style="background-color: #DD6C4C;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme11')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme12" style="background-color: #DB3124;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme12" style="background-color: #FFDF92;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme12" style="background-color: #90BEE0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme12" style="background-color: #4B74B0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #024f75;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #219EBC;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #FFB703;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme12" style="background-color: #FB8402;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme12')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme13" style="background-color: #0072BD;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme13" style="background-color: #D95319;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme13" style="background-color: #EDB120;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme13" style="background-color: #7E2F8E;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme13" style="background-color: #77AC30;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme13" style="background-color: #4DBEEE;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #4285f4;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #34a853;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #fbbc05;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme13" style="background-color: #ea4335;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme13')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme14" style="background-color: #B7B5A0;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #44757A;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #452A3D;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #D44C3C;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #DD6C4C;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #E5855D;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme14" style="background-color: #EED5B7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #76290b;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #c27e35;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #ccb363;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme14" style="background-color: #fbedc3;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme14')"><div class="mask"></div></td>
         </table><table>
-            <td class="cdn8Color-scheme15" style="background-color: #219EBC;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme15" style="background-color: #023047;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme15" style="background-color: #FFB703;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
-            <td class="cdn8Color-scheme15" style="background-color: #FB8402;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #541a32;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #924a60;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #b68a26;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme15" style="background-color: #dabd78;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme15')"><div class="mask"></div></td>
         </table><table>
+            <td class="cdn8Color-scheme16" style="background-color: #132a13;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme16')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme16" style="background-color: #31572c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme16')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme16" style="background-color: #90a955;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme16')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme16" style="background-color: #ecf39e;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme16')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme17" style="background-color: #2f321f;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme17')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme17" style="background-color: #693654;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme17')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme17" style="background-color: #d63f3a;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme17')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme17" style="background-color: #fe7d3c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme17')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme18" style="background-color: #acbed8;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme18')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme18" style="background-color: #e8ebf7;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme18')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme18" style="background-color: #f2d398;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme18')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme18" style="background-color: #d78521;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme18')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme19" style="background-color: #5b618a;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme19')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme19" style="background-color: #9eadc8;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme19')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme19" style="background-color: #d6d65a;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme19')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme19" style="background-color: #b9e28c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme19')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme20" style="background-color: #1d322d;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme20')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme20" style="background-color: #4e6d6c;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme20')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme20" style="background-color: #adb59f;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme20')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme20" style="background-color: #843945;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme20')"><div class="mask"></div></td>
+        </table><table>
+            <td class="cdn8Color-scheme21" style="background-color: #311f19;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme21')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme21" style="background-color: #805241;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme21')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme21" style="background-color: #a97d6a;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme21')"><div class="mask"></div></td>
+            <td class="cdn8Color-scheme21" style="background-color: #d7c5b9;" onclick="copyCnd8(this)" ondblclick="applyCnd8('cdn8Color-scheme21')"><div class="mask"></div></td>
+        </table>
     </div>
 </div>
-</div>
+
 <script type="text/javascript">
-    var colorNum = 4, colorArray = ['#44045a', '#30688d', '#35b777', '#f8e620'], lineData = [], barData = [], stackBarData = [], lineLayout, barLayout, stackBarLayout, contourLayout, currentIndex = 0, timer = false;
+    var colorNum = 4, colorArray = ['#44045a', '#30688d', '#35b777', '#f8e620'], lineData = [], barData = [], stackBarData = [], lineLayout, barLayout, stackBarLayout, contourLayout, currentIndex = 0, currentScheme = 'cdn8Color-scheme1', timer = false;
     var baseMargin = {
         l: 36,
         r: 24,
@@ -246,17 +267,9 @@ modify_date: 2024-02-18
         linewidth: 2
     };
     var config = {
-        editable: false,
-        toImageButtonOptions: {
-            format: 'jpeg',
-            filename: 'color',
-            height: 1200,
-            width: 1600,
-            scale: 1
-        },
+        staticPlot: true,
         displaylogo: false,
-        responsive: true,
-        modeBarButtonsToRemove: ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d']
+        responsive: true
     };
     const year = [2022,2021,2020,2019,2018,2017,2016,2015,2014];
     const statData = [[
@@ -274,13 +287,13 @@ modify_date: 2024-02-18
         [60.0389, 55.9561, 51.2187, 45.8454, 41.3814, 38.1678, 35.9152, 36.1753, 33.6218],
         [19.2653, 18.8759, 17.8153, 17.3135, 16.0780, 16.4097, 15.9630, 16.5274, 15.8191],
         [15.3779, 14.9980, 14.3141, 14.1954, 13.6668, 13.0829, 12.6294, 13.1641, 11.7310],
+        [13.8679, 13.7708, 13.8081, 13.5575, 13.1593, 12.3265, 11.8764, 11.1796, 11.0586],
         [ 7.4724,  7.4017,  7.7314,  7.4636,  7.3576,  7.2126,  6.8508,  7.1345,  6.4369],
-        [63.0231, 61.6340, 62.3436, 63.2406, 61.5369, 63.1472, 62.2065, 65.9942, 64.7304],
-        [13.8679, 13.7708, 13.8081, 13.5575, 13.1593, 12.3265, 11.8764, 11.1796, 11.0586]
+        [63.0231, 61.6340, 62.3436, 63.2406, 61.5369, 63.1472, 62.2065, 65.9942, 64.7304]
         ]];
     const statName = [
         ['wheat', 'corn', 'sorghum', 'soybeans', 'greenBeans', 'cotton', 'peanut', 'sesame'],
-        ['banana', 'apple', 'citrus', 'pear', 'grape', 'redDates', 'watermelon', 'muskmelon']
+        ['banana', 'apple', 'citrus', 'pear', 'grape', 'muskmelon', 'redDates', 'watermelon']
         ];
     const matlabPeaks = [[6.67128029671744e-05,0.000124903005758909,0.000225332261306432,0.000391260248875315,0.000652901409212293,0.0010449405706284,0.00159950040964624,0.00233230581590381,0.00322014058128972,0.00416908994735365,0.00497579617177504,0.00528794342406684,0.00457474688066175,0.00212195231339733,-0.00293317312341591,-0.0115150791751759,-0.0244690543901066,-0.0423783618196821,-0.0653680842769219,-0.0929381092814903,-0.123872972094337,-0.156268832519168,-0.187696811466362,-0.215490993983606,-0.237116540075763,-0.250548425738204,-0.254582862797022,-0.249015283793034,-0.23464842035639,-0.213133158692317,-0.186682229666169,-0.157721977702597,-0.128554382678862,-0.101090134416982,-0.0766892624821716,-0.0561170003453932,-0.0395975098508891,-0.0269324468388381,-0.0176469038896763,-0.0111303016971548,-0.00675047677091701,-0.00393127617268421,-0.00219410519421596,-0.00117035506841782,-0.000594278058408064,-0.000285531330754633,-0.000128548630715254,-5.32968637387835e-05,-1.96413457854626e-05,-5.86418787258953e-06],
 [0.000102910100082449,0.00019247399083687,0.000346696429391366,0.00060068783535371,0.000999419176593346,0.00159316315715971,0.00242550562022783,0.00351035203803274,0.00479497103178722,0.0061084305795197,0.00709924498934004,0.00717251451046396,0.00544417531671965,0.000735910621260183,-0.00836432351809389,-0.0233574232893868,-0.0456006977082087,-0.0760082931295326,-0.114731833380557,-0.160890797746588,-0.212430444761827,-0.266172556830693,-0.318089574904652,-0.363781989070938,-0.399085141753069,-0.420691061586321,-0.42665744094001,-0.416695660274758,-0.392178671868511,-0.355873944978862,-0.311468006244446,-0.262990323888807,-0.214255451797636,-0.168423429298089,-0.127738299000473,-0.0934570778211309,-0.0659402468417206,-0.0448490864842329,-0.0293879170812072,-0.0185376705106891,-0.011244882184631,-0.00655013660972486,-0.00365675362281647,-0.0019512154956773,-0.000991197527164299,-0.000476487821345963,-0.000214664253156436,-8.90848443941578e-05,-3.28797676159107e-05,-9.84806938359872e-06],
@@ -391,7 +404,7 @@ modify_date: 2024-02-18
         for (let i = 0; i < colorNum; i++) {
             lineData.push(new Line(year, statData[0][i], statName[0][i], colorArray[i]));
             stackBarData.push(new Bar(year, statData[1][i], statName[1][i], colorArray[i]));
-            barData.push(new Bar(statName[1].slice(1,3), math.reshape(math.column(statData[1],7 - i).slice(1,3),[2]), year[7 - i], colorArray[i]));
+            barData.push(new Bar(statName[1].slice(3,6), math.reshape(math.column(statData[1],7 - i).slice(3,6),[3]), year[7 - i], colorArray[i]));
             contourData[0].colorscale.push([i / (colorNum - 1), colorArray[i]]);
         }
     }
@@ -402,6 +415,9 @@ modify_date: 2024-02-18
         Plotly.react("contourDiv", contourData, contourLayout, config);
     }
     function applyCnd8(scheme) {
+        if (scheme == currentScheme)
+            return;
+        currentScheme = scheme;
         var cnd8Scheme = document.querySelectorAll('.' + scheme);
         var cnd8ColorNum = cnd8Scheme.length;
         var cnd8Color = [];
