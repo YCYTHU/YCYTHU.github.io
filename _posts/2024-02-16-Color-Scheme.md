@@ -4,7 +4,7 @@ tags:
 - Code
 - JavaScript
 - Color
-cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/768px-Farbkreis_Itten_1961.svg.png
+cover: /assets/images/Colour Palette.jpg
 modify_date: 2024-02-22
 ---
 通过编辑、新增和删除操作修改配色方案，并通过[Plotly.js](https://plotly.com/javascript/)实时预览。

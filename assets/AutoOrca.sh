@@ -6,8 +6,9 @@ if [ $# -lt 1 ]; then
     echo 'usage: AutoOrca.sh fileName --template template1.inp template2.inp --suffix suffix1 suffix2 -n 12 -m 3000'
     echo 'option: --template(-t) [template input file(s) for ORCA]'
     echo '        --suffix(-s) [customize suffix(es) for filename(s)]'
-    echo '        --ncores(-n) [number of cores, default: 16]'
+    echo '        --nprocs(-n) [number of cores, default: 16]'
     echo '        --memory(-m) [memory per core in MB, default: 3000]'
+    echo '        --postpone(-p) [generate input file(s) without submitting task(s)]'
     exit 1
 fi
 echo `date +"%Y-%m-%d %H:%M:%S"`" Exec AutoOrca.sh" >> $SCRIPT_DIR/STAT
@@ -17,6 +18,8 @@ ORCA_CMD=/apps/soft/orca/orca.5.0.1/orca
 SCHEDULER=SLURM
 NCORES_DEFAULT=16
 MEM_DEFAULT=3000
+
+POSTPONE=false
 
 GEOMETRY=$1
 FILENAME=${1%.*}
@@ -48,11 +51,15 @@ do
                 shift 1
             done
             ;;
+        --postpone|-p)
+            POSTPONE=true
+            shift 1
+            ;;
         *)
             echo 'usage: AutoOrca.sh fileName --template template1.inp template2.inp --suffix suffix1 suffix2 -n 12 -m 3000'
             echo 'option: --template(-t) [template input file(s) for ORCA]'
             echo '        --suffix(-s) [customize suffix(es) for filename(s)]'
-            echo '        --ncores(-n) [number of cores, default: 16]'
+            echo '        --nprocs(-n) [number of cores, default: 16]'
             echo '        --memory(-m) [memory per core in MB, default: 3000]'
             echo "    <ERROR> Unknown option" >> $SCRIPT_DIR/STAT
             exit 1;;
@@ -160,10 +167,10 @@ do
     rm -f $rand_inp_name".inp"
     if [ "$SCHEDULER" = SLURM ]; then
         GEN_SLURM_SUB $FILENAME"_"$suffix $NCORES
-        sbatch $FILENAME"_"$suffix".txt"
+        [ "$POSTPONE" = false ] && sbatch $FILENAME"_"$suffix".txt"
     elif [ "$SCHEDULER" = PBS ]; then
         GEN_PBS_SUB $FILENAME"_"$suffix $NCORES
-        qsub $FILENAME"_"$suffix".txt"
+        [ "$POSTPONE" = false ] && qsub $FILENAME"_"$suffix".txt"
     else
         echo "Error!!! unknown scheduler"
     fi

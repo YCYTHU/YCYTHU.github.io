@@ -59,7 +59,7 @@ do
         m) MEM=$OPTARG;;
         s) TEMPLATE_SINGLET=$OPTARG;;
         t) TEMPLATE_TRIPLET=$OPTARG;;
-        x) SUFFIX=$OPTARG;;
+        x) SUFFIX=_$OPTARG;;
         N) NSTATES=$OPTARG;;
         R) ROOT=$OPTARG;;
         S) SINGLET=$OPTARG;;
@@ -139,8 +139,8 @@ cat > $2".txt" << EOF
 #SBATCH -J $2
 #SBATCH -p cnall
 #SBATCH -N 1
-#SBATCH -o stdout.%j
-#SBATCH -e stderr.%j
+#SBATCH -o %j.stdout
+#SBATCH -e %j.stderr
 #SBATCH --no-requeue
 #SBATCH --ntasks-per-node=$3
 
@@ -247,6 +247,7 @@ if [ "$EXPORT_CUBE" = true ]; then
     EXPORT_FMO_CUBE $FILENAME
 fi
 
+tmpl_rand_name=`date +%s%N | md5sum | cut -c 1-8`
 if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
     if [ -n "$TEMPLATE_SINGLET" ];then
         if [[ -f "$TEMPLATE_SINGLET" ]];then
@@ -259,13 +260,13 @@ if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
         fi
     else
         echo "using profiles from $FILENAME.gjf for singlet excited states"
-        cp $FILENAME".gjf" temp.gjf
+        cp $FILENAME".gjf" $tmpl_rand_name".gjf"
         TDDFT="td=(singlets,nstates=$NSTATES_DEFAULT,root=$ROOT_DEFAULT)"
-        sed -i "s/#[^.]*/& $TDDFT/" temp.gjf
-        sed -i "s/$FILENAME/[name]/" temp.gjf
-        GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" temp.gjf`
-        head -$(($GEOMETRY_LINE-1)) temp.gjf > template.gjf
-        rm -f temp.gjf
+        sed -i "s/#[^.]*/& $TDDFT/" $tmpl_rand_name".gjf"
+        sed -i "s/$FILENAME/[name]/" $tmpl_rand_name".gjf"
+        GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" $tmpl_rand_name".gjf"`
+        head -$(($GEOMETRY_LINE-1)) $tmpl_rand_name".gjf" > template.gjf
+        rm -f $tmpl_rand_name".gjf"
         sed -i "$(($GEOMETRY_LINE-1))a [geometry]" template.gjf
         echo >> template.gjf
     fi
@@ -306,7 +307,7 @@ if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
         fi
     else
         MEM_IS_WRITTEN=`grep -io '%mem=[0-9]\{1,\}' template.gjf`
-        if [ -z "$NPROC_IS_WRITTEN" ];then
+        if [ -z "$MEM_IS_WRITTEN" ];then
             SINGLET_MEM=$MEM_DEFAULT
             sed -i "1i %mem=$SINGLET_MEM" template.gjf
         else
@@ -351,7 +352,7 @@ if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
     fi
     echo "setting root=$SINGLET_ROOT for singlet excited states"
 
-    SINGLET_FILENAME=$FILENAME"_S"$SINGLET_ROOT"_"$SINGLET"_"$SUFFIX
+    SINGLET_FILENAME=$FILENAME"_S"$SINGLET_ROOT"_"$SINGLET$SUFFIX
     GEN_GJF_FROM_TMPL $FILENAME".fchk" $SINGLET_FILENAME".gjf"
     rm -f template.gjf
     if [ "$SCHEDULER" = SLURM ]; then
@@ -362,6 +363,8 @@ if [ -n "$SINGLET" ] && [ "$SINGLET" != "none" ];then
         [ "$POSTPONE" = false ] && qsub $SINGLET_FILENAME".txt"
     else
         echo "Error!!! unknown scheduler"
+        echo "    <ERROR> Unknown scheduler" >> $SCRIPT_DIR/STAT
+        exit 1
     fi
 fi
 
@@ -377,13 +380,13 @@ if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
         fi
     else
         echo "using profiles from $FILENAME.gjf for triplet excited states"
-        cp $FILENAME".gjf" temp.gjf
+        cp $FILENAME".gjf" $tmpl_rand_name".gjf"
         TDDFT="td=(triplets,nstates=$NSTATES_DEFAULT,root=$ROOT_DEFAULT)"
-        sed -i "s/#[^.]*/& $TDDFT/" temp.gjf
-        sed -i "s/$FILENAME/[name]/" temp.gjf
-        GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" temp.gjf`
-        head -$(($GEOMETRY_LINE-1)) temp.gjf > template.gjf
-        rm -f temp.gjf
+        sed -i "s/#[^.]*/& $TDDFT/" $tmpl_rand_name".gjf"
+        sed -i "s/$FILENAME/[name]/" $tmpl_rand_name".gjf"
+        GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" $tmpl_rand_name".gjf"`
+        head -$(($GEOMETRY_LINE-1)) $tmpl_rand_name".gjf" > template.gjf
+        rm -f $tmpl_rand_name".gjf"
         sed -i "$(($GEOMETRY_LINE-1))a [geometry]" template.gjf
         echo >> template.gjf
     fi
@@ -424,7 +427,7 @@ if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
         fi
     else
         MEM_IS_WRITTEN=`grep -io '%mem=[0-9]\{1,\}' template.gjf`
-        if [ -z "$NPROC_IS_WRITTEN" ];then
+        if [ -z "$MEM_IS_WRITTEN" ];then
             TRIPLET_MEM=$MEM_DEFAULT
             sed -i "1i %mem=$TRIPLET_MEM" template.gjf
         else
@@ -469,7 +472,7 @@ if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
     fi
     echo "setting root=$TRIPLET_ROOT for triplet excited states"
 
-    TRIPLET_FILENAME=$FILENAME"_T"$TRIPLET_ROOT"_"$TRIPLET"_"$SUFFIX
+    TRIPLET_FILENAME=$FILENAME"_T"$TRIPLET_ROOT"_"$TRIPLET$SUFFIX
     GEN_GJF_FROM_TMPL $FILENAME".fchk" $TRIPLET_FILENAME".gjf"
     rm -f template.gjf
     if [ "$SCHEDULER" = SLURM ]; then
@@ -480,5 +483,7 @@ if [ -n "$TRIPLET" ] && [ "$TRIPLET" != "none" ];then
         [ "$POSTPONE" = false ] && qsub $TRIPLET_FILENAME".txt"
     else
         echo "Error!!! unknown scheduler"
+        echo "    <ERROR> Unknown scheduler" >> $SCRIPT_DIR/STAT
+        exit 1
     fi
 fi
