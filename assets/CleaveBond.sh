@@ -5,6 +5,8 @@ if [ $# -lt 1 ]; then
     echo 'usage: CleaveBond.sh fileName atom1 atom2 --reserve large -n 16 -m 48'
     echo 'option: --reserve(-r) [reserve one or both of the fragments, enumeration of {both, small, large, first, second}, default: both]'
     echo '        --template(-t) [template input file for Gaussian]'
+    echo '        --charge(-c) [charge(s) of fragments, default: 0]'
+    echo '        --spin(-s) [spin multiplicity(ies) of fragments, default: 2]'
     echo '        --nprocs(-n) [number of cores, default: 16]'
     echo '        --memory(-m) [memory in GB, default: three times of number of cores]'
     echo '        --postpone(-p) [generate input file(s) without submitting task(s)]'
@@ -17,8 +19,11 @@ GAUSSIAN_CMD=g16
 FORMCHK_CMD=formchk
 SCHEDULER=SLURM
 
+CHARGE_DEFAULT=0
+SPIN_DEFAULT=2
 NPROC_DEFAULT=16
 MEM_DEFAULT=$((3*$NPROC_DEFAULT))
+PROFILES_DEFAULT='# opt b3lyp/6-31g* em=gd3bj'
 
 RESERVE=both
 POSTPONE=false
@@ -34,6 +39,10 @@ do
 			RESERVE=$2
 			shift 2
 			;;
+		--template|-t)
+			TEMPLATE=$2
+            shift 2
+            ;;
         --nprocs|-n)
             NPROC=$2
             shift 2
@@ -42,18 +51,32 @@ do
             MEM=$2
             shift 2
             ;;
-        --template|-t)
-			TEMPLATE=$2
-            shift 2
-            ;;
         --postpone|-p)
             POSTPONE=true
             shift 1
+            ;;
+        --charge|-c)
+			shift 1
+            while [ -n "$1" ] && (! [[ $1 == -* ]])
+            do
+                CHARGE[${#CHARGE[@]}]=${1/n/-}
+                shift 1
+            done
+            ;;
+        --spin|-s)
+			shift 1
+            while [ -n "$1" ] && (! [[ $1 == -* ]])
+            do
+                SPIN[${#SPIN[@]}]=$1
+                shift 1
+            done
             ;;
         *)
             echo 'usage: CleaveBond.sh fileName atom1 atom2 --reserve large -n 16 -m 48'
     		echo 'option: --reserve(-r) [reserve one or both of the fragments, enumeration of {both, small, large, first, second}, default: both]'
     		echo '        --template(-t) [template input file for Gaussian]'
+    		echo '        --charge(-c) [charge(s) of fragments, default: 0]'
+    		echo '        --spin(-s) [spin multiplicity(ies) of fragments, default: 2]'
     		echo '        --nprocs(-n) [number of cores, default: 16]'
     		echo '        --memory(-m) [memory in GB, default: three times of number of cores]'
     		echo '        --postpone(-p) [generate input file(s) without submitting task(s)]'
@@ -61,12 +84,34 @@ do
             exit 1;;
     esac    
 done
+if [ ${#CHARGE[@]} -gt 2 ]; then
+	echo "Error!!! Too many charge parameters"
+	echo "    <ERROR> Too many charge parameters" >> $SCRIPT_DIR/STAT
+	exit 1
+fi
+if [ ${#CHARGE[@]} -eq 1 ]; then
+	CHARGE[1]=${CHARGE[0]}
+elif [ ${#CHARGE[@]} -eq 0 ];then
+	CHARGE[0]=$CHARGE_DEFAULT
+	CHARGE[1]=$CHARGE_DEFAULT
+fi
+if [ ${#SPIN[@]} -gt 2 ]; then
+	echo "Error!!! Too many spin parameters"
+	echo "    <ERROR> Too many spin parameters" >> $SCRIPT_DIR/STAT
+	exit 1
+fi
+if [ ${#SPIN[@]} -eq 1 ]; then
+	SPIN[1]=${SPIN[0]}
+elif [ ${#SPIN[@]} -eq 0 ];then
+	SPIN[0]=$SPIN_DEFAULT
+	SPIN[1]=$SPIN_DEFAULT
+fi
 
 getAdjInfo() {
 cat > $cmd_rand_name".txt" << EOF 
 100
 9
-0.8
+0.9
 n
 0
 q
@@ -102,6 +147,20 @@ BFS() {
 }
 
 splitMol() {
+if [[ "$1" == *.fchk ]] || [[ "$1" == *.fch ]];then
+cat > $cmd_rand_name".txt" << EOF 
+300
+7
+17
+$2
+-3
+$3
+n
+-10
+0
+q
+EOF
+else
 cat > $cmd_rand_name".txt" << EOF 
 300
 7
@@ -113,8 +172,11 @@ $3
 0
 q
 EOF
+fi
 $MULTIWFN_CMD $1 < $cmd_rand_name".txt" > /dev/null
 rm -f $cmd_rand_name".txt"
+GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" $3`
+sed -i "$(($GEOMETRY_LINE-1))c $4 $5" $3
 }
 
 GEN_SLURM_SUB() {
@@ -152,6 +214,21 @@ rm -f \$GAUSS_SCRDIR
 EOF
 }
 
+GEN_TMPL() {
+cat > template.gjf << EOF 
+%nprocshared=$NPROC_DEFAULT
+%mem=${MEM_DEFAULT}GB
+%chk=[name].chk
+$1
+
+[name]
+
+$CHARGE_DEFAULT $SPIN_DEFAULT
+[geometry]
+
+EOF
+}
+
 cmd_rand_name=`date +%s%N | md5sum | cut -c 1-8`
 mfn_rand_name=`date +%s%N | md5sum | cut -c 1-8`
 adj_rand_name=`date +%s%N | md5sum | cut -c 1-8`
@@ -179,7 +256,7 @@ if [ -n "$TEMPLATE" ];then
         echo "using profiles from $TEMPLATE for singlet excited states"
         cp $TEMPLATE template.gjf
     else
-        echo "Error!!! template file $TEMPLATE not exist"
+        echo "Error!!! template file $TEMPLATE does not exist"
         echo "    <ERROR> Missing template file" >> $SCRIPT_DIR/STAT
         exit
     fi
@@ -192,27 +269,40 @@ else
         head -$(($GEOMETRY_LINE-1)) $tmpl_rand_name".gjf" > template.gjf
         rm -f $tmpl_rand_name".gjf"
         sed -i "$(($GEOMETRY_LINE-1))a [geometry]" template.gjf
+        sed -i "s/%nprocshared=[0-9]\{1,\}/%nprocshared=$NPROC_DEFAULT/" template.gjf
+        sed -i "s/%mem=[0-9]\{1,\}/%mem=$MEM_DEFAULT/" template.gjf # 使用默认核心数与内存
         echo >> template.gjf
+    elif [[ "$FILENAME" == *.log ]] || [[ "$FILENAME" == *.out ]];then
+    	echo "using profiles from $FILENAME"
+    	PROFILES=`sed -n '/#/,/-/p' $FILENAME | tr '\n' '|' | grep -o '#.*|\ -' | sed 's/| //g'`
+    	PROFILES=${PROFILES%?}
+    	GEN_TMPL "$PROFILES"
+    elif [[ "$FILENAME" == *.fchk ]] || [[ "$FILENAME" == *.fch ]];then
+    	echo "using profiles from $FILENAME"
+    	PROFILES=`sed -n '/#/,/Charge/p' $FILENAME | tr -d '\n'`
+    	PROFILES=${PROFILES%Charge*}
+    	GEN_TMPL "$PROFILES"
 	else
-		echo "using B3LYP/6-31G* for Gaussian calculation"
+		echo "using B3LYP-D3(BJ)/6-31G* for Gaussian optimization"
+		GEN_TMPL "$PROFILES_DEFAULT"
 	fi
 fi
 
 if [ -n "$NPROC" ];then
-        sed -i "s/%nprocshared=[0-9]\{1,\}/%nprocshared=$NPROC/" template.gjf
-        NPROC_IS_WRITTEN=`grep -io '%nprocshared=[0-9]\{1,\}' template.gjf`
-        if [ -z "$NPROC_IS_WRITTEN" ];then
-            sed -i "1i %nprocshared=$NPROC" template.gjf
-        fi
-    else
-        NPROC_IS_WRITTEN=`grep -io '%nprocshared=[0-9]\{1,\}' template.gjf`
-        if [ -z "$NPROC_IS_WRITTEN" ];then
-            NPROC=$NPROC_DEFAULT
-            sed -i "1i %nprocshared=$NPROC" template.gjf
-        else
-            NPROC=${NPROC_IS_WRITTEN/\%nprocshared=/}
-        fi
+    sed -i "s/%nprocshared=[0-9]\{1,\}/%nprocshared=$NPROC/" template.gjf
+    NPROC_IS_WRITTEN=`grep -io '%nprocshared=[0-9]\{1,\}' template.gjf`
+    if [ -z "$NPROC_IS_WRITTEN" ];then
+        sed -i "1i %nprocshared=$NPROC" template.gjf
     fi
+else
+    NPROC_IS_WRITTEN=`grep -io '%nprocshared=[0-9]\{1,\}' template.gjf`
+    if [ -z "$NPROC_IS_WRITTEN" ];then
+        NPROC=$NPROC_DEFAULT
+        sed -i "1i %nprocshared=$NPROC" template.gjf
+    else
+        NPROC=${NPROC_IS_WRITTEN/\%nprocshared=/}
+    fi
+fi
 
 if [ -n "$MEM" ];then
     sed -i "s/%mem=[0-9]\{1,\}/%mem=$MEM/" template.gjf
@@ -233,38 +323,42 @@ echo "using $NPROC cores and "$MEM"GB memory"
 
 case $RESERVE in
 	both)
-		splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_frag1.gjf}
-		splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_frag2.gjf}
+		splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_frag1.gjf} ${CHARGE[0]} ${SPIN[0]}
+		splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_frag2.gjf} ${CHARGE[1]} ${SPIN[1]}
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_frag1}
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_frag2}
 		;;
 	small)
 		if [ ${#second_frag[@]} -lt ${#first_frag[@]} ];then
-			splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_smallFrag.gjf}
+			splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_smallFrag.gjf} ${CHARGE[1]} ${SPIN[1]}
 		else
-			splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_smallFrag.gjf}
+			splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_smallFrag.gjf} ${CHARGE[0]} ${SPIN[0]}
 		fi
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_smallFrag}
 		;;
 	large)
 		if [ ${#first_frag[@]} -gt ${#second_frag[@]} ];then
-			splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_largeFrag.gjf}
+			splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_largeFrag.gjf} ${CHARGE[0]} ${SPIN[0]}
 		else
-			splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_largeFrag.gjf}
+			splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_largeFrag.gjf} ${CHARGE[1]} ${SPIN[1]}
 		fi
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_largeFrag}
 		;;
 	first)
-		splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_frag1.gjf}
+		splitMol $FILENAME $(IFS=,; echo "${first_frag[*]}") ${FILENAME/.*/_frag1.gjf} ${CHARGE[0]} ${SPIN[0]}
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_frag1}
 		;;
 	second)
-		splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_frag2.gjf}
+		splitMol $FILENAME $(IFS=,; echo "${second_frag[*]}") ${FILENAME/.*/_frag2.gjf} ${CHARGE[1]} ${SPIN[1]}
 		sub_list[${#sub_list[@]}]=${FILENAME/.*/_frag2}
 		;;
+	*) 
+		echo "Wrong argument"
+		exit 1
+		;;
 esac
-
-for  ((index=0;index<${#sub_list[@]};index++)) 
+rm -f template.gjf
+for ((index=0;index<${#sub_list[@]};index++))
 do
 	if [ "$SCHEDULER" = SLURM ]; then
 		GEN_SLURM_SUB ${sub_list[$index]} $NPROC

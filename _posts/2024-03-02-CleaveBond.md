@@ -27,14 +27,14 @@ CleaveBond.sh structureFile atom1 atom2 [--reserve(-r) <生成片段的规则>] 
 	- `both`（**为两个片段都生成Gaussian输入文件，默认**）
 	- `first`（仅生成编号为`atom1`的原子所在片段的Gaussian输入文件）
 	- `second`（仅生成编号为`atom2`的原子所在片段的Gaussian输入文件）
-	- `small(less)`（仅生成原子数较少片段的输入文件，两片段原子数相同时等同于`first`）
-	- `large(more)`（仅生成原子数较多片段的输入文件，两片段原子数相同时等同于`second`）
+	- `small`（仅生成原子数较少片段的输入文件，两片段原子数相同时等同于`first`）
+	- `large`（仅生成原子数较多片段的输入文件，两片段原子数相同时等同于`second`）
 - `--charge(-c)`：片段的电荷（以`n`开头表示负数，如`n1`表示`-1`），如果只提供一个参数，则为生成的所有片段使用相同的参数，如果提供两个参数，则将第一个参数应用于编号为`atom1`的原子所在的片段，而将第二个参数应用于编号为`atom2`的原子所在的片段，**默认为0**
 - `--spin(-s)`：片段的自旋多重度，如果后跟一个参数，则为生成的所有片段使用相同的参数，如果后跟两个参数，则将第一个参数应用于编号为`atom1`的原子所在的片段，而将第二个参数应用于编号为`atom2`的原子所在的片段，**默认为2**
-- `--template (-t)`：Gaussian输入模板文件，模板文件中分子名称使用`[name]`替代，分子坐标使用`[geometry]`替代，若不指定模板文件则会尝试从`structureFile`中读取（当`structureFile`为`.gjf`、`.fchk`或`.log`文件时），若其中不包含计算设置则默认使用 B3LYP-D3(BJ)/6-31G* 方法进行几何优化
+- `--template (-t)`：Gaussian输入模板文件，模板文件中分子名称使用`[name]`替代，分子坐标使用`[geometry]`替代，若不指定模板文件则会尝试从`structureFile`中读取（当`structureFile`为`.gjf`、`.fchk/.fch`或`.log/.out`文件时），若其中不包含计算设置则默认使用 B3LYP-D3(BJ)/6-31G* 方法进行几何优化
 - `--nprocs (-n)`：计算所用核心数（Gaussian关键词`%NProcShared=`），**默认为16**
 - `--memory (-m)`：计算所用内存大小（Gaussian关键词`%Mem=`），以GB为单位，**默认为核心数的三倍**
-- ` --postpone(-p)`：只生成输入文件与提交脚本，不向作业调度系统提交任务
+- `--postpone(-p)`：只生成输入文件与提交脚本，不向作业调度系统提交任务
 
 ### 示例
 
@@ -50,16 +50,28 @@ CleaveBond.sh structureFile.gjf 7 34
 CleaveBond.sh structureFile.gjf 7 34 --reserve first
 ```
 
-- 示例3：将`PhCz.fchk`中的苯基咔唑分子沿`11`号和`22`号原子形成的化学键分割，仅保留原子数较多的咔唑片段，带一个负电荷，自旋多重度为1，计算使用8核心，24GB内存
+- 示例3：将`PhCz.fchk`中的苯基咔唑分子沿`11`号和`22`号原子形成的化学键分割，仅保留原子数较多的咔唑片段，片段带一个负电荷，自旋多重度为1，计算使用8核心，24GB内存
 
 ```bash
-CleaveBond.sh PhCz.fchk 7 34 --reserve large -c n1 -s 1 -n 8 -m 24
+CleaveBond.sh PhCz.fchk 11 22 --reserve large -c n1 -s 1 -n 8 -m 24
 ```
 
-- 示例4：将`ethane.pdb`中的乙烷分子沿`1`号和`5`号原子形成的化学键分割，仅保留`1`号原子所在的中性自由基片段，使用1核心，1GB内存，`template_for_radical.gjf`作为模板文件计算
+- 示例4：将`PhCz.fchk`中的苯基咔唑分子沿`11`号和`22`号原子形成的化学键分割，第一个片段带一个负电荷，自旋多重度为1，第二个片段为中性，自旋多重度为2
+
+```bash
+CleaveBond.sh PhCz.fchk 11 22 --reserve both -c n1 0 -s 1 2
+```
+
+- 示例5：将`ethane.pdb`中的乙烷分子沿`1`号和`5`号原子形成的化学键分割，仅保留`1`号原子所在的中性自由基片段，使用1核心，1GB内存，`template_for_radical.gjf`作为模板文件计算
 
 ```bash
 CleaveBond.sh ethane.pdb 1 5 --reserve first -c 0 -s 2 -n 1 -m 1 -t template_for_radical.gjf
+```
+
+- 示例6 **（不推荐）**：将`Phenol.xyz`中的苯酚分子沿`3`号和`12`号原子形成的化学键分割，仅保留原子数较少的氢氧根离子片段，使用1核心，1GB内存计算 **（本例中`-c`和`-s`后分别提供了两个参数，但`--reserve`被指定为`small`，当不确定哪个原子所属的片段原子数较少时不建议使用本方法）**
+
+```bash
+CleaveBond.sh ethane.pdb 3 12 --reserve small -c 0 n1 -s 2 1 -n 1 -m 1
 ```
 
 ## 实现思路
@@ -68,16 +80,18 @@ CleaveBond.sh ethane.pdb 1 5 --reserve first -c 0 -s 2 -n 1 -m 1 -t template_for
 
 $$I_{AB}(r_{AB})=\frac{1}{1+\exp\left[-16\times\left(\frac{4(R_A+R_B)}{3r_{AB}}-1\right)\right]}$$
 
-从图1可以发现，当原子间距离 $r_{AB}$ 接近共价半径和 $(R_A+R_B)$ 时，$I_{AB}(r_{AB})$ 接近1。
+从图1可以发现，当原子间距离 $r_{AB}$ 接近共价半径和 $(R_A+R_B)$ 时，$I_{AB}$ 接近1。
 
 <div id="Iab"></div>
 <div align=center><font color="#999999">图1：$I_{AB}$ 与 $\frac{r_{AB}}{R_A+R_B}$ 之间的关系</font></div>
 
-当原子间距离不超过共价半径和的1.15倍时，近似认为原子之间形成共价键，此时 $I_{AB}$ 约为0.9，可据此构建邻接关系。当指定了化学键两端的原子后，从邻接关系中删除它们的键连关系并分别以它们为顶点进行图的[广度优先遍历](https://en.wikipedia.org/wiki/Breadth-first_search)，得到两个片段。
+当原子间距离不超过共价半径和的1.15倍时，可以近似认为原子之间形成共价键，此时 $I_{AB}$ 约为0.9，可据此构建邻接关系。当指定了化学键两端的原子后，从邻接关系中删除它们的键连关系并分别以它们为顶点进行图的[广度优先遍历](https://en.wikipedia.org/wiki/Breadth-first_search)，从而得到两个片段。
 
 ## 选项优先级
 
-通过`--charge`、`--spin`、`--nprocs`、`--memory`指定的参数优先级最高，通过`--template`指定的模板文件中的参数次高，输入文件`structureFile`中的参数再次，最后程序才会使用默认的参数。
+通过`--charge`、`--spin`、`--nprocs`和`--memory`指定的参数优先级最高，通过`--template`指定的模板文件中的参数其次，**除此以外程序会使用默认的参数，无论输入文件`structureFile`中是否包含相关信息。**
+
+对于计算所用方法、基组等设置，通过`--template`指定的模板文件中的参数优先级最高，输入文件`structureFile`中若包含相关信息（Gaussian输入输出文件`.gjf`、`.log/.out`或`.fchk/.fch`）则优先级其次，最后程序会使用默认的方法生成计算文件。
 
 ### 示例
 
@@ -91,11 +105,11 @@ $$I_{AB}(r_{AB})=\frac{1}{1+\exp\left[-16\times\left(\frac{4(R_A+R_B)}{3r_{AB}}-
 
 - 示例3：调用脚本时没有指定`--spin`，模板文件中自旋多重度为`3`,输入文件`structureFile`中自旋多重度为`1`
 
-> 实际会设置自旋多重度为`3`
+> 实际会设置自旋多重度为3
 
-- 示例4：调用脚本时没有指定`--spin`，也没有提供模板文件，输入文件`structureFile`中不包含自旋多重度信息
+- 示例4：调用脚本时没有指定`--spin`，也没有提供模板文件，输入文件`structureFile`中自旋多重度为`1`
 
-> 实际会设置自旋多重度为程序默认值`2`
+> 实际会设置自旋多重度为程序默认值2
 
 ## 可移植性
 
@@ -145,7 +159,9 @@ MEM_DEFAULT=$((3*$NPROC_DEFAULT))  # 内存默认值（以GB为单位）
 	var config = {
         staticPlot: false,
         displaylogo: false,
-        responsive: true
+        responsive: true,
+        scrollZoom: false,
+        modeBarButtonsToRemove: ['toImage','zoom2d','pan2d','select2d','lasso2d','zoomIn2d','zoomOut2d','autoScale2d']
     };
 	Plotly.newPlot("Iab", Data, Layout, config);
 </script>
