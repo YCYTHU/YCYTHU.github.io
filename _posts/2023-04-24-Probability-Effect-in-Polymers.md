@@ -12,7 +12,7 @@ cover:
 <div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/></div>
 <div align=center><font color="#999999">图1：$n$ 个球组成的一维阵列</font></div>
 
-随机挑选两颗相邻的球并取走（图2），然后不断重复这一过程：
+随机挑选两颗相邻的球并取走得到两个空位（图2），然后不断重复这一过程：
 
 <div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure2.png"></div>
 <div align=center><font color="#999999">图2：随机挑选两颗球（红框内的两颗球）并取走，取走后得到两个空位</font></div>

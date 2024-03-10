@@ -27,11 +27,11 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Dxz_orbital.png
 	}
 </style>
 
-🔗[请问为什么正八面体场的分裂能：正四面体场的分裂能=9:4啊？](https://www.zhihu.com/question/514327100/answer/2344700568)
+<i class="fas fa-link"></i> [请问为什么正八面体场的分裂能：正四面体场的分裂能=9:4啊？](https://www.zhihu.com/question/514327100/answer/2344700568)
 
-<i class="fas fa-calculator"></i>[在线计算晶体场分裂能](/chemistry-collections/Crystal-Field-Splitting-Diagram.html)
+<i class="fas fa-calculator"></i> [在线计算晶体场分裂能](/chemistry-collections/Crystal-Field-Splitting-Diagram.html)
 
-<i class="fas fa-code"></i>[MATLAB计算代码](/2023/06/03/Crystal-Field-Splitting-Diagram.html)
+<i class="fas fa-code"></i> [MATLAB计算代码](/2023/06/03/Crystal-Field-Splitting-Diagram.html)
 
 ## 晶体场理论
 
@@ -87,7 +87,7 @@ $$\begin{align}&H_{11}=D_{00}-\frac17D_{20}+\frac{1}{56}D_{40}+\frac{5}{24}D_{44
 
 在正八面体构型的配合物中，六个配体在球坐标系下的位置分别为
 
-<table id="coordinates_o"> <tr> <td>$\text{Ligand}$</td> <td colspan="2">$\text{Coordinates}$</td> </tr> <tr> <td></td> <td>$\theta_i$</td> <td>$\phi_i$</td> </tr> <tr> <td>$\text{A}$</td> <td>$0$</td> <td>$-$</td> </tr> <tr> <td>$\text{B}$</td> <td>$\pi$</td> <td>$-$</td> </tr> <tr> <td>$\text{C}$</td> <td>$\pi/2$</td> <td>$0$</td> </tr> <tr> <td>$\text{D}$</td> <td>$\pi/2$</td> <td>$\pi$</td> </tr> <tr> <td>$\text{E}$</td> <td>$\pi/2$</td> <td>$3\pi/2$</td> </tr> <tr> <td>$\text{E}$</td> <td>$\pi/2$</td> <td>$\pi/2$</td> </tr> </table>
+<table id="coordinates_o"> <tr> <td>$\text{Ligand}$</td> <td colspan="2">$\text{Coordinates}$</td> </tr> <tr> <td></td> <td>$\theta_i$</td> <td>$\phi_i$</td> </tr> <tr> <td>$\text{A}$</td> <td>$0$</td> <td>$-$</td> </tr> <tr> <td>$\text{B}$</td> <td>$\pi$</td> <td>$-$</td> </tr> <tr> <td>$\text{C}$</td> <td>$\pi/2$</td> <td>$0$</td> </tr> <tr> <td>$\text{D}$</td> <td>$\pi/2$</td> <td>$\pi$</td> </tr> <tr> <td>$\text{E}$</td> <td>$\pi/2$</td> <td>$3\pi/2$</td> </tr> <tr> <td>$\text{F}$</td> <td>$\pi/2$</td> <td>$\pi/2$</td> </tr> </table>
 
 代入上述表达式，得：
 

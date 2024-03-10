@@ -8,8 +8,9 @@ tags:
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Singular-Value-Decomposition.svg/531px-Singular-Value-Decomposition.svg.png
 ---
 
-Kabsch算法以Wolfgang Kabsch的名字命名，是一种计算最佳旋转矩阵的方法，该矩阵可以最小化两组点之间的RMSD[^Kabsch]。   
+Kabsch算法以Wolfgang Kabsch的名字命名，是一种计算最佳旋转矩阵的方法，该矩阵可以最小化两组点之间的RMSD。   
 <!--more-->
+[^Kabsch]
 
 [^Kabsch]:[Kabsch, W. A solution for the best rotation to relate two sets of vectors. *Acta Crystallographica Section A: Crystal Physics, Diffraction, Theoretical and General Crystallography* 32.5 (1976): 922-923.](https://doi.org/10.1107/S0567739476001873) 
 

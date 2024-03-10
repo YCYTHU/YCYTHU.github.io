@@ -7,7 +7,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Grafico_con_MAT
 ---
 <!--more-->
 
-🔗[化学反应是否会存在多个平衡状态？](https://www.zhihu.com/question/580134256/answer/2879465170)
+<i class="fas fa-link"></i> [化学反应是否会存在多个平衡状态？](https://www.zhihu.com/question/580134256/answer/2879465170)
 
 化学反应会存在不止一个稳态。假设某系统中存在 $\mathrm{S,X,Y,P}$ 四种物质，它们之间存在如下反应：
 

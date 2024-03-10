@@ -49,7 +49,7 @@ function Calc(~,~)
 
 函数`Calc`首先将坐标轴与配合物的惯性主轴对齐，随后获取配体位置（过程省略）。`Phi`与`Theta`分别表示每个配体在球坐标系中的方位角与仰角（弧度制）。向量`b`和`c`的第一个值代表了将 $\alpha_2,\alpha_4$ 转换为 $\mathrm{Dq}$ 的系数；第二个值为任取的值，用于确定 $\alpha_2,\alpha_4$ 前的系数（$\alpha_0$ 前的系数等于配体的个数）。
 
-随后定义配体位置函数与哈密顿矩阵，其含义见[往期介绍](/2022/02/12/zhihu.html)。
+随后定义配体位置函数并构建哈密顿矩阵，其含义见[往期介绍](/2022/02/12/Crystal-Field-Splitting-Energy.html)。
 
 ```matlab
 D_00_m=zeros(2,size(CN_Data,1));

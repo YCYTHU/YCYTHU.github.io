@@ -7,7 +7,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---
 <!--more-->
 
-[分布系数图中一种粒子的分布系数最大时对应的pH如何求解？](https://www.zhihu.com/question/599839749/answer/3019879596)
+<i class="fas fa-link"></i> [分布系数图中一种粒子的分布系数最大时对应的pH如何求解？](https://www.zhihu.com/question/599839749/answer/3019879596)
 
 
 **先以二元酸为例，随后推广到 $n$ 元酸碱。**
@@ -16,7 +16,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 
 $$\delta({\mathrm{HA}^-})=\frac{K_\mathrm{a1}[\mathrm{H}^+]}{[\mathrm{H^+}]^2+K_\mathrm{a1}{[\mathrm{H^+}]}+K_\mathrm{a1}K_\mathrm{a2}}$$
 
-若要求极大值，则只需 $\delta({\mathrm{HA}^-})$ 对 $\delta({\mathrm{HA}^-})[\mathrm{H^+}]$ 一阶导为 $0$，二阶导小于 $0$。解得
+若要求极大值，则只需 $\delta({\mathrm{HA}^-})$ 对 $\delta({\mathrm{HA}^-})[\mathrm{H^+}]$ 一阶导数为 $0$，二阶导数小于 $0$。解得
 
 $$\rm{pH}=\frac{pK_{a1}+pK_{a2}}{2}$$
 

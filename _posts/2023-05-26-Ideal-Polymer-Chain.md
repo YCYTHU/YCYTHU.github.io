@@ -5,12 +5,10 @@ tags:
 - Chemistry
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ideal_chain_random_walk.svg/480px-Ideal_chain_random_walk.svg.png
 mathjax_autoNumber: true
-aside:
-  toc: true
 ---
 <!--more-->
 
-# Freely Jointed Chain (Gaussian) model
+## Freely Jointed Chain (Gaussian) model
 
 假定键长固定为 $\ell$, 键可以绕一端的原子自由旋转，则每个键向量 $\vec{r}$ 的概率分布:
 
@@ -34,7 +32,7 @@ $\vert\vec{R}\vert$ 的期望：
 
 $$\langle\vec{R}^2\rangle^{\frac12}=N^{\frac12}\ell$$
 
-##  Entropic elasticity
+###  Entropic elasticity
 
 玻尔兹曼公式：
 
@@ -58,7 +56,7 @@ $$A(\vec{R})=U_0-TS(\vec{R})=\frac{3k_BT\vert\vec{R}\vert^2}{2N\ell^2}+A_0$$
 
 $$\vec{F}=-\frac{\partial A(\vec{R})}{\partial\vec{R}}=-\frac{3k_BT}{N\ell^2}\vec{R}$$
 
-# Freely Rotating Chain
+## Freely Rotating Chain
 
 在前文模型的基础上，考虑到键向量之间存在固定的夹角 $\theta$，故键向量之间不独立：
 
@@ -72,7 +70,7 @@ $$\langle\vec{R},\vec{R}\rangle=\begin{bmatrix}1&-\cos\theta&(-\cos\theta)^2&\cd
 
 $$\langle\vec{R}^2\rangle^{\frac12}=\left(\frac{1-\cos\theta}{1+\cos\theta}\right)^{\frac12}N^{\frac12}\ell$$
 
-# Hindered Rotation model
+## Hindered Rotation model
 
 在前文的基础上，除了键角以外，如果还考虑到二面角 $\phi$ 并不是均匀分布的，则应用类似的方法得到距离的期望：
 
