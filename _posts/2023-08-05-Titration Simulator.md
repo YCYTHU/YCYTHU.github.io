@@ -8,7 +8,7 @@ cover: /assets/images/titration simulator/cover.jpg
 
 <div align="center"><a class="button button--outline-info button--pill" href="/chemistry-collections/Titration-Simulator.html" target="_blank">点击此处体验<i class="fas fa-angle-double-right"></i></a></div>
 
-# 使用说明
+## 使用说明
 
 用户首先在设置界面（图1）完成设置：
 
