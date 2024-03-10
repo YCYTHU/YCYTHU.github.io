@@ -7,7 +7,7 @@ tags:
 cover: https://upload.wikimedia.org/wikipedia/commons/6/66/Square_planar.png
 modify_date: 2023-07-28
 ---
-笔者在[往期文章](/2022/02/12/zhihu.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于MATLAB，笔者开发了一款简易的MATLAB App，实现常见与不常见对称性的晶体场的分裂能的计算。[源代码及依赖文件在此处下载。](/assets/CFSD.zip)
+笔者在[往期文章](/2022/02/12/Crystal-Field-Splitting-Energy.html)中介绍了八面体与四面体场d轨道分裂能的计算方法。借助于MATLAB，笔者开发了一款简易的MATLAB App，实现常见与不常见对称性的晶体场的分裂能的计算。[源代码及依赖文件在此处下载。](/assets/CFSD.zip)
 <!--more-->
 
 程序运行后的界面如图1所示。左上角的微调器可以选择配体的数量（不小于1），中间的两列表格显示配体在球坐标系下的方位角。通过编辑表格中的数值可以改变配体的位置，同时可在程序最右侧的3D查看器中查看当前的构型。

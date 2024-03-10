@@ -216,8 +216,8 @@ EOF
 
 GEN_TMPL() {
 cat > template.gjf << EOF 
-%nprocshared=$NPROC_DEFAULT
-%mem=${MEM_DEFAULT}GB
+%nprocshared=$2
+%mem=$3GB
 %chk=[name].chk
 $1
 
@@ -253,7 +253,7 @@ fi
 
 if [ -n "$TEMPLATE" ];then
     if [[ -f "$TEMPLATE" ]];then
-        echo "using profiles from $TEMPLATE for singlet excited states"
+        echo "using profiles from $TEMPLATE"
         cp $TEMPLATE template.gjf
     else
         echo "Error!!! template file $TEMPLATE does not exist"
@@ -265,26 +265,32 @@ else
 		echo "using profiles from $FILENAME"
 		cp $FILENAME $tmpl_rand_name".gjf"
 		sed -i "s/${FILENAME/.gjf/}/[name]/" $tmpl_rand_name".gjf"
-        GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" $tmpl_rand_name".gjf"`
-        head -$(($GEOMETRY_LINE-1)) $tmpl_rand_name".gjf" > template.gjf
-        rm -f $tmpl_rand_name".gjf"
-        sed -i "$(($GEOMETRY_LINE-1))a [geometry]" template.gjf
-        sed -i "s/%nprocshared=[0-9]\{1,\}/%nprocshared=$NPROC_DEFAULT/" template.gjf
-        sed -i "s/%mem=[0-9]\{1,\}/%mem=$MEM_DEFAULT/" template.gjf # 使用默认核心数与内存
-        echo >> template.gjf
-    elif [[ "$FILENAME" == *.log ]] || [[ "$FILENAME" == *.out ]];then
-    	echo "using profiles from $FILENAME"
-    	PROFILES=`sed -n '/#/,/-/p' $FILENAME | tr '\n' '|' | grep -o '#.*|\ -' | sed 's/| //g'`
-    	PROFILES=${PROFILES%?}
-    	GEN_TMPL "$PROFILES"
-    elif [[ "$FILENAME" == *.fchk ]] || [[ "$FILENAME" == *.fch ]];then
-    	echo "using profiles from $FILENAME"
-    	PROFILES=`sed -n '/#/,/Charge/p' $FILENAME | tr -d '\n'`
-    	PROFILES=${PROFILES%Charge*}
-    	GEN_TMPL "$PROFILES"
+		GEOMETRY_LINE=`awk "/[a-zA-Z]{1,}\ *-?[0-9]{1,}.[0-9]{1,}/{print NR;exit;}" $tmpl_rand_name".gjf"`
+		head -$(($GEOMETRY_LINE-1)) $tmpl_rand_name".gjf" > template.gjf
+		rm -f $tmpl_rand_name".gjf"
+		sed -i "$(($GEOMETRY_LINE-1))a [geometry]" template.gjf
+		echo >> template.gjf
+	elif [[ "$FILENAME" == *.log ]] || [[ "$FILENAME" == *.out ]];then
+		echo "using profiles from $FILENAME"
+		PROFILES=`sed -n '/#/,/-/p' $FILENAME | tr '\n' '|' | grep -o '#.*|\ -' | sed 's/| //g'`
+		PROFILES=${PROFILES%?}
+		NPROC_IS_WRITTEN=`grep -io '%nprocshared=[0-9]\{1,\}' $FILENAME`
+		if [ -n "$NPROC_IS_WRITTEN" ];then
+			NPROC=${NPROC_IS_WRITTEN/\%nprocshared=/}
+		fi
+		MEM_IS_WRITTEN=`grep -io '%mem=[0-9]\{1,\}' template.gjf`
+		if [ -n "$MEM_IS_WRITTEN" ];then
+			MEM=${MEM_IS_WRITTEN/\%mem=/}
+		fi
+		GEN_TMPL "$PROFILES" $NPROC $MEM
+	elif [[ "$FILENAME" == *.fchk ]] || [[ "$FILENAME" == *.fch ]];then
+		echo "using profiles from $FILENAME"
+		PROFILES=`sed -n '/#/,/Charge/p' $FILENAME | tr -d '\n'`
+		PROFILES=${PROFILES%Charge*}
+		GEN_TMPL "$PROFILES" $NPROC_DEFAULT $MEM_DEFAULT
 	else
 		echo "using B3LYP-D3(BJ)/6-31G* for Gaussian optimization"
-		GEN_TMPL "$PROFILES_DEFAULT"
+		GEN_TMPL "$PROFILES_DEFAULT" $NPROC_DEFAULT $MEM_DEFAULT
 	fi
 fi
 

@@ -8,11 +8,10 @@ tags:
 cover: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Singular-Value-Decomposition.svg/531px-Singular-Value-Decomposition.svg.png
 ---
 
-Kabsch算法以Wolfgang Kabsch的名字命名，是一种计算最佳旋转矩阵的方法，该矩阵可以最小化两组点之间的RMSD。   
-
+Kabsch算法以Wolfgang Kabsch的名字命名，是一种计算最佳旋转矩阵的方法，该矩阵可以最小化两组点之间的RMSD[^Kabsch]。   
 <!--more-->
 
-原文参见：Kabsch W. A solution for the best rotation to relate two sets of vectors[J]. Acta Crystallographica Section A: Crystal Physics, Diffraction, Theoretical and General Crystallography, 1976, 32(5): 922-923.  
+[^Kabsch]:[Kabsch, W. A solution for the best rotation to relate two sets of vectors. *Acta Crystallographica Section A: Crystal Physics, Diffraction, Theoretical and General Crystallography* 32.5 (1976): 922-923.](https://doi.org/10.1107/S0567739476001873) 
 
 假设 $\mathbf P$ 和 $\mathbf Q$ 为两组点的坐标（N×3矩阵），首先平移两组坐标，使它们的质心与坐标系的原点重合。    
 然后计算协方差矩阵 $\mathbf H$ :
@@ -51,9 +50,9 @@ def lrms(P, Q):
     H = np.dot(np.transpose(P), Q)
 
     U, S, V = np.linalg.svd(H)
-    d = (np.linalg.det(U) * np.linalg.det(V)) < 0.0
+    d = (np.linalg.det(U) * np.linalg.det(V))
 
-    if d:
+    if d < 0.0:
         U[:, -1] = -U[:, -1]
 
     R = np.dot(U, V);
@@ -69,26 +68,26 @@ MATLAB实现：
 ```matlab
 function [lrms, R, T] = LRMS(P, Q)
 
-	N = size(P,1);
+    N = size(P,1);
 
-	P_center = ones(1,N) * P / N;
-	Q_center = ones(1,N) * Q / N;
+    P_center = ones(1,N) * P / N;
+    Q_center = ones(1,N) * Q / N;
 
-	P = P - ones(N,1) * P_center;
-	Q = Q - ones(N,1) * Q_center;
+    P = P - ones(N,1) * P_center;
+    Q = Q - ones(N,1) * Q_center;
 
-	H = transpose(P) * Q;
-	[U, ~, V] = svd(H);
-	V = transpose(V);
+    H = transpose(P) * Q;
+    [U, ~, V] = svd(H);
+    V = transpose(V);
 
-	if det(U * V) < 0
-		U(:,end)=-U(:,end);
-	end
+    if det(U * V) < 0
+        U(:,end)=-U(:,end);
+    end
 
-	R = U * V;
-	T = Q_center - P_center * R;
-	Diff = P * R - Q;
-	lrms = sqrt(sum(sum(Diff.*Diff))/N);
+    R = U * V;
+    T = Q_center - P_center * R;
+    Diff = P * R - Q;
+    lrms = sqrt(sum(sum(Diff.*Diff))/N);
 
 end
 ```

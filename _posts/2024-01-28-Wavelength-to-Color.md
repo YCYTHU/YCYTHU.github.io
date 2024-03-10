@@ -1,5 +1,5 @@
 ---
-title: 使用三刺激值函数将光谱转换为sRGB颜色
+title: 使用三刺激值函数将光谱转换为RGB颜色
 tags: 
 - Code
 - JavaScript

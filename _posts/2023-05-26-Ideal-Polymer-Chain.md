@@ -8,7 +8,6 @@ mathjax_autoNumber: true
 aside:
   toc: true
 ---
-Distribution of End-to-End Distance of Ideal Polymer Chains 
 <!--more-->
 
 # Freely Jointed Chain (Gaussian) model
