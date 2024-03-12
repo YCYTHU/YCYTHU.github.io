@@ -1,7 +1,7 @@
 ---
 layout: none
 title: 晶体场分裂能计算器
-cover: /assets/images/crystal shards.jpg
+cover: /assets/images/crystal tree.jpg
 ---
 <!--more-->
 

@@ -148,7 +148,7 @@ cover: /assets/images/titration.jpg
 		<center>
 			<!-- Data area -->
 			<p>
-				<table style="border:0;width:50%;cellpadding:5px;" id="results"><tbody><tr>
+				<table style="display: table;border: 0;width: unset;cellpadding: 5px;" id="results"><tbody><tr>
 					<td width="50%" border="none"><center><p id="buretReading"><b>滴定管读数</b><br>--</p></center></td>
 					<td width="50%"><center><p id="pHReading"><b>pH 值</b><br>--</p></center></td></tr></tbody>
 				</table>

@@ -1,9 +1,7 @@
 ---
+layout: page
 title: 哥特体元素周期表
-tags: 
-- Jottings
-- Chemistry
-cover: /assets/images/default.jpg
+cover: /assets/images/alchemy.jpg
 ---
 <!--more-->
 <style>
