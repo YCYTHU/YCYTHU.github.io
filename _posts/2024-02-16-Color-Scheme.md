@@ -1,9 +1,10 @@
 ---
 title: 科研绘图配色方案在线预览
 tags: 
+- Plotly
+- Color
 - Code
 - JavaScript
-- Color
 cover: /assets/images/Colour Palette.jpg
 modify_date: 2024-02-22
 ---
