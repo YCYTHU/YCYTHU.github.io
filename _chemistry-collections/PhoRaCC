@@ -1,0 +1,43 @@
+<!-----
+layout: landing
+title: PhoRaCC
+cover: /assets/images/symmetry.jpg
+excerpt: >
+  Simplify the calculation of photophysical constants
+
+article_header:
+  actions:
+    - text: <i class="fab fa-github"></i> GitHub Releases
+      type: outline-info
+      url: https://github.com/YCYTHU/PhoRaCC/releases
+    - text: Learn More <i class="fas fa-angle-double-down"></i>
+      type: outline-success
+      url: /chemistry-collections/PhoRaCC.html#使用说明
+  height: 100vh
+  theme: dark
+  background_color: "#515151"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6))"
+    src: /assets/images/cover2.jpg
+----->
+<!--more-->
+
+## 程序简介
+
+PhoRaCC (**Pho**tophysical **Ra**te **C**onstants **C**alculator)旨在简化使用瞬态光致发光数据计算光物理常数的流程。PhoRaCC提供多种算法来适应各种场景，且具有直观的操作界面，使用户能够快速获得准确的结果。
+
+## 使用说明
+
+### 主界面
+
+```
+                    ************ Three-State TADF ************
+ 1. krS + knrS + kISC >> kRISC & knrS = 0 & krT = 0 (DOI: 10.1021/acs.jpca.1c04056)
+ 2. krS + knrS + kISC >> kRISC & knrT = 0 & krT = 0 (DOI: 10.1021/acs.jpca.1c04056)
+ 3. krT = 0 (DOI: 10.1021/acs.jpca.1c04056)
+ 4. Phi_DF / Phi_PF > 4 & krT = knrT = 0 (DOI: 10.1088/2050-6120/aa537e)
+ 5. krT = knrT = 0 (DOI: 10.1038/s41566-020-0667-0)
+
+                    ************ Two-State FLUOR ************
+ 6. Ignore triplet in luminescence
+```
