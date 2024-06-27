@@ -1,12 +1,16 @@
 ---
-title: 荧光衰减的分析与拟合
+title: 利用MATLAB进行荧光衰减的分析与拟合
 tags: 
 - Code
-- Fortran
-cover: /assets/images/moles on seasaw.jpg
+- MATLAB
+cover: /assets/images/conical flask.jpg
+aside:
+  toc: true
 ---
-分子吸收光子并从其基态电子能级跃迁到第一激发电子能级，随后处于激发态的分子会通过辐射方式或非辐射方式返回到基态。在分子水平上，$\tau$ 对应于分子在返回基态之前处于激发态的平均时间，可以使用短激发脉冲激发分子并记录荧光强度衰减的方法来实验测量。
+处于激发态的分子会通过辐射方式或非辐射的方式返回到基态，通过拟合短激发脉冲后分子荧光强度的衰减曲线可以得到分子处于激发态的平均时间 $\tau$。
 <!--more-->
+
+<a class="button button--success button--rounded" href="/assets/FluorDecay.m"><i class="fas fa-download"></i>下载FluorDecay</a>
 
 ## 理论模型
 
@@ -54,8 +58,55 @@ $$Z_k=\frac{\displaystyle\frac{1}{n_\mathrm{H}-k-n_\mathrm{L}}{\displaystyle\sum
 
 Durbin–Watson参数用于检测回归分析残差在滞后 $1$ 处是否存在自相关，其定义为：
 
-$$\mathrm{DW}=\frac{\displaystyle\sum_{i=n_\mathrm{L}+1}^{n_\mathrm{H}}(Y_i-Y_{i-1})^2}{\displaystyle\sum_{i=n_\mathrm{L}}^{n_\mathrm{H}}Y_i^2}$$
+$$\mathrm{DW}=\frac{\displaystyle\sum_{i=n_\mathrm{L}+1}^{n_\mathrm{H}}(Y_i-Y_{i-1})^2}{\displaystyle\sum_{i=n_\mathrm{L}}^{n_\mathrm{H}}Y_i^2}\tag{6}$$
 
 
 其中 $n_\mathrm{L}$ 和 $n_\mathrm{H}$ 分别是拟合范围的下限和上限。不同指数项数量拟合的Durbin–Watson参数不能相互比较，对于单、双和三指数衰减模型的拟合，Durbin–Watson参数分别小于 $1.7$、$1.75$ 和 $1.8$ 表示拟合度较差。
 
+## MATLAB拟合工具
+
+### 创建 FluorDecay 类
+
+通过衰减曲线的时间（横坐标）与光子计数（纵坐标）创建 FluorDecay 类：
+```matlab
+fd = FluorDecay(time,count);
+```
+
+通过衰减曲线的时间（横坐标）、光子计数（纵坐标）与仪器响应函数（IRF）的光子计数创建 FluorDecay 类：
+```matlab
+fd = FluorDecay(time,count,irf);
+```
+
+### 寿命分布分析
+
+在事先并不了解衰减的特定模型时，寿命分布分析是最通用的拟合方法，该分析假设任何荧光衰减都可以通过一系列由固定特征寿命和平滑分布的指前因子组成的指数函数来拟合。
+
+$$R(t)=A+\sum_{i=1}^NB(\tau_i)\exp(-t/\tau_i)\tag{7}\label{LDA}$$
+
+在寿命分布分析中，算法依据指定的寿命分布范围在对数坐标下均匀采样 $N$ 个特征寿命，并拟合指前因子。由于指前因子在拟合过程中被限制为非负，因此无法充分拟合发射增长过程。
+
+```matlab
+fd.lifeDistrAnalysis(range, nIntervals);
+```
+
+其中`range`为 $1\times2$ 的`double`数组，指定了寿命分布范围的上限与下限；`nIntervals`对应于式 $\eqref{LDA}$ 中的 $N$，一般不大于200。
+
+### 指数分析
+
+指数成分分析使用式 $\eqref{multiExp}$ 拟合最多四个荧光团的衰减，每个荧光团都具有离散的寿命。此外，荧光增长通常也遵循指数动力学，因此可以通过负的指前因子识别。
+
+```matlab
+fd.tailFit(guess);
+```
+
+其中`guess`为由寿命初猜组成的行向量，长度不超过4，指数衰减拟合的项数等于`guess`的长度。通常情况下，指数模型的项数越多，越容易出现全局最小值外的局部最小值，因此应尝试通过减少参数或固定一些参数来“帮助”算法收敛到全局最小值。
+
+```matlab
+fd.fix(name, value);
+```
+
+通过`fix()`函数可以设定在拟合过程中要固定的参数及其值，其中`name`为要固定的参数，可选`A`、`B1`、`tau1`、`B2`、`tau2`、`B3`、`tau3`、`B4`、`tau4`。`value`为参数的固定值。如果需要固定多个参数，可以重复输入`name`与`value`。如下代码在拟合时固定常数项 $A=8.56$ 且固定寿命 $\tau_1=2.30$
+
+```matlab
+fd.fix("A", 8.56, "tau1", 2.30);
+```
