@@ -69,12 +69,12 @@ $$\mathrm{DW}=\frac{\displaystyle\sum_{i=n_\mathrm{L}+1}^{n_\mathrm{H}}(Y_i-Y_{i
 
 通过衰减曲线的时间（横坐标）与光子计数（纵坐标）创建 FluorDecay 类：
 ```matlab
-fd = FluorDecay(time,count);
+fd = FluorDecay(time, count);
 ```
 
 通过衰减曲线的时间（横坐标）、光子计数（纵坐标）与仪器响应函数（IRF）的光子计数创建 FluorDecay 类：
 ```matlab
-fd = FluorDecay(time,count,irf);
+fd = FluorDecay(time, count, irf);
 ```
 
 ### 寿命分布分析
