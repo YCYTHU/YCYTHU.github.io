@@ -4,8 +4,9 @@ tags:
 - Color
 - Code
 - JavaScript
-cover: /assets/images/moles on seasaw.jpg
+cover: /assets/images/color distinguish ability.jpg
 ---
+<!--more-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
 <style>
 	#box {
@@ -24,7 +25,7 @@ cover: /assets/images/moles on seasaw.jpg
 	}
 </style>
 <body>
-	<div style="margin: 10px auto;text-align: center;"><span>count:</span><span id="count"></span></div>
+	<div style="margin: 10px auto;text-align: center;font-size: xxx-large;font-family: Georgia;"><span>count:</span><span id="count"></span></div>
 	<div id="box">
 		<span></span>
 		<span></span>
