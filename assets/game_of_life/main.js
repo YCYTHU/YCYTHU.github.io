@@ -69,7 +69,7 @@ var
          * path to the folder with all patterns
          * @const
          */
-        pattern_path = "examples/",
+        pattern_path = "/assets/game_of_life/examples/",
 
         loaded = false,
 
