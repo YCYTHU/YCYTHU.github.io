@@ -5,11 +5,11 @@ tags:
 cover: /assets/images/color distinguish ability.jpg
 ---
 <!--more-->
-<script src="/assets/game_of_life/life.js"></script>
-<script src="/assets/game_of_life/formats.js"></script>
-<script src="/assets/game_of_life/draw.js"></script>
-<script src="/assets/game_of_life/macrocell.js"></script>
-<script src="/assets/game_of_life/main.js"></script>
+<script src="/assets/js/game_of_life/life.js"></script>
+<script src="/assets/js/game_of_life/formats.js"></script>
+<script src="/assets/js/game_of_life/draw.js"></script>
+<script src="/assets/js/game_of_life/macrocell.js"></script>
+<script src="/assets/js/game_of_life/main.js"></script>
 <style type="text/css">
     /*body {
         background-color: #000;
