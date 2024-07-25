@@ -4,7 +4,7 @@ tags:
 - Cellular Automaton
 cover: /assets/images/game of life.jpg
 ---
-康威生命游戏是英国数学家John Horton Conway于1970年发明的细胞自动机。这是一个零玩家游戏，其演变仅由其初始状态决定，而不需要进一步输入。游戏在一个无限的二维网格上进行，每个格子称为一个“细胞”，它只有两种状态：存活或死亡。
+康威生命游戏是英国数学家John Horton Conway于1970年发明的一个零玩家游戏，其演变仅由其初始状态决定而不需要进一步输入。游戏在一个无限的二维网格上进行，每个格子称为一个“细胞”，它只有两种状态：存活或死亡。
 <!--more-->
 <style>
     iframe {
@@ -21,21 +21,25 @@ cover: /assets/images/game of life.jpg
 
 ## 示例
 
-如下是康威生命游戏的一种实现[^ref]，使用方法见下。
+如下是康威生命游戏的在线模拟[^ref]，基本操作见下表。
 
 <iframe src="/Game-of-Life.html"></iframe>
 
-- **左键单击**      移动视图
-- **右键单击**      创建或删除细胞
-- **鼠标滚轮**      缩放
-- **方向键，HJKL**  平移视图
-- **+, -**         缩放
-- **空格键**        下一代
-- **制表键**        执行多次下一代
-- **回车键**        运行或停止
-- **退格键**        重置
-- **]**            模拟速度加快
-- **[**            模拟速度减慢
-- **Esc**          关闭弹出窗口
+<table>
+    <tbody>
+        <tr><td>左键单击</td><td>移动视图</td></tr>
+        <tr><td>右键单击</td><td>创建或删除细胞</td></tr>
+        <tr><td>鼠标滚轮</td><td>缩放</td></tr>
+        <tr><td>方向键，HJKL</td><td>平移视图</td></tr>
+        <tr><td>+, -</td><td>缩放</td></tr>
+        <tr><td>空格键</td><td>下一代</td></tr>
+        <tr><td>制表键</td><td>执行多次下一代</td></tr>
+        <tr><td>回车键</td><td>运行或停止</td></tr>
+        <tr><td>退格键</td><td>重置</td></tr>
+        <tr><td>]</td><td>加快模拟速度</td></tr>
+        <tr><td>[</td><td>减慢模拟速度</td></tr>
+        <tr><td>退出键</td><td>关闭弹出窗口</td></tr>
+    </tbody>
+</table>
 
 [^ref]:基于[GitHub项目](https://github.com/copy/life)修改
