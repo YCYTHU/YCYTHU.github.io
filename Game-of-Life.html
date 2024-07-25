@@ -41,6 +41,7 @@
         margin: 0 auto;
         margin-top: 20px;
         padding: 5px;
+        color: #fff;
     }
     #controls td div {
         /*background-color: #ccc;*/
@@ -234,7 +235,7 @@
         <div class="menu" id="examples_menu" style="display: none">
             <div id="pattern_button">Patterns</div>
         </div>    
-        <div class="button" id="settings_button">Settings</div>
+        <div class="button" id="settings_button" style="display: none">Settings</div>
         <div class="button" id="about_button">About</div>
         <table id="controls">
             <tr title="Speed"><td colspan="3">Speed</td></tr>
@@ -276,7 +277,7 @@
         <div id="label_step" title="Generation per Step">1</div>
         <span id="pattern_name" class="link" title="Pattern infos"></span>
     </div>
-    <div id="overlay">
+    <div id="overlay" style="display: none">
         <div id="about">
             <h2>Conway's Game of Life in JavaScript</h2>
             <div id="notice">
