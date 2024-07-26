@@ -12,6 +12,21 @@ cover: /assets/images/game of life.jpg
         width: 100%;
         height: 600px;
     }
+    #keyTableDiv {
+        display: flex;
+        justify-content: space-between;
+    }
+    #keyTableDiv > table {
+        display: table;
+    }
+    .key {
+        font-weight: bold;
+    }
+    @media (max-width: 800px) {
+        #keyTableDiv {
+            flex-wrap: wrap;
+        }
+    }
 </style>
 
 ## 规则
@@ -19,27 +34,39 @@ cover: /assets/images/game of life.jpg
 - 任何一个活细胞，如果周围有两个或三个活的邻居，则其在下一轮中仍然存活；否则死亡。
 - 任何一个死细胞，如果周围有三个活的邻居，则其在下一轮中复活。
 
-## 示例
+## 模拟
 
 如下是康威生命游戏的在线模拟[^ref]，基本操作见下表。
 
 <iframe src="/Game-of-Life.html"></iframe>
 
-<table>
-    <tbody>
-        <tr><td>左键单击</td><td>移动视图</td></tr>
-        <tr><td>右键单击</td><td>创建或删除细胞</td></tr>
-        <tr><td>鼠标滚轮</td><td>缩放</td></tr>
-        <tr><td>方向键，HJKL</td><td>平移视图</td></tr>
-        <tr><td>+, -</td><td>缩放</td></tr>
-        <tr><td>空格键</td><td>下一代</td></tr>
-        <tr><td>制表键</td><td>执行多次下一代</td></tr>
-        <tr><td>回车键</td><td>运行或停止</td></tr>
-        <tr><td>退格键</td><td>重置</td></tr>
-        <tr><td>]</td><td>加快模拟速度</td></tr>
-        <tr><td>[</td><td>减慢模拟速度</td></tr>
-        <tr><td>退出键</td><td>关闭弹出窗口</td></tr>
-    </tbody>
-</table>
+<div id="keyTableDiv">
+    <table>
+        <tbody>
+            <tr><td class="key">左键单击</td><td>移动视图</td></tr>
+            <tr><td class="key">鼠标滚轮</td><td>缩放</td></tr>
+            <tr><td class="key">方向键，HJKL</td><td>平移视图</td></tr>
+            <tr><td class="key">+, -</td><td>中心缩放</td></tr>
+        </tbody>
+    </table>
+    <table style="margin: auto 12px;">
+        <tbody>
+            <tr><td class="key">右键单击</td><td>创建或删除细胞</td></tr>
+            <tr><td class="key">空格键</td><td>下一代</td></tr>
+            <tr><td class="key">制表键</td><td>执行多次下一代</td></tr>
+            <tr><td class="key">回车键</td><td>运行或停止</td></tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr><td class="key">退格键</td><td>重置</td></tr>
+            <tr><td class="key">]</td><td>加快模拟速度</td></tr>
+            <tr><td class="key">[</td><td>减慢模拟速度</td></tr>
+            <tr><td class="key">退出键</td><td>关闭弹出窗口</td></tr>
+        </tbody>
+    </table>
+</div>
+
+模拟器支持导入RLE、Life 1.06与纯文本格式文件，一些经典的图案文件可从[此处](https://conwaylife.com/wiki/Category:Patterns)下载。
 
 [^ref]:基于[GitHub项目](https://github.com/copy/life)修改
