@@ -1,8 +1,10 @@
 ---
 title: 离心机配平方法
 tags: 
-- Cellular Automaton
-cover: /assets/images/game of life.jpg
+- Number theory
+- Code
+- Python
+cover: /assets/images/centrifuge.jpg
 ---
 离心机配平要求离心机内试管的重心保持在转子的中心，当试管数为离心机孔数的因数时，只需要按相同间隔分布试管即可达到平衡，但若试管数不是离心机孔数的因数时，则很难快速辨别是否存在配平方案。本文列出了不同孔数的离心机支持的试管数以及配平方案图示。
 <!--more-->
@@ -16,6 +18,9 @@ cover: /assets/images/game of life.jpg
 		text-align: center;
 		border: 1px solid #000;
 		padding: 0;
+	}
+	#solTable {
+		display: table;
 	}
 	#solTable td {
 		width: 75px;
@@ -73,9 +78,10 @@ cover: /assets/images/game of life.jpg
 
 ## 生成配平方案的Python代码
 
+`centrifuge(n)`函数返回长度为n+1的布尔值列表，其中第k项代表k个试管能否在n孔离心机中配平。`centrifuge_k(n, k)`则以布尔值列表的形式给出了配平方案。
+
 ```python
 def prime_divisors(n):
-    """Return list of n's prime divisors"""
     primes = []
     p = 2
     while p**2 <= n:
@@ -88,29 +94,8 @@ def prime_divisors(n):
         primes.append(n)
     return primes
 
-
-def centrifuge(n):
-    """Return a list of which the k-th element represents if k tubes can balance the n-hole centrifuge"""
-    F = [True] + [False] * n
-    for p in prime_divisors(n):
-        for i in range(p, n + 1):
-            F[i] = F[i] or F[i - p]
-    return [F[k] and F[n - k] for k in range(n + 1)]
-
-
 def factorize(k: int, nums: list) -> list:
-    """Given k, return the list of numbers from the given numbers which add up to k.
-    The given numbers are guaranteed to be able to generate k via a linear combination.
-
-    Examples:
-        >>> factorize(5, [2, 3])
-        [2, 3]
-        >>> factorize(6, [2, 3])
-        [2, 2, 2]
-        >>> factorize(7, [2, 3])
-        [2, 2, 2, 2, 3]
-    """
-
+	# 返回由给定数加和得到指定数值的方案
     def _factorize(k, nums, res: list):
         for p in nums:
             if k % p == 0:
@@ -122,19 +107,24 @@ def factorize(k: int, nums: list) -> list:
                         res.extend([p] * i)
                         return True
         return False
-
     res = []
     _factorize(k, nums, res)
     return res
 
+def centrifuge(n):
+    # 返回长度为n+1的列表，第k项代表k个试管能否在n孔离心机中配平
+    F = [True] + [False] * n
+    for p in prime_divisors(n):
+        for i in range(p, n + 1):
+            F[i] = F[i] or F[i - p]
+    return [F[k] and F[n - k] for k in range(n + 1)]
 
 def centrifuge_k(n, k):
-    """Given (n, k) and that k balances a n-hole centrifuge, find the positions of k tubes"""
+    # 返回长度为n的列表，代表了k个试管在n孔离心机中的配平方案
     if n == k:
         return [True] * n
     factors = factorize(k, prime_divisors(n))
     pos = [False] * n
-
     def c(factors: list, pos: list) -> bool:
         if sum(pos) == k:
             return True
@@ -144,20 +134,15 @@ def centrifuge_k(n, k):
         pos_wanted = [n // p * i for i in range(p)]
         for offset in range(n):
             pos_rotated = [(i + offset) % n for i in pos_wanted]
-            # the intended positions of the p tubes are all available
             if not any(pos[i] for i in pos_rotated):
-                # claim the positions
                 for i in pos_rotated:
                     pos[i] = True
                 if not c(factors, pos):
-                    # unclaim the positions
                     for i in pos_rotated:
                         pos[i] = False
                 else:
                     return True
-        # all rotated positions failed, add p back to factors to place later
         factors.append(p)
-
     c(factors, pos)
     return pos
 ```
