@@ -15,19 +15,19 @@ cover: /assets/images/game of life.jpg
 		width: 75px;
 		text-align: center;
 		border: 1px solid #000;
+		padding: 0;
 	}
 	#solTable td {
 		width: 75px;
 		height: 75px;
 		padding: 0;
-		border: 1px solid #000;
 	}
 </style>
 
 ## 6~24孔离心机配平方案
 
-<div style="width: 80%;height: 100%;overflow: auto;" id="result">
-	<table style="position: sticky;top: 0;">
+<div style="/*width: 80%;*/height: 100vh;overflow: auto;" id="result">
+	<table style="position: sticky;top: 0;display: table;">
 		<tbody style="background-color: #e2e2e2;">
 			<tr>
 				<td><div style="width: 75px">0</div></td>
