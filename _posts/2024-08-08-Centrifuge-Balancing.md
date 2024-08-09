@@ -11,18 +11,22 @@ cover: /assets/images/game of life.jpg
 		width: 75px;
 		height: 75px;
 	}
-	.result td {
+	#result td {
 		width: 75px;
 		text-align: center;
+		border: 1px solid #000;
 	}
-	td {
+	#solTable td {
+		width: 75px;
+		height: 75px;
+		padding: 0;
 		border: 1px solid #000;
 	}
 </style>
 
 ## 6~24孔离心机配平方案
 
-<div style="width: 80%;height: 100%;overflow: auto;" class="result">
+<div style="width: 80%;height: 100%;overflow: auto;" id="result">
 	<table style="position: sticky;top: 0;">
 		<tbody style="background-color: #e2e2e2;">
 			<tr>
@@ -42,9 +46,9 @@ cover: /assets/images/game of life.jpg
 			</tr>
 		</tbody>
 	</table>
-	<table>
+	<table id="solTable">
 		<tbody>
-			<tr data-hole-num="6"><td data-sequence="000000" class="solution"><td class="unable"><div style="width:75px;"></div></td><td data-sequence="100100" class="solution"></td><td data-sequence="101010" class="solution"></td></tr>
+			<tr data-hole-num="6"><td data-sequence="000000" class="solution"></td><td class="unable"><div style="width:75px;"></div></td><td data-sequence="100100" class="solution"></td><td data-sequence="101010" class="solution"></td></tr>
 			<tr data-hole-num="7"><td data-sequence="0000000" class="solution"></td><td class="unable"></td><td class="unable"></td><td class="unable"></td></tr>
 			<tr data-hole-num="8"><td data-sequence="00000000" class="solution"></td><td class="unable"></td><td data-sequence="10001000" class="solution"></td><td class="unable"></td><td data-sequence="10011001" class="solution"></td></tr>
 			<tr data-hole-num="9"><td data-sequence="000000000" class="solution"></td><td class="unable"></td><td class="unable"></td><td data-sequence="100100100" class="solution"></td><td class="unable"></td></tr>
