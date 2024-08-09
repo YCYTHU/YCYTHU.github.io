@@ -21,18 +21,22 @@ cover: /assets/images/centrifuge.jpg
 	}
 	#solTable {
 		display: table;
+		margin-top: 10px;
 	}
 	#solTable td {
 		width: 75px;
 		height: 75px;
 		padding: 0;
 	}
+	svg {
+		display: block;
+	}
 </style>
 
 ## 6~24孔离心机配平方案
 
-<div style="/*width: 80%;*/height: 100vh;overflow: auto;" id="result">
-	<table style="position: sticky;top: 0;display: table;">
+<div style="height: 80vh;overflow: auto;" id="result">
+	<table style="position: sticky;top: 0;display: table;margin-bottom: 0;">
 		<tbody style="background-color: #e2e2e2;">
 			<tr>
 				<td><div style="width: 75px">0</div></td>
