@@ -99,7 +99,7 @@ def prime_divisors(n):
     return primes
 
 def factorize(k: int, nums: list) -> list:
-	# 返回由给定数加和得到指定数值的方案
+    # 返回由给定数加和得到指定数值的方案
     def _factorize(k, nums, res: list):
         for p in nums:
             if k % p == 0:
