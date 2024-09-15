@@ -19,7 +19,7 @@ cover: /assets/images/poker card suits.jpg
 2. **每种花色的牌数**  
 	一张牌为指定花色的概率为 $\displaystyle{\frac14}$，共 $n$ 张牌，因此每张牌均为指定花色的概率为 $\displaystyle{\left(\frac14\right)^n}$。
 3. **总结果**  
-	$$P(1)=\binom41\times\left(\frac14\right)^n=\left(\frac14\right)^{n-1}$$
+	$$P(1)=\displaystyle\binom41\times\left(\displaystyle\frac14\right)^n=\left(\displaystyle\frac14\right)^{n-1}$$
 
 ### 花色种类数为 $\mathbf{2}$ 的概率（$\mathbf{n\geq2}$）
 
@@ -28,7 +28,7 @@ cover: /assets/images/poker card suits.jpg
 2. **每种花色的牌数**  
 	假设选择的两种花色为 $A$ 和 $B$，其中花色 $A$ 有 $k$ 张牌（$1\leq k\leq n-1$），则此概率为 $\displaystyle{\binom nk\left(\frac14\right)^k\left(\frac14\right)^{n-k}}$。
 3. **总结果**  
-	$${P(2)=\binom42\times\sum_{k=1}^{n-1}\binom nk\left(\frac14\right)^k\left(\frac14\right)^{n-k}=\frac{3\cdot(2^{n-1}-1)}{4^{n-1}}}\quad(\mathrm{Theorem\ 1})$$
+	$${P(2)=\displaystyle\binom42\times\sum_{k=1}^{n-1}\displaystyle\binom nk\left(\displaystyle\frac14\right)^k\left(\displaystyle\frac14\right)^{n-k}=\displaystyle\frac{3\cdot(2^{n-1}-1)}{4^{n-1}}}\quad(\mathrm{Theorem\ 1})$$
 	
 	化简过程利用了[Theorem 1](#theorem-1)，证明过程见附录。
 
@@ -132,6 +132,12 @@ $$P(4)=\begin{cases}\frac{\displaystyle\binom{52}{n}-4\binom{39}{n}+6\binom{26}{
 	</tbody>
 </table>
 <p style="text-align: center;"><img src="/assets/images/poker card single.svg" width="400"/></p>
+
+## 两种摸牌方式的对比
+
+下图展示了两种摸牌方式花色种类数的期望随 $n$ 的变化，可以发现从一副牌组成的牌堆中摸牌的花色期望数始终大于由无穷副扑克牌组成的牌堆。这是因为从一副牌组成的牌堆中摸牌时摸一张牌以后再摸到相同花色的牌的概率会降低。
+
+<p style="text-align: center;"><img src="/assets/images/poker card expected value.svg" width="400"/></p>
 
 ## Appendix
 
