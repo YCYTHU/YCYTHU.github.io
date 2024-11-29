@@ -15,10 +15,10 @@
         }
         @keyframes breathe {
             0%, 100% {
-                box-shadow: inset 0 0 50px rgba(255, 182, 193, 0.5);
+                background-color: #f4f4f4;
             }
             50% {
-                box-shadow: inset 0 0 100px rgba(255, 182, 193, 0.9);
+                background-color: rgba(255, 182, 193, 0.2);
             }
         }
         .gallery {
@@ -166,7 +166,8 @@ function decrypt(encry_arr, serverKey) {
     var result = [];
     const key = CryptoJS.enc.Utf8.parse(serverKey);
     const iv = CryptoJS.enc.Utf8.parse(serverKey);
-    for (let index=0; index<encry_arr.length-1; index++) {
+    shuffleArray(encry_arr);
+    for (let index=0; index<encry_arr.length; index++) {
         var decryptedData = CryptoJS.AES.decrypt(encry_arr[index], key, {
             iv: iv,
             mode: CryptoJS.mode.CBC,
@@ -193,8 +194,16 @@ function show_img(img_base64_arr) {
         movable: true,
     });
 }
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 const url = "https://ycythu.github.io/assets/img_encry_des.txt";
-const fake_url = "https://ycythu.github.io";
+const fake_url = "https://www.baidu.com";
 init(url, fake_url);
 </script>
 </html>
