@@ -151,7 +151,7 @@ function init(url, fake_url) {
                     var img_base64 = decrypt(txtContent.split('\n'), key);
                     show_img(img_base64);
                 } catch(error) {
-                    window.location.href=fake_url;
+                    window.location.replace(fake_url);
                 }
             }
         };
@@ -164,8 +164,8 @@ function init(url, fake_url) {
 }
 function decrypt(encry_arr, serverKey) {
     var result = [];
-    const key = CryptoJS.enc.Utf8.parse(serverKey);
-    const iv = CryptoJS.enc.Utf8.parse(serverKey);
+    const key = CryptoJS.enc.Utf8.parse(serverKey.substring(0,32));
+    const iv = CryptoJS.enc.Utf8.parse(serverKey.substring(32,48));
     shuffleArray(encry_arr);
     for (let index=0; index<encry_arr.length; index++) {
         var decryptedData = CryptoJS.AES.decrypt(encry_arr[index], key, {
