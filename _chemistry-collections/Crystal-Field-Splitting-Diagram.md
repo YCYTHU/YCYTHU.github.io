@@ -105,9 +105,10 @@ cover: /assets/images/crystal tree.jpg
 			flex-wrap: wrap;
 			flex-direction: row;
 			justify-content: space-evenly;
-			height: 480px;
+			/*height: 480px;*/
 			max-width: 950px;
 			margin: .5rem auto 0;
+			padding: 1rem;
 		}
 		.infoDiv {
 			display: flex;
@@ -132,9 +133,10 @@ cover: /assets/images/crystal tree.jpg
 			}
 		}
 		.axesDiv {
-			/*margin: 10px 10px 10px 5px;*/
+			/*margin: 10px 10px 10px 5px;
 			height: 100%;
-			flex: 1 auto 0;
+			flex: 1 auto 0;*/
+			margin-bottom: 10px;
 			border: 2px solid #e6e6e6;
 			box-shadow: 5px 10px #e6e6e6;
 			border-radius: 5px;
@@ -156,15 +158,17 @@ cover: /assets/images/crystal tree.jpg
 			border: 2px solid #e6e6e6;
 			border-radius: 5px;
     		box-shadow: 3px 5px #e6e6e6;
-    		height: 250px;
-    		min-width: 10px;
+    		/*height: 250px;*/
+    		width: calc(100% - 1rem);
     		padding: 0.5rem;
+    		margin-bottom: 5px;
 		}
 		#svg {
 			border: 2px solid #e6e6e6;
 			border-radius: 5px;
     		box-shadow: 3px 5px #e6e6e6;
 			padding: 0.5rem;
+			width: calc(100% - 1rem);
 		}
 	</style>
 </head>
