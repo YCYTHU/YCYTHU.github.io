@@ -115,6 +115,7 @@ cover: /assets/images/crystal tree.jpg
 			flex-wrap: wrap;
 			flex-direction: column;
 			justify-content: space-evenly;
+			margin-bottom: 15px;
 		}
 		@media (min-width: 0) {
 			.infoDiv {
@@ -136,7 +137,7 @@ cover: /assets/images/crystal tree.jpg
 			/*margin: 10px 10px 10px 5px;
 			height: 100%;
 			flex: 1 auto 0;*/
-			margin-bottom: 10px;
+			margin-bottom: 20px;
 			border: 2px solid #e6e6e6;
 			box-shadow: 5px 10px #e6e6e6;
 			border-radius: 5px;
