@@ -7,8 +7,10 @@ cover: /assets/images/crystal tree.jpg
 
 <html>
 <head>
+	{%- include analytics.html -%}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="在线计算不同对称性下d轨道的的分裂形式，计算本征态的成分并展示轨道等值面图">
 	<title>晶体场分裂能计算器</title>
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" type="text/javascript"></script>
