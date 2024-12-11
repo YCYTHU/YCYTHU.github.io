@@ -1,13 +1,16 @@
 User-agent: Googlebot
-Disallow: /*/opera.html$
+Disallow: /eros
+Disallow: /assets/
 Allow: /
 
 User-agent: Bingbot
-Disallow: /*/opera.html$
+Disallow: /eros
+Disallow: /assets/
 Allow: /
 
 User-agent: *
 Allow: /MolViewer
+Allow: /chemistry-collections
 Disallow: /
 
 Sitemap: https://ycythu.github.io/sitemap.xml

@@ -7,8 +7,10 @@ cover: /assets/images/nebula.jpg
 
 <html>
 <head>
+	{%- include analytics.html -%}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="在线观察氢原子本征态波函数等值面图，原理上支持预览的主量子数无上限，可分别观看实部与虚部在空间中的分布">
 	<title>Hydrogen Wavefunction Viewer</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js" type="text/javascript"></script>
