@@ -176,6 +176,7 @@ cover: /assets/images/crystal tree.jpg
 	</style>
 </head>
 <body>
+	<h1 style="display: none;">晶体场分裂能计算器</h1>
 	<div class="greyDiv"><div class="nav">
 		<ul class="nav_left">
 			<li onclick="openCoordinatesDialog()" title="手动修改配体坐标"><nobr><i class="fas fa-table"></i><b>&nbsp;配体坐标</b>&emsp;</nobr></li>

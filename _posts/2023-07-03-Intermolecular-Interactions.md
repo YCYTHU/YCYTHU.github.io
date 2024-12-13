@@ -13,11 +13,11 @@ modify_date: 2023-07-10
 为什么范德华作用随距离 $r^{-6}$ 衰减，为什么压紧的铅块会粘在一起，胶体为什么能够稳定存在？本文对分子之间的相互作用进行简要介绍。
 <!--more-->
 
-# 分子间相互作用
+## 分子间相互作用
 
-## 静电相互作用
+### 静电相互作用
 
-### 离子-偶极相互作用
+#### 离子-偶极相互作用
 
 一个电荷为 $Ze$ 的离子与偶极矩为 $\mu$ 的偶极之间的的相互作用可以写为：
 
@@ -43,7 +43,7 @@ $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\
 
 $$\color{red}{\langle U(r)\rangle=-\frac{Z^2\mu^2}{3kTr^4}}\tag{6}\label{id}$$
 
-### 离子-诱导偶极相互作用
+#### 离子-诱导偶极相互作用
 
 由于诱导偶极总与连接偶极到离子的向量平行，因此离子与诱导偶极的相互作用能为：
 
@@ -59,7 +59,7 @@ $$\color{red}{U_\mathrm{iid}=-\frac{Z^2\alpha}{r^4}}\tag{9}\label{iid}$$
 
 从式 $\eqref{id}$ 与式 $\eqref{iid}$ 发现，无论是固有偶极还是诱导偶极，离子与偶极之间的相互作用都以 $r^{-4}$ 衰减。
 
-### 偶极-偶极相互作用
+#### 偶极-偶极相互作用
 
 考虑两个具有永久偶极矩 $\boldsymbol{\mu}_1,\boldsymbol{\mu}_2$ 的极性分子，两个偶极子将发生静电相互作用，这一相互作用可以利用矢量形式写为：
 
@@ -106,7 +106,7 @@ $$\begin{align}\langle U(r)\rangle&=U_0(r)\frac{\mathrm{d}}{\mathrm{d}\beta}\ln(
 
 $$\color{red}{\langle U(r)\rangle=-\frac{1}{3kT}\frac{\mu_1^2\mu_2^2}{r^6}}\tag{19}$$
 
-### 偶极-诱导偶极相互作用
+#### 偶极-诱导偶极相互作用
 
 偶极在远处产生的电场的电场强度为：
 
@@ -132,7 +132,7 @@ $$\color{blue}{U_\mathrm{did}=-\frac{\mu^2\alpha}{r^6}(3\cos^2\theta+1)}\tag{24}
 
 $$\color{red}{\langle U(r)\rangle=-\frac{2\mu^2\alpha}{r^6}}\tag{25}$$
 
-### 诱导偶极-诱导偶极相互作用
+#### 诱导偶极-诱导偶极相互作用
 
 在任何时刻，分子某一侧的电荷可能会比另一侧稍微不平衡，从而产生瞬时偶极矩，该偶极矩会诱导附近的其他分子产生诱导偶极矩。 瞬时偶极矩可能使得分子间的静电势能降低，在两个分子之间产生轻微的吸引力。 由于两个偶极子是动态相关的，因此随着时间的推移，吸引力的平均值不为零。这种相互作用的精确计算非常复杂，但是基于两个耦合的电荷振子的量子力学模型对理解该问题有很大帮助。
 
@@ -188,13 +188,13 @@ $$\Delta U(r)=-\frac{\alpha^2I}{32\pi^2\varepsilon_0^2r^6}\tag{37}$$
 
 $$\color{red}{U_\mathrm{idid}(r)=-\frac{3\alpha_1\alpha_2}{2r^6}\left(\frac{I_1I_2}{I_1+I_2}\right)}\tag{38}$$
 
-### 范德华相互作用
+#### 范德华相互作用
 
 前文中的偶极-偶极相互作用（Keesom）、偶极-诱导偶极相互作用（Debye）与诱导偶极-诱导偶极相互作用（London）项具有相同的 $r^{-6}$ 距离依赖性，统称为范德华相互作用。
 
 $$\begin{align}U_{\mathrm{vdW}}(r)&=U_{\mathrm{Keesom}}(r)+U_{\mathrm{Debye}}(r)+U_{\mathrm{London}}(r)\nonumber\\&=-\frac{1}{r^6}\left[\frac{\mu_1^2\mu_2^2}{3kT}+2\mu_1^2\alpha_2+\frac{3\alpha_1\alpha_2}{2}\left(\frac{I_1I_2}{I_1+I_2}\right)\right]\nonumber\end{align}\tag{39}$$
 
-### 交换排斥
+#### 交换排斥
 
 Pauli不相容原理指出每个轨道上只能有两个电子。当原子彼此靠近时轨道发生重叠，即电子在某种程度上处于同一轨道上。 这迫使轨道发生变化并导致原子之间的排斥。我们不知道交换排斥力的确切数学形式，一般有如下几种模型：
 
@@ -215,7 +215,7 @@ $$u(r)\propto \exp\left(-\frac{r}{\sigma}\right)\quad \sigma>0\nonumber$$
 <div align=center><img width="75%" src="\assets\images\Intermolecular Interactions\LJ-potential.png"></div>
 <div align=center><font color="#999999">图2：Lennard-Jones势</font></div>
 
-## 第二维利系数
+### 第二维利系数
 
 目前我们分析了两个分子之间的净相互作用，更进一步地，我们可以为这种相互作用提供一种量度。对压强 $p$ 进行virial展开：
 
@@ -235,7 +235,7 @@ $$\begin{align}&B_3=\frac58B_2^2\nonumber\\&B_4=\left(-\frac{89}{280}+\frac{219\
 
 维利方程也可以应用于溶质之间的相互作用，并且可以定义有效第二维利系数。例如，稀蛋白质溶液的有效第二维利系数可以根据光散射数据进行计算。
 
-## 电介质与介电屏蔽
+### 电介质与介电屏蔽
 
 溶液中的静电效应可以从Debye–Hückel理论来理解。在介电常数为 $\varepsilon_r$ 的电介质中，应用Poisson方程将电势 $\phi$ 与电荷密度 $\rho$ 关联起来：
 
@@ -270,7 +270,7 @@ $$\color{red}{\phi(r)=\frac{Ze}{4\pi\varepsilon_r\varepsilon_0(1+\kappa R)}\frac
 
 $$kT\ln\gamma=-\frac{\kappa Z^2e^2}{8\pi\varepsilon_r\varepsilon_0(1+2\kappa R)}\tag{50}$$
 
-## 平均力势（PMF）
+### 平均力势（PMF）
 
 平均力势描述了体系的自由能如何随分子间或分子内坐标而变化，即沿所选坐标的自由能面。对于具有 $N$ 个粒子的系统，作用于粒子 $i$ 的平均力指固定粒子 $1,\dots,n$ 的构型时粒子 $n+1,\dots,N$ 对粒子 $i$ 的力的加权平均。
 
@@ -280,11 +280,11 @@ $$-\nabla_i\omega^{(n)}=\frac{\int e^{-\frac{V}{kT}}(-\nabla_iV)\mathrm{d}q_{n+1
 
 $$g(r)=\exp\left[-\frac{\omega^{(2)}(r)}{kT}\right]\tag{52}$$
 
-# 宏观体的相互作用
+## 宏观体的相互作用
 
 第一部分讨论了两个小分子之间的相互作用，对于蛋白质，固体表面这类可视作由许多小分子组成的宏观体，它们之间的相互作用可从势能的加和性出发进行讨论。
 
-## 分子与无限大平面的相互作用
+### 分子与无限大平面的相互作用
 
 将分子视为几何上的点，假定距分子 $r$ 处的势能具有 $u(r)=-\frac{C}{r^n}$ 的形式。考虑一个由许多分子构成的无限大平面和距离平面 $r$ 的一个分子。将它们之间的相互作用视作分子与一系列半径为 $x$ 的圆环的相互作用的和：
 
@@ -296,7 +296,7 @@ $$\color{red}{W_\mathrm{pw}(r)=-\frac{2\pi C\rho}{(n-2)(n-3)}\frac{1}{r^{n-3}}}\
 
 从式 $\eqref{wpw}$ 发现，$W_\mathrm{pw}(r)$ 正比于距离 $r$ 的 $(3-n)$ 次幂，说明分子与无限大平面的相互作用相较于分子间相互作用表现出更“长程”的特征。对于 $n=6$ 的情况，$W_\mathrm{pw}(r)=-\frac{\pi C\rho}{6r^3}$ 表现出距离的立方反比特征。
 
-## 球体与无限大平面的相互作用
+### 球体与无限大平面的相互作用
 
 在几何点与无限大平面相互作用的基础上，我们可以进一步考察半径为 $R$ 的球体与相距 $r$ 的无限大平面的相互作用。将球体与无限大平面的相互作用视作一系列平行于平面（距离为 $z$）的圆片与无限大平面的相互作用之和：
 
@@ -306,7 +306,7 @@ $$W_\mathrm{sw}(r)=-\frac{2\pi^2C\rho^2}{(n-2)(n-3)}\int_0^{2R}\frac{(2R-z)z\mat
 
 $$\color{red}{W_\mathrm{sw}(r)=-\frac{4\pi^2C\rho^2R}{(n-2)(n-3)(n-4)(n-5)}\frac{1}{r^{n-5}}}\tag{56}$$
 
-## 球体间的相互作用
+### 球体间的相互作用
 
 对球体间相互作用的描述在胶体理论中发挥着重要作用。两个中心距离为 $r$ 的半径为 $R$ 的球体，假定其具有范德华形式的势能（$r^{-6}$ 的距离依赖性），则两个球体间的相互作用等于对两个球体内部全部粒子的积分，略去过程，得到势能的形式为：
 
@@ -321,7 +321,7 @@ $$\begin{align}&W(r)\sim-\frac{16\pi^2C\rho^2R^6}{9}\frac{1}{r^6}+\omicron\left(
 <div align=center><img width="60%" src="\assets\images\Intermolecular Interactions\sphere-sphere.png"></div>
 <div align=center><font color="#999999">图4：球体间的相互作用</font></div>
 
-## 无限大平面间的相互作用
+### 无限大平面间的相互作用
 
 使用类似的方法可以以面密度的形式给出无限大平面间的相互作用，以避免发散的结果。
 
@@ -343,11 +343,11 @@ $$F=-A\cdot\frac{\mathrm{d}W_\mathrm{ww}(r)}{\mathrm{d}r}=-\frac{A\pi C\rho^2}{6
 
 $$\begin{array}{c|c}r\ /\ \unicode{x212B}&F\ /\ \mathrm{N}\\\hline1000&4\times10^{-3}\\100&4\\10&4\times10^3\end{array}\nonumber$$
 
-# 带电介观物体
+## 带电介观物体
 
 第二部分讨论了中性宏观体间的范德华作用形式，对于带电荷的微粒（如胶体粒子），还要额外考虑溶液中的静电作用。有了第二部分的基础，我们从溶液中的两个平面开始。
 
-## 两个均匀带电的无限大平面
+### 两个均匀带电的无限大平面
 
 考察两个相互平行的、相距为 $2h$ 的无限大的均匀带电平面，电荷面密度为 $\sigma$，平面之间填充单一抗衡离子。体系的Poisson-Boltzmann方程：
 
@@ -384,7 +384,7 @@ $$\begin{align}&\rho(0)=\frac{kT\pi^2\varepsilon_r\varepsilon_0}{2Zeh^2}&h\right
 
 $$p=\frac{2(kTs)^2\varepsilon_r\varepsilon_0}{Z^2e^2h^2}\tag{70}$$
 
-## Gouy-Chapman 理论
+### Gouy-Chapman 理论
 
 如果前文的两个平面处于电解质溶液中，则结果将会变得十分复杂。不妨先考虑处于无限大的水溶液中的一个带电平面，溶液中的电解质为1:1型。则式 $\eqref{pbe2}$ 要改写为：
 
@@ -410,7 +410,7 @@ $$p=64kTn_0\gamma^2\exp(-2\kappa h)\tag{75}$$
 
 $$W_\mathrm{ss}(r)=\frac{64\pi kTRn_0\gamma^2}{\kappa^2}\exp(-\kappa r)\tag{76}\label{wss2}$$
 
-## DLVO 理论
+### DLVO 理论
 
 本文的第二部分讨论了宏观物体间的范德华作用，对于溶液中的带电粒子，还要结合本部分内容再额外考虑静电作用。结合式 $\eqref{www2}\eqref{wss2}$ 描述的静电作用与式 $\eqref{wss2r}\eqref{wwwn6}$ 的范德华作用，在溶液中带电球体或平面之间的相互作用可以写为两部分的加和（图6）。
 

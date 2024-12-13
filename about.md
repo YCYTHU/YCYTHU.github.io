@@ -5,9 +5,9 @@ key: page-about
 <head>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" >
     <style>
-        h1 {
+        h2 {
             font-family: slogan;
-            font-size: 3em;
+            font-size: 2em;
         }
         .icon-container {
             display: flex;
@@ -15,8 +15,8 @@ key: page-about
             margin: 36px;
         }
         .icon-container img {
-            width: 3em;
-            height: 3em;
+            width: 2em;
+            height: 2em;
         }
         .icon {
             opacity: 0;
@@ -42,7 +42,7 @@ key: page-about
     </style>
 </head>
 <body>
-    <h1>Use it or lose it</h1>
+    <h2>Use it or lose it</h2>
     <div class="icon-container">
         <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@13.20.0/icons/python.svg" alt="Python" style="--delay: 0.1s;">
         <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@13.20.0/icons/javascript.svg" alt="JavaScript" style="--delay: 0.4s;">
@@ -51,14 +51,14 @@ key: page-about
         <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@13.20.0/icons/c.svg" alt="C" style="--delay: 1s;">
         <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@13.20.0/icons/html5.svg" alt="HTML" style="--delay: 1.2s;">
     </div>
-    <h1>Knowledge is no burden to carry</h1>
+    <h2>Knowledge is no burden to carry</h2>
     <div class="icon-container">
-        <i class="fas fa-flask fa-3x icon" style="--delay: 0.1s;"></i>
-        <i class="fas fa-camera fa-3x icon" style="--delay: 0.4s;"></i>
-        <i class="far fa-money-bill-alt fa-3x icon" style="--delay: 0.6s;"></i>
-        <i class="fas fa-atom fa-3x icon" style="--delay: 0.8s;"></i>
-        <i class="far fa-lightbulb fa-3x icon" style="--delay: 1s;"></i>
-        <i class="fas fa-bowling-ball fa-3x icon" style="--delay: 1.2s;"></i>
+        <i class="fas fa-flask fa-2x icon" style="--delay: 0.1s;"></i>
+        <i class="fas fa-camera fa-2x icon" style="--delay: 0.4s;"></i>
+        <i class="far fa-money-bill-alt fa-2x icon" style="--delay: 0.6s;"></i>
+        <i class="fas fa-atom fa-2x icon" style="--delay: 0.8s;"></i>
+        <i class="far fa-lightbulb fa-2x icon" style="--delay: 1s;"></i>
+        <i class="fas fa-bowling-ball fa-2x icon" style="--delay: 1.2s;"></i>
     </div>
 </body>
 <script>
