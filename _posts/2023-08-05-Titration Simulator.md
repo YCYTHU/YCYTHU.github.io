@@ -23,7 +23,7 @@ cover: /assets/images/titration simulator/cover.jpg
 
 <div class="card" style="margin:0 auto;max-width:75%">
 	<div class="card__image">
-		<img src="/assets/images/titration simulator/settings_area.png">
+		<img src="/assets/images/titration simulator/settings_area.png" alt="图1：滴定模拟器设置界面">
 	</div>
 	<div class="card__content" align="center">
 		<div class="card__header">
@@ -41,7 +41,7 @@ cover: /assets/images/titration simulator/cover.jpg
 
 <div class="card" style="margin:0 auto;max-width:75%">
 	<div class="card__image">
-		<img src="/assets/images/titration simulator/titration_area.png">
+		<img src="/assets/images/titration simulator/titration_area.png" alt="图2：滴定界面，左侧为仪器部分，右侧为pH值的变化图像">
 	</div>
 	<div class="card__content" align="center">
 		<div class="card__header">

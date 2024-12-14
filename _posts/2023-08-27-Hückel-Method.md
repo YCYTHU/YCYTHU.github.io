@@ -113,10 +113,10 @@ if __name__=='__main__':
 </style>
 
 <table id="HMO"><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
-<tr><td>1</td><td>-2.0</td><td><img src="/assets/images/hückel method/orbital_0.svg"></td></tr>
-<tr><td>2</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_1.svg"></td></tr>
-<tr><td>3</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_2.svg"></td></tr>
-<tr><td>4</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_3.svg"></td></tr>
-<tr><td>5</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_4.svg"></td></tr>
-<tr><td>6</td><td>2.0</td><td><img src="/assets/images/hückel method/orbital_5.svg"></td></tr>
+<tr><td>1</td><td>-2.0</td><td><img src="/assets/images/hückel method/orbital_0.svg" alt="orbital_0"></td></tr>
+<tr><td>2</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_1.svg" alt="orbital_1"></td></tr>
+<tr><td>3</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_2.svg" alt="orbital_2"></td></tr>
+<tr><td>4</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_3.svg" alt="orbital_3"></td></tr>
+<tr><td>5</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_4.svg" alt="orbital_4"></td></tr>
+<tr><td>6</td><td>2.0</td><td><img src="/assets/images/hückel method/orbital_5.svg" alt="orbital_5"></td></tr>
 </tbody></table>

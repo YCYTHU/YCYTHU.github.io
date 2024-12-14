@@ -146,7 +146,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank
 
 1931年，根据 Wright 和 Guild 的数据，国际照明委员会（CIE）发布了三刺激函数 $\bar{x},\bar{y},\bar{z}$（图1）用于从给定的光谱计算其对应的颜色。
 
-<div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/CIE_1931_XYZ_Color_Matching_Functions.svg" width="75%"/></div>
+<div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/CIE_1931_XYZ_Color_Matching_Functions.svg" width="75%" alt="图1：三刺激函数"/></div>
 <div align=center><font color="#999999">图1：三刺激函数</font></div>
 
 三刺激函数的使用方法如下。对于一个给定的光谱 $\Lambda(\lambda)$，首先计算积分

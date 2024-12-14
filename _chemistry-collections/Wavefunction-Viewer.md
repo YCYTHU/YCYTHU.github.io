@@ -62,6 +62,7 @@ cover: /assets/images/nebula.jpg
 	</style>
 </head>
 <body>
+	<h1 style="display: none;">氢原子波函数</h1>
 	<div id="ThreeJS"></div>
 	<div id="Stats" style="position: absolute; top: 0px; left: 0px;"></div>
 	<!--<div style="position: absolute; width: 50px; height: 48px; top: 0px; left: 80px; background-color: #0f0f2e;">

@@ -9,7 +9,7 @@ cover: https://upload.wikimedia.org/wikipedia/commons/1/16/H3PO4_speciation.png
 ---
 <!--more-->
 
-# 分布系数计算器
+## 分布系数计算器
 
 <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
@@ -45,47 +45,35 @@ Acid dissociation constant table (DO NOT PRESS ENTER):
     </tr>
   </tbody>
 </table>
-
 <a class="button button--success button--pill" id="Calc" onclick="Calc()">Calculate</a>
-
 <div id="graph_area" align="center"></div>
 
 <py-config>
   packages = ["numpy", "matplotlib"]
 </py-config>
-
 <py-script>
   import numpy as np
   import numpy.matlib
   import matplotlib.pyplot as plt
-
   def ABDC(id_n_protic):
-
     if ('fig' in globals()):
       plt.clf()
     else:
       ffig,ax=plt.subplots()
-  
     n_protic=Element(id_n_protic)
     pKa=[]
-  
     n=int(n_protic.value)
-  
     from js import pKa_data
     for i in range(n):
       pKa.append(float(pKa_data[i]))
-    
     pKa=np.array(pKa,dtype=np.float32)
-    
     res=100
     pH=np.linspace(0,14,res)
     delta=np.zeros([n+1,res])
     all_form=np.zeros([1,res])
-    
     for i in range(n+1):
       delta[i,:]=10**(-sum(pKa[0:i]))*10**(-(n-i)*pH)
       all_form=all_form+delta[i,:]
-    
     delta=delta/np.matlib.repmat(all_form,n+1,1)
     plt.plot(pH,np.transpose(delta))
     if ('fig' in globals()):
@@ -93,15 +81,14 @@ Acid dissociation constant table (DO NOT PRESS ENTER):
     else:
       display(ffig,target="graph_area")
       return ffig
-
   fig=ABDC("n_protic")
 </py-script>
 
 ---
 
-# 实现
+## 实现
 
-## Python
+### Python
 
 ```python
 import numpy as np
@@ -109,7 +96,6 @@ import numpy.matlib
 import matplotlib.pyplot as plt
 
 def ABDC(id_n_protic):
-
   if ('fig' in globals()):
     plt.clf()
   else:
@@ -117,24 +103,22 @@ def ABDC(id_n_protic):
 
   n_protic=Element(id_n_protic)
   pKa=[]
-
   n=int(n_protic.value)
 
   from js import pKa_data
   for i in range(n):
     pKa.append(float(pKa_data[i]))
-  
   pKa=np.array(pKa,dtype=np.float32)
   
   res=100
   pH=np.linspace(0,14,res)
   delta=np.zeros([n+1,res])
   all_form=np.zeros([1,res])
-  
+
   for i in range(n+1):
     delta[i,:]=10**(-sum(pKa[0:i]))*10**(-(n-i)*pH)
     all_form=all_form+delta[i,:]
-  
+
   delta=delta/np.matlib.repmat(all_form,n+1,1)
   plt.plot(pH,np.transpose(delta))
   if ('fig' in globals()):
@@ -145,7 +129,7 @@ def ABDC(id_n_protic):
 
 fig=ABDC("n_protic")
 ```
-## JavaScript
+### JavaScript
 
 ```js
 pKa=document.getElementById('pKa_table');
