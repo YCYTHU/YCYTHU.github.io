@@ -52,7 +52,7 @@ $$\vert x\mathrm{I}_n+A\vert=0$$
 
 在前面提到文章中笔者还介绍了绘图函数`drawmol2D`用于绘制分子骨架并依据原子属性着色。此处只需要依次将每条分子轨道中原子轨道的系数作为原子属性传递给函数`drawmol2D`并绘图即可得到每条分子轨道的着色示意图。
 
-最后创建一个.html文件以表格的形式展现每条分子轨道的能量、原子轨道系数与示意图。完整代码如下所示，其中用到的[molecule_skeleton.py文件可在此下载](/assets/molecule_skeleton.py)
+最后创建一个.html文件以表格的形式展现每条分子轨道的能量、原子轨道系数与示意图。完整代码如下所示，其中用到的[molecule_skeleton.py文件可在此下载](https://cdn.jsdelivr.net/gh/ycythu/assets@main/molecule_skeleton.py)
 
 ```python
 import numpy as np
@@ -113,10 +113,10 @@ if __name__=='__main__':
 </style>
 
 <table id="HMO"><thead><tr><td>Index</td><td>(α-E)/β</td><td>Orbital</td></tr></thead><tbody>
-<tr><td>1</td><td>-2.0</td><td><img src="/assets/images/hückel method/orbital_0.svg" alt="orbital_0"></td></tr>
-<tr><td>2</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_1.svg" alt="orbital_1"></td></tr>
-<tr><td>3</td><td>-1.0</td><td><img src="/assets/images/hückel method/orbital_2.svg" alt="orbital_2"></td></tr>
-<tr><td>4</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_3.svg" alt="orbital_3"></td></tr>
-<tr><td>5</td><td>1.0</td><td><img src="/assets/images/hückel method/orbital_4.svg" alt="orbital_4"></td></tr>
-<tr><td>6</td><td>2.0</td><td><img src="/assets/images/hückel method/orbital_5.svg" alt="orbital_5"></td></tr>
+<tr><td>1</td><td>-2.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_0.svg" alt="orbital_0"></td></tr>
+<tr><td>2</td><td>-1.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_1.svg" alt="orbital_1"></td></tr>
+<tr><td>3</td><td>-1.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_2.svg" alt="orbital_2"></td></tr>
+<tr><td>4</td><td>1.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_3.svg" alt="orbital_3"></td></tr>
+<tr><td>5</td><td>1.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_4.svg" alt="orbital_4"></td></tr>
+<tr><td>6</td><td>2.0</td><td><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/orbital_5.svg" alt="orbital_5"></td></tr>
 </tbody></table>

@@ -27,7 +27,7 @@ $$E_\pi=n\alpha+\frac{E(G)}{2}\beta$$
 
 $$E(G_{线性})>E(G_{交叉})$$
 
-<div align=center><img width="75%" src="\assets\images\graph energy\path_cross.svg" alt="图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）"></div>
+<div align=center><img width="75%" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/graph energy/path_cross.svg" alt="图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）"></div>
 <div align=center><font color="#999999">图1：环戊二烯阳离子的线性共轭结构（左）与交叉共轭结构（右）</font></div>
 
 这可以使用下面的 Coulson integral formula[^Coulson]加以证明。
@@ -40,7 +40,7 @@ $$E(G)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\left(n-\frac{ix\phi'(ix)}{\phi(ix)}
 
 $$\frac{1}{2\pi i}\int_\gamma\left(\frac{z\phi'(z)}{\phi(z)}-n\right)\mathrm{d}z$$
 
-<div align=center><img width="40%" src="\assets\images\graph energy\gamma_curve.png" alt="图2：闭曲线 $\gamma$"></div>
+<div align=center><img width="40%" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/graph energy/gamma_curve.png" alt="图2：闭曲线 $\gamma$"></div>
 <div align=center><font color="#999999">图2：闭曲线 $\gamma$</font></div>
 
 由留数定理知该积分等于 $\gamma$ 内部所有极点（也即 $\phi(z)$ 的所有负零点 $z_1,z_2,\dots,z_r$）的留数之和：

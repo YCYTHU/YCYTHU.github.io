@@ -10,8 +10,8 @@ cover: /assets/images/dots image/cover.jpg
 
 <table style="width: 75%;margin: 0 auto;">
 	<tr>
-		<td style="text-align: center; border:none; width: 45%;"><img src="/assets/images/dots image/example.jpg" style="vertical-align:baseline;"></td>
-		<td style="text-align: center; border:none; width: 45%;"><object data="/assets/images/dots image/example.svg" type="image/svg+xml"></object></td>
+		<td style="text-align: center; border:none; width: 45%;"><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/example.jpg" style="vertical-align:baseline;" alt="输入图像（位图）"></td>
+		<td style="text-align: center; border:none; width: 45%;"><object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/example.svg" type="image/svg+xml"></object></td>
 	</tr>
 </table>
 <div align=center><font color="#999999">图1：输入图像（左，位图）与输出图像（右，矢量图）</font></div>
@@ -30,8 +30,8 @@ $$GRAY=0.299*R+0.587*G+0.114*B$$
 - 第四个参数`grid`设置格点的样式，当`grid`设置为`square`时，按正方形样式确定格点位置（图2左）；当`grid`设置为`hexagonal`时，按正六边形确定格点位置（图2右）
 
 <div style="display:flex; justify-content:space-evenly;">
-    <object data="/assets/images/dots image/square.svg" type="image/svg+xml" width="30%"></object>
-    <object data="/assets/images/dots image/hexagonal.svg" type="image/svg+xml" width="30%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/square.svg" type="image/svg+xml" width="30%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/hexagonal.svg" type="image/svg+xml" width="30%"></object>
 </div>
 <div align=center><font color="#999999">图2：正方形格点样式（左）与六边形格点样式（右）</font></div>
 
@@ -40,16 +40,16 @@ $$GRAY=0.299*R+0.587*G+0.114*B$$
 图3展示了`color`设置为`'rgb'`（左）与单一颜色值（右，本例中为`'#222222'`）的区别，其中图片宽度被设置为`256`。
 
 <div align="center">
-    <object data="/assets/images/dots image/Img_rgb.svg" type="image/svg+xml" width="45%"></object>
-    <object data="/assets/images/dots image/Img_gray.svg" type="image/svg+xml" width="45%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/Img_rgb.svg" type="image/svg+xml" width="45%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/Img_gray.svg" type="image/svg+xml" width="45%"></object>
 </div>
 <div align=center><font color="#999999">图3：彩色图（左）与单色图（右）</font></div>
 
 图4展示了`grid`设置为`square`（左）与`hexagonal`（右）的区别，其中图片宽度被设置为`128`。
 
 <div align="center">
-    <object data="/assets/images/dots image/Img_square.svg" type="image/svg+xml" width="45%"></object>
-    <object data="/assets/images/dots image/Img_hexagonal.svg" type="image/svg+xml" width="45%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/Img_square.svg" type="image/svg+xml" width="45%"></object>
+    <object data="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/dots image/Img_hexagonal.svg" type="image/svg+xml" width="45%"></object>
 </div>
 <div align=center><font color="#999999">图4：正方形格点图片（左）与六边形采样格点图片（右）</font></div>
 
@@ -72,8 +72,6 @@ $$GRAY=0.299*R+0.587*G+0.114*B$$
 from PIL import Image
 import numpy as np
 ```
-
-### DotsImg
 
 ```python
 def DotsImg(path,width=256,color='rgb',grid='square'):
@@ -113,22 +111,14 @@ def DotsImg(path,width=256,color='rgb',grid='square'):
     svg_file=open("Img.svg","w")
     svg_file.writelines(svg_data)
     svg_file.close()
-```
 
-### openimg
-
-```python
 def openimg(path,width):
     img=Image.open(path)
     height=int(img.size[1]*width/img.size[0])
     img=img.resize((width, height))
     img=np.array(img)
     return img
-```
 
-### gengrid / grid2color
-
-```python
 def gengrid(style,width,height):
     if style=='square':
         x,y=np.meshgrid(np.arange(width),np.arange(height))
@@ -151,11 +141,7 @@ def grid2color(img,x,y):
     rela_x=np.floor((x-min(x))/(max(x)-min(x))*img_width)
     rela_y=np.floor((y-min(y))/(max(y)-min(y))*img_height)
     return img[rela_y.astype('int'),rela_x.astype('int'),:]
-```
 
-### rgb2gray / gray2radius / rgb2hex
-
-```python
 def rgb2gray(rgb):
     gray=0.299*rgb[:,0]+0.587*rgb[:,1]+0.114*rgb[:,2]
     return gray
