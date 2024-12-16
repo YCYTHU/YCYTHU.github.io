@@ -441,7 +441,7 @@ title: 康威生命游戏
         <div style="text-align: center">
             <h2>Downloading pattern file</h2>
             Please wait a second.<br><br>
-            <img src="pattern.gif" width="324" height="210" alt="Bi Gun">
+            <img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/pattern.gif" width="324" height="210" alt="Bi Gun">
         </div>
     </div>
 </div>
