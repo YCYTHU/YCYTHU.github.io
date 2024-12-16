@@ -4,7 +4,7 @@ tags:
 - Number theory
 - Code
 - Python
-cover: https://cdn.jsdelivr.net/gh/ycythu/assets@master/images/centrifuge.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/centrifuge.jpg
 ---
 离心机配平要求离心机内试管的重心保持在转子的中心，当试管数为离心机孔数的因数时，只需要按相同间隔分布试管即可达到平衡，但若试管数不是离心机孔数的因数时，则很难快速辨别是否存在配平方案。本文列出了不同孔数的离心机支持的试管数以及配平方案图示。
 <!--more-->
