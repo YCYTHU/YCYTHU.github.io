@@ -1,3 +1,9 @@
+---
+layout: none
+title: 康威生命游戏
+---
+<!--more-->
+
 <html>
 <head>
 {%- include analytics.html -%}
@@ -5,11 +11,11 @@
 <meta name="description" content="A JavaScript version of Conway's Game of Life, based on the Hashlife-algorithm">
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.6.0/css/all.css">
-<script src="/assets/game_of_life/life.js"></script>
-<script src="/assets/game_of_life/formats.js"></script>
-<script src="/assets/game_of_life/draw.js"></script>
-<script src="/assets/game_of_life/macrocell.js"></script>
-<script src="/assets/game_of_life/main.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/life.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/formats.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/draw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/macrocell.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/main.min.js"></script>
 <style type="text/css">
     body {
         background-color: #000;
@@ -284,7 +290,7 @@
             <div id="notice">
                 <h3 style="color: orange">Sorry, this applications needs JavaScript to work.</h3>
                 <div style="text-align: center">
-                    <img src="/assets/game_of_life/pattern.gif" width="324" height="210" alt="Bi Gun">
+                    <img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/game_of_life/pattern.gif" width="324" height="210" alt="Bi Gun">
                 </div>
             </div>
             <div id="about_main" style="display: none">
