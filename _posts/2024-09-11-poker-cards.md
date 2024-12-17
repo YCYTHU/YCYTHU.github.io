@@ -2,7 +2,7 @@
 title: 扑克牌花色种类数
 tags: 
 - Probability theory
-cover: /assets/images/poker card suits.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/poker card suits.jpg
 ---
 
 从扑克牌牌堆（不包含大小王）中随机抽取 $n$ 张扑克牌，这 $n$ 张扑克牌中花色的种类数满足何种分布，又如何随 $n$ 变化。

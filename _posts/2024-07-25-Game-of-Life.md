@@ -2,7 +2,7 @@
 title: 康威生命游戏
 tags: 
 - Cellular Automaton
-cover: /assets/images/game of life.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/game of life.jpg
 ---
 康威生命游戏是英国数学家John Horton Conway于1970年发明的一个零玩家游戏，其演变仅由其初始状态决定而不需要进一步输入。游戏在一个无限的二维网格上进行，每个格子称为一个“细胞”，它只有两种状态：存活或死亡。
 <!--more-->

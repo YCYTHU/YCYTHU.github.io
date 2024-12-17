@@ -4,7 +4,7 @@ tags:
 - Chemistry
 - Code
 - Python
-cover: /assets/images/hückel method/cover.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/hückel method/cover.jpg
 mathjax_autoNumber: true
 ---
 Hückel分子轨道理论（HMO）由 Erich Hückel 于 1930 年提出，是一种将分子轨道作为原子轨道的线性组合进行处理的简单方法。在此方法中，$\pi$ 轨道被认为与 $\sigma$ 轨道完全分离。后者被认为只是为分子提供刚性的骨架但不影响 $\pi$ 轨道的性质。本文介绍了一种通过绘制着色分子骨架以可视化 HMO 解的方法。

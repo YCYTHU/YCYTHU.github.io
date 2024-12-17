@@ -3,7 +3,7 @@ title: 利用MATLAB进行荧光衰减的分析与拟合
 tags: 
 - Code
 - MATLAB
-cover: /assets/images/conical flask.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/conical flask.jpg
 aside:
   toc: true
 ---

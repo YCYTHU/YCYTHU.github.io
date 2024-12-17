@@ -1,11 +1,11 @@
 ---
 layout: article
 title: 滴定模拟器
-cover: /assets/images/titration.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/titration.jpg
 ---
 <head>
 	<meta charset="UTF-8">
-	<script src="/assets/Titration.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/titration/titration.min.js"></script>
 	<style>
 		.SetAcid{
 			padding:.5rem 1rem;
@@ -165,7 +165,7 @@ cover: /assets/images/titration.jpg
 				<canvas id="stirBar" width="120" height="120"></canvas>
 			</div>
 			<div onclick="titrate()" id="buret" style="position:absolute; top:10px; left:3px; z-index:2;">
-				<img src="/assets/images/titration simulator/titration simulator.gif" width="112" height="670" border="0">
+				<img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/titration simulator/titration simulator.gif" width="112" height="670" border="0">
 			</div>
 		</div>
 		<!-- Titration graph area -->

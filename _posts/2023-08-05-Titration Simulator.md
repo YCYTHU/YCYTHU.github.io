@@ -1,7 +1,7 @@
 ---
 title: 在线酸碱滴定模拟器及实现
 tags: Chemistry
-cover: /assets/images/titration simulator/cover.jpg
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/titration simulator/cover.jpg
 ---
 借助JavaScript实现在线模拟酸碱滴定过程中指示剂颜色的变化。该模拟器的设计参考了[Peter H. Bird的JavaScript](http://faculty.concordia.ca/bird/javascript/titration/Titration-JS-v4.html)，使用说明如下。
 <!--more-->
@@ -23,7 +23,7 @@ cover: /assets/images/titration simulator/cover.jpg
 
 <div class="card" style="margin:0 auto;max-width:75%">
 	<div class="card__image">
-		<img src="/assets/images/titration simulator/settings_area.png" alt="图1：滴定模拟器设置界面">
+		<img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/titration simulator/settings_area.png" alt="图1：滴定模拟器设置界面">
 	</div>
 	<div class="card__content" align="center">
 		<div class="card__header">
@@ -41,7 +41,7 @@ cover: /assets/images/titration simulator/cover.jpg
 
 <div class="card" style="margin:0 auto;max-width:75%">
 	<div class="card__image">
-		<img src="/assets/images/titration simulator/titration_area.png" alt="图2：滴定界面，左侧为仪器部分，右侧为pH值的变化图像">
+		<img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/titration simulator/titration_area.png" alt="图2：滴定界面，左侧为仪器部分，右侧为pH值的变化图像">
 	</div>
 	<div class="card__content" align="center">
 		<div class="card__header">
