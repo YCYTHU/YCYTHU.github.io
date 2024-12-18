@@ -21,7 +21,6 @@ cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/nebula.jpg
 	<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/wavefunction/WindowResize.min.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/wavefunction/MarchingCubes.min.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/wavefunction/OrbitControls@2.110.3.min.js" type="text/javascript"></script>
-	<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/wavefunction/main.js" type="text/javascript"></script>
 	<style>
 		.red_light {
 			border: none;
@@ -70,4 +69,5 @@ cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/nebula.jpg
 		<button style="position: absolute; top: 13px; left: 13px;" id="indicator" class="green_light"></button>
 	</div>-->
 </body>
+<script src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/js/wavefunction/main.js" type="text/javascript"></script>
 </html>
