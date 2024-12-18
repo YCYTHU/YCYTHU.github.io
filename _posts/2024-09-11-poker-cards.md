@@ -72,7 +72,7 @@ $$\begin{align}P(4)&=\binom44\times\sum_{x=1}^{n-3}\sum_{y=1}^{n-x-2}\sum_{z=1}^
 		</tr>
 	</tbody>
 </table>
-<p style="text-align: center;"><img src="/assets/images/poker card infinite.svg" width="400"/></p>
+<p style="text-align: center;"><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/poker card/poker card infinite.svg" width="400"/></p>
 
 ## 一副扑克牌的牌堆
 
@@ -131,13 +131,13 @@ $$P(4)=\begin{cases}\frac{\displaystyle\binom{52}{n}-4\binom{39}{n}+6\binom{26}{
 		</tr>
 	</tbody>
 </table>
-<p style="text-align: center;"><img src="/assets/images/poker card single.svg" width="400"/></p>
+<p style="text-align: center;"><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/poker card/poker card single.svg" width="400"/></p>
 
 ## 两种摸牌方式的对比
 
 下图展示了两种摸牌方式花色种类数的期望随 $n$ 的变化，可以发现从一副牌组成的牌堆中摸牌的花色期望数始终大于由无穷副扑克牌组成的牌堆。这是因为从一副牌组成的牌堆中摸牌时摸一张牌以后再摸到相同花色的牌的概率会降低。
 
-<p style="text-align: center;"><img src="/assets/images/poker card expected value.svg" width="400"/></p>
+<p style="text-align: center;"><img src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/poker card/poker card expected value.svg" width="400"/></p>
 
 ## Appendix
 

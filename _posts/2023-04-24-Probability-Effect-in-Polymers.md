@@ -9,17 +9,17 @@ cover:
 
 假设存在由 $n$ 个球组成的一维阵列（图1）:
 
-<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure1.png"/></div>
+<div align=center><img class="image image--lg" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/polymer probability/figure1.png"/></div>
 <div align=center><font color="#999999">图1：$n$ 个球组成的一维阵列</font></div>
 
 随机挑选两颗相邻的球并取走得到两个空位（图2），然后不断重复这一过程：
 
-<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure2.png"></div>
+<div align=center><img class="image image--lg" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/polymer probability/figure2.png"></div>
 <div align=center><font color="#999999">图2：随机挑选两颗球（红框内的两颗球）并取走，取走后得到两个空位</font></div>
 
 由于被取走的球的位置是随机的，因此可能会存在某颗球两侧没有相邻的球（图3），这样的球不会被挑选取走：
 
-<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure3.png"></div>
+<div align=center><img class="image image--lg" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/polymer probability/figure3.png"></div>
 <div align=center><font color="#999999">图3：红框内的球两侧没有相邻的球，在接下来的取球过程中不会被挑选取走</font></div>
 
 重复取球过程直至没有球剩余或者没有球可以被挑选取走。此时阵列中剩余的球的数量记为 $s$，当 $n$ 趋于无穷的时候，$s$ 的数学期望如何。
@@ -70,7 +70,7 @@ $$\lim_{n\to\infty}\frac{E(s\vert n)}{n}=\frac{1}{e^2}\tag{9}\label{ratio}$$
 
 假设将一条无限长的聚乙烯醇进行缩醛化，由于缩醛化总是发生在相邻的羟基上，且位置是随机的，因此可能存在一些不能缩醛化的独立羟基（图4）。
 
-<div align=center><img class="image image--lg" src="\assets\images\polymer probability\figure4.png"></div>
+<div align=center><img class="image image--lg" src="https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/polymer probability/figure4.png"></div>
 <div align=center><font color="#999999">图4：无限长聚乙烯醇的缩醛化</font></div>
 
 根据式$\eqref{ratio}$，缩醛化过程中羟基的转化率为 $\displaystyle{\left(1-\frac{1}{e^2}\right)}\approx86.5\%$。

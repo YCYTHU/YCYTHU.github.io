@@ -37,7 +37,7 @@ key: page-about
         }
         @font-face {
             font-family: slogan;
-            src: url("/assets/fonts/Ibrahima-Vilantte-slogan/Ibrahima Vilantte.otf");
+            src: url("https://cdn.jsdelivr.net/gh/ycythu/assets@main/fonts/Ibrahima-Vilantte-slogan/Ibrahima Vilantte.otf");
         }
     </style>
 </head>
