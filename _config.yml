@@ -206,7 +206,7 @@ defaults:
       type: posts
     values:
       layout: article
-      cover: /assets/images/default.jpg
+      cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/default.jpg
   ## Chemistry Collections
   - scope:
       path: ""

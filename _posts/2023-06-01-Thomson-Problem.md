@@ -3,7 +3,7 @@ title: Thomson问题
 tags: 
 - Physics
 - Chemistry
-cover: /assets/images/20230601.png
+cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/thomson.png
 ---
 
 Thomson问题的目标是确定 $N$ 个被约束在单位球表面的电子（点电荷）的最低静电能构型（基于库仑定律）。该问题在化学中的一个应用为[VSEPR理论](https://en.wikipedia.org/wiki/VSEPR_theory)中几何构型的确定。
