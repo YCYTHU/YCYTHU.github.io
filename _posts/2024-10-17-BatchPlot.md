@@ -11,13 +11,10 @@ Batch脚本文件可从[此处](https://cdn.jsdelivr.net/gh/ycythu/assets@main/B
 
 ## 使用方法
 
-- 命令行
-
-	`BatchPlot.bat file1 file2 file3`
-
-- 交互式
-
-	双击运行`BatchPlot.bat`后按提示输入文件路径，有多个文件时使用空格进行分隔
+```
+BatchPlot.bat file1 file2 file3
+```
+或者双击运行`BatchPlot.bat`后按提示输入文件路径，有多个文件时使用空格进行分隔。
 
 ## 脚本说明
 
@@ -27,7 +24,7 @@ Batch脚本文件可从[此处](https://cdn.jsdelivr.net/gh/ycythu/assets@main/B
 
 在使用该脚本时，当关闭绘图窗口后，可选择是否需要对绘图参数（包括坐标轴范围、标题、网格以及导出为文件）进行修改。若批处理全部使用相同的绘图参数，则可以使用下面的简洁版本，使用前按需修改gnuplot命令即可。
 
-```cmd
+```batch
 @echo off
 setlocal EnableDelayedExpansion
 echo Input file path (e.g., E:\MD\rdf.xvg), separate multiple files with spaces.
