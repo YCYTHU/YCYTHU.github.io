@@ -7,7 +7,7 @@ cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/alchemy.jpg
 <style>
 	@font-face {
 		font-family: Alchemy;
-		src: url("/assets/fonts/auldmagick-font/AuldmagickBold-ojeo.ttf")
+		src: url("https://cdn.jsdelivr.net/gh/ycythu/assets@main/fonts/auldmagick-font/AuldmagickBold-ojeo.ttf")
 	}
 	.table-container {
 		overflow-x: scroll;
