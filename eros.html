@@ -1,0 +1,222 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.10.1/dist/viewer.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        @keyframes breathe {
+            0%, 100% {
+                background-color: #f4f4f4;
+            }
+            50% {
+                background-color: rgba(255, 182, 193, 0.2);
+            }
+        }
+        .gallery {
+            column-count: 1;
+            column-gap: 15px;
+        }
+        @media (min-width: 600px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 900px) {
+            .gallery {
+                column-count: 3;
+            }
+        }
+        @media (min-width: 1200px) {
+            .gallery {
+                column-count: 4;
+            }
+        }
+        @media (min-width: 1800px) {
+            .gallery {
+                column-count: 6;
+            }
+        }
+        .gallery .image {
+            width: 100%;
+            break-inside: avoid;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .gallery .image:hover {
+            transform: scale(1.05);
+        }
+        ul, ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        .login-container, .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="password"] {
+            width: 300px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="password"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginSection" class="login-container">
+        <h2>登录</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" placeholder="请输入结果" required>
+            </div>
+            <button type="submit" class="login-button">看看实力</button>
+            <p id="loginMessage" class="hidden"></p>
+        </form>
+    </div>
+    <div id="contentSection" class="content hidden">
+        <ul id="images" class="gallery">
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+function init(url, fake_url) {
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const key = document.getElementById('password').value;
+        const loginMessage = document.getElementById('loginMessage');
+        const loginSection = document.getElementById('loginSection');
+        const contentSection = document.getElementById('contentSection');
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.responseType = "text";
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var txtContent = xhr.responseText;
+                try {
+                    var img_base64 = decrypt(txtContent.split('\n'), key);
+                    show_img(img_base64);
+                } catch(error) {
+                    window.location.replace(fake_url);
+                }
+            }
+        };
+        xhr.send();
+        loginMessage.className = 'hidden';
+        loginSection.classList.add('hidden');
+        contentSection.classList.remove('hidden');
+        document.body.style.animation = "breathe 5s ease-in-out infinite";
+    });
+}
+function decrypt(encry_arr, serverKey) {
+    var result = [];
+    const key = CryptoJS.enc.Utf8.parse(serverKey.substring(0,32));
+    const iv = CryptoJS.enc.Utf8.parse(serverKey.substring(32,48));
+    shuffleArray(encry_arr);
+    for (let index=0; index<encry_arr.length; index++) {
+        var decryptedData = CryptoJS.AES.decrypt(encry_arr[index], key, {
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        result.push(decryptedData.toString(CryptoJS.enc.Utf8));
+    }
+    return result
+}
+function show_img(img_base64_arr) {
+    var img_ul = document.getElementById("images");
+    var ul_html = "";
+    for(let index=0; index<img_base64_arr.length; index++) {
+        ul_html = ul_html + "<li><img src=\"data:image/png;base64," + img_base64_arr[index] + "\" alt=\"Picture " + (index+1).toString() + "\" class=\"image\"></li>";
+    }
+    img_ul.innerHTML = ul_html;
+    const viewer = new Viewer(document.getElementById('images'), {
+        navbar: true,
+        title: true,
+        toolbar: true,
+        loop: true,
+        scalable: true,
+        fullscreen: true,
+        movable: true,
+    });
+}
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const url = "https://ycythu.github.io/assets/img_encry_des.txt";
+const fake_url = "https://www.baidu.com";
+init(url, fake_url);
+</script>
+</html>

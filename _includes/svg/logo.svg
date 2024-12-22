@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+
+<defs>
+	<linearGradient id="Gradient" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="0%" stop-color="#B48E56"/>
+        <stop offset="100%" stop-color="#FBF6B8"/>
+      </linearGradient>
+ </defs>
+
+<style type="text/css">
+	.st0{fill="url(#Gradient)";}
+</style>
+
+<path fill="url(#Gradient)" d="M0 0 h 3.375 V 14.5 h 0.75 V 0 h 3.375 V 18 h -2 V 24 h -3.5 v -6 h -2 L 0 0 M8.25 0 h 7.5 v 9 h -3.375 v -5 h -0.75 V 20 h 0.75 V 9.5 h 3.375 V 24 h -7.5 L 8.25 0 M16.5 0 h 3.375 V 14.5 h 0.75 V 0 h 3.375 V 18 h -2 V 24 h -3.5 v -6 h -2 L 16.5 0"/>
+</svg>

@@ -1,0 +1,134 @@
+header:
+  - titles:
+      # @start locale config
+      en      : &EN       Archive
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  归档
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      zh-Hant : &ZH_HANT  歸檔
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       아카이브
+      ko-KR   : *KO
+      fr      : &FR       Archives
+      fr-BE   : *FR
+      fr-CA   : *FR
+      fr-CH   : *FR
+      fr-FR   : *FR
+      fr-LU   : *FR
+      tr      : &TR       Arşivdekiler
+      # @end locale config
+    url: /archive.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       Chem. Coll.
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  化学
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      zh-Hant : &ZH_HANT  化學
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       
+      ko-KR   : *KO
+      fr      : &FR       
+      fr-BE   : *FR
+      fr-CA   : *FR
+      fr-CH   : *FR
+      fr-FR   : *FR
+      fr-LU   : *FR
+      tr      : &TR       
+      # @end locale config
+    url: /chemistry-collections
+
+  - titles:
+      # @start locale config
+      en      : &EN       MolViewer
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  MolViewer
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      zh-Hant : &ZH_HANT  MolViewer
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       MolViewer
+      ko-KR   : *KO
+      fr      : &FR       MolViewer
+      fr-BE   : *FR
+      fr-CA   : *FR
+      fr-CH   : *FR
+      fr-FR   : *FR
+      fr-LU   : *FR
+      tr      : &TR       MolViewer
+      # @end locale config
+    url: /MolViewer
+
+  - titles:
+      # @start locale config
+      en      : &EN       About
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  关于
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      zh-Hant : &ZH_HANT  關於
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       소개
+      ko-KR   : *KO
+      fr      : &FR       À propos
+      fr-BE   : *FR
+      fr-CA   : *FR
+      fr-CH   : *FR
+      fr-FR   : *FR
+      fr-LU   : *FR
+      tr      : &TR       Hakkında
+      # @end locale config
+    url: /about.html
+
+MolViewer:
+  - title:      Overview
+    children:
+      - title:  Introduction
+        url:    /MolViewer/docs/introduction
+      - title:  Change log
+        url:    /MolViewer/docs/changelog
+  - title:      Functions
+    children:
+      - title:  acr2obj
+        url:    /MolViewer/docs/acr2obj
+      - title:  cub2mat
+        url:    /MolViewer/docs/cub2mat
+      - title:  cub2obj
+        url:    /MolViewer/docs/cub2obj
+      - title:  gradcub
+        url:    /MolViewer/docs/gradcub
+      - title:  lrms
+        url:    /MolViewer/docs/lrms
+      - title:  showcub
+        url:    /MolViewer/docs/showcub
+      - title:  showmol
+        url:    /MolViewer/docs/showmol
+      - title:  xyz2acr
+        url:    /MolViewer/docs/xyz2acr
+      - title:  xyz2obj
+        url:    /MolViewer/docs/xyz2obj
+      - title:  xyz2stl
+        url:    /MolViewer/docs/xyz2stl
