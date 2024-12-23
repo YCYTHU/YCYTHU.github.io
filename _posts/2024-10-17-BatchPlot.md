@@ -1,6 +1,7 @@
 ---
 title: 结合Gnuplot与Batch脚本实现快速批量绘图
 tags: 
+- Code
 - Batch
 cover: https://cdn.jsdelivr.net/gh/ycythu/assets@main/images/cover/gnuplot.jpg
 ---
@@ -11,7 +12,7 @@ Batch脚本文件可从[此处](https://cdn.jsdelivr.net/gh/ycythu/assets@main/B
 
 ## 使用方法
 
-```console
+```bash
 BatchPlot.bat file1 file2 file3
 ```
 或者双击运行`BatchPlot.bat`后按提示输入文件路径，有多个文件时使用空格进行分隔。
